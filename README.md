@@ -1,14 +1,16 @@
 # Projet fin d'année: Agora
 
-## Techno utilisé
+## Technos utilisées
 
-- React (client side rendering)
-- graphique: ChartJS
+- React (webpack inclut)
+- Client side rendering
+- Mobile first
 - PWA
+- librairie: ChartJS
 
 ## Comment installer le projet ?
 
-installer le projet:
+installer le projet:  
 `npm install`
 
 démarrer le projet: 
