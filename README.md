@@ -1,12 +1,12 @@
 # Projet fin d'année: Agora
 
-# Techno utilisé
+## Techno utilisé
 
 - React (client side rendering)
 - graphique: ChartJS
 - PWA
 
-# Comment installer le projet ?
+## Comment installer le projet ?
 
 `npm install`
 
