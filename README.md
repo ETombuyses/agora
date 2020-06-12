@@ -22,7 +22,7 @@
 
 - Librairies React: React-router + Context API + styled components + PropTypes
 
-- service worker
+- service worker  
 **Pourquoi** : permettre l'accès offline du site
 
 ### Comment installer le projet ?
