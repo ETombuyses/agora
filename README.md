@@ -8,13 +8,16 @@
 
 - React (webpack inclut)  
 Pourquoi : facilite le développement de nos fonctionnalités et assure la maintenabilité du code (important car site gouvernemental)
+
 - Client side rendering  
 Pourquoi : privilégier l'optimisation des ressources pour l'aspect écologique car prend moins de ressources que l'universal rendering et permet une utilisation fluide du site.
-Notre sujet étant sur l
+
 - Mobile first  
 Pourquoi : car usage du site récurrent / accessibilité utilisateur
+
 - PWA  
 Pourquoi : car usage du site récurrent / accessibilité utilisateur
+
 - librairie: ChartJS
 
 ### Comment installer le projet ?
