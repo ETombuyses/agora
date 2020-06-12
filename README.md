@@ -4,7 +4,7 @@
 
 # Projet fin d'année: Agora
 
-### Technos utilisées
+### Technologies envisagées
 
 - React (webpack inclut)  
 **Pourquoi** : facilite le développement de nos fonctionnalités et assure la maintenabilité du code (important car site gouvernemental)
