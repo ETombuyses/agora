@@ -18,7 +18,12 @@
 - PWA  
 **Pourquoi** : car usage du site récurrent / accessibilité utilisateur
 
-- librairie: ChartJS
+- librairie de graphiques: ChartJS
+
+- Librairies React: React-router + Context API + styled components + PropTypes
+
+- service worker
+**Pourquoi** : permettre l'accès offline du site
 
 ### Comment installer le projet ?
 
