@@ -13,7 +13,7 @@
 installer le projet:  
 `npm install`
 
-démarrer le projet: 
+démarrer le projet:  
 `npm run start`
 
 ### Making a Progressive Web App
