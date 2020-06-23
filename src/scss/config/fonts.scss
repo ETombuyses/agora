@@ -10,7 +10,7 @@
 @include fontface ("Open Sans", "../../assets/fonts/opensans-extrabolditalic-webfont.woff2", "../../assets/fonts/opensans-extrabolditalic-webfont.woff", italic, 900);
 
 
-body {
+body, input {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 16px;
   // -webkit-font-smoothing: antialiased;

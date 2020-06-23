@@ -6,15 +6,17 @@
 
 // to delete later
 
-.App-header {
+.App {
   background-color: #282c34;
   min-height: 100vh;
   color: white;
 }
 
-.App {
-  text-align: center;
+.navigation {
+    margin-bottom: 100px;
+}
 
+.App {
     &-logo {
         animation: App-logo-spin infinite 20s linear;
         height: 80px;
