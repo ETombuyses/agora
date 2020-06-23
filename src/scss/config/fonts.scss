@@ -1,0 +1,18 @@
+@include fontface ("Open Sans", "../../assets/fonts/opensans-regular-webfont.woff2", "../../assets/fonts/opensans-regular-webfont.woff", normal, normal);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-italic-webfont.woff2", "../../assets/fonts/opensans-italic-webfont.woff", italic, normal);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-light-webfont.woff2", "../../assets/fonts/opensans-light-webfont.woff", normal, lighter);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-lightitalic-webfont.woff2", "../../assets/fonts/opensans-lightitalic-webfont.woff", italic, lighter);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-bold-webfont.woff2", "../../assets/fonts/opensans-bold-webfont.woff", normal, bold);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-bolditalic-webfont.woff2", "../../assets/fonts/opensans-bolditalic-webfont.woff", italic, bold);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-semibold-webfont.woff2", "../../assets/fonts/opensans-semibold-webfont.woff", normal, bolder);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-semibolditalic-webfont.woff2", "../../assets/fonts/opensans-semibolditalic-webfont.woff", italic, bolder);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-extrabold-webfont.woff2", "../../assets/fonts/opensans-extrabold-webfont.woff", normal, 900);
+@include fontface ("Open Sans", "../../assets/fonts/opensans-extrabolditalic-webfont.woff2", "../../assets/fonts/opensans-extrabolditalic-webfont.woff", italic, 900);
+
+
+body {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+}
