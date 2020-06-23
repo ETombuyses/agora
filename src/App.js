@@ -19,6 +19,7 @@ const Stats = lazy(() => import('./routes/Stats'));
 const Tasks = lazy(() => import('./routes/Tasks'));
 
 
+
 export default function App() {
   return (
     <Router>
