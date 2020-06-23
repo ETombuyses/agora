@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import axios from 'axios';
+//import {getToken, getUsers} from './tools/isAuth';
 
 // router
 import {
@@ -20,39 +21,13 @@ const Stats = lazy(() => import('./routes/Stats'));
 const Tasks = lazy(() => import('./routes/Tasks'));
 
 export default function App() {
-/* const [tokenMain, setToken] = useState([]);
-
-  useEffect(() => {
-    axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/login_check',
-      data: {
-        username: 'marthe.gomes@dbmail.com',
-        password: 'test'
-      }
-    })
-    .then(result => console.log(result))
-    .then(({ data: { token } }) => {
-      console.log(token)
-      setToken(tokenMain.push(token))
-      console.log('salope', tokenMain)
-    })
-    .then( res => console.log(tokenMain[0]) )
-    .then(axios({
-      url: 'http://127.0.0.1:8000/api/users',
-      headers: {
-        Authorization: `Bearer ${tokenMain[0]}`
-      }
-    })
-    .then(result => console.log(result))
-    );
-  }, []) */
-
   let TOKEN;
 
   //const [tokenMain, setToken] = useState('');
   
   useEffect(() => {
+
+    //Get Token of current user
     (async () => {
       const result = await axios({
       method: 'post',
@@ -64,11 +39,17 @@ export default function App() {
     })
     
     TOKEN = result.data.token;
+    console.log(TOKEN)
+
+    //Put token in local storage
+    localStorage.setItem('Token', TOKEN)
+    let userToken = localStorage.getItem('Token');
     
+    //Get users from db with token in local storage
     const getUsers = await axios({
       url: 'http://127.0.0.1:8000/api/users',
       headers: {
-        Authorization: `Bearer ${TOKEN}`
+        Authorization: `Bearer ${userToken}`
       }
     })
     
