@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
+import axios from 'axios';
 
 // router
 import {
@@ -18,9 +19,63 @@ const Register = lazy(() => import('./routes/Register'));
 const Stats = lazy(() => import('./routes/Stats'));
 const Tasks = lazy(() => import('./routes/Tasks'));
 
-
-
 export default function App() {
+/* const [tokenMain, setToken] = useState([]);
+
+  useEffect(() => {
+    axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/login_check',
+      data: {
+        username: 'marthe.gomes@dbmail.com',
+        password: 'test'
+      }
+    })
+    .then(result => console.log(result))
+    .then(({ data: { token } }) => {
+      console.log(token)
+      setToken(tokenMain.push(token))
+      console.log('salope', tokenMain)
+    })
+    .then( res => console.log(tokenMain[0]) )
+    .then(axios({
+      url: 'http://127.0.0.1:8000/api/users',
+      headers: {
+        Authorization: `Bearer ${tokenMain[0]}`
+      }
+    })
+    .then(result => console.log(result))
+    );
+  }, []) */
+
+  let TOKEN;
+
+  //const [tokenMain, setToken] = useState('');
+  
+  useEffect(() => {
+    (async () => {
+      const result = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/login_check',
+      data: {
+        username: 'marthe.gomes@dbmail.com',
+        password: 'test'
+      }
+    })
+    
+    TOKEN = result.data.token;
+    
+    const getUsers = await axios({
+      url: 'http://127.0.0.1:8000/api/users',
+      headers: {
+        Authorization: `Bearer ${TOKEN}`
+      }
+    })
+    
+    console.log(getUsers)
+    })()
+  })
+
   return (
     <Router>
       <div className="App">
