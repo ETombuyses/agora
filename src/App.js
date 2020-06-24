@@ -51,11 +51,11 @@ export default function App() {
       headers: {
         Authorization: `Bearer ${userToken}`
       }
-    })
-    
-    console.log(getUsers)
+    }) 
+        console.log(getUsers)
     })()
   })
+
 
   return (
     <Router>

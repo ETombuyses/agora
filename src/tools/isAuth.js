@@ -12,16 +12,16 @@ export function getToken(email, pswd) {
 				password: pswd
 			}
 		})
-		
+
 		TOKEN = result.data.token;
-		console.log(TOKEN)
 		localStorage.setItem('Token', TOKEN)
 	})()
 }
 
 export function getUsers() {
+	let userToken = localStorage.getItem('Token');
 	(async () => {
-		let userToken = localStorage.getItem('Token');
+		console.log('je suis un token', userToken)
 		const getUsers = await axios({
 			url: 'http://127.0.0.1:8000/api/users',
 			headers: {
