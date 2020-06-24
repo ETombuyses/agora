@@ -1,29 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
-export const InputText = (props) => {
-  return (
-    <InputWrapper>
-      <LabelWrapper>
-        <Label>
-          {props.label}
-          {props.required && <Asterisk>*</Asterisk>}
-        </Label>{' '}
-        {props.hint && <HelpIcon />}
-      </LabelWrapper>
-      <Input type={props.type} placeholder={props.placeholder}></Input>
-    </InputWrapper>
-  )
-}
 
-/* -----------------------------------------------------PropTypes------------------------------------------------ */
+/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
 
 InputText.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
 }
+
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -69,3 +57,21 @@ const Input = styled.input`
   line-height: 40px;
   /* width: 100%; */
 `
+
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const InputText = props => {
+  return (
+    <InputWrapper>
+      <LabelWrapper>
+        <Label>
+          {props.label}
+          {props.required && <Asterisk>*</Asterisk>}
+        </Label>{' '}
+        {props.hint && <HelpIcon />}
+      </LabelWrapper>
+      <Input type={props.type} placeholder={props.placeholder}></Input>
+    </InputWrapper>
+  )
+}
