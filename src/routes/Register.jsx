@@ -45,6 +45,11 @@ const RegisterButton = styled(Button)`
 
 const ToggleText = styled.p`
   margin-top: 42px;
+  font-size: 13px;
+`
+
+const ToggleLink = styled.span`
+color: ${props => props.theme.green};
 `
 
 export default function Register() {
@@ -66,7 +71,7 @@ export default function Register() {
             icon={MailIcon}
             text="S'inscrire"
           />
-          <ToggleText>Déjà membre ? se connecter</ToggleText>
+          <ToggleText>Déjà membre ? <ToggleLink>Se connecter</ToggleLink> </ToggleText>
         </ContentWrapper>
       </PageWrapper>
     </div>
