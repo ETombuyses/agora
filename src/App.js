@@ -26,7 +26,7 @@ export default function App() {
   return (
       <Router>
         <div className="App">
-          <nav className="navigation">
+          {/* <nav className="navigation">
             <ul>
               <li><Link to="/">Dashboard</Link></li>
               <li><Link to="/login">Login</Link></li>
@@ -36,7 +36,7 @@ export default function App() {
               <li><Link to="/taches">Taches</Link></li>
               <li><Link to="/parametres">Params</Link></li>
             </ul>
-          </nav>
+          </nav> */}
 
           <Suspense fallback={<div>Chargement...</div>}>
             <Switch>

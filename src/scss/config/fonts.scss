@@ -16,3 +16,11 @@ body, input {
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
 }
+
+
+.headline {
+  color: $black;
+  font-size: size(20);
+  font-weight: bold;
+  line-height: 130%;
+}

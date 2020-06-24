@@ -5,7 +5,7 @@ import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
 
 
-export default function InputText (props) {
+export const InputText = (props) => {
   return (
     <InputWrapper>
       <LabelWrapper>
@@ -41,7 +41,7 @@ const InputWrapper = styled.div`
     height: 16px; 
     
     path {
-      fill: ${props => props.theme.white}
+      fill: ${props => props.theme.white};
     }
   }
 `
