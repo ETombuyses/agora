@@ -1,17 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
 
 // css
-import './scss/styles.scss';
-import { ThemeProvider } from 'styled-components';
+import './scss/styles.scss'
+import { ThemeProvider } from 'styled-components'
 
 // use scss variables
 // eslint-disable-next-line import/no-webpack-loader-syntax
-const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./scss/styles.scss');
-
-
+const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./scss/styles.scss')
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,9 +18,9 @@ ReactDOM.render(
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()

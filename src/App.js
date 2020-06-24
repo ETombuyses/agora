@@ -1,32 +1,22 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react'
 
 // router
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 // Rooter
-const Dashboard = lazy(() => import('./routes/Dashboard'));
-const Historic = lazy(() => import('./routes/Historic'));
-const Login = lazy(() => import('./routes/Login'));
-const Params = lazy(() => import('./routes/Params'));
-const Register = lazy(() => import('./routes/Register'));
-const Stats = lazy(() => import('./routes/Stats'));
-const Tasks = lazy(() => import('./routes/Tasks'));
-
-
+const Dashboard = lazy(() => import('./routes/Dashboard'))
+const Historic = lazy(() => import('./routes/Historic'))
+const Login = lazy(() => import('./routes/Login'))
+const Params = lazy(() => import('./routes/Params'))
+const Register = lazy(() => import('./routes/Register'))
+const Stats = lazy(() => import('./routes/Stats'))
+const Tasks = lazy(() => import('./routes/Tasks'))
 
 export default function App() {
   return (
-      <Router>
-        <div className="App">
-          {/* <nav className="navigation">
+    <Router>
+      <div className="App">
+        {/* <nav className="navigation">
             <ul>
               <li><Link to="/">Dashboard</Link></li>
               <li><Link to="/login">Login</Link></li>
@@ -38,18 +28,18 @@ export default function App() {
             </ul>
           </nav> */}
 
-          <Suspense fallback={<div>Chargement...</div>}>
-            <Switch>
-              <Route exact path="/" component={Dashboard}/> 
-              <Route path="/login" component={Login}/>
-              <Route path="/register" component={Register}/>
-              <Route path="/historique" component={Historic}/>
-              <Route path="/statistiques" component={Stats}/>
-              <Route path="/taches" component={Tasks}/>
-              <Route path="/parametres" component={Params}/>
-            </Switch>
-          </Suspense>
-        </div>
-      </Router>
+        <Suspense fallback={<div>Chargement...</div>}>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <Route path="/historique" component={Historic} />
+            <Route path="/statistiques" component={Stats} />
+            <Route path="/taches" component={Tasks} />
+            <Route path="/parametres" component={Params} />
+          </Switch>
+        </Suspense>
+      </div>
+    </Router>
   )
 }

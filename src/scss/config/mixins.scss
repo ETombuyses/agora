@@ -1,17 +1,15 @@
 /* -------------------------------- fonts --------------------------------------- */
 
-@mixin fontface ($name, $woff2, $woff, $style, $weight) {
+@mixin fontface($name, $woff2, $woff, $style, $weight) {
   @font-face {
     font-family: $name;
-    src: url($woff2) format("woff2"), url($woff) format("woff");
+    src: url($woff2) format('woff2'), url($woff) format('woff');
     font-style: $style;
-    font-weight: $weight; 
+    font-weight: $weight;
   }
 }
 
-
 /* -------------------------------- px to rem --------------------------------------- */
-
 
 $base-size: 16;
 @function size($target, $context: $base-size) {
@@ -22,7 +20,6 @@ $base-size: 16;
 // body {
 //   margin: size(20);
 // }
-
 
 /* -------------------------------breakpoints ------------------------------*/
 

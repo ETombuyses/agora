@@ -3,28 +3,27 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
-
-
 export const InputText = (props) => {
   return (
     <InputWrapper>
       <LabelWrapper>
-        <Label>{props.label}{props.required && <Asterisk>*</Asterisk>}</Label> {props.hint && <HelpIcon/>}
+        <Label>
+          {props.label}
+          {props.required && <Asterisk>*</Asterisk>}
+        </Label>{' '}
+        {props.hint && <HelpIcon />}
       </LabelWrapper>
       <Input type={props.type} placeholder={props.placeholder}></Input>
     </InputWrapper>
   )
 }
 
-
 /* -----------------------------------------------------PropTypes------------------------------------------------ */
 
 InputText.propTypes = {
   type: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 }
-
-
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -36,18 +35,18 @@ const InputWrapper = styled.div`
     position: absolute;
     top: 2px;
     margin-left: 8px;
-    fill: ${props => props.theme.grey};
-    width: 16px; 
-    height: 16px; 
-    
+    fill: ${(props) => props.theme.grey};
+    width: 16px;
+    height: 16px;
+
     path {
-      fill: ${props => props.theme.white};
+      fill: ${(props) => props.theme.white};
     }
   }
 `
 const LabelWrapper = styled.div`
-position: relative;
-display: inline-block;
+  position: relative;
+  display: inline-block;
 `
 
 const Label = styled.p`
@@ -60,12 +59,12 @@ const Label = styled.p`
 `
 
 const Asterisk = styled.span`
-  color: ${props => props.theme.red};
+  color: ${(props) => props.theme.red};
 `
 
 const Input = styled.input`
   border: none;
-  background: ${props => props.theme.white};
+  background: ${(props) => props.theme.white};
   border-radius: 5px;
   line-height: 40px;
   /* width: 100%; */
