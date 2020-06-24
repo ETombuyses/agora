@@ -105,6 +105,10 @@ export default function Register() {
       //Put tokens in local storage
       localStorage.setItem('token', token)
       localStorage.setItem('refreshToken', refresh_token)
+
+      if (result) {
+        window.location.href = "http://localhost:3000/"
+      }
     })()
   }
 
