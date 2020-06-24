@@ -1,11 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// components
 import { Button } from '../components/atoms/Button'
 import { SectionSepartor } from '../components/atoms/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
 import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
+
+// images
 import welcomeImage from '../assets/images/welcome.png'
+
+
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
   background: ${(props) => props.theme.blueGrey};
@@ -49,31 +56,34 @@ const ToggleText = styled.p`
 `
 
 const ToggleLink = styled.span`
-color: ${props => props.theme.green};
+  color: ${(props) => props.theme.green};
 `
+
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
   return (
-    <div>
-      <PageWrapper>
-        <Image src={welcomeImage} />
-        <ContentWrapper>
-          <Title className="headline">S'inscrire sur Agora</Title>
-          <GovButton
-            isFullWidth={true}
-            icon={GovIcon}
-            isGovButton={true}
-            text="S'identifier avec FranceConnect"
-          />
-          <SectionSepartor />
-          <RegisterButton
-            isFullWidth={true}
-            icon={MailIcon}
-            text="S'inscrire"
-          />
-          <ToggleText>Déjà membre ? <ToggleLink>Se connecter</ToggleLink> </ToggleText>
-        </ContentWrapper>
-      </PageWrapper>
-    </div>
+    <PageWrapper>
+      <Image src={welcomeImage} />
+      <ContentWrapper>
+        <Title className="headline">S'inscrire sur Agora</Title>
+        <GovButton
+          isFullWidth={true}
+          icon={GovIcon}
+          isGovButton={true}
+          text="S'identifier avec FranceConnect"
+        />
+        <SectionSepartor />
+        <RegisterButton
+          isFullWidth={true}
+          icon={MailIcon}
+          text="S'inscrire"
+        />
+        <ToggleText>
+          Déjà membre ? <ToggleLink>Se connecter</ToggleLink>{' '}
+        </ToggleText>
+      </ContentWrapper>
+    </PageWrapper>
   )
 }
