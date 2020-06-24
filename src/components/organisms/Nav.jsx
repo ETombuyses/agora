@@ -1,17 +1,17 @@
 import React, { Suspense, lazy } from 'react'
 import {
-  BrowserRouter as Link,
+  BrowserRouter as Router,
+  Link,
   Switch,
   Route,
   useLocation,
 } from 'react-router-dom'
 import styled from 'styled-components'
+import { withTheme } from 'styled-components'
+
 
 // icons
-import { ReactComponent as AnalyticsIcon } from '../..//assets/icons/analytics.svg'
-import { ReactComponent as HistoryIcon } from '../../assets/icons/clock.svg'
-import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.svg'
-import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg'
+import {MenuIcon} from '../atoms/MenuIcon'
 
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
@@ -35,7 +35,7 @@ const NavWrapper = styled.nav`
 
 const List = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `
 
@@ -56,7 +56,7 @@ const Text = styled.span`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const Nav = () => {
+const NavWithTheme = props => {
   const [currentRoute, setCurrentRoute] = React.useState('/')
 
   function GetNewRoute() {
@@ -68,8 +68,6 @@ export const Nav = () => {
 
   GetNewRoute()
 
-
-  
   return (
     <div>
       {currentRoute !== '/register' && currentRoute !== '/login' && (
@@ -77,26 +75,26 @@ export const Nav = () => {
           <List>
             <ListItem>
               <Link to="/">
-                <DashboardIcon />
-                <Text>Dashboard</Text>
+                <MenuIcon icon={'dashboard'} active={currentRoute === '/'}/>
+                <Text style={{color: currentRoute === '/' ? props.theme.green : props.theme.grey}}>Dashboard</Text>
               </Link>
             </ListItem>
             <ListItem>
-              <Link to="/historique">
-                <HistoryIcon />
-                <Text>Historique</Text>
+              <Link to="/historique" >
+                <MenuIcon icon={'history'} active={currentRoute === '/historique'}/>
+                <Text style={{color: currentRoute === '/historique' ? props.theme.green : props.theme.grey}}>Historique</Text>
               </Link>
             </ListItem>
             <ListItem>
               <Link to="/statistiques">
-                <AnalyticsIcon />
-                <Text>Analitiques</Text>
+                <MenuIcon icon={'analytics'} active={currentRoute === '/statistiques'}/>
+                <Text style={{color: currentRoute === '/statistiques' ? props.theme.green : props.theme.grey}}>Analitiques</Text>
               </Link>
             </ListItem>
             <ListItem>
               <Link to="/profile">
-                <ProfileIcon />
-                <Text>Profil</Text>
+                <MenuIcon icon={'profile'} active={currentRoute === '/profile'}/>
+                <Text style={{color: currentRoute === '/profile' ? props.theme.green : props.theme.grey}}>Profil</Text>
               </Link>
             </ListItem>
           </List>
@@ -116,3 +114,8 @@ export const Nav = () => {
     </div>
   )
 }
+// export const Nav = NavWithTheme
+
+const Nav = withTheme(NavWithTheme)
+
+export {Nav}

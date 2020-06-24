@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <Nav></Nav>
+        <Nav/>
       </div>
     </Router>
   )

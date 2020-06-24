@@ -3,20 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-Button.propTypes = {
-  isFormButton: PropTypes.bool,
-  size: PropTypes.string,
-  icon: PropTypes.elementType,
-}
-
-Button.defaultProps = {
-  isFormButton: false,
-  size: '',
-}
-
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const ButtonContainer = styled.button`
@@ -67,4 +53,17 @@ export const Button = props => {
       </ButtonInner>
     </ButtonContainer>
   )
+}
+
+/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
+
+Button.propTypes = {
+  isFormButton: PropTypes.bool,
+  size: PropTypes.string,
+  icon: PropTypes.elementType,
+}
+
+Button.defaultProps = {
+  isFormButton: false,
+  size: '',
 }

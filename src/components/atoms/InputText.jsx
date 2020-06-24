@@ -4,15 +4,6 @@ import PropTypes from 'prop-types'
 
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
-
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-InputText.propTypes = {
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-}
-
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const InputWrapper = styled.div`
@@ -74,4 +65,12 @@ export const InputText = props => {
       <Input type={props.type} placeholder={props.placeholder}></Input>
     </InputWrapper>
   )
+}
+
+
+/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
+
+InputText.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
 }
