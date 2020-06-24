@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 // components
 import { Button } from '../components/atoms/Button'
@@ -88,8 +89,23 @@ export default function Register() {
   const sendData = (e) => {
     e.preventDefault();
 
-    console.log(email)
-    console.log(password)
+    (async () => {
+      const result = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/login_check',
+      data: {
+        username: email,
+        password: password
+      }
+    })
+    
+      let token = result.data.token;
+      let refresh_token = result.data.refresh_token;
+
+      //Put tokens in local storage
+      localStorage.setItem('token', token)
+      localStorage.setItem('refreshToken', refresh_token)
+    })()
   }
 
   return (
