@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useState, useEffect } from 'react';
 import axios from 'axios';
-//import {getToken, getUsers} from './tools/isAuth';
+//import {getToken, getUsers, getNewToken} from './tools/isAuth';
 
 // router
 import {
@@ -22,40 +22,69 @@ const Tasks = lazy(() => import('./routes/Tasks'));
 
 export default function App() {
   let TOKEN;
+  let REFRESH_TOKEN;
 
   //const [tokenMain, setToken] = useState('');
   
   useEffect(() => {
 
-    //Get Token of current user
+    //Get Tokens of current user
     (async () => {
       const result = await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/login_check',
       data: {
-        username: 'marthe.gomes@dbmail.com',
+        username: 'zruiz@menard.com',
         password: 'test'
       }
     })
     
-    TOKEN = result.data.token;
-    console.log(TOKEN)
+      TOKEN = result.data.token;
+      REFRESH_TOKEN = result.data.refresh_token;
+      // console.log(TOKEN)
+      // console.log(REFRESH_TOKEN)
 
-    //Put token in local storage
-    localStorage.setItem('Token', TOKEN)
-    let userToken = localStorage.getItem('Token');
-    
-    //Get users from db with token in local storage
-    const getUsers = await axios({
-      url: 'http://127.0.0.1:8000/api/users',
-      headers: {
-        Authorization: `Bearer ${userToken}`
-      }
-    }) 
-        console.log(getUsers)
+      //Put tokens in local storage
+      localStorage.setItem('token', TOKEN)
+      localStorage.setItem('refreshToken', REFRESH_TOKEN)
+
+      //GET Token from localStorage
+      let userToken = localStorage.getItem('token');
+      
+      //Get users from db with token in local storage
+      const getUsers = await axios({
+        url: 'http://127.0.0.1:8000/api/users',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      })
+
+      //console.log(getUsers)
+
+      //Get refresh token in local storage
+      let refreshToken = localStorage.getItem('refreshToken');
+      console.log('REFRESK_TOKEN', refreshToken)
+
+      //Get new tokens
+      const getNewToken = await axios({
+				method: 'post',
+        url: 'http://127.0.0.1:8000/api/token/refresh',
+        data: {
+          refresh_token: `${refreshToken}`
+        }
+      })
+      
+      //Stock new tokens in localstorage
+      TOKEN = getNewToken.data.token;
+      REFRESH_TOKEN = getNewToken.data.refresh_token;
+      
+      localStorage.setItem('token', TOKEN)
+      localStorage.setItem('refreshToken', REFRESH_TOKEN)
+           
+			console.log(getNewToken)
+			
     })()
-  })
-
+	})
 
   return (
     <Router>
