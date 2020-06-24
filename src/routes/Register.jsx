@@ -49,7 +49,7 @@ const ToggleText = styled.p`
 `
 
 const ToggleLink = styled.span`
-color: ${props => props.theme.green};
+  color: ${(props) => props.theme.green};
 `
 
 export default function Register() {
@@ -71,7 +71,9 @@ export default function Register() {
             icon={MailIcon}
             text="S'inscrire"
           />
-          <ToggleText>Déjà membre ? <ToggleLink>Se connecter</ToggleLink> </ToggleText>
+          <ToggleText>
+            Déjà membre ? <ToggleLink>Se connecter</ToggleLink>{' '}
+          </ToggleText>
         </ContentWrapper>
       </PageWrapper>
     </div>
