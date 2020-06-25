@@ -149,12 +149,13 @@ const NavWithTheme = (props) => {
           <Route path="/register" component={Register} />
           <Route path="/historique" component={Historic} />
           <Route path="/statistiques" component={Stats} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/parametres" component={Profile} />
         </Switch>
       </Suspense>
     </div>
   )
 }
+// export const Nav = NavWithTheme
 
 const Nav = withTheme(NavWithTheme)
 

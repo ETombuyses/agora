@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 // components
 import { Button } from '../components/atoms/Button'
@@ -53,7 +54,7 @@ const ToggleText = styled.p`
   font-size: 13px;
 `
 
-const ToggleLink = styled.span`
+const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
 `
 
@@ -74,7 +75,7 @@ export default function Register() {
         <SectionSepartor />
         <RegisterButton isFullWidth={true} icon={MailIcon} text="S'inscrire" />
         <ToggleText>
-          Déjà membre ? <ToggleLink>Se connecter</ToggleLink>{' '}
+          Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>{' '}
         </ToggleText>
       </ContentWrapper>
     </PageWrapper>

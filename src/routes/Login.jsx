@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import { login } from '../tools/isAuth'
+import { Link } from 'react-router-dom'
 
 // components
 import { Button } from '../components/atoms/Button'
 import { SectionSepartor } from '../components/atoms/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
-import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
 import { InputText } from '../components/atoms/InputText'
 
 // images
@@ -67,8 +66,9 @@ const ToggleText = styled.p`
   font-size: 13px;
 `
 
-const ToggleLink = styled.span`
+const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
+  cursor: pointer;
 `
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -96,7 +96,7 @@ export default function Register() {
     <PageWrapper>
       <Image src={welcomeImage} />
       <ContentWrapper>
-        <Title className="headline">S'inscrire sur Agora</Title>
+        <Title className="headline">Se connecter avec agora</Title>
         <GovButton
           isFullWidth={true}
           icon={GovIcon}
@@ -124,7 +124,8 @@ export default function Register() {
           />
         </FormContainer>
         <ToggleText>
-          Pas encore membre? <ToggleLink>S’inscrire</ToggleLink>
+          Pas encore membre?
+          <ToggleLink to="/register"> S’inscrire</ToggleLink>
         </ToggleText>
       </ContentWrapper>
     </PageWrapper>
