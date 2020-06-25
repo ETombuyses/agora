@@ -7,13 +7,12 @@ import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.sv
 import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg'
 
 const IconWrapper = styled.div`
-path {
-  stroke: ${props => props.active ? props.theme.green : props.theme.grey}
-}
+  path {
+    stroke: ${(props) => (props.active ? props.theme.green : props.theme.grey)};
+  }
 `
 
-export const MenuIcon = props => {
-
+export const MenuIcon = (props) => {
   if (props.icon === 'dashboard') {
     return (
       <IconWrapper active={props.active}>
@@ -23,19 +22,19 @@ export const MenuIcon = props => {
   } else if (props.icon === 'analytics') {
     return (
       <IconWrapper active={props.active}>
-      <AnalyticsIcon></AnalyticsIcon>
+        <AnalyticsIcon></AnalyticsIcon>
       </IconWrapper>
     )
   } else if (props.icon === 'history') {
     return (
       <IconWrapper active={props.active}>
-      <HistoryIcon></HistoryIcon>
+        <HistoryIcon></HistoryIcon>
       </IconWrapper>
     )
   } else if (props.icon === 'profile') {
     return (
       <IconWrapper active={props.active}>
-      <ProfileIcon></ProfileIcon>
+        <ProfileIcon></ProfileIcon>
       </IconWrapper>
     )
   }

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const ButtonContainer = styled.button`
@@ -36,7 +35,7 @@ const Text = styled.p`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const Button = props => {
+export const Button = (props) => {
   const Icon = props.icon
   return (
     <ButtonContainer

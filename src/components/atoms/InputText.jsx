@@ -49,10 +49,9 @@ const Input = styled.input`
   /* width: 100%; */
 `
 
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const InputText = props => {
+export const InputText = (props) => {
   return (
     <InputWrapper className={props.className}>
       <LabelWrapper>
@@ -66,7 +65,6 @@ export const InputText = props => {
     </InputWrapper>
   )
 }
-
 
 /* -----------------------------------------------------PROPTYPES------------------------------------------------ */
 

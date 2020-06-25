@@ -10,8 +10,6 @@ import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
 // images
 import welcomeImage from '../assets/images/welcome.png'
 
-
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
@@ -59,7 +57,6 @@ const ToggleLink = styled.span`
   color: ${(props) => props.theme.green};
 `
 
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
@@ -75,11 +72,7 @@ export default function Register() {
           text="S'identifier avec FranceConnect"
         />
         <SectionSepartor />
-        <RegisterButton
-          isFullWidth={true}
-          icon={MailIcon}
-          text="S'inscrire"
-        />
+        <RegisterButton isFullWidth={true} icon={MailIcon} text="S'inscrire" />
         <ToggleText>
           Déjà membre ? <ToggleLink>Se connecter</ToggleLink>{' '}
         </ToggleText>
