@@ -12,7 +12,7 @@ export default function App() {
     let url = window.location.pathname
 
     if (!token && url !== '/register' && url !== '/login') {
-      window.location.href = '/register'
+      window.location.href = '/login'
     }
   })
 

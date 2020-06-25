@@ -21,6 +21,7 @@ const ButtonContainer = styled.button`
   font-weight: normal;
   display: inline-block;
   width: ${(props) => (props.isFullWidth ? '100%' : 'auto')};
+  cursor: pointer;
 `
 
 const ButtonInner = styled.div`
@@ -40,6 +41,7 @@ export const Button = (props) => {
   return (
     <ButtonContainer
       className={props.className}
+      onClick={props.onClickButton}
       isFullWidth={props.isFullWidth}
       size={props.size}
       type={props.isFormButton ? 'submit' : 'button'}

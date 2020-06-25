@@ -32,6 +32,6 @@ const Separator = styled.span`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const SectionSepartor = () => {
-  return <Separator>Ou</Separator>
+export const SectionSepartor = (props) => {
+  return <Separator className={props.className}>Ou</Separator>
 }

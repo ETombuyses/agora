@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -7,6 +7,7 @@ import { Button } from '../components/atoms/Button'
 import { SectionSepartor } from '../components/atoms/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
 import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
+import { RegisterForm } from '../components/molecules/RegisterForm'
 
 // images
 import welcomeImage from '../assets/images/welcome.png'
@@ -18,6 +19,7 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 `
 const Image = styled.img`
   padding-top: 56px;
@@ -31,9 +33,10 @@ const ContentWrapper = styled.div`
   height: 0;
   flex: 1 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 300vw;
+  transition: transform 0.7s ease;
 `
 
 const Title = styled.h2`
@@ -58,25 +61,51 @@ const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
 `
 
+const SectionSepartorWrapper = styled(SectionSepartor)`
+  align-self: center;
+  display: inline-block;
+`
+
+const RegisterButtons = styled.div`
+  width: calc(100vw - 48px);
+  text-align: center;
+`
+
+const RegisterFormWrapper = styled(RegisterForm)``
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
+  const hideButton = useRef(0)
+
+  const handleForm = () => {
+    hideButton.current.style.transform = 'translateX(calc(-100vw + 24px))'
+  }
+
   return (
     <PageWrapper>
       <Image src={welcomeImage} />
-      <ContentWrapper>
-        <Title className="headline">S'inscrire sur Agora</Title>
-        <GovButton
-          isFullWidth={true}
-          icon={GovIcon}
-          isGovButton={true}
-          text="S'identifier avec FranceConnect"
-        />
-        <SectionSepartor />
-        <RegisterButton isFullWidth={true} icon={MailIcon} text="S'inscrire" />
-        <ToggleText>
-          Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>{' '}
-        </ToggleText>
+      <ContentWrapper ref={hideButton}>
+        <RegisterButtons>
+          <Title className="headline">S'inscrire sur Agora</Title>
+          <GovButton
+            isFullWidth={true}
+            icon={GovIcon}
+            isGovButton={true}
+            text="S'identifier avec FranceConnect"
+          />
+          <SectionSepartorWrapper />
+          <RegisterButton
+            isFullWidth={true}
+            icon={MailIcon}
+            text="S'inscrire"
+            onClickButton={handleForm}
+          />
+          <ToggleText>
+            Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>{' '}
+          </ToggleText>
+        </RegisterButtons>
+        <RegisterFormWrapper />
       </ContentWrapper>
     </PageWrapper>
   )

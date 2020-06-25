@@ -62,10 +62,13 @@ export const InputText = (props) => {
         {props.hint && <HelpIcon />}
       </LabelWrapper>
       <Input
+        onClick={props.onClickRadio}
         onChange={props.onChangeValue}
         type={props.type}
         placeholder={props.placeholder}
-        required={props.required ?? 'false'}
+        required={props.required ?? false}
+        name={props.name}
+        defaultChecked={props.checked ?? ''}
       ></Input>
     </InputWrapper>
   )
