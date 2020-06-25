@@ -96,7 +96,7 @@ export default function Register() {
     <PageWrapper>
       <Image src={welcomeImage} />
       <ContentWrapper>
-        <Title className="headline">S'inscrire sur Agora</Title>
+        <Title className="headline">Se connecter avec agora</Title>
         <GovButton
           isFullWidth={true}
           icon={GovIcon}
