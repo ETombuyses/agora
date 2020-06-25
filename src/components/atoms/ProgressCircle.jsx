@@ -2,6 +2,8 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
 const CicleWrapper = styled.div`
   position: relative;
 `
@@ -12,7 +14,9 @@ const Percent = styled.span`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
+  color: ${(props) => props.theme.white};
 `
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {
   return (

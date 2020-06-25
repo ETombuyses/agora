@@ -67,6 +67,7 @@ const TagLegend = styled.span`
   text-align: center;
   max-width: 78px;
   margin-top: 10px;
+  color: ${(props) => props.theme.white};
 `
 
 const TagsContent = styled.div`
