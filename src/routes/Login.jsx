@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { login } from '../tools/isAuth'
@@ -12,8 +12,6 @@ import { InputText } from '../components/atoms/InputText'
 
 // images
 import welcomeImage from '../assets/images/welcome.png'
-
-
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -76,8 +74,8 @@ const ToggleLink = styled.span`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
-  const [password, setPassword] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null)
+  const [email, setEmail] = useState(null)
 
   const emailStorage = (e) => {
     setEmail(e.target.value)
@@ -88,10 +86,10 @@ export default function Register() {
   }
 
   const sendData = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     //Login function from isAuth.js (Get tokens if user is recognized)
-    login(email, password);
+    login(email, password)
   }
 
   return (
@@ -106,17 +104,17 @@ export default function Register() {
           text="S'identifier avec FranceConnect"
         />
         <SectionSepartor />
-        <FormContainer onSubmit={e => sendData(e)}>
+        <FormContainer onSubmit={(e) => sendData(e)}>
           <InputTextButton
-            onChangeValue={e => emailStorage(e)}
+            onChangeValue={(e) => emailStorage(e)}
             required={true}
-            label='Email'
+            label="Email"
             type={'text'}
           />
           <InputTextButton
-            onChangeValue={e => passwordStorage(e)}
+            onChangeValue={(e) => passwordStorage(e)}
             required={true}
-            label='Mot de passe'
+            label="Mot de passe"
             type={'text'}
           />
           <LoginButton

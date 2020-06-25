@@ -8,10 +8,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Nav } from './components/organisms/Nav'
 
 export default function App() {
-
   //Timer for refresh Token
   const refreshTokenTimer = () => {
-
     //function from isAuth.js (Get news tokens if user is recognized)
     getNewTokens()
   }
@@ -22,7 +20,7 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <Nav/>
+        <Nav />
       </div>
     </Router>
   )
