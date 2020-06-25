@@ -1,9 +1,10 @@
 import React from 'react'
+import { LevelProgress } from '../components/molecules/LevelProgress'
 
-export default function Home() {
+export default function Dashboard() {
   return (
-    <div>
-      <p>This is a dashboard</p>
+    <div className="pageWrapper">
+      <LevelProgress></LevelProgress>
     </div>
   )
 }

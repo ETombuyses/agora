@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function Home() {
+export default function Profile() {
   return (
-    <div>
+    <div className="pageWrapper">
       <p>Some parameters</p>
     </div>
   )

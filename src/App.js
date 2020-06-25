@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import axios from 'axios'
 import { getNewTokens } from './tools/isAuth'
 
@@ -19,9 +19,7 @@ export default function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Nav />
-      </div>
+      <Nav />
     </Router>
   )
 }
