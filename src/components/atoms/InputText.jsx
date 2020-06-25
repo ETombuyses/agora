@@ -53,7 +53,7 @@ const Input = styled.input`
 
 export const InputText = (props) => {
   return (
-    <InputWrapper>
+    <InputWrapper className={props.className}>
       <LabelWrapper>
         <Label>
           {props.label}
@@ -61,7 +61,7 @@ export const InputText = (props) => {
         </Label>{' '}
         {props.hint && <HelpIcon />}
       </LabelWrapper>
-      <Input type={props.type} placeholder={props.placeholder}></Input>
+      <Input onChange={props.onChangeValue} type={props.type} placeholder={props.placeholder} required={props.required ?? 'false' }></Input>
     </InputWrapper>
   )
 }
