@@ -61,7 +61,12 @@ export const InputText = (props) => {
         </Label>{' '}
         {props.hint && <HelpIcon />}
       </LabelWrapper>
-      <Input onChange={props.onChangeValue} type={props.type} placeholder={props.placeholder} required={props.required ?? 'false' }></Input>
+      <Input
+        onChange={props.onChangeValue}
+        type={props.type}
+        placeholder={props.placeholder}
+        required={props.required ?? 'false'}
+      ></Input>
     </InputWrapper>
   )
 }
