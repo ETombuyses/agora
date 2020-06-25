@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { login } from '../tools/isAuth'
 
 // components
 import { Button } from '../components/atoms/Button'
@@ -89,27 +90,8 @@ export default function Register() {
   const sendData = (e) => {
     e.preventDefault();
 
-    (async () => {
-      const result = await axios({
-      method: 'post',
-      url: 'http://127.0.0.1:8000/api/login_check',
-      data: {
-        username: email,
-        password: password
-      }
-    })
-    
-      let token = result.data.token;
-      let refresh_token = result.data.refresh_token;
-
-      //Put tokens in local storage
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refresh_token)
-
-      if (result) {
-        window.location.href = "http://localhost:3000/"
-      }
-    })()
+    //Login function from isAuth.js (Get tokens if user is recognized)
+    login(email, password);
   }
 
   return (

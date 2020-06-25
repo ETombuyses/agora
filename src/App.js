@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import axios from 'axios'
+import { getNewTokens } from './tools/isAuth'
 
 // router
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -10,30 +11,9 @@ export default function App() {
 
   //Timer for refresh Token
   const refreshTokenTimer = () => {
-    //get refresh_token in local storage
-    let getRefreshToken = localStorage.getItem('refreshToken')
 
-    //check if refresh token exist in local storage
-    if (getRefreshToken) {
-      //Get new refresh token and token
-      (async () => {
-        const result = await axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/token/refresh',
-        data: {
-          refresh_token: getRefreshToken
-        }
-      })
-      
-      let token = result.data.token;
-      let refresh_token = result.data.refresh_token;
-  
-      //Put tokens in local storage
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refresh_token)
-
-      })()
-    }
+    //function from isAuth.js (Get news tokens if user is recognized)
+    getNewTokens()
   }
 
   //Refresh Token every 10 mins
