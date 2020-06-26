@@ -27,6 +27,8 @@ export const MenuIcon = (props) => {
         return <HistoryIcon />
       case 'profile':
         return <ProfileIcon />
+      default:
+        return null
     }
   }
 

@@ -9,13 +9,12 @@ import trash from '../../assets/images/trash.png'
 import bus from '../../assets/images/bus.png'
 
 const images = {
-  fire: fire,
-  water: water,
-  lightning: lightning,
-  trash: trash,
-  bus: bus,
+  fire: { icon: fire, name: 'feu' },
+  water: { icon: water, name: 'eau' },
+  lightning: { icon: lightning, name: 'éclair' },
+  trash: { icon: trash, name: 'poubelle' },
+  bus: { icon: bus, name: 'bus' },
 }
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const IconWrapper = styled.div`
@@ -34,7 +33,11 @@ const IconWrapper = styled.div`
 export const TaskIcon = (props) => {
   return (
     <IconWrapper className={props.className} color={props.color}>
-      <img icon={props.icon} src={images[props.icon]}></img>
+      <img
+        icon={props.icon}
+        src={images[props.icon].icon}
+        alt={'emoji ' + images[props.icon].name}
+      ></img>
     </IconWrapper>
   )
 }

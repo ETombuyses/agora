@@ -41,7 +41,7 @@ export const WelcomeBanner = () => {
     <WelcomeWrapper>
       <Title className="heading">Bonjour Jean-Phillipe</Title>
       <Text>Il ne vous reste plus que 3 missions pour passer au niveau 2.</Text>
-      <img src={hello}></img>
+      <img src={hello} alt="dessin d'un jeune garçon avec un ordinateur"></img>
     </WelcomeWrapper>
   )
 }

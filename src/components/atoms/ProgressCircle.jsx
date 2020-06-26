@@ -26,15 +26,19 @@ const Circle = (props) => {
   const radius = 54
   const circumference = radius * 2 * Math.PI
 
-  const calculateOffset = (progress) => {
-    return circumference - (progress / 100) * circumference
-  }
+  // function memorised by useCallback --> does not create a new calculateOffset function at every render
+  const calculateOffset = React.useCallback(
+    (progress) => {
+      return circumference - (progress / 100) * circumference
+    },
+    [circumference]
+  )
 
   const [offset, setOffset] = React.useState(calculateOffset(0))
 
   React.useEffect(() => {
     setOffset(calculateOffset(props.progress))
-  })
+  }, [calculateOffset, props.progress])
 
   return (
     <CicleWrapper>

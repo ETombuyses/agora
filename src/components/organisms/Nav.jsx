@@ -130,7 +130,7 @@ const NavWithTheme = (props) => {
             {pages.map((page) => {
               if (page.icon)
                 return (
-                  <ListItem>
+                  <ListItem key={page.route}>
                     <Link
                       to={page.route}
                       className={
@@ -154,6 +154,7 @@ const NavWithTheme = (props) => {
                     </Link>
                   </ListItem>
                 )
+              else return null
             })}
           </List>
         </NavWrapper>
@@ -162,7 +163,14 @@ const NavWithTheme = (props) => {
       <Suspense fallback={<div>Chargement...</div>}>
         <Switch>
           {pages.map((page) => {
-            return <Route exact path={page.route} component={page.component} />
+            return (
+              <Route
+                exact
+                key={page.route}
+                path={page.route}
+                component={page.component}
+              />
+            )
           })}
         </Switch>
       </Suspense>

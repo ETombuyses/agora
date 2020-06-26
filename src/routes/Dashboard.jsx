@@ -18,13 +18,13 @@ const CustomLevelProgress = styled(LevelProgress)`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
-  const [tasks, setTasks] = React.useState([
+  const tasks = [
     { name: 'trash', progress: 100 },
     { name: 'water', progress: 0 },
     { name: 'gas', progress: 49 },
     { name: 'transports', progress: 0 },
     { name: 'electricity', progress: 60 },
-  ])
+  ]
 
   return (
     <div className="pageWrapper">
@@ -39,6 +39,7 @@ export default function Dashboard() {
               key={task.name}
             />
           )
+        else return null
       })}
       <MissionTitle>Missions ratées :</MissionTitle>
       {tasks.map((task) => {
@@ -50,6 +51,7 @@ export default function Dashboard() {
               key={task.name}
             />
           )
+        else return null
       })}
       <CustomLevelProgress progress={30} />
     </div>

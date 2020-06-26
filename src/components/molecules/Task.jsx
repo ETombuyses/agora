@@ -4,22 +4,13 @@ import styled from 'styled-components'
 import { Tag } from '../atoms/Tag'
 import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
-import { useState } from 'react'
 
-const topics = {
-  electricity: 'Electricité',
-  trash: 'Déchêts',
-  transports: 'Transports',
-  water: 'Eau',
-  gas: 'Gaz',
-}
-
-const icons = {
-  electricity: 'lightning',
-  trash: 'trash',
-  transports: 'bus',
-  water: 'water',
-  gas: 'fire',
+const tasks = {
+  electricity: { icon: 'lightning', name: 'Electricité' },
+  trash: { icon: 'trash', name: 'Déchêts' },
+  transports: { icon: 'bus', name: 'Transports' },
+  water: { icon: 'water', name: 'Eau' },
+  gas: { icon: 'fire', name: 'Gaz' },
 }
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
@@ -83,13 +74,13 @@ export const Task = (props) => {
 
   React.useEffect(() => {
     setTaskProgress(props.progression)
-  })
+  }, [props.progression])
 
   return (
     <TaskWrapper progression={props.progression} taskProgress={taskProgress}>
       <ContentWrapper>
         <CustomTaskIcon
-          icon={icons[props.task]}
+          icon={tasks[props.task].icon}
           color={
             taskProgress === 0
               ? 'lightRed'
@@ -99,7 +90,7 @@ export const Task = (props) => {
           }
         />
         <div>
-          <HintLabel label="Transports" hint={true}></HintLabel>
+          <HintLabel label={tasks[props.task].name} hint={true}></HintLabel>
           <TaskDescription>
             Ne pas consommer plus de <Limit>xKw</Limit>
           </TaskDescription>
