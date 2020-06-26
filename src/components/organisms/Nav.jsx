@@ -10,10 +10,11 @@ import { MenuIcon } from '../atoms/MenuIcon'
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const Historic = lazy(() => import('../../routes/Historic'))
-const Login = lazy(() => import('../../routes/Login'))
-const Profile = lazy(() => import('../../routes/Profile'))
-const Register = lazy(() => import('../../routes/Register'))
 const Stats = lazy(() => import('../../routes/Stats'))
+const Profile = lazy(() => import('../../routes/Profile'))
+
+const Login = lazy(() => import('../../routes/Login'))
+const Register = lazy(() => import('../../routes/Register'))
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -91,6 +92,25 @@ const Text = styled.span`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const NavWithTheme = (props) => {
+  const pages = [
+    { route: '/', name: 'Dashboard', icon: 'dashboard', component: Dashboard },
+    {
+      route: '/historique',
+      name: 'Historique',
+      icon: 'history',
+      component: Historic,
+    },
+    {
+      route: '/statistiques',
+      name: 'Analytiques',
+      icon: 'analytics',
+      component: Stats,
+    },
+    { route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
+    { route: '/login', component: Login },
+    { route: '/register', component: Register },
+  ]
+
   const [currentRoute, setCurrentRoute] = React.useState('/')
 
   function GetNewRoute() {
@@ -107,107 +127,48 @@ const NavWithTheme = (props) => {
       {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
           <List>
-            <ListItem>
-              <Link
-                to="/"
-                className={currentRoute === '/' ? 'currentPage' : ''}
-              >
-                <MenuIcon icon={'dashboard'} active={currentRoute === '/'} />
-                <Text
-                  style={{
-                    color:
-                      currentRoute === '/'
-                        ? props.theme.green
-                        : props.theme.grey,
-                  }}
-                >
-                  Dashboard
-                </Text>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link
-                to="/historique"
-                className={currentRoute === '/historique' ? 'currentPage' : ''}
-              >
-                <MenuIcon
-                  icon={'history'}
-                  active={currentRoute === '/historique'}
-                />
-                <Text
-                  style={{
-                    color:
-                      currentRoute === '/historique'
-                        ? props.theme.green
-                        : props.theme.grey,
-                  }}
-                >
-                  Historique
-                </Text>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link
-                to="/statistiques"
-                className={
-                  currentRoute === '/statistiques' ? 'currentPage' : ''
-                }
-              >
-                <MenuIcon
-                  icon={'analytics'}
-                  active={currentRoute === '/statistiques'}
-                />
-                <Text
-                  style={{
-                    color:
-                      currentRoute === '/statistiques'
-                        ? props.theme.green
-                        : props.theme.grey,
-                  }}
-                >
-                  Analitiques
-                </Text>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link
-                to="/profile"
-                className={currentRoute === '/profile' ? 'currentPage' : ''}
-              >
-                <MenuIcon
-                  icon={'profile'}
-                  active={currentRoute === '/profile'}
-                />
-                <Text
-                  style={{
-                    color:
-                      currentRoute === '/profile'
-                        ? props.theme.green
-                        : props.theme.grey,
-                  }}
-                >
-                  Profil
-                </Text>
-              </Link>
-            </ListItem>
+            {pages.map((page) => {
+              if (page.icon)
+                return (
+                  <ListItem>
+                    <Link
+                      to={page.route}
+                      className={
+                        currentRoute === page.route ? 'currentPage' : ''
+                      }
+                    >
+                      <MenuIcon
+                        icon={page.icon}
+                        active={currentRoute === page.route}
+                      />
+                      <Text
+                        style={{
+                          color:
+                            currentRoute === page.route
+                              ? props.theme.green
+                              : props.theme.grey,
+                        }}
+                      >
+                        {page.name}
+                      </Text>
+                    </Link>
+                  </ListItem>
+                )
+            })}
           </List>
         </NavWrapper>
       )}
 
       <Suspense fallback={<div>Chargement...</div>}>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/historique" component={Historic} />
-          <Route path="/statistiques" component={Stats} />
-          <Route path="/parametres" component={Profile} />
+          {pages.map((page) => {
+            return <Route exact path={page.route} component={page.component} />
+          })}
         </Switch>
       </Suspense>
     </div>
   )
 }
-// export const Nav = NavWithTheme
 
 const Nav = withTheme(NavWithTheme)
 
