@@ -68,22 +68,67 @@ export const RegisterForm = (props) => {
   const popup = createRef(0)
   const name = createRef(0)
   const firstName = createRef(0)
+  const email = createRef(0)
   const pswd = createRef(0)
   const confirmePswd = createRef(0)
 
   //Check if data are valide before continue on the second step of form
   const handleClick = () => {
-    if (name.current.value === '') {
+    const expression = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+    //Check if name is valid
+    if (
+      name.current.value !== '' &&
+      (name.current.value.length < 2 || name.current.value.length > 50)
+    ) {
+      setPopUpText('Le champs "Nom" doit contenir entre 2 et 50 caractères')
+      popup.current.style.visibility = 'visible'
+    } else if (name.current.value === '') {
       setPopUpText('Le champs "Nom" n\'est pas remplie')
       popup.current.style.visibility = 'visible'
+
+      //Check if firstname is valid
+    } else if (
+      firstName.current.value !== '' &&
+      (firstName.current.value.length < 2 ||
+        firstName.current.value.length > 50)
+    ) {
+      setPopUpText('Le champs "Prénom" doit contenir entre 2 et 50 caractères')
+      popup.current.style.visibility = 'visible'
     } else if (firstName.current.value === '') {
-      setPopUpText('Le champs "Prénom" n\'est pas remplie')
+      setPopUpText('Le champs "Prènom" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+
+      //Check if email is valid
+    } else if (
+      email.current.value !== '' &&
+      (email.current.value.length < 4 || pswd.current.value.length > 255)
+    ) {
+      setPopUpText('Le champs "Email" doit contenir entre 4 et 255 caractères')
+      popup.current.style.visibility = 'visible'
+    } else if (
+      email.current.value !== '' &&
+      expression.test(String(email.current.value).toLowerCase()) === false
+    ) {
+      setPopUpText('Le champs "Email" ne correspond pas à un email')
+      popup.current.style.visibility = 'visible'
+    } else if (email.current.value === '') {
+      setPopUpText('Le champs "Email" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+
+      //Check if password is valid
+    } else if (
+      pswd.current.value !== '' &&
+      (pswd.current.value.length < 8 || pswd.current.value.length > 255)
+    ) {
+      setPopUpText(
+        'Le champs "Mot de passe" doit contenir entre 8 et 255 caractères'
+      )
+      popup.current.style.visibility = 'visible'
+    } else if (pswd.current.value !== confirmePswd.current.value) {
+      setPopUpText('Les mots de passe saisis ne sont pas identiques')
       popup.current.style.visibility = 'visible'
     } else if (pswd.current.value === '') {
       setPopUpText('Le champs "Mot de passe" n\'est pas remplie')
-      popup.current.style.visibility = 'visible'
-    } else if (confirmePswd.current.value !== pswd.current.value) {
-      setPopUpText('Les mots de passe saisis ne sont pas identiques')
       popup.current.style.visibility = 'visible'
     } else {
       transitionForm.current.style.transform = 'translateX(calc(-50% + 24px))'
@@ -106,16 +151,22 @@ export const RegisterForm = (props) => {
           type={'text'}
         />
         <InputTextButton
+          ref={email}
+          type={'email'}
+          required={true}
+          label="Email"
+        />
+        <InputTextButton
           ref={pswd}
           required={true}
           label="Mot de passe"
-          type={'text'}
+          type={'password'}
         />
         <InputTextButton
           ref={confirmePswd}
           required={true}
           label="Confirmer votre mot de passe"
-          type={'text'}
+          type={'password'}
         />
         <ContinueButton
           isFullWidth={false}
