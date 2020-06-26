@@ -1,10 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// svg icons
 import { ReactComponent as AnalyticsIcon } from '../../assets/icons/analytics.svg'
 import { ReactComponent as HistoryIcon } from '../../assets/icons/clock.svg'
 import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.svg'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg'
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const IconWrapper = styled.div`
   path {
@@ -14,29 +17,20 @@ const IconWrapper = styled.div`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const MenuIcon = (props) => {
-  if (props.icon === 'dashboard') {
-    return (
-      <IconWrapper active={props.active}>
-        <DashboardIcon></DashboardIcon>
-      </IconWrapper>
-    )
-  } else if (props.icon === 'analytics') {
-    return (
-      <IconWrapper active={props.active}>
-        <AnalyticsIcon></AnalyticsIcon>
-      </IconWrapper>
-    )
-  } else if (props.icon === 'history') {
-    return (
-      <IconWrapper active={props.active}>
-        <HistoryIcon></HistoryIcon>
-      </IconWrapper>
-    )
-  } else if (props.icon === 'profile') {
-    return (
-      <IconWrapper active={props.active}>
-        <ProfileIcon></ProfileIcon>
-      </IconWrapper>
-    )
+  const renderIcon = (icon) => {
+    switch (icon) {
+      case 'dashboard':
+        return <DashboardIcon />
+      case 'analytics':
+        return <AnalyticsIcon />
+      case 'history':
+        return <HistoryIcon />
+      case 'profile':
+        return <ProfileIcon />
+    }
   }
+
+  return (
+    <IconWrapper active={props.active}>{renderIcon(props.icon)}</IconWrapper>
+  )
 }
