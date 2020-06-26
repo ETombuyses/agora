@@ -4,12 +4,14 @@ import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 import { Tag } from '../atoms/Tag'
 import { ProgressCircle } from '../atoms/ProgressCircle'
 
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
 const LevelProgressWrapper = styled.div`
   position: relative;
+  text-align: center;
+  padding: 16px 32px 33px 24px;
   border-radius: 10px;
   background: ${(props) => props.theme.green};
-  padding: 16px 32px 50px 24px;
-  text-align: center;
   color: ${(props) => props.theme.white};
 `
 
@@ -18,9 +20,9 @@ const Icon = styled.div`
     position: absolute;
     top: 8px;
     right: 8px;
-    fill: ${(props) => props.theme.white};
     width: 16px;
     height: 16px;
+    fill: ${(props) => props.theme.white};
 
     path {
       fill: ${(props) => props.theme.green};
@@ -29,9 +31,9 @@ const Icon = styled.div`
 `
 
 const Title = styled.h3`
-  font-size: 16px;
-  font-weight: bold;
   margin-bottom: 31px;
+  font-weight: bold;
+  font-size: 16px;
 `
 
 const LevelTag = styled(Tag)`
@@ -49,8 +51,8 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 115px;
-  margin: 0 auto;
   max-width: 300px;
+  margin: 0 auto;
 `
 
 const TagsWrapper = styled.div`
@@ -61,22 +63,23 @@ const TagsWrapper = styled.div`
   padding: 5px 0;
 `
 
-const TagLegend = styled.span`
-  font-size: 10px;
-  display: inline-block;
-  text-align: center;
-  max-width: 78px;
-  margin-top: 10px;
-  color: ${(props) => props.theme.white};
-`
-
 const TagsContent = styled.div`
   height: 100%;
 `
 
-export const LevelProgress = () => {
+const TagLegend = styled.span`
+  display: block;
+  margin-top: 22px;
+  font-weight: bold;
+  text-align: right;
+  font-size: 12px;
+  color: ${(props) => props.theme.white};
+`
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const LevelProgress = (props) => {
   return (
-    <LevelProgressWrapper>
+    <LevelProgressWrapper className={props.className}>
       <Title>Progression</Title>
       <Icon>
         <HelpIcon />
@@ -86,11 +89,11 @@ export const LevelProgress = () => {
         <TagsContent>
           <TagsWrapper>
             <LevelTag text="Niv. 1" />
-            <TaxesTag text="1,2%" color="whiteTransparent" />
+            <TaxesTag text="1,2%*" color="whiteTransparent" />
           </TagsWrapper>
-          <TagLegend>Votre réduction d'impôt</TagLegend>
         </TagsContent>
       </ContentWrapper>
+      <TagLegend>* Votre réduction d'impôt</TagLegend>
     </LevelProgressWrapper>
   )
 }
