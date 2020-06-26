@@ -69,7 +69,8 @@ const TagsContent = styled.div`
 
 const TagLegend = styled.span`
   display: block;
-  margin-top: 22px;
+  max-width: 300px;
+  margin: 22px auto 0 auto;
   font-weight: bold;
   text-align: right;
   font-size: 12px;
@@ -85,7 +86,7 @@ export const LevelProgress = (props) => {
         <HelpIcon />
       </Icon>
       <ContentWrapper>
-        <ProgressCircle />
+        <ProgressCircle progress={props.progress} />
         <TagsContent>
           <TagsWrapper>
             <LevelTag text="Niv. 1" />

@@ -5,14 +5,6 @@ import { WelcomeBanner } from '../components/molecules/WelcomeBanner'
 import { Task } from '../components/molecules/Task'
 import { LevelProgress } from '../components/molecules/LevelProgress'
 
-const tasks = [
-  { name: 'trash', progress: 100 },
-  { name: 'water', progress: 0 },
-  { name: 'gas', progress: 49 },
-  { name: 'transports', progress: 0 },
-  { name: 'electricity', progress: 60 },
-]
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const MissionTitle = styled.p`
@@ -26,20 +18,40 @@ const CustomLevelProgress = styled(LevelProgress)`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
+  const [tasks, setTasks] = React.useState([
+    { name: 'trash', progress: 100 },
+    { name: 'water', progress: 0 },
+    { name: 'gas', progress: 49 },
+    { name: 'transports', progress: 0 },
+    { name: 'electricity', progress: 60 },
+  ])
+
   return (
     <div className="pageWrapper">
       <WelcomeBanner />
       <MissionTitle>Missions en cours :</MissionTitle>
       {tasks.map((task) => {
         if (task.progress > 0)
-          return <Task task={task.name} progression={task.progress} />
+          return (
+            <Task
+              task={task.name}
+              progression={task.progress}
+              key={task.name}
+            />
+          )
       })}
       <MissionTitle>Missions ratées :</MissionTitle>
       {tasks.map((task) => {
         if (task.progress === 0)
-          return <Task task={task.name} progression={task.progress} />
+          return (
+            <Task
+              task={task.name}
+              progression={task.progress}
+              key={task.name}
+            />
+          )
       })}
-      <CustomLevelProgress />
+      <CustomLevelProgress progress={30} />
     </div>
   )
 }

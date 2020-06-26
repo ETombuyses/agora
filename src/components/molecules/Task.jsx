@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Tag } from '../atoms/Tag'
 import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
+import { useState } from 'react'
 
 const topics = {
   electricity: 'Electricité',
@@ -38,7 +39,7 @@ const TaskWrapper = styled.div`
     position: absolute;
     content: '';
     display: block;
-    width: ${(props) => props.progression + '%'};
+    width: ${(props) => props.taskProgress + '%'};
     height: 5px;
     background: ${(props) =>
       props.progression === 0
@@ -48,6 +49,7 @@ const TaskWrapper = styled.div`
         : props.theme.green};
     bottom: 0;
     left: 0;
+    transition: width 2s ease;
   }
 `
 
@@ -77,15 +79,21 @@ const Limit = styled.span`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
+  const [taskProgress, setTaskProgress] = React.useState(0)
+
+  React.useEffect(() => {
+    setTaskProgress(props.progression)
+  })
+
   return (
-    <TaskWrapper progression={props.progression}>
+    <TaskWrapper progression={props.progression} taskProgress={taskProgress}>
       <ContentWrapper>
         <CustomTaskIcon
           icon={icons[props.task]}
           color={
-            props.progression === 0
+            taskProgress === 0
               ? 'lightRed'
-              : props.progression < 50
+              : taskProgress < 50
               ? 'lightOrange'
               : 'lightGreen'
           }
@@ -100,11 +108,7 @@ export const Task = (props) => {
       <CustomTag
         isTaskTag={true}
         color={
-          props.progression === 0
-            ? 'red'
-            : props.progression < 50
-            ? 'orange'
-            : 'green'
+          taskProgress === 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
         }
         text="3L"
       />
