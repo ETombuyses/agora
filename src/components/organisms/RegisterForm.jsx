@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { InputText } from '../atoms/InputText'
 import { Button } from '../atoms/Button'
 import { PopUp } from '../atoms/PopUp'
+import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -22,26 +23,6 @@ const InputTextButton = styled(InputText)`
   width: 100%;
 `
 
-/* const InputRadioButton = styled(InputText)`
-  width: 100%;
-
-  input {
-    opacity: 0;
-    position: fixed;
-    width: 0;
-    cursor: pointer;
-  }
-
-  p {
-    display: inline-block;
-    background-color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 2px solid #444;
-    border-radius: 4px;
-  }
-` */
-
 const ContinueButton = styled(Button)`
   margin-top: 16px;
   align-self: start;
@@ -52,10 +33,6 @@ const View = styled.div`
   padding-right: 24px;
   width: 50%;
 `
-
-/* const RadioButtons = styled.div`
-  display: flex;
-` */
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -71,6 +48,15 @@ export const RegisterForm = (props) => {
   const email = createRef(0)
   const pswd = createRef(0)
   const confirmePswd = createRef(0)
+  const nbAgora = createRef(0)
+  const nbResident = createRef(0)
+  const isuYesButton = createRef(0)
+  const isuNoButton = createRef(0)
+  const gasYesButton = createRef(0)
+  const gasNoButton = createRef(0)
+  const livingSpace = createRef(0)
+  const nbNavigo = createRef(0)
+  const nbNIF = createRef(0)
 
   //Check if data are valide before continue on the second step of form
   const handleClick = () => {
@@ -140,6 +126,21 @@ export const RegisterForm = (props) => {
     popup.current.style.visibility = 'hidden'
   }
 
+  //Send form
+  const sendForm = (e) => {
+    e.preventDefault()
+    /*     console.log(isuYesButton.current.value)
+    console.log(isuNoButton.current.value)
+    console.log(gasYesButton) */
+    console.log(gasNoButton.current.checked)
+    console.log(gasNoButton.current.checked)
+    /*     console.log(nbNavigo.current.value)
+    console.log(nbNIF.current.value)
+    console.log(livingSpace.current.value)
+    console.log(nbResident.current.value)
+    console.log(nbAgora.current.value) */
+  }
+
   return (
     <FormWrapper ref={transitionForm} className={props.className}>
       <View>
@@ -174,45 +175,77 @@ export const RegisterForm = (props) => {
           onClickButton={handleClick}
         />
       </View>
-      <View className="secondView">
+      <View>
         <InputTextButton
+          ref={nbAgora}
           required={true}
           hint={true}
           label="Numéro d’Agora"
           type={'text'}
         />
         <InputTextButton
+          ref={nbResident}
           required={true}
           label="Nombre de résidents"
           type={'text'}
         />
-        {/*         <RadioButtons>
-          <InputRadioButton
-            name={'isulation'}
-            label="Oui"
-            type={'radio'}
-            checked={true}
-          />
-          <InputRadioButton name={'isulation'} label="Non" type={'radio'} />
-        </RadioButtons> */}
+        <RadioButtonGroup
+          ref={{
+            ref1: isuYesButton,
+            ref2: isuNoButton,
+          }}
+          text1={'Oui'}
+          name1={'isulation'}
+          value1={'yesButton'}
+          defaultChecked1={true}
+          text2={'Non'}
+          name2={'isulation'}
+          value2={'noButton'}
+          label={'Isolation changées ces  20 dernières années ?'}
+          required={true}
+        />
+        <RadioButtonGroup
+          ref={{
+            ref1: gasYesButton,
+            ref2: gasNoButton,
+          }}
+          text1={'Oui'}
+          name1={'gas'}
+          value1={'yesButtonGas'}
+          defaultChecked1={true}
+          text2={'Non'}
+          name2={'gas'}
+          value2={'noButtonGas'}
+          label={'Avez vous  le gaz chez vous ?'}
+          required={true}
+        />
         <InputTextButton
+          ref={livingSpace}
           required={true}
           label="Surface de l’habitat (en M²)"
           type={'text'}
         />
         <InputTextButton
+          ref={nbNavigo}
+          required={false}
+          label="Numéro carte Navigo"
+          type={'text'}
+        />
+        <InputTextButton
+          ref={nbNIF}
           required={true}
-          label="Numéro de sécurité sociale"
+          label="Numéro NIF"
           type={'text'}
         />
         <ContinueButton
+          onClickButton={sendForm}
           isFullWidth={false}
           text="Créer le compte"
           isFormButton={true}
         />
       </View>
       <PopUp
-        onClose={onClose}
+        onClose={(e) => onClose(e)}
         ref={popup}
         size={'tiny'}
         text={popUpText}

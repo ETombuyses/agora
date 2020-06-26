@@ -7,10 +7,10 @@ import { Button } from '../components/atoms/Button'
 import { SectionSepartor } from '../components/atoms/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
 import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
-import { RegisterForm } from '../components/molecules/RegisterForm'
+import { RegisterForm } from '../components/organisms/RegisterForm'
 
 // images
-import welcomeImage from '../assets/images/welcome.png'
+import welcomeImage from '../assets/images/welcome1.png'
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -22,10 +22,13 @@ const PageWrapper = styled.div`
   overflow-x: hidden;
 `
 const Image = styled.img`
-  padding-top: 56px;
   background: ${(props) => props.theme.white};
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
+  width: 100%;
+  object-position: bottom;
+  object-fit: cover;
+  max-height: 35vh;
 `
 
 const ContentWrapper = styled.div`

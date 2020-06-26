@@ -58,7 +58,7 @@ export const InputText = forwardRef((props, ref) => {
         <Label>
           {props.label}
           {props.required && <Asterisk>*</Asterisk>}
-        </Label>{' '}
+        </Label>
         {props.hint && <HelpIcon />}
       </LabelWrapper>
       <Input
