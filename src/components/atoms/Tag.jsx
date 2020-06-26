@@ -1,34 +1,42 @@
 import React from 'react'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
 const TagWrapper = styled.div`
   display: inline-block;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: ${(props) => (props.isTaskTag ? '3px' : '20px')};
   background: ${(props) =>
-    props.color === 'green'
-      ? props.theme.green
-      : props.color === 'whiteTransparent'
-      ? props.theme.whiteTransparent
-      : props.theme.white};
-  padding: 5px 20px;
-  color: ${(props) =>
-    props.color === 'green'
-      ? props.theme.white
-      : props.color === 'whiteTransparent'
-      ? props.theme.white
-      : props.theme.green};
+    props.color ? props.theme[props.color] : props.theme.white};
+  padding: ${(props) => (props.isTaskTag ? '1px 5px' : '5px 20px')};
+  box-shadow: ${(props) =>
+    props.isTaskTag
+      ? `0 0 10px ${props.theme[`${props.color}Transparent`]}`
+      : 'unset'};
 `
 
 const Text = styled.span`
   font-size: 13px;
-  font-weight: bold;
+  color: ${(props) =>
+    props.color === 'green' ||
+    props.color === 'whiteTransparent' ||
+    props.isTaskTag
+      ? props.theme.white
+      : props.theme.green};
 `
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Tag = (props) => {
   return (
-    <TagWrapper className={props.className} color={props.color}>
-      <Text>{props.text}</Text>
+    <TagWrapper
+      className={props.className}
+      color={props.color}
+      isTaskTag={props.isTaskTag}
+    >
+      <Text color={props.color} isTaskTag={props.isTaskTag}>
+        {props.text}
+      </Text>
     </TagWrapper>
   )
 }

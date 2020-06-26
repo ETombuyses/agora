@@ -28,6 +28,7 @@ const NavWrapper = styled.nav`
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 100;
 `
 
 const List = styled.ul`

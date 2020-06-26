@@ -11,6 +11,7 @@ const IconWrapper = styled.div`
     stroke: ${(props) => (props.active ? props.theme.green : props.theme.grey)};
   }
 `
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const MenuIcon = (props) => {
   if (props.icon === 'dashboard') {

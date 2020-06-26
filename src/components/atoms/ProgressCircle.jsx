@@ -2,8 +2,14 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
 const CicleWrapper = styled.div`
   position: relative;
+
+  svg circle {
+    transition: stroke-dashoffset 2s ease;
+  }
 `
 
 const Percent = styled.span`
@@ -12,9 +18,24 @@ const Percent = styled.span`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
+  color: ${(props) => props.theme.white};
 `
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {
+  const radius = 54
+  const circumference = radius * 2 * Math.PI
+
+  const calculateOffset = (progress) => {
+    return circumference - (progress / 100) * circumference
+  }
+
+  const [offset, setOffset] = React.useState(calculateOffset(0))
+
+  React.useEffect(() => {
+    setOffset(calculateOffset(props.progress))
+  })
+
   return (
     <CicleWrapper>
       <svg
@@ -27,7 +48,7 @@ const Circle = (props) => {
         <circle
           cx="60"
           cy="60"
-          r="54"
+          r={radius}
           fill="none"
           stroke={props.theme.whiteTransparent}
           strokeWidth="12"
@@ -35,15 +56,15 @@ const Circle = (props) => {
         <circle
           cx="60"
           cy="60"
-          r="54"
+          r={radius}
           fill="none"
           stroke={props.theme.white}
           strokeWidth="12"
           strokeDasharray="339.292"
-          strokeDashoffset="135.717"
+          strokeDashoffset={offset}
         />
       </svg>
-      <Percent>60%</Percent>
+      <Percent>{props.progress}%</Percent>
     </CicleWrapper>
   )
 }
