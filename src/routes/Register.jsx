@@ -102,7 +102,7 @@ export default function Register() {
             onClickButton={handleForm}
           />
           <ToggleText>
-            Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>{' '}
+            Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
           </ToggleText>
         </RegisterButtons>
         <RegisterFormWrapper />

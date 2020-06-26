@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -51,7 +51,7 @@ const Input = styled.input`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const InputText = (props) => {
+export const InputText = forwardRef((props, ref) => {
   return (
     <InputWrapper className={props.className}>
       <LabelWrapper>
@@ -62,6 +62,7 @@ export const InputText = (props) => {
         {props.hint && <HelpIcon />}
       </LabelWrapper>
       <Input
+        ref={ref}
         onClick={props.onClickRadio}
         onChange={props.onChangeValue}
         type={props.type}
@@ -72,7 +73,7 @@ export const InputText = (props) => {
       ></Input>
     </InputWrapper>
   )
-}
+})
 
 /* -----------------------------------------------------PROPTYPES------------------------------------------------ */
 

@@ -1,9 +1,10 @@
-import React, { useRef, forwardRef } from 'react'
+import React, { useRef, createRef, useState } from 'react'
 import styled from 'styled-components'
 
 // components
 import { InputText } from '../atoms/InputText'
 import { Button } from '../atoms/Button'
+import { PopUp } from '../atoms/PopUp'
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
@@ -58,21 +59,60 @@ const View = styled.div`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const RegisterForm = forwardRef((props, ref) => {
+export const RegisterForm = (props) => {
+  const [popUpText, setPopUpText] = useState('')
+
   const transitionForm = useRef(0)
 
+  //send ref to child PopUp
+  const popup = createRef(0)
+  const name = createRef(0)
+  const firstName = createRef(0)
+  const pswd = createRef(0)
+  const confirmePswd = createRef(0)
+
+  //Check if data are valide before continue on the second step of form
   const handleClick = () => {
-    transitionForm.current.style.transform = 'translateX(calc(-50% + 24px))'
-    console.log('oui')
+    if (name.current.value === '') {
+      setPopUpText('Le champs "Nom" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (firstName.current.value === '') {
+      setPopUpText('Le champs "Prénom" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (pswd.current.value === '') {
+      setPopUpText('Le champs "Mot de passe" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (confirmePswd.current.value !== pswd.current.value) {
+      setPopUpText('Les mots de passe saisis ne sont pas identiques')
+      popup.current.style.visibility = 'visible'
+    } else {
+      transitionForm.current.style.transform = 'translateX(calc(-50% + 24px))'
+    }
+  }
+
+  //Close PopUp
+  const onClose = () => {
+    popup.current.style.visibility = 'hidden'
   }
 
   return (
     <FormWrapper ref={transitionForm} className={props.className}>
       <View>
-        <InputTextButton required={true} label="Nom" type={'text'} />
-        <InputTextButton required={true} label="Prénom" type={'text'} />
-        <InputTextButton required={true} label="Mot de passe" type={'text'} />
+        <InputTextButton ref={name} required={true} label="Nom" type={'text'} />
         <InputTextButton
+          ref={firstName}
+          required={true}
+          label="Prénom"
+          type={'text'}
+        />
+        <InputTextButton
+          ref={pswd}
+          required={true}
+          label="Mot de passe"
+          type={'text'}
+        />
+        <InputTextButton
+          ref={confirmePswd}
           required={true}
           label="Confirmer votre mot de passe"
           type={'text'}
@@ -120,6 +160,13 @@ export const RegisterForm = forwardRef((props, ref) => {
           isFormButton={true}
         />
       </View>
+      <PopUp
+        onClose={onClose}
+        ref={popup}
+        size={'tiny'}
+        text={popUpText}
+        registerPopUp={true}
+      />
     </FormWrapper>
   )
-})
+}
