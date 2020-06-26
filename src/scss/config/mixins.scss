@@ -1,30 +1,28 @@
-/* -------------------------------- fonts --------------------------------------- */
+$mobile: '480px';
+$tablet: '768px';
+$desktop: '992px';
+$large: '1200px';
 
-@mixin fontface($name, $woff2, $woff, $style, $weight) {
-  @font-face {
-    font-family: $name;
-    src: url($woff2) format('woff2'), url($woff) format('woff');
-    font-style: $style;
-    font-weight: $weight;
+@mixin mobile {
+  @media screen and (min-width: $mobile) {
+    @content;
   }
 }
 
-/* -------------------------------- px to rem --------------------------------------- */
-
-$base-size: 16;
-@function size($target, $context: $base-size) {
-  @return ($target / $context) * 1em;
+@mixin tablet {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
 }
 
-// how to use it
-// body {
-//   margin: size(20);
-// }
-
-/* -------------------------------breakpoints ------------------------------*/
-
 @mixin desktop {
-  @media (min-width: 800px) {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media screen and (min-width: $large) {
     @content;
   }
 }

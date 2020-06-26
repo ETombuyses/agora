@@ -1,13 +1,8 @@
 import React, { Suspense, lazy } from 'react'
-import {
-  BrowserRouter as Router,
-  Link,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom'
+import { Link, Switch, Route, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { withTheme } from 'styled-components'
+import { media } from '../../scss/config/mixins'
 
 // icons
 import { MenuIcon } from '../atoms/MenuIcon'
@@ -29,19 +24,61 @@ const NavWrapper = styled.nav`
   position: fixed;
   bottom: 0;
   z-index: 100;
+
+  ${media.desktop`
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 10%;
+	`}
 `
 
 const List = styled.ul`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  ${media.desktop`
+    flex-direction: column;
+    justify-content: center;
+	`}
 `
 
 const ListItem = styled.li`
   a {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    ${media.desktop`
+    ::before {
+      position: absolute;
+      content: '';
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 0px;
+      background: ${(props) => props.theme.green};
+      transition: height 0.3s ease;
+    }
+
+    &.currentPage::before {
+      height: 44px;
+    }
+	`}
+  }
+
+  ${media.desktop`
+      width: 50px;
+	`}
+
+  :not(:last-child) {
+    ${media.desktop`
+      margin-bottom: 55px;
+	  `}
   }
 `
 
@@ -71,7 +108,10 @@ const NavWithTheme = (props) => {
         <NavWrapper>
           <List>
             <ListItem>
-              <Link to="/">
+              <Link
+                to="/"
+                className={currentRoute === '/' ? 'currentPage' : ''}
+              >
                 <MenuIcon icon={'dashboard'} active={currentRoute === '/'} />
                 <Text
                   style={{
@@ -86,7 +126,10 @@ const NavWithTheme = (props) => {
               </Link>
             </ListItem>
             <ListItem>
-              <Link to="/historique">
+              <Link
+                to="/historique"
+                className={currentRoute === '/historique' ? 'currentPage' : ''}
+              >
                 <MenuIcon
                   icon={'history'}
                   active={currentRoute === '/historique'}
@@ -104,7 +147,12 @@ const NavWithTheme = (props) => {
               </Link>
             </ListItem>
             <ListItem>
-              <Link to="/statistiques">
+              <Link
+                to="/statistiques"
+                className={
+                  currentRoute === '/statistiques' ? 'currentPage' : ''
+                }
+              >
                 <MenuIcon
                   icon={'analytics'}
                   active={currentRoute === '/statistiques'}
@@ -122,7 +170,10 @@ const NavWithTheme = (props) => {
               </Link>
             </ListItem>
             <ListItem>
-              <Link to="/profile">
+              <Link
+                to="/profile"
+                className={currentRoute === '/profile' ? 'currentPage' : ''}
+              >
                 <MenuIcon
                   icon={'profile'}
                   active={currentRoute === '/profile'}

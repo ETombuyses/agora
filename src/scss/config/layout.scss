@@ -10,4 +10,9 @@
   overflow-y: scroll;
   background: $blueGrey;
   padding: 24px 16px;
+
+  @include desktop {
+    height: 100vh;
+    margin-left: 10%;
+  }
 }
