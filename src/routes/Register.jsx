@@ -269,6 +269,8 @@ export default function Register() {
         nifNumber,
         navigoNumber
       )
+
+      window.location.pathname = '/dasboard'
     }
   }
 

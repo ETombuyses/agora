@@ -86,7 +86,7 @@ export function register(
   navigoNumber
 ) {
   ;(async () => {
-    const result = await axios({
+    await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/signup',
       data: {
@@ -103,7 +103,5 @@ export function register(
         navigoNumber: navigoNumber,
       },
     })
-
-    console.log(result)
   })()
 }
