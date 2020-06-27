@@ -23,7 +23,7 @@ const PopUpContainer = styled.div`
   border-radius: 7px;
   padding: 30px 20px;
   background-color: ${(props) => props.theme.white};
-  width: ${(props) => (props.registerPopUp ? '30%' : '80%')};
+  width: 70%;
   position: relative;
   top: 50%;
   left: ${(props) => (props.registerPopUp ? 'calc(50% - 24px);' : '50%')};

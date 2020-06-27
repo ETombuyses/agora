@@ -57,3 +57,53 @@ export function getNewTokens() {
     })()
   }
 }
+
+/*
+ * Register new user in BDD
+ * @Params {lastName} string
+ * @Params {firstName} string
+ * @Params {email} string
+ * @Params {password} string
+ * @Params {agoraNumber} int
+ * @Params {nbResident} int
+ * @Params {livingArea} int
+ * @Params {isulation} boolean
+ * @Params {gas} boolean
+ * @Params {navigoNumber} int
+ * @Params {nifNumber} string
+ */
+export function register(
+  lastName,
+  firstName,
+  password,
+  email,
+  agoraNumber,
+  nbResident,
+  livingArea,
+  gas,
+  isulation,
+  nifNumber,
+  navigoNumber
+) {
+  ;(async () => {
+    const result = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/signup',
+      data: {
+        lastName: lastName,
+        firstName: firstName,
+        password: password,
+        email: email,
+        agoraNumber: agoraNumber,
+        nbResident: nbResident,
+        livingArea: livingArea,
+        gas: gas,
+        insulation: isulation,
+        nifNumber: nifNumber,
+        navigoNumber: navigoNumber,
+      },
+    })
+
+    console.log(result)
+  })()
+}

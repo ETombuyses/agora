@@ -1,10 +1,10 @@
-import React, { useRef, createRef, useState } from 'react'
+import React, { useRef, createRef, useState, forwardRef } from 'react'
 import styled from 'styled-components'
 
 // components
 import { InputText } from '../atoms/InputText'
 import { Button } from '../atoms/Button'
-import { PopUp } from '../atoms/PopUp'
+//import { PopUp } from '../atoms/PopUp'
 import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
@@ -36,13 +36,31 @@ const View = styled.div`
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const RegisterForm = (props) => {
-  const [popUpText, setPopUpText] = useState('')
+export const RegisterForm = forwardRef((props, ref) => {
+  const {
+    transitionForm,
+    name,
+    firstName,
+    email,
+    pswd,
+    confirmePswd,
+    nbAgora,
+    nbResident,
+    isuYesButton,
+    isuNoButton,
+    gasYesButton,
+    gasNoButton,
+    livingSpace,
+    nbNavigo,
+    nbNIF,
+  } = ref
 
-  const transitionForm = useRef(0)
+  //const [popUpText, setPopUpText] = useState('')
+
+  //const transitionForm = useRef(0)
 
   //send ref to child PopUp
-  const popup = createRef(0)
+  /*   const popup = createRef(0)
   const name = createRef(0)
   const firstName = createRef(0)
   const email = createRef(0)
@@ -56,11 +74,11 @@ export const RegisterForm = (props) => {
   const gasNoButton = createRef(0)
   const livingSpace = createRef(0)
   const nbNavigo = createRef(0)
-  const nbNIF = createRef(0)
+  const nbNIF = createRef(0) */
 
   //Check if data are valide before continue on the second step of form
-  const handleClick = () => {
-    const expression = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+  /*   const handleClick = () => {
+    const expressionEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
     //Check if name is valid
     if (
       name.current.value !== '' &&
@@ -93,7 +111,7 @@ export const RegisterForm = (props) => {
       popup.current.style.visibility = 'visible'
     } else if (
       email.current.value !== '' &&
-      expression.test(String(email.current.value).toLowerCase()) === false
+      expressionEmail.test(String(email.current.value).toLowerCase()) === false
     ) {
       setPopUpText('Le champs "Email" ne correspond pas à un email')
       popup.current.style.visibility = 'visible'
@@ -119,138 +137,197 @@ export const RegisterForm = (props) => {
     } else {
       transitionForm.current.style.transform = 'translateX(calc(-50% + 24px))'
     }
-  }
+  } */
 
-  //Close PopUp
+  /*  //Close PopUp
   const onClose = () => {
     popup.current.style.visibility = 'hidden'
-  }
+  } */
 
   //Send form
-  const sendForm = (e) => {
+  /*   const sendForm = (e) => {
     e.preventDefault()
-    /*     console.log(isuYesButton.current.value)
-    console.log(isuNoButton.current.value)
-    console.log(gasYesButton) */
-    console.log(gasNoButton.current.checked)
-    console.log(gasNoButton.current.checked)
-    /*     console.log(nbNavigo.current.value)
-    console.log(nbNIF.current.value)
-    console.log(livingSpace.current.value)
-    console.log(nbResident.current.value)
-    console.log(nbAgora.current.value) */
-  }
+
+    const expressionAgora = /\d{8}/
+    const numberOnly = /^[0-9]+$/
+    const expressionNIF = /[0-3]\d{12}/
+
+    //Check if nb Agora is valid
+    if (
+      nbAgora.current.value !== '' &&
+      expressionAgora.test(String(nbAgora.current.value).toLowerCase()) ===
+        false
+    ) {
+      setPopUpText(
+        "Le numéro d'Agora n'est pas valide. Il doit contenir 8 numéros."
+      )
+      popup.current.style.visibility = 'visible'
+    } else if (nbAgora.current.value === '') {
+      setPopUpText("Le numéro d'Agora n'est pas remplie")
+      popup.current.style.visibility = 'visible'
+
+      //Check if nb resident is valid
+    } else if (nbResident.current.value === '') {
+      setPopUpText('Le champ "Nombre de résidents" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (
+      numberOnly.test(String(nbResident.current.value).toLowerCase()) === false
+    ) {
+      setPopUpText(
+        'Le champ "Nombre de résidents" doit contenir uniquement des chiffres.'
+      )
+      popup.current.style.visibility = 'visible'
+    } else if (livingSpace.current.value === '') {
+      setPopUpText('Le champ "Surface de l’habitat" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (
+      livingSpace.current.value !== '' &&
+      numberOnly.test(String(livingSpace.current.value).toLowerCase()) === false
+    ) {
+      setPopUpText(
+        'Le champ "Surface de l’habitat" doit contenir uniquement des chiffres.'
+      )
+      popup.current.style.visibility = 'visible'
+    } else if (
+      nbNavigo.current.value !== '' &&
+      numberOnly.test(String(nbNavigo.current.value).toLowerCase()) === false
+    ) {
+      setPopUpText(
+        'Le champ "Numéro carte Navigo" doit contenir uniquement des chiffres et doit être composé de 8 numéros'
+      )
+      popup.current.style.visibility = 'visible'
+    } else if (nbNIF.current.value === '') {
+      setPopUpText('Le champ "Numéro NIF" n\'est pas remplie')
+      popup.current.style.visibility = 'visible'
+    } else if (
+      expressionNIF.test(String(nbNIF.current.value).toLowerCase()) === false
+    ) {
+      setPopUpText(
+        'Le champ "Numéro NIF" doit contenir uniquement des chiffres et doit être composé de 13 numéros'
+      )
+      popup.current.style.visibility = 'visible'
+    } else {
+      console.log('Tout est OK')
+    }
+  } */
 
   return (
-    <FormWrapper ref={transitionForm} className={props.className}>
-      <View>
-        <InputTextButton ref={name} required={true} label="Nom" type={'text'} />
-        <InputTextButton
-          ref={firstName}
-          required={true}
-          label="Prénom"
-          type={'text'}
-        />
-        <InputTextButton
-          ref={email}
-          type={'email'}
-          required={true}
-          label="Email"
-        />
-        <InputTextButton
-          ref={pswd}
-          required={true}
-          label="Mot de passe"
-          type={'password'}
-        />
-        <InputTextButton
-          ref={confirmePswd}
-          required={true}
-          label="Confirmer votre mot de passe"
-          type={'password'}
-        />
-        <ContinueButton
-          isFullWidth={false}
-          text="Continuer"
-          onClickButton={handleClick}
-        />
-      </View>
-      <View>
-        <InputTextButton
-          ref={nbAgora}
-          required={true}
-          hint={true}
-          label="Numéro d’Agora"
-          type={'text'}
-        />
-        <InputTextButton
-          ref={nbResident}
-          required={true}
-          label="Nombre de résidents"
-          type={'text'}
-        />
-        <RadioButtonGroup
-          ref={{
-            ref1: isuYesButton,
-            ref2: isuNoButton,
-          }}
-          text1={'Oui'}
-          name1={'isulation'}
-          value1={'yesButton'}
-          defaultChecked1={true}
-          text2={'Non'}
-          name2={'isulation'}
-          value2={'noButton'}
-          label={'Isolation changées ces  20 dernières années ?'}
-          required={true}
-        />
-        <RadioButtonGroup
-          ref={{
-            ref1: gasYesButton,
-            ref2: gasNoButton,
-          }}
-          text1={'Oui'}
-          name1={'gas'}
-          value1={'yesButtonGas'}
-          defaultChecked1={true}
-          text2={'Non'}
-          name2={'gas'}
-          value2={'noButtonGas'}
-          label={'Avez vous  le gaz chez vous ?'}
-          required={true}
-        />
-        <InputTextButton
-          ref={livingSpace}
-          required={true}
-          label="Surface de l’habitat (en M²)"
-          type={'text'}
-        />
-        <InputTextButton
-          ref={nbNavigo}
-          required={false}
-          label="Numéro carte Navigo"
-          type={'text'}
-        />
-        <InputTextButton
-          ref={nbNIF}
-          required={true}
-          label="Numéro NIF"
-          type={'text'}
-        />
-        <ContinueButton
-          onClickButton={sendForm}
-          isFullWidth={false}
-          text="Créer le compte"
-          isFormButton={true}
-        />
-      </View>
-      <PopUp
+    <>
+      <FormWrapper ref={transitionForm} className={props.className}>
+        <View>
+          <InputTextButton
+            ref={name}
+            required={true}
+            label="Nom"
+            type={'text'}
+          />
+          <InputTextButton
+            ref={firstName}
+            required={true}
+            label="Prénom"
+            type={'text'}
+          />
+          <InputTextButton
+            ref={email}
+            type={'email'}
+            required={true}
+            label="Email"
+          />
+          <InputTextButton
+            ref={pswd}
+            required={true}
+            label="Mot de passe"
+            type={'password'}
+          />
+          <InputTextButton
+            ref={confirmePswd}
+            required={true}
+            label="Confirmer votre mot de passe"
+            type={'password'}
+          />
+          <ContinueButton
+            isFullWidth={false}
+            text="Continuer"
+            onClickButton={props.onClickButton}
+          />
+        </View>
+        <View>
+          <InputTextButton
+            ref={nbAgora}
+            required={true}
+            hint={true}
+            label="Numéro d’Agora"
+            type={'text'}
+          />
+          <InputTextButton
+            ref={nbResident}
+            required={true}
+            label="Nombre de résidents"
+            type={'text'}
+          />
+          <RadioButtonGroup
+            ref={{
+              ref1: isuYesButton,
+              ref2: isuNoButton,
+            }}
+            text1={'Oui'}
+            name1={'isulation'}
+            value1={'yesButton'}
+            defaultChecked1={true}
+            text2={'Non'}
+            name2={'isulation'}
+            value2={'noButton'}
+            label={'Isolation changées ces  20 dernières années ?'}
+            required={true}
+          />
+          <RadioButtonGroup
+            ref={{
+              ref1: gasYesButton,
+              ref2: gasNoButton,
+            }}
+            text1={'Oui'}
+            name1={'gas'}
+            value1={'yesButtonGas'}
+            defaultChecked1={true}
+            text2={'Non'}
+            name2={'gas'}
+            value2={'noButtonGas'}
+            label={'Avez vous  le gaz chez vous ?'}
+            required={true}
+          />
+          <InputTextButton
+            ref={livingSpace}
+            required={true}
+            label="Surface de l’habitat (en M²)"
+            type={'text'}
+          />
+          <InputTextButton
+            ref={nbNavigo}
+            required={false}
+            label="Numéro carte Navigo"
+            type={'text'}
+          />
+          <InputTextButton
+            ref={nbNIF}
+            required={true}
+            label="Numéro NIF"
+            type={'text'}
+          />
+          <ContinueButton
+            onClickButton={props.sendForm}
+            isFullWidth={false}
+            text="Créer le compte"
+            isFormButton={true}
+          />
+        </View>
+      </FormWrapper>
+      {/*       <PopUp
         onClose={(e) => onClose(e)}
         ref={popup}
         size={'tiny'}
         text={popUpText}
         registerPopUp={true}
-      />
-    </FormWrapper>
+      /> */}
+    </>
   )
-}
+})
