@@ -3,6 +3,18 @@ import styled from 'styled-components'
 
 import hello from '../../assets/images/hello-mobile.png'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const WelcomeBanner = () => {
+  return (
+    <WelcomeWrapper>
+      <Title className="heading">Bonjour Jean-Phillipe</Title>
+      <Text>Il ne vous reste plus que 3 missions pour passer au niveau 2.</Text>
+      <img src={hello} alt="dessin d'un jeune garçon avec un ordinateur"></img>
+    </WelcomeWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const WelcomeWrapper = styled.div`
@@ -33,15 +45,3 @@ const Text = styled.h2`
   font-size: 12px;
   max-width: calc(100% - 43%);
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const WelcomeBanner = () => {
-  return (
-    <WelcomeWrapper>
-      <Title className="heading">Bonjour Jean-Phillipe</Title>
-      <Text>Il ne vous reste plus que 3 missions pour passer au niveau 2.</Text>
-      <img src={hello} alt="dessin d'un jeune garçon avec un ordinateur"></img>
-    </WelcomeWrapper>
-  )
-}

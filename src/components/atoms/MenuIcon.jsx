@@ -7,13 +7,6 @@ import { ReactComponent as HistoryIcon } from '../../assets/icons/clock.svg'
 import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.svg'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const IconWrapper = styled.div`
-  path {
-    stroke: ${(props) => (props.active ? props.theme.green : props.theme.grey)};
-  }
-`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const MenuIcon = (props) => {
@@ -36,3 +29,11 @@ export const MenuIcon = (props) => {
     <IconWrapper active={props.active}>{renderIcon(props.icon)}</IconWrapper>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const IconWrapper = styled.div`
+  path {
+    stroke: ${(props) => (props.active ? props.theme.green : props.theme.grey)};
+  }
+`

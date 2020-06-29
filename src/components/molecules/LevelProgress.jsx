@@ -4,6 +4,29 @@ import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 import { Tag } from '../atoms/Tag'
 import { ProgressCircle } from '../atoms/ProgressCircle'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const LevelProgress = (props) => {
+  return (
+    <LevelProgressWrapper className={props.className}>
+      <Title>Progression</Title>
+      <Icon>
+        <HelpIcon />
+      </Icon>
+      <ContentWrapper>
+        <ProgressCircle progress={props.progress} />
+        <TagsContent>
+          <TagsWrapper>
+            <LevelTag text="Niv. 1" />
+            <TaxesTag text="1,2%*" color="whiteTransparent" />
+          </TagsWrapper>
+        </TagsContent>
+      </ContentWrapper>
+      <TagLegend>* Votre réduction d'impôt</TagLegend>
+    </LevelProgressWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const LevelProgressWrapper = styled.div`
@@ -76,25 +99,3 @@ const TagLegend = styled.span`
   font-size: 12px;
   color: ${(props) => props.theme.white};
 `
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const LevelProgress = (props) => {
-  return (
-    <LevelProgressWrapper className={props.className}>
-      <Title>Progression</Title>
-      <Icon>
-        <HelpIcon />
-      </Icon>
-      <ContentWrapper>
-        <ProgressCircle progress={props.progress} />
-        <TagsContent>
-          <TagsWrapper>
-            <LevelTag text="Niv. 1" />
-            <TaxesTag text="1,2%*" color="whiteTransparent" />
-          </TagsWrapper>
-        </TagsContent>
-      </ContentWrapper>
-      <TagLegend>* Votre réduction d'impôt</TagLegend>
-    </LevelProgressWrapper>
-  )
-}

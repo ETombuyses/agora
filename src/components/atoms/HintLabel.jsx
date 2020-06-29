@@ -3,6 +3,20 @@ import styled from 'styled-components'
 
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const HintLabel = (props) => {
+  return (
+    <LabelWrapper>
+      <Label>
+        {props.label}
+        {props.required && <Asterisk>*</Asterisk>}
+      </Label>
+      {props.hint && <HelpIcon />}
+    </LabelWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const LabelWrapper = styled.div`
@@ -35,17 +49,3 @@ const Label = styled.p`
 const Asterisk = styled.span`
   color: ${(props) => props.theme.red};
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const HintLabel = (props) => {
-  return (
-    <LabelWrapper>
-      <Label>
-        {props.label}
-        {props.required && <Asterisk>*</Asterisk>}
-      </Label>
-      {props.hint && <HelpIcon />}
-    </LabelWrapper>
-  )
-}

@@ -13,60 +13,6 @@ const tasks = {
   gas: { icon: 'fire', name: 'Gaz' },
 }
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const TaskWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  background: ${(props) => props.theme.white};
-  border-radius: 15px;
-  padding: 13px 16px;
-  width: 100%;
-  border: ${(props) =>
-    props.progression === 0 ? `2px solid ${props.theme.rose}` : 'unset'};
-
-  &::after {
-    position: absolute;
-    content: '';
-    display: block;
-    width: ${(props) => props.taskProgress + '%'};
-    height: 5px;
-    background: ${(props) =>
-      props.progression === 0
-        ? props.theme.red
-        : props.progression < 50
-        ? props.theme.orange
-        : props.theme.green};
-    bottom: 0;
-    left: 0;
-    transition: width 2s ease;
-  }
-`
-
-const CustomTag = styled(Tag)`
-  position: absolute;
-  top: 10px;
-  right: 8px;
-`
-
-const ContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const CustomTaskIcon = styled(TaskIcon)`
-  margin-right: 12px;
-`
-
-const TaskDescription = styled.p`
-  font-size: 12px;
-`
-
-const Limit = styled.span`
-  font-weight: bold;
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
@@ -106,3 +52,60 @@ export const Task = (props) => {
     </TaskWrapper>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const TaskWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: ${(props) => props.theme.white};
+  border-radius: 15px;
+  padding: 13px 16px;
+  width: 100%;
+  border: ${(props) =>
+    props.progression === 0 ? `2px solid ${props.theme.rose}` : 'unset'};
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: ${(props) => props.taskProgress + '%'};
+    height: 5px;
+    background: ${(props) => {
+      if (props.progression === 0) {
+        return props.theme.red
+      } else if (props.progression < 50) {
+        return props.theme.orange
+      } else {
+        return props.theme.green
+      }
+    }};
+    bottom: 0;
+    left: 0;
+    transition: width 2s ease;
+  }
+`
+
+const CustomTag = styled(Tag)`
+  position: absolute;
+  top: 10px;
+  right: 8px;
+`
+
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const CustomTaskIcon = styled(TaskIcon)`
+  margin-right: 12px;
+`
+
+const TaskDescription = styled.p`
+  font-size: 12px;
+`
+
+const Limit = styled.span`
+  font-weight: bold;
+`

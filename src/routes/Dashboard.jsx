@@ -11,6 +11,64 @@ import { ReactComponent as ProfilePic } from '../assets/icons/profile-pic.svg'
 import { Tag } from '../components/atoms/Tag'
 import { TaskStatTag } from '../components/atoms/TaskStatTag'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export default function Dashboard() {
+  const tasks = [
+    { name: 'water', progress: 0 },
+    { name: 'gas', progress: 49 },
+    { name: 'trash', progress: 100 },
+    { name: 'transports', progress: 0 },
+    { name: 'electricity', progress: 60 },
+  ]
+
+  return (
+    <PageWrapper className="pageWrapper">
+      <TasksContainer>
+        <WelcomeBanner />
+        <MissionTitle>Missions en cours :</MissionTitle>
+        {tasks.map((task) => {
+          if (task.progress > 0)
+            return (
+              <Task
+                task={task.name}
+                progression={task.progress}
+                key={task.name}
+              />
+            )
+          else return null
+        })}
+        <MissionTitle>Missions ratées :</MissionTitle>
+        {tasks.map((task) => {
+          if (task.progress === 0)
+            return (
+              <Task
+                task={task.name}
+                progression={task.progress}
+                key={task.name}
+              />
+            )
+          else return null
+        })}
+        <CustomLevelProgress progress={30} />
+      </TasksContainer>
+      <UserStats>
+        <CustomPic />
+        <UserName>Tristan Lemire</UserName>
+        <Tag text="Niv. 1" color="green" small={true}></Tag>
+        <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
+        <TasksStatsWrapper>
+          {tasks.map((task) => {
+            return <CustomTaskTag icon={task.name} />
+          })}
+        </TasksStatsWrapper>
+        <p style={{ fontSize: '19px' }}>Statistiques</p>
+        <TestRadarChart />
+      </UserStats>
+    </PageWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
@@ -81,60 +139,3 @@ const TestRadarChart = styled.div`
   border-radius: 50%;
   margin-top: 40px;
 `
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export default function Dashboard() {
-  const tasks = [
-    { name: 'water', progress: 0 },
-    { name: 'gas', progress: 49 },
-    { name: 'trash', progress: 100 },
-    { name: 'transports', progress: 0 },
-    { name: 'electricity', progress: 60 },
-  ]
-
-  return (
-    <PageWrapper className="pageWrapper">
-      <TasksContainer>
-        <WelcomeBanner />
-        <MissionTitle>Missions en cours :</MissionTitle>
-        {tasks.map((task) => {
-          if (task.progress > 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-              />
-            )
-          else return null
-        })}
-        <MissionTitle>Missions ratées :</MissionTitle>
-        {tasks.map((task) => {
-          if (task.progress === 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-              />
-            )
-          else return null
-        })}
-        <CustomLevelProgress progress={30} />
-      </TasksContainer>
-      <UserStats>
-        <CustomPic />
-        <UserName>Tristan Lemire</UserName>
-        <Tag text="Niv. 1" color="green" small={true}></Tag>
-        <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
-        <TasksStatsWrapper>
-          {tasks.map((task) => {
-            return <CustomTaskTag icon={task.name} />
-          })}
-        </TasksStatsWrapper>
-        <p style={{ fontSize: '19px' }}>Statistiques</p>
-        <TestRadarChart />
-      </UserStats>
-    </PageWrapper>
-  )
-}
