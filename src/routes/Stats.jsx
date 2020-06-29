@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import { Title } from '../components/atoms/Title'
 import { PageLocation } from '../components/atoms/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
+import { TaskIcon } from '../components/atoms/TaskIcon'
+
+import { media } from '../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -20,6 +23,7 @@ export default function Home() {
         />
       </GlobalDataCardWrapper>
       <Title text="Missions reussis au total" />
+      <TaskIcon icon={'water'} color={'green'} />
     </div>
   )
 }
@@ -33,4 +37,12 @@ const GlobalDataCardWrapper = styled.div`
   div:first-child {
     margin-bottom: 16px;
   }
+
+  ${media.desktop`
+    flex-direction: row;
+
+    div:first-child {
+      margin: 0 50px 0 0;
+    }
+  `}
 `
