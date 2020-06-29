@@ -19,7 +19,7 @@ export const WelcomeBanner = () => {
 
 const WelcomeWrapper = styled.div`
   position: relative;
-  background: ${(props) => props.theme.green};
+  background: ${(props) => props.theme.lightGreen};
   padding: 9px;
   border-radius: 10px;
   font-size: 23px;
