@@ -10,6 +10,8 @@ import { media } from '../scss/config/mixins'
 import { ReactComponent as ProfilePic } from '../assets/icons/profile-pic.svg'
 import { Tag } from '../components/atoms/Tag'
 import { TaskStatTag } from '../components/atoms/TaskStatTag'
+import { Title } from '../components/atoms/Title'
+import { PageLocation } from '../components/atoms/PageLocation'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -25,8 +27,9 @@ export default function Dashboard() {
   return (
     <PageWrapper className="pageWrapper">
       <TasksContainer>
+        <PageLocation location="Dashboard" />
         <WelcomeBanner />
-        <MissionTitle>Missions en cours :</MissionTitle>
+        <Title text="Missions en cours :" />
         {tasks.map((task) => {
           if (task.progress > 0)
             return (
@@ -38,7 +41,7 @@ export default function Dashboard() {
             )
           else return null
         })}
-        <MissionTitle>Missions ratées :</MissionTitle>
+        <Title text="Missions ratées :"></Title>
         {tasks.map((task) => {
           if (task.progress === 0)
             return (
@@ -98,9 +101,9 @@ const UserStats = styled.div`
   padding: 32px 12px;
 `
 
-const MissionTitle = styled.p`
+/* const MissionTitle = styled.p`
   margin: 16px 0 15px 0;
-`
+` */
 
 const CustomLevelProgress = styled(LevelProgress)`
   margin-top: 16px;
