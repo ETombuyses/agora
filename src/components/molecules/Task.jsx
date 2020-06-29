@@ -23,12 +23,16 @@ export const Task = (props) => {
   }, [props.progression])
 
   return (
-    <TaskWrapper progression={props.progression} taskProgress={taskProgress}>
+    <TaskWrapper
+      progression={props.progression}
+      taskProgress={taskProgress}
+      className={props.className}
+    >
       <ContentWrapper>
         <CustomTaskIcon
           icon={tasks[props.task].icon}
           color={
-            taskProgress === 0
+            taskProgress <= 0
               ? 'lightRed'
               : taskProgress < 50
               ? 'lightOrange'
@@ -45,7 +49,7 @@ export const Task = (props) => {
       <CustomTag
         isTaskTag={true}
         color={
-          taskProgress === 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+          taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
         }
         text="3L"
       />
@@ -64,7 +68,7 @@ const TaskWrapper = styled.div`
   padding: 13px 16px;
   width: 100%;
   border: ${(props) =>
-    props.progression === 0 ? `2px solid ${props.theme.rose}` : 'unset'};
+    props.progression <= 0 ? `2px solid ${props.theme.rose}` : 'unset'};
 
   &::after {
     position: absolute;
@@ -73,7 +77,7 @@ const TaskWrapper = styled.div`
     width: ${(props) => props.taskProgress + '%'};
     height: 5px;
     background: ${(props) => {
-      if (props.progression === 0) {
+      if (props.progression <= 0) {
         return props.theme.red
       } else if (props.progression < 50) {
         return props.theme.orange
