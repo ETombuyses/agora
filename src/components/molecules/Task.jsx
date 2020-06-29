@@ -72,12 +72,15 @@ const TaskWrapper = styled.div`
     display: block;
     width: ${(props) => props.taskProgress + '%'};
     height: 5px;
-    background: ${(props) =>
-      props.progression === 0
-        ? props.theme.red
-        : props.progression < 50
-        ? props.theme.orange
-        : props.theme.green};
+    background: ${(props) => {
+      if (props.progression === 0) {
+        return props.theme.red
+      } else if (props.progression < 50) {
+        return props.theme.orange
+      } else {
+        return props.theme.green
+      }
+    }};
     bottom: 0;
     left: 0;
     transition: width 2s ease;

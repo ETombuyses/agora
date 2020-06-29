@@ -40,12 +40,15 @@ Button.defaultProps = {
 
 const ButtonContainer = styled.button`
   padding: ${(props) => (props.size === 'tiny' ? '14px 41px' : '11px 18px')};
-  background: ${(props) =>
-    props.size === 'tiny'
-      ? props.theme.white
-      : props.isGovButton
-      ? props.theme.govBlue
-      : props.theme.green};
+  background: ${(props) => {
+    if (props.size === 'tiny') {
+      return props.theme.white
+    } else if (props.isGovButton) {
+      return props.theme.govBlue
+    } else {
+      return props.theme.green
+    }
+  }};
   border-radius: 5px;
   border: none;
   outline: none;
