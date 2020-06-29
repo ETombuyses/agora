@@ -5,6 +5,19 @@ import styled from 'styled-components'
 
 import { ReactComponent as CrossClose } from '../../assets/icons/crossClose.svg'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const PopUp = forwardRef((props, ref) => {
+  return (
+    <PopUpWrapper ref={ref} className={props.className} onClick={props.onClose}>
+      <PopUpContainer size={props.size} registerPopUp={props.registerPopUp}>
+        <Cross />
+        <PopUpContent>{props.text}</PopUpContent>
+      </PopUpContainer>
+    </PopUpWrapper>
+  )
+})
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PopUpWrapper = styled.div`
@@ -46,16 +59,3 @@ const Cross = styled(CrossClose)`
   top: 8px;
   cursor: pointer;
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const PopUp = forwardRef((props, ref) => {
-  return (
-    <PopUpWrapper ref={ref} className={props.className} onClick={props.onClose}>
-      <PopUpContainer size={props.size} registerPopUp={props.registerPopUp}>
-        <Cross />
-        <PopUpContent>{props.text}</PopUpContent>
-      </PopUpContainer>
-    </PopUpWrapper>
-  )
-})

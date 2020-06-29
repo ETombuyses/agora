@@ -1,6 +1,24 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const RadioButton = forwardRef((props, ref) => {
+  return (
+    <ButtonWrapper>
+      <InputButton
+        ref={ref}
+        type="radio"
+        name={props.name}
+        value={props.value}
+        id={props.value}
+        defaultChecked={props.defaultChecked ?? ''}
+      />
+      <LabelText htmlFor={props.value}>{props.text}</LabelText>
+    </ButtonWrapper>
+  )
+})
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const ButtonWrapper = styled.div`
@@ -30,21 +48,3 @@ const LabelText = styled.label`
   border-radius: 5px;
   line-height: 45px;
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const RadioButton = forwardRef((props, ref) => {
-  return (
-    <ButtonWrapper>
-      <InputButton
-        ref={ref}
-        type="radio"
-        name={props.name}
-        value={props.value}
-        id={props.value}
-        defaultChecked={props.defaultChecked ?? ''}
-      />
-      <LabelText htmlFor={props.value}>{props.text}</LabelText>
-    </ButtonWrapper>
-  )
-})

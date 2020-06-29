@@ -7,33 +7,6 @@ import { Button } from '../atoms/Button'
 //import { PopUp } from '../atoms/PopUp'
 import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const FormWrapper = styled.form`
-  display: flex;
-  width: 200vw;
-  align-self: start;
-  transition: transform 0.7s ease;
-  padding: 24px;
-  margin-left: 0;
-`
-
-const InputTextButton = styled(InputText)`
-  margin-top: 16px;
-  width: 100%;
-`
-
-const ContinueButton = styled(Button)`
-  margin-top: 16px;
-  align-self: start;
-  cursor: pointer;
-`
-
-const View = styled.div`
-  padding-right: 24px;
-  width: 50%;
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const RegisterForm = forwardRef((props, ref) => {
@@ -168,3 +141,30 @@ export const RegisterForm = forwardRef((props, ref) => {
     </>
   )
 })
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const FormWrapper = styled.form`
+  display: flex;
+  width: 200vw;
+  align-self: start;
+  transition: transform 0.7s ease;
+  padding: 24px;
+  margin-left: 0;
+`
+
+const InputTextButton = styled(InputText)`
+  margin-top: 16px;
+  width: 100%;
+`
+
+const ContinueButton = styled(Button)`
+  margin-top: 16px;
+  align-self: start;
+  cursor: pointer;
+`
+
+const View = styled.div`
+  padding-right: 24px;
+  width: 50%;
+`

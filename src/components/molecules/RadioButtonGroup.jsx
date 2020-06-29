@@ -6,34 +6,6 @@ import styled from 'styled-components'
 import { RadioButton } from '../atoms/RadioButton'
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const RadioButtonWrapper = styled.div`
-  margin-top: 16px;
-`
-
-const RadioButtons = styled.div`
-  display: flex;
-`
-
-const LabelWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-`
-
-const Label = styled.p`
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 7px;
-  display: inline-block;
-  line-height: 130%;
-  max-width: calc(100% - 16px - 8px);
-`
-
-const Asterisk = styled.span`
-  color: ${(props) => props.theme.red};
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const RadioButtonGroup = forwardRef((props, ref) => {
@@ -67,3 +39,31 @@ export const RadioButtonGroup = forwardRef((props, ref) => {
     </RadioButtonWrapper>
   )
 })
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const RadioButtonWrapper = styled.div`
+  margin-top: 16px;
+`
+
+const RadioButtons = styled.div`
+  display: flex;
+`
+
+const LabelWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`
+
+const Label = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  display: inline-block;
+  line-height: 130%;
+  max-width: calc(100% - 16px - 8px);
+`
+
+const Asterisk = styled.span`
+  color: ${(props) => props.theme.red};
+`

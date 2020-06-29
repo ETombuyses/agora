@@ -86,7 +86,7 @@ export function register(
   navigoNumber
 ) {
   ;(async () => {
-    await axios({
+    const result = await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/signup',
       data: {
@@ -103,5 +103,9 @@ export function register(
         navigoNumber: navigoNumber,
       },
     })
+
+    if (result) {
+      window.location.pathname = '/login'
+    }
   })()
 }

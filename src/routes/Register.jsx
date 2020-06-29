@@ -14,70 +14,6 @@ import { register } from '../tools/isAuth'
 // images
 import welcomeImage from '../assets/images/welcome1.png'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const PageWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-`
-const Image = styled.img`
-  background: ${(props) => props.theme.white};
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
-  width: 100%;
-  object-position: bottom;
-  object-fit: cover;
-  max-height: 35vh;
-`
-
-const ContentWrapper = styled.div`
-  padding: 24px;
-  height: 0;
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300vw;
-  transition: transform 0.7s ease;
-`
-
-const Title = styled.h2`
-  text-align: center;
-  margin: 0 0 30px 0;
-`
-
-const GovButton = styled(Button)`
-  margin-bottom: 16px;
-`
-
-const RegisterButton = styled(Button)`
-  margin-top: 16px;
-`
-
-const ToggleText = styled.p`
-  margin-top: 42px;
-  font-size: 13px;
-`
-
-const ToggleLink = styled(Link)`
-  color: ${(props) => props.theme.green};
-`
-
-const SectionSepartorWrapper = styled(SectionSepartor)`
-  align-self: center;
-  display: inline-block;
-`
-
-const RegisterButtons = styled.div`
-  width: calc(100vw - 48px);
-  text-align: center;
-`
-
-const RegisterFormWrapper = styled(RegisterForm)``
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
@@ -171,9 +107,9 @@ export default function Register() {
   const sendForm = (e) => {
     e.preventDefault()
 
-    const expressionAgora = /\d{8}/
+    const expressionAgora = /^\d{8}$/
     const numberOnly = /^[0-9]+$/
-    const expressionNIF = /[0-3]\d{12}/
+    const expressionNIF = /^[0-3]\d{12}$/
 
     //Check if nb Agora is valid
     if (
@@ -233,7 +169,6 @@ export default function Register() {
         'Le champ "Numéro NIF" doit contenir uniquement des chiffres et doit être composé de 13 numéros'
       )
       popup.current.style.visibility = 'visible'
-      console.log(nbNIF.current.value.length)
     } else {
       let gas = true
       let isulation = true
@@ -269,8 +204,6 @@ export default function Register() {
         nifNumber,
         navigoNumber
       )
-
-      window.location.pathname = '/dasboard'
     }
   }
 
@@ -334,3 +267,67 @@ export default function Register() {
     </PageWrapper>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const PageWrapper = styled.div`
+  background: ${(props) => props.theme.blueGrey};
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+`
+const Image = styled.img`
+  background: ${(props) => props.theme.white};
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  width: 100%;
+  object-position: bottom;
+  object-fit: cover;
+  max-height: 35vh;
+`
+
+const ContentWrapper = styled.div`
+  padding: 24px;
+  height: 0;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300vw;
+  transition: transform 0.7s ease;
+`
+
+const Title = styled.h2`
+  text-align: center;
+  margin: 0 0 30px 0;
+`
+
+const GovButton = styled(Button)`
+  margin-bottom: 16px;
+`
+
+const RegisterButton = styled(Button)`
+  margin-top: 16px;
+`
+
+const ToggleText = styled.p`
+  margin-top: 42px;
+  font-size: 13px;
+`
+
+const ToggleLink = styled(Link)`
+  color: ${(props) => props.theme.green};
+`
+
+const SectionSepartorWrapper = styled(SectionSepartor)`
+  align-self: center;
+  display: inline-block;
+`
+
+const RegisterButtons = styled.div`
+  width: calc(100vw - 48px);
+  text-align: center;
+`
+
+const RegisterFormWrapper = styled(RegisterForm)``
