@@ -25,74 +25,77 @@ export default function Register() {
 
   const hideButton = useRef(0)
 
-  const transitionForm = createRef(0),
-    popup = createRef(0),
-    name = createRef(0),
-    firstName = createRef(0),
-    email = createRef(0),
-    pswd = createRef(0),
-    confirmePswd = createRef(0),
-    nbAgora = createRef(0),
-    nbResident = createRef(0),
-    isuYesButton = createRef(0),
-    isuNoButton = createRef(0),
-    gasYesButton = createRef(0),
-    gasNoButton = createRef(0),
-    livingSpace = createRef(0),
-    nbNavigo = createRef(0),
-    nbNIF = createRef(0)
+  const refs = {
+    transitionForm: createRef(0),
+    popup: createRef(0),
+    firstName: createRef(0),
+    name: createRef(0),
+    pswd: createRef(0),
+    email: createRef(0),
+    confirmePswd: createRef(0),
+    nbAgora: createRef(0),
+    nbResident: createRef(0),
+    isuYesButton: createRef(0),
+    isuNoButton: createRef(0),
+    gasYesButton: createRef(0),
+    gasNoButton: createRef(0),
+    livingSpace: createRef(0),
+    nbNavigo: createRef(0),
+    nbNIF: createRef(0),
+  }
 
   const handleForm = () => {
     hideButton.current.style.transform = 'translateX(calc(-100vw + 24px))'
   }
 
   const handleClick = () => {
-    popup.current.style.visibility = 'hidden'
+    refs.popup.current.style.visibility = 'hidden'
 
     let error = checkGenralFormInfo(
-      name.current.value,
-      firstName.current.value,
-      email.current.value,
-      pswd.current.value,
-      confirmePswd.current.value
+      refs.name.current.value,
+      refs.firstName.current.value,
+      refs.email.current.value,
+      refs.pswd.current.value,
+      refs.confirmePswd.current.value
     )
 
     if (error) {
       setPopUpText(error)
-      popup.current.style.visibility = 'visible'
+      refs.popup.current.style.visibility = 'visible'
     } else {
-      transitionForm.current.style.transform = 'translateX(calc(-50% + 24px))'
+      refs.transitionForm.current.style.transform =
+        'translateX(calc(-50% + 24px))'
     }
   }
 
   const sendForm = (e) => {
     e.preventDefault()
 
-    const lastName = name.current.value
-    const primaryName = firstName.current.value
-    const emailling = email.current.value
-    const password = pswd.current.value
+    const lastName = refs.name.current.value
+    const primaryName = refs.firstName.current.value
+    const emailling = refs.email.current.value
+    const password = refs.pswd.current.value
 
-    const agoraNumber = Number(nbAgora)
-    const residentNumber = Number(nbResident)
-    const livingArea = Number(livingSpace)
-    const navigoNumber = Number(nbNavigo)
-    const nifNumber = nbNIF
+    const agoraNumber = Number(refs.nbAgora)
+    const residentNumber = Number(refs.nbResident)
+    const livingArea = Number(refs.livingSpace)
+    const navigoNumber = Number(refs.nbNavigo)
+    const nifNumber = refs.nbNIF
 
     let error = checkAgoraForm(
-      nbAgora.current.value,
-      nbResident.current.value,
-      livingSpace.current.value,
-      nbNavigo.current.value,
-      nbNIF.current.value
+      refs.nbAgora.current.value,
+      refs.nbResident.current.value,
+      refs.livingSpace.current.value,
+      refs.nbNavigo.current.value,
+      refs.nbNIF.current.value
     )
 
     if (error) {
       setPopUpText(error)
-      popup.current.style.visibility = 'visible'
+      refs.popup.current.style.visibility = 'visible'
     } else {
-      let gas = gasYesButton.current.checked
-      let isulation = isuYesButton.current.checked
+      let gas = refs.gasYesButton.current.checked
+      let isulation = refs.isuYesButton.current.checked
 
       register(
         lastName,
@@ -112,7 +115,7 @@ export default function Register() {
 
   // Close PopUp
   const onClose = () => {
-    popup.current.style.visibility = 'hidden'
+    refs.popup.current.style.visibility = 'hidden'
   }
 
   return (
@@ -139,30 +142,14 @@ export default function Register() {
           </ToggleText>
         </RegisterButtons>
         <RegisterForm
-          ref={{
-            transitionForm: transitionForm,
-            firstName: firstName,
-            name: name,
-            pswd: pswd,
-            email: email,
-            confirmePswd: confirmePswd,
-            nbAgora: nbAgora,
-            nbResident: nbResident,
-            isuYesButton: isuYesButton,
-            isuNoButton: isuNoButton,
-            gasYesButton: gasYesButton,
-            gasNoButton: gasNoButton,
-            livingSpace: livingSpace,
-            nbNavigo: nbNavigo,
-            nbNIF: nbNIF,
-          }}
+          ref={refs}
           onClickButton={handleClick}
           sendForm={sendForm}
         />
       </ContentWrapper>
       <PopUp
         onClose={(e) => onClose(e)}
-        ref={popup}
+        ref={refs.popup}
         size={'tiny'}
         text={popUpText}
         registerPopUp={true}
@@ -211,7 +198,7 @@ const GovButton = styled(Button)`
 `
 
 const RegisterButton = styled(Button)`
-  margin-top: 16px;x
+  margin-top: 16px;
 `
 
 const ToggleText = styled.p`
