@@ -268,6 +268,30 @@ export default function Register() {
   )
 }
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export default function Register() {
+  return (
+    <PageWrapper>
+      <Image src={welcomeImage} />
+      <ContentWrapper>
+        <Title className="headline">S'inscrire sur Agora</Title>
+        <GovButton
+          isFullWidth={true}
+          icon={GovIcon}
+          isGovButton={true}
+          text="S'identifier avec FranceConnect"
+        />
+        <SectionSepartor />
+        <RegisterButton isFullWidth={true} icon={MailIcon} text="S'inscrire" />
+        <ToggleText>
+          Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>{' '}
+        </ToggleText>
+      </ContentWrapper>
+    </PageWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
@@ -331,3 +355,4 @@ const RegisterButtons = styled.div`
 `
 
 const RegisterFormWrapper = styled(RegisterForm)``
+

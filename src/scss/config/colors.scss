@@ -10,9 +10,20 @@ $rose: #f1a2a5;
 $blueGrey: #f5f6fc;
 $grey: #9b9b9b;
 
+// ligth
+
+$lightGreen: rgba(84, 225, 115, 0.7);
+$lightRed: rgba(237, 78, 78, 0.7);
+$lightOrange: rgba(225, 164, 93, 0.7);
+
 // other
 $govBlue: #0069cc;
 
 // special
-$whiteTransparent: #ffffff3d;
 $backgroundPopUp: #9b9b9b52;
+
+// with opacity
+$whiteTransparent: rgba(225, 225, 225, 0.35);
+$greenTransparent: rgba(84, 225, 115, 0.25);
+$orangeTransparent: rgba(225, 164, 93, 0.25);
+$redTransparent: rgba(237, 78, 78, 0.25);

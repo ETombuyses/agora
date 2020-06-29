@@ -12,65 +12,6 @@ import { InputText } from '../components/atoms/InputText'
 // images
 import welcomeImage from '../assets/images/welcome.png'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const PageWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-const Image = styled.img`
-  padding-top: 56px;
-  background: ${(props) => props.theme.white};
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
-`
-
-const ContentWrapper = styled.div`
-  padding: 24px;
-  height: 0;
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const Title = styled.h2`
-  text-align: center;
-  margin: 0 0 30px 0;
-`
-
-const GovButton = styled(Button)`
-  margin-bottom: 16px;
-`
-
-const LoginButton = styled(Button)`
-  margin-top: 16px;
-  align-self: start;
-  cursor: pointer;
-`
-
-const InputTextButton = styled(InputText)`
-  margin-top: 16px;
-  width: 100%;
-`
-
-const FormContainer = styled.form`
-  width: 100%;
-`
-
-const ToggleText = styled.p`
-  margin-top: 42px;
-  font-size: 13px;
-`
-
-const ToggleLink = styled(Link)`
-  color: ${(props) => props.theme.green};
-  cursor: pointer;
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
@@ -131,3 +72,62 @@ export default function Register() {
     </PageWrapper>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const PageWrapper = styled.div`
+  background: ${(props) => props.theme.blueGrey};
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+const Image = styled.img`
+  padding-top: 56px;
+  background: ${(props) => props.theme.white};
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+`
+
+const ContentWrapper = styled.div`
+  padding: 24px;
+  height: 0;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const Title = styled.h2`
+  text-align: center;
+  margin: 0 0 30px 0;
+`
+
+const GovButton = styled(Button)`
+  margin-bottom: 16px;
+`
+
+const LoginButton = styled(Button)`
+  margin-top: 16px;
+  align-self: start;
+  cursor: pointer;
+`
+
+const InputTextButton = styled(InputText)`
+  margin-top: 16px;
+  width: 100%;
+`
+
+const FormContainer = styled.form`
+  width: 100%;
+`
+
+const ToggleText = styled.p`
+  margin-top: 42px;
+  font-size: 13px;
+`
+
+const ToggleLink = styled(Link)`
+  color: ${(props) => props.theme.green};
+  cursor: pointer;
+`

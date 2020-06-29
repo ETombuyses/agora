@@ -2,19 +2,26 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
 
-const CicleWrapper = styled.div`
-  position: relative;
-`
-
-const Percent = styled.span`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-`
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {
+  const radius = 54
+  const circumference = radius * 2 * Math.PI
+
+  // function memorised by useCallback --> does not create a new calculateOffset function at every render
+  const calculateOffset = React.useCallback(
+    (progress) => {
+      return circumference - (progress / 100) * circumference
+    },
+    [circumference]
+  )
+
+  const [offset, setOffset] = React.useState(calculateOffset(0))
+
+  React.useEffect(() => {
+    setOffset(calculateOffset(props.progress))
+  }, [calculateOffset, props.progress])
+
   return (
     <CicleWrapper>
       <svg
@@ -27,7 +34,7 @@ const Circle = (props) => {
         <circle
           cx="60"
           cy="60"
-          r="54"
+          r={radius}
           fill="none"
           stroke={props.theme.whiteTransparent}
           strokeWidth="12"
@@ -35,15 +42,15 @@ const Circle = (props) => {
         <circle
           cx="60"
           cy="60"
-          r="54"
+          r={radius}
           fill="none"
           stroke={props.theme.white}
           strokeWidth="12"
           strokeDasharray="339.292"
-          strokeDashoffset="135.717"
+          strokeDashoffset={offset}
         />
       </svg>
-      <Percent>60%</Percent>
+      <Percent>{props.progress}%</Percent>
     </CicleWrapper>
   )
 }
@@ -51,3 +58,22 @@ const Circle = (props) => {
 const ProgressCircle = withTheme(Circle)
 
 export { ProgressCircle }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const CicleWrapper = styled.div`
+  position: relative;
+
+  svg circle {
+    transition: stroke-dashoffset 2s ease;
+  }
+`
+
+const Percent = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: ${(props) => props.theme.white};
+`

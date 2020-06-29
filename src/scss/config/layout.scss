@@ -7,6 +7,12 @@
 
 .pageWrapper {
   height: calc(100vh - 24px - 22px - 6px - 10px);
+  overflow-y: scroll;
   background: $blueGrey;
   padding: 24px 16px;
+
+  @include desktop {
+    height: 100vh;
+    margin-left: 10%;
+  }
 }

@@ -4,6 +4,39 @@ import PropTypes from 'prop-types'
 
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const InputText = forwardRef((props, ref) => {
+  return (
+    <InputWrapper className={props.className}>
+      <LabelWrapper>
+        <Label>
+          {props.label}
+          {props.required && <Asterisk>*</Asterisk>}
+        </Label>
+        {props.hint && <HelpIcon />}
+      </LabelWrapper>
+      <Input
+        ref={ref}
+        onClick={props.onClickRadio}
+        onChange={props.onChangeValue}
+        type={props.type}
+        placeholder={props.placeholder}
+        required={props.required ?? false}
+        name={props.name}
+        defaultChecked={props.checked ?? ''}
+      ></Input>
+    </InputWrapper>
+  )
+})
+
+/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
+
+InputText.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const InputWrapper = styled.div`
@@ -48,36 +81,3 @@ const Input = styled.input`
   line-height: 40px;
   /* width: 100%; */
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const InputText = forwardRef((props, ref) => {
-  return (
-    <InputWrapper className={props.className}>
-      <LabelWrapper>
-        <Label>
-          {props.label}
-          {props.required && <Asterisk>*</Asterisk>}
-        </Label>
-        {props.hint && <HelpIcon />}
-      </LabelWrapper>
-      <Input
-        ref={ref}
-        onClick={props.onClickRadio}
-        onChange={props.onChangeValue}
-        type={props.type}
-        placeholder={props.placeholder}
-        required={props.required ?? false}
-        name={props.name}
-        defaultChecked={props.checked ?? ''}
-      ></Input>
-    </InputWrapper>
-  )
-})
-
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-InputText.propTypes = {
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-}
