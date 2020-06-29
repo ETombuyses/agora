@@ -13,6 +13,46 @@ const tasks = {
   gas: { icon: 'fire', name: 'Gaz' },
 }
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const Task = (props) => {
+  const [taskProgress, setTaskProgress] = React.useState(0)
+
+  React.useEffect(() => {
+    setTaskProgress(props.progression)
+  }, [props.progression])
+
+  return (
+    <TaskWrapper progression={props.progression} taskProgress={taskProgress}>
+      <ContentWrapper>
+        <CustomTaskIcon
+          icon={tasks[props.task].icon}
+          color={
+            taskProgress === 0
+              ? 'lightRed'
+              : taskProgress < 50
+              ? 'lightOrange'
+              : 'lightGreen'
+          }
+        />
+        <div>
+          <HintLabel label={tasks[props.task].name} hint={true}></HintLabel>
+          <TaskDescription>
+            Ne pas consommer plus de <Limit>xKw</Limit>
+          </TaskDescription>
+        </div>
+      </ContentWrapper>
+      <CustomTag
+        isTaskTag={true}
+        color={
+          taskProgress === 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+        }
+        text="3L"
+      />
+    </TaskWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const TaskWrapper = styled.div`
@@ -66,43 +106,3 @@ const TaskDescription = styled.p`
 const Limit = styled.span`
   font-weight: bold;
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const Task = (props) => {
-  const [taskProgress, setTaskProgress] = React.useState(0)
-
-  React.useEffect(() => {
-    setTaskProgress(props.progression)
-  }, [props.progression])
-
-  return (
-    <TaskWrapper progression={props.progression} taskProgress={taskProgress}>
-      <ContentWrapper>
-        <CustomTaskIcon
-          icon={tasks[props.task].icon}
-          color={
-            taskProgress === 0
-              ? 'lightRed'
-              : taskProgress < 50
-              ? 'lightOrange'
-              : 'lightGreen'
-          }
-        />
-        <div>
-          <HintLabel label={tasks[props.task].name} hint={true}></HintLabel>
-          <TaskDescription>
-            Ne pas consommer plus de <Limit>xKw</Limit>
-          </TaskDescription>
-        </div>
-      </ContentWrapper>
-      <CustomTag
-        isTaskTag={true}
-        color={
-          taskProgress === 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
-        }
-        text="3L"
-      />
-    </TaskWrapper>
-  )
-}

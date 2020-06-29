@@ -1,6 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const Tag = (props) => {
+  return (
+    <TagWrapper
+      className={props.className}
+      color={props.color}
+      isTaskTag={props.isTaskTag}
+    >
+      <Text color={props.color} isTaskTag={props.isTaskTag}>
+        {props.text}
+      </Text>
+    </TagWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const TagWrapper = styled.div`
@@ -25,18 +41,3 @@ const Text = styled.span`
       ? props.theme.white
       : props.theme.green};
 `
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const Tag = (props) => {
-  return (
-    <TagWrapper
-      className={props.className}
-      color={props.color}
-      isTaskTag={props.isTaskTag}
-    >
-      <Text color={props.color} isTaskTag={props.isTaskTag}>
-        {props.text}
-      </Text>
-    </TagWrapper>
-  )
-}

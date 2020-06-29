@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const SectionSepartor = () => {
+  return <Separator>Ou</Separator>
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const Separator = styled.span`
@@ -29,9 +35,3 @@ const Separator = styled.span`
     background: ${(props) => props.theme.grey};
   }
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const SectionSepartor = () => {
-  return <Separator>Ou</Separator>
-}

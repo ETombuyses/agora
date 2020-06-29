@@ -5,16 +5,6 @@ import { WelcomeBanner } from '../components/molecules/WelcomeBanner'
 import { Task } from '../components/molecules/Task'
 import { LevelProgress } from '../components/molecules/LevelProgress'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const MissionTitle = styled.p`
-  margin: 16px 0 15px 0;
-`
-
-const CustomLevelProgress = styled(LevelProgress)`
-  margin-top: 16px;
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
@@ -57,3 +47,13 @@ export default function Dashboard() {
     </div>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const MissionTitle = styled.p`
+  margin: 16px 0 15px 0;
+`
+
+const CustomLevelProgress = styled(LevelProgress)`
+  margin-top: 16px;
+`

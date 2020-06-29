@@ -15,19 +15,7 @@ const images = {
   trash: { icon: trash, name: 'poubelle' },
   bus: { icon: bus, name: 'bus' },
 }
-/* -----------------------------------------------------STYLE------------------------------------------------ */
 
-const IconWrapper = styled.div`
-  padding: 4px;
-  background: ${(props) => props.theme[props.color]};
-  display: inline-block;
-  border-radius: 5px;
-  img {
-    width: 16px;
-    height: 16px;
-    display: block;
-  }
-`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const TaskIcon = (props) => {
@@ -41,3 +29,17 @@ export const TaskIcon = (props) => {
     </IconWrapper>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const IconWrapper = styled.div`
+  padding: 4px;
+  background: ${(props) => props.theme[props.color]};
+  display: inline-block;
+  border-radius: 5px;
+  img {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+`

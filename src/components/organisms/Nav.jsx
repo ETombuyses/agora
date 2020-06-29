@@ -16,79 +16,6 @@ const Profile = lazy(() => import('../../routes/Profile'))
 const Login = lazy(() => import('../../routes/Login'))
 const Register = lazy(() => import('../../routes/Register'))
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const NavWrapper = styled.nav`
-  background: ${(props) => props.theme.white};
-  padding: 12px;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  z-index: 100;
-
-  ${media.desktop`
-    display: flex;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 10%;
-	`}
-`
-
-const List = styled.ul`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  ${media.desktop`
-    flex-direction: column;
-    justify-content: center;
-	`}
-`
-
-const ListItem = styled.li`
-  a {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    ${media.desktop`
-    ::before {
-      position: absolute;
-      content: '';
-      left: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2px;
-      height: 0px;
-      background: ${(props) => props.theme.green};
-      transition: height 0.3s ease;
-    }
-
-    &.currentPage::before {
-      height: 44px;
-    }
-	`}
-  }
-
-  ${media.desktop`
-      width: 50px;
-	`}
-
-  :not(:last-child) {
-    ${media.desktop`
-      margin-bottom: 55px;
-	  `}
-  }
-`
-
-const Text = styled.span`
-  font-size: 10px;
-  margin-top: 6px;
-  color: ${(props) => props.theme.grey};
-`
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const NavWithTheme = (props) => {
@@ -181,3 +108,76 @@ const NavWithTheme = (props) => {
 const Nav = withTheme(NavWithTheme)
 
 export { Nav }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const NavWrapper = styled.nav`
+  background: ${(props) => props.theme.white};
+  padding: 12px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+
+  ${media.desktop`
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 10%;
+	`}
+`
+
+const List = styled.ul`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  ${media.desktop`
+    flex-direction: column;
+    justify-content: center;
+	`}
+`
+
+const ListItem = styled.li`
+  a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ${media.desktop`
+    ::before {
+      position: absolute;
+      content: '';
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 0px;
+      background: ${(props) => props.theme.green};
+      transition: height 0.3s ease;
+    }
+
+    &.currentPage::before {
+      height: 44px;
+    }
+	`}
+  }
+
+  ${media.desktop`
+      width: 50px;
+	`}
+
+  :not(:last-child) {
+    ${media.desktop`
+      margin-bottom: 55px;
+	  `}
+  }
+`
+
+const Text = styled.span`
+  font-size: 10px;
+  margin-top: 6px;
+  color: ${(props) => props.theme.grey};
+`

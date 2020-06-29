@@ -2,24 +2,6 @@ import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
 
-/* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const CicleWrapper = styled.div`
-  position: relative;
-
-  svg circle {
-    transition: stroke-dashoffset 2s ease;
-  }
-`
-
-const Percent = styled.span`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: ${(props) => props.theme.white};
-`
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {
@@ -76,3 +58,22 @@ const Circle = (props) => {
 const ProgressCircle = withTheme(Circle)
 
 export { ProgressCircle }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
+
+const CicleWrapper = styled.div`
+  position: relative;
+
+  svg circle {
+    transition: stroke-dashoffset 2s ease;
+  }
+`
+
+const Percent = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: ${(props) => props.theme.white};
+`
