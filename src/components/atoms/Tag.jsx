@@ -9,7 +9,8 @@ const TagWrapper = styled.div`
   border-radius: ${(props) => (props.isTaskTag ? '3px' : '20px')};
   background: ${(props) =>
     props.color ? props.theme[props.color] : props.theme.white};
-  padding: ${(props) => (props.isTaskTag ? '1px 5px' : '5px 20px')};
+  padding: ${(props) =>
+    props.isTaskTag ? '1px 5px' : props.small ? '2px 11px' : '5px 20px'};
   box-shadow: ${(props) =>
     props.isTaskTag
       ? `0 0 10px ${props.theme[`${props.color}Transparent`]}`
@@ -33,6 +34,7 @@ export const Tag = (props) => {
       className={props.className}
       color={props.color}
       isTaskTag={props.isTaskTag}
+      small={props.small}
     >
       <Text color={props.color} isTaskTag={props.isTaskTag}>
         {props.text}
