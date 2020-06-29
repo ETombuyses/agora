@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const SectionSepartor = () => {
-  return <Separator>Ou</Separator>
+export const SectionSepartor = (props) => {
+  return <Separator className={props.className}>Ou</Separator>
 }
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */

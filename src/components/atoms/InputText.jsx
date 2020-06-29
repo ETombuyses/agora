@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
@@ -6,25 +6,29 @@ import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const InputText = (props) => {
+export const InputText = forwardRef((props, ref) => {
   return (
     <InputWrapper className={props.className}>
       <LabelWrapper>
         <Label>
           {props.label}
           {props.required && <Asterisk>*</Asterisk>}
-        </Label>{' '}
+        </Label>
         {props.hint && <HelpIcon />}
       </LabelWrapper>
       <Input
+        ref={ref}
+        onClick={props.onClickRadio}
         onChange={props.onChangeValue}
         type={props.type}
         placeholder={props.placeholder}
-        required={props.required ?? 'false'}
+        required={props.required ?? false}
+        name={props.name}
+        defaultChecked={props.checked ?? ''}
       ></Input>
     </InputWrapper>
   )
-}
+})
 
 /* -----------------------------------------------------PROPTYPES------------------------------------------------ */
 
