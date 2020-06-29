@@ -16,6 +16,20 @@ const images = {
   transports: { icon: bus, name: 'Transports' },
 }
 
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export const TaskStatTag = (props) => {
+  return (
+    <TagWrapper className={props.className}>
+      <img icon={props.icon} src={images[props.icon].icon}></img>
+      <TextWrapper>
+        <Title icon={props.icon}>{images[props.icon].name}</Title>
+        <Stat>12m3</Stat>
+      </TextWrapper>
+    </TagWrapper>
+  )
+}
+
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const TagWrapper = styled.div`
@@ -45,17 +59,3 @@ const Stat = styled.span`
   font-weight: 300;
   font-size: 12px;
 `
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
-
-export const TaskStatTag = (props) => {
-  return (
-    <TagWrapper className={props.className}>
-      <img icon={props.icon} src={images[props.icon].icon}></img>
-      <TextWrapper>
-        <Title icon={props.icon}>{images[props.icon].name}</Title>
-        <Stat>12m3</Stat>
-      </TextWrapper>
-    </TagWrapper>
-  )
-}
