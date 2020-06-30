@@ -83,12 +83,6 @@ const NavWithTheme = (props) => {
                 )
               else return null
             })}
-            <ListItem>
-              <Link to="/login">text login</Link>
-            </ListItem>
-            <ListItem>
-              <Link to="/register">text register</Link>
-            </ListItem>
           </List>
         </NavWrapper>
       )}

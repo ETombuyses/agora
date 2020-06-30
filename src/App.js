@@ -11,9 +11,9 @@ export default function App() {
     let token = localStorage.getItem('token')
     let url = window.location.pathname
 
-    if (!token && url !== '/register' && url !== '/login') {
-      window.location.href = '/login'
-    }
+    // if (!token && url !== '/register' && url !== '/login') {
+    //   window.location.href = '/login'
+    // }
   })
 
   //Timer for refresh Token
