@@ -6,6 +6,7 @@ import { InputText } from '../atoms/InputText'
 import { Button } from '../atoms/Button'
 //import { PopUp } from '../atoms/PopUp'
 import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
+import { media } from '../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -151,6 +152,12 @@ const FormWrapper = styled.form`
   transition: transform 0.7s ease;
   padding: 24px;
   margin-left: 0;
+
+  ${media.desktop`
+    width: auto;
+    display: block;
+    padding: 0;
+  `}
 `
 
 const InputTextButton = styled(InputText)`
@@ -167,4 +174,13 @@ const ContinueButton = styled(Button)`
 const View = styled.div`
   padding-right: 24px;
   width: 50%;
+
+  ${media.desktop`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0;
+  `}
 `
