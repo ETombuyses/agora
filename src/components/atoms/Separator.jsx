@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { media } from '../../scss/config/mixins'
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const SectionSepartor = (props) => {
@@ -34,4 +36,23 @@ const Separator = styled.span`
     height: 1px;
     background: ${(props) => props.theme.grey};
   }
+
+  ${media.desktop`
+    width: 100%;
+    text-align: center;
+
+   ::before {
+    transform: rotate(180deg);
+    transform-origin: right;
+    right: 100%;
+    width: 45%;
+   }
+
+   ::after {
+    transform: rotate(180deg);
+    transform-origin: left;
+    left: 100%;
+    width: 45%;
+   }
+  `}
 `

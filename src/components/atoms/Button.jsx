@@ -70,4 +70,5 @@ const ButtonInner = styled.div`
 
 const Text = styled.p`
   margin-left: ${(props) => (props.icon ? '12px' : '0px')};
+  color: ${(props) => props.theme.white};
 `
