@@ -146,7 +146,7 @@ export default function Register() {
             text="S'inscrire"
             onClickButton={handleForm}
           />
-          <ToggleText className="mobilde">
+          <ToggleText className="mobile">
             Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
           </ToggleText>
         </RegisterButtons>
@@ -220,8 +220,13 @@ const ContentWrapper = styled.div`
 `
 
 const Title = styled.h2`
-  text-align: center;
+  text-align: left;
   margin: 0 0 30px 0;
+  font-size: 19px;
+
+  ${media.desktop`
+    font-size: 33px;
+`}
 `
 
 const GovButton = styled(Button)`
