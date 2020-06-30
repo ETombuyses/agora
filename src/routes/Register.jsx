@@ -10,9 +10,10 @@ import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
 import { RegisterForm } from '../components/organisms/RegisterForm'
 import { PopUp } from '../components/atoms/PopUp'
 import { register } from '../tools/isAuth'
+import { media } from '../scss/config/mixins'
 
 // images
-import welcomeImage from '../assets/images/welcome1.png'
+import welcomeImage from '../assets/images/loginImg.svg'
 
 // form's check functions
 import { checkGenralFormInfo } from '../tools/RegisterFormChecks'
@@ -45,7 +46,11 @@ export default function Register() {
   }
 
   const handleForm = () => {
-    hideButton.current.style.transform = 'translateX(calc(-100vw + 24px))'
+    if (window.innerWidth >= 992) {
+      hideButton.current.style.transform = 'translateY(calc(-100vh))'
+    } else {
+      hideButton.current.style.transform = 'translateX(calc(-100vw + 24px))'
+    }
   }
 
   const handleClick = () => {
@@ -63,8 +68,12 @@ export default function Register() {
       setPopUpText(error)
       refs.popup.current.style.visibility = 'visible'
     } else {
-      refs.transitionForm.current.style.transform =
-        'translateX(calc(-50% + 24px))'
+      if (window.innerWidth >= 992) {
+        refs.transitionForm.current.style.transform = 'translateY(calc(-100vh))'
+      } else {
+        refs.transitionForm.current.style.transform =
+          'translateX(calc(-50% + 24px))'
+      }
     }
   }
 
@@ -137,7 +146,7 @@ export default function Register() {
             text="S'inscrire"
             onClickButton={handleForm}
           />
-          <ToggleText>
+          <ToggleText className="mobile">
             Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
           </ToggleText>
         </RegisterButtons>
@@ -147,6 +156,9 @@ export default function Register() {
           sendForm={sendForm}
         />
       </ContentWrapper>
+      <ToggleText className="desktop">
+        Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
+      </ToggleText>
       <PopUp
         onClose={(e) => onClose(e)}
         ref={refs.popup}
@@ -166,15 +178,25 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+
+  ${media.desktop`
+    flex-direction: row;
+    overflow: hidden;
+    height: 100vh;
+  `}
 `
 const Image = styled.img`
   background: ${(props) => props.theme.white};
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
-  width: 100%;
   object-position: bottom;
-  object-fit: cover;
+  object-fit: contain;
   max-height: 35vh;
+
+  ${media.desktop`
+    max-height: 100vh;
+    width: 40%;
+  `}
 `
 
 const ContentWrapper = styled.div`
@@ -186,11 +208,25 @@ const ContentWrapper = styled.div`
   align-items: center;
   width: 300vw;
   transition: transform 0.7s ease;
+
+  ${media.desktop`
+    height: auto;
+    padding: 0 15%;
+    justify-content: left;
+    width: 100%;
+    display: block;
+    flex: inherit;
+  `}
 `
 
 const Title = styled.h2`
-  text-align: center;
+  text-align: left;
   margin: 0 0 30px 0;
+  font-size: 19px;
+
+  ${media.desktop`
+    font-size: 33px;
+`}
 `
 
 const GovButton = styled(Button)`
@@ -204,6 +240,24 @@ const RegisterButton = styled(Button)`
 const ToggleText = styled.p`
   margin-top: 42px;
   font-size: 13px;
+
+  &.desktop {
+    display: none;
+  }
+
+  ${media.desktop`
+    position: absolute;
+    top: 0;
+    right: 32px;
+
+    &.mobile {
+      display: none;
+    }
+
+    &.desktop {
+      display: block;
+    }
+  `}
 `
 
 const ToggleLink = styled(Link)`
@@ -218,4 +272,13 @@ const SectionSepartorWrapper = styled(SectionSepartor)`
 const RegisterButtons = styled.div`
   width: calc(100vw - 48px);
   text-align: center;
+
+  ${media.desktop`
+    width: auto;
+    margin: inherit;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+  `}
 `
