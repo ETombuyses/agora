@@ -122,7 +122,7 @@ const UserStats = styled.div`
   align-items: center;
   padding: 32px 12px;
 
-  svg {
+  svg:last-child {
     height: 100% !important;
     margin-top: 10px;
   }
