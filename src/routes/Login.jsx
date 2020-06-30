@@ -103,7 +103,6 @@ const Image = styled.img`
 
 const ContentWrapper = styled.div`
   padding: 24px;
-  height: 0;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
@@ -119,6 +118,7 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   align-self: start;
   margin: 0 0 30px 0;
+  font-size: 19px;
 
   ${media.desktop`
     font-size: 33px;
