@@ -1,31 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react'
+import { getNewTokens } from './tools/isAuth'
 
 // router
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import logo from './logo.svg';
-import './App.css';
+import { Nav } from './components/organisms/Nav'
 
+export default function App() {
+  useEffect(() => {
+    let token = localStorage.getItem('token')
+    let url = window.location.pathname
 
-function App() {
+    // if (!token && url !== '/register' && url !== '/login') {
+    //   window.location.href = '/login'
+    // }
+  })
+
+  //Timer for refresh Token
+  const refreshTokenTimer = () => {
+    //function from isAuth.js (Get news tokens if user is recognized)
+    getNewTokens()
+  }
+
+  //Refresh Token every 10 mins
+  setInterval(refreshTokenTimer, 600000)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Nav />
+    </Router>
+  )
 }
-
-export default App;

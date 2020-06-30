@@ -1,0 +1,21 @@
+.App {
+  color: $black;
+  height: auto;
+  min-height: 100vh;
+  font-weight: normal;
+}
+
+.pageWrapper {
+  min-height: calc(100vh - 24px - 22px - 6px - 10px);
+  margin-bottom: calc(24px + 22px + 6px + 10px);
+  overflow-y: scroll;
+  background: $blueGrey;
+  padding: 24px 16px;
+
+  @include desktop {
+    margin-bottom: 0;
+    height: 100vh;
+    margin-left: 10%;
+    padding: 32px;
+  }
+}
