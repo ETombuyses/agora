@@ -9,19 +9,21 @@ export function login(email, password) {
   ;(async () => {
     const result = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/login_check',
+      url: 'http://127.0.0.1:8000/api/login',
       data: {
         username: email,
         password: password,
       },
     })
 
-    let token = result.data.token
-    let refresh_token = result.data.refresh_token
+    let token = result.data.tokens.token
+    let refresh_token = result.data.tokens.refresh_token
 
     //Put tokens in local storage
     localStorage.setItem('token', token)
     localStorage.setItem('refreshToken', refresh_token)
+
+    console.log(result)
 
     if (result) {
       window.location.href = 'http://localhost:3000/'
