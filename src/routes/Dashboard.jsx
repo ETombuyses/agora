@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { WelcomeBanner } from '../components/molecules/WelcomeBanner'
@@ -12,10 +12,15 @@ import { Tag } from '../components/atoms/Tag'
 import { TaskStatTag } from '../components/atoms/TaskStatTag'
 import { Title } from '../components/atoms/Title'
 import { PageLocation } from '../components/atoms/PageLocation'
+import { RadarChart } from '../components/atoms/Radar'
+
+import axios from 'axios'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
+  const [userData, setUserData] = useState(0)
+
   const tasks = [
     { name: 'water', progress: 0 },
     { name: 'gas', progress: 49 },
@@ -24,13 +29,30 @@ export default function Dashboard() {
     { name: 'electricity', progress: 60 },
   ]
 
+  useEffect(() => {
+    let getuserId = localStorage.getItem('idUser')
+    let getToken = localStorage.getItem('token')
+
+    ;(async () => {
+      const result = await axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/api/user/update/${getuserId}`,
+        headers: {
+          Authorization: `Bearer ${getToken}`,
+        },
+      })
+
+      setUserData(result)
+    })()
+  }, [])
+
   return (
     <PageWrapper className="pageWrapper">
       <TasksContainer>
         <PageLocation location="Dashboard" />
         <WelcomeBanner />
         <Title text="Missions en cours :" />
-        {tasks.map((task) => {
+        {tasks.map((task, index) => {
           if (task.progress > 0)
             return (
               <Task
@@ -42,7 +64,7 @@ export default function Dashboard() {
           else return null
         })}
         <Title text="Missions ratées :"></Title>
-        {tasks.map((task) => {
+        {tasks.map((task, index) => {
           if (task.progress === 0)
             return (
               <Task
@@ -62,11 +84,11 @@ export default function Dashboard() {
         <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
         <TasksStatsWrapper>
           {tasks.map((task) => {
-            return <CustomTaskTag icon={task.name} />
+            return <CustomTaskTag key={task.name} icon={task.name} />
           })}
         </TasksStatsWrapper>
         <p style={{ fontSize: '19px' }}>Statistiques</p>
-        <TestRadarChart />
+        {userData.data && <RadarChart data={userData.data} />}
       </UserStats>
     </PageWrapper>
   )
@@ -99,6 +121,11 @@ const UserStats = styled.div`
   justify-content: center;
   align-items: center;
   padding: 32px 12px;
+
+  svg {
+    height: 100% !important;
+    margin-top: 10px;
+  }
 `
 
 /* const MissionTitle = styled.p`
@@ -132,13 +159,4 @@ const TasksStatsWrapper = styled.div`
 `
 const CustomTaskTag = styled(TaskStatTag)`
   margin: 8px;
-`
-
-const TestRadarChart = styled.div`
-  width: 150px;
-  height: 150px;
-  min-height: 150px;
-  background: red;
-  border-radius: 50%;
-  margin-top: 40px;
 `
