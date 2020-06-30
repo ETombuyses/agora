@@ -5,7 +5,7 @@ const years = ['2020', '2021', '2022', '2023']
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const Select = () => {
+export const Select = (props) => {
   const [year, setYear] = React.useState('2020')
 
   const changeYear = (event) => {
@@ -13,7 +13,11 @@ export const Select = () => {
   }
 
   return (
-    <CustomSelect value={year} onChange={changeYear}>
+    <CustomSelect
+      value={year}
+      onChange={changeYear}
+      className={props.className}
+    >
       {years.map((year) => {
         return (
           <option value={year} key={year}>
