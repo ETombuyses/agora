@@ -62,7 +62,7 @@ export default function Dashboard() {
         <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
         <TasksStatsWrapper>
           {tasks.map((task) => {
-            return <CustomTaskTag icon={task.name} />
+            return <CustomTaskTag icon={task.name} key={task.name} />
           })}
         </TasksStatsWrapper>
         <p style={{ fontSize: '19px' }}>Statistiques</p>
