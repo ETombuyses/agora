@@ -4,28 +4,28 @@
 
 # Projet fin d'année: Agora
 
-### Technologies envisagées
+## Technologies envisagées
 
 - React (webpack inclut)  
-**Pourquoi** : facilite le développement de nos fonctionnalités et assure la maintenabilité du code (important car site gouvernemental)
+  **Pourquoi** : facilite le développement de nos fonctionnalités et assure la maintenabilité du code (important car site gouvernemental)
 
 - Client side rendering  
-**Pourquoi** : privilégier l'optimisation des ressources pour l'aspect écologique car prend moins de ressources que l'universal rendering et permet une utilisation fluide du site.
+  **Pourquoi** : privilégier l'optimisation des ressources pour l'aspect écologique car prend moins de ressources que l'universal rendering et permet une utilisation fluide du site.
 
 - Mobile first  
-**Pourquoi** : car usage du site récurrent / accessibilité utilisateur
+  **Pourquoi** : car usage du site récurrent / accessibilité utilisateur
 
 - PWA  
-**Pourquoi** : car usage du site récurrent / accessibilité utilisateur
+  **Pourquoi** : car usage du site récurrent / accessibilité utilisateur
 
 - librairie de graphiques: ChartJS
 
 - Librairies React: React-router + Context API + styled components + PropTypes
 
 - service worker  
-**Pourquoi** : permettre l'accès offline du site
+  **Pourquoi** : permettre l'accès offline du site
 
-### Comment installer le projet ?
+## Comment installer le projet ?
 
 installer le projet:  
 `npm install`
@@ -33,23 +33,23 @@ installer le projet:
 démarrer le projet:  
 `npm run start`
 
-### Making a Progressive Web App
+## Making a Progressive Web App
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Advanced Configuration
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+## Deployment
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
+## `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-### prettier
+## prettier
 
 to format all files run:
 
@@ -57,3 +57,6 @@ to format all files run:
 
 change formatting options in prettier.config.js
 
+## live site
+
+https://hetic-agora.netlify.app/
