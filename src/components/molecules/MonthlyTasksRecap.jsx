@@ -184,7 +184,7 @@ const MonthlyTasksRecapWrapper = styled.div`
   max-width: 100vw;
   overflow: hidden;
 
-  ${media.desktop`
+  ${media.tablet`
     margin-bottom: -50px;
     margin-right: -50px;
   `}
@@ -195,7 +195,7 @@ const TaskSlider = styled.ul`
   transition: all 0.25s ease-in;
   transform: translateX(0);
 
-  ${media.desktop`
+  ${media.tablet`
     width: 100%;
     flex-wrap: wrap;
   `}
@@ -208,12 +208,12 @@ const MontlyTaskList = styled.li`
   :not(:last-child) {
     margin-right: 16px;
 
-    ${media.desktop`
+    ${media.tablet`
       margin-right: 50px;
     `}
   }
 
-  ${media.desktop`
+  ${media.tablet`
     min-width: 250px;
     width: calc(100% / 4 - 50px);
     max-width: 350px;
