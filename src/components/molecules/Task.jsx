@@ -40,7 +40,10 @@ export const Task = (props) => {
           }
         />
         <div>
-          <HintLabel label={tasks[props.task].name} hint={true}></HintLabel>
+          <HintLabel
+            label={tasks[props.task].name}
+            hint={props.showHint}
+          ></HintLabel>
           <TaskDescription>
             Ne pas consommer plus de <Limit>xKw</Limit>
           </TaskDescription>

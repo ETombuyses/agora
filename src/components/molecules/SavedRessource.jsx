@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { media } from '../../scss/config/mixins'
+
 import { TaskIcon } from '../atoms/TaskIcon'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -23,6 +25,14 @@ const SavedRessourceWrapper = styled.div`
   padding: 8px;
   border-radius: 10px;
   display: flex;
+
+  ${media.desktop`
+    padding: 24px 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+  `}
 `
 
 const SavingsAmount = styled.div`
@@ -35,6 +45,12 @@ const SavingsAmount = styled.div`
   margin-left: 14px;
   flex: 1;
   font-weight: bold;
+
+  ${media.desktop`
+    margin-top: 26px;
+    margin-left: 0;
+    padding: 8px 16px;
+  `}
 `
 const Number = styled.span`
   color: ${(props) => props.theme.green};

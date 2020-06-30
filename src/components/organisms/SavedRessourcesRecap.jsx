@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { media } from '../../scss/config/mixins'
+
 import { SavedRessource } from '../molecules/SavedRessource'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -23,20 +25,22 @@ export const SavedRessourcesRecap = () => {
     <RecapWrapper>
       <Title>Total</Title>
       <Description>
-        Découvrez le total des ressources que vous avez économisé(e) depuis la
-        création de votre compte
+        Découvrez le total des ressources que vous avez économisé(e) et la durée
+        d’activation du pass Navigo depuis la création de votre compte
       </Description>
 
-      {tasks.map((task) => {
-        return (
-          <CustomSavedRessource
-            key={task.name}
-            icon={task.icon}
-            unit={task.unit}
-            savedNumber={task.savedNumber}
-          />
-        )
-      })}
+      <SavedRessourcesList>
+        {tasks.map((task) => {
+          return (
+            <CustomSavedRessource
+              key={task.name}
+              icon={task.icon}
+              unit={task.unit}
+              savedNumber={task.savedNumber}
+            />
+          )
+        })}
+      </SavedRessourcesList>
     </RecapWrapper>
   )
 }
@@ -57,10 +61,26 @@ const RecapWrapper = styled.div`
   padding: 24px 16px;
   background: ${(props) => props.theme.white};
   border-radius: 10px;
+  max-width: calc(5 * 200px + 4 * 28px);
+`
+
+const SavedRessourcesList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${media.desktop`
+     flex-direction: row;
+     overflow: hidden;
+  `}
 `
 
 const CustomSavedRessource = styled(SavedRessource)`
   :not(:last-child) {
     margin-bottom: 17px;
+
+    ${media.desktop`
+      margin-bottom: 0;
+      margin-right: 28px;
+  `}
   }
 `

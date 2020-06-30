@@ -4,10 +4,12 @@ import styled from 'styled-components'
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
 import { MonthlyTasksRecap } from '../components/molecules/MonthlyTasksRecap'
 import { Select } from '../components/atoms/Select'
+import { PageLocation } from '../components/atoms/PageLocation'
 
 export default function History() {
   return (
     <div className="pageWrapper">
+      <PageLocation location="Historique" />
       <SavedRessourcesRecap />
       <MissionHistoryTitle>Historique des missions</MissionHistoryTitle>
       <CustomSelect />

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from '../../scss/config/mixins'
 
 import { Task } from '../molecules/Task'
 
@@ -85,25 +86,27 @@ const slider = React.createRef()
 
 const mounthsNumber = months.length
 
-// Transform value
-let value = 0
+let translateFactor = 0
 
-// Function to slide forward
 const slide = (condition) => {
-  // update value and trailValue
+  // update translateFactor and trailtranslateFactor
   condition === 'increase' ? initiateINC() : initiateDEC()
   // move slide
-  move(value)
+  move(translateFactor)
 }
 
 // function for increase(forward, next) configuration
 const initiateINC = () => {
-  value === mounthsNumber - 1 ? (value = 0) : (value += 1)
+  translateFactor === mounthsNumber - 1
+    ? (translateFactor = 0)
+    : (translateFactor += 1)
 }
 
 // function for decrease(backward, previous) configuration
 const initiateDEC = () => {
-  value === 0 ? (value = mounthsNumber - 1) : (value -= 1)
+  translateFactor === 0
+    ? (translateFactor = mounthsNumber - 1)
+    : (translateFactor -= 1)
 }
 
 // function to transform slide
@@ -129,13 +132,11 @@ const handleTouchMove = (e) => {
   change = start - moves
 }
 
-const mobile = (e) => {
-  // if change is greater than a quarter of sliderWidth, next else Do NOTHING
+const mobile = () => {
+  // if change is greater than a quarter of sliderWidth, next
   if (change > sliderWidth / 4) slide('increase')
-  // if change * -1 is greater than a quarter of sliderWidth, prev else Do NOTHING
-  if (change * -1 > sliderWidth / 4)
-    slide('decrease')
-    // reset all variable to 0
+  // if change * -1 is greater than a quarter of sliderWidth, prev
+  if (change * -1 > sliderWidth / 4) slide('decrease')
   ;[start, moves, change, sliderWidth] = [0, 0, 0, 0]
 }
 
@@ -154,7 +155,7 @@ export const MonthlyTasksRecap = () => {
       >
         {months.map((month) => {
           return (
-            <MontlyTask key={month.month}>
+            <MontlyTaskList key={month.month}>
               <MonthName>{month.month}</MonthName>
               {month.tasks.map((task) => {
                 return (
@@ -162,10 +163,11 @@ export const MonthlyTasksRecap = () => {
                     progression={100 - task.consummed}
                     task={task.name}
                     key={task.name}
+                    showHint={false}
                   />
                 )
               })}
-            </MontlyTask>
+            </MontlyTaskList>
           )
         })}
       </TaskSlider>
@@ -181,20 +183,47 @@ export const MonthlyTasksRecap = () => {
 const MonthlyTasksRecapWrapper = styled.div`
   max-width: 100vw;
   overflow: hidden;
+
+  ${media.desktop`
+    margin-bottom: -50px;
+    margin-right: -50px;
+  `}
 `
 const TaskSlider = styled.ul`
   display: flex;
   width: ${(props) => `calc((100% + 16px) * ${props.months} - 16px)`};
   transition: all 0.25s ease-in;
   transform: translateX(0);
+
+  ${media.desktop`
+    width: 100%;
+    flex-wrap: wrap;
+  `}
 `
 const MonthName = styled.p`
   margin-bottom: 16px;
+  font-weight: bold;
 `
-const MontlyTask = styled.li`
+const MontlyTaskList = styled.li`
   :not(:last-child) {
     margin-right: 16px;
+
+    ${media.desktop`
+      margin-right: 50px;
+    `}
   }
+
+  ${media.desktop`
+    min-width: 250px;
+    width: calc(100% / 4 - 50px);
+    max-width: 350px;
+    margin-bottom: 50px;
+    flex: 1 0 auto;
+
+    :last-child {
+      margin-right: 50px;
+    }
+  `}
 `
 
 const CustomTask = styled(Task)`

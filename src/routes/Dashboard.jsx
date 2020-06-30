@@ -37,6 +37,7 @@ export default function Dashboard() {
                 task={task.name}
                 progression={task.progress}
                 key={task.name}
+                showHint={true}
               />
             )
           else return null
@@ -49,6 +50,7 @@ export default function Dashboard() {
                 task={task.name}
                 progression={task.progress}
                 key={task.name}
+                showHint={true}
               />
             )
           else return null

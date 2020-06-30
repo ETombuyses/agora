@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { media } from '../../scss/config/mixins'
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const PageLocation = (props) => {
@@ -43,9 +45,14 @@ export const PageLocation = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const LocationPage = styled.div`
-  margin: 16px 0 15px 0;
+  margin: 0 0 15px 0;
 
   p:first-child {
     margin-bottom: 5px;
+    display: none;
+
+    ${media.desktop`
+      display: block;
+	  `};
   }
 `
