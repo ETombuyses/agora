@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { login } from '../tools/isAuth'
 import { Link } from 'react-router-dom'
 
+import { media } from '../scss/config/mixins'
+
 // components
 import { Button } from '../components/atoms/Button'
 import { SectionSepartor } from '../components/atoms/Separator'
@@ -10,7 +12,7 @@ import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
 import { InputText } from '../components/atoms/InputText'
 
 // images
-import welcomeImage from '../assets/images/welcome.png'
+import welcomeImage from '../assets/images/loginImg.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -37,7 +39,7 @@ export default function Register() {
     <PageWrapper>
       <Image src={welcomeImage} />
       <ContentWrapper>
-        <Title className="headline">Se connecter avec agora</Title>
+        <Title className="headline smallest">Se connecter avec Agora</Title>
         <GovButton
           isFullWidth={true}
           icon={GovIcon}
@@ -80,37 +82,66 @@ const PageWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  ${media.desktop`
+    flex-direction: row;
+  `}
 `
 const Image = styled.img`
-  padding-top: 56px;
   background: ${(props) => props.theme.white};
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
+  object-position: bottom;
+  object-fit: contain;
+  max-height: 35vh;
+
+  ${media.desktop`
+    max-height: inherit;
+    width: 40%;
+  `}
 `
 
 const ContentWrapper = styled.div`
   padding: 24px;
-  height: 0;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  ${media.desktop`
+    height: auto;
+    padding: 24px 15%;
+  `}
 `
 
 const Title = styled.h2`
-  text-align: center;
+  align-self: start;
   margin: 0 0 30px 0;
+  font-size: 19px;
+
+  ${media.desktop`
+    font-size: 33px;
+  `}
 `
 
 const GovButton = styled(Button)`
   margin-bottom: 16px;
+
+  ${media.desktop`
+    width: 82%;
+    align-self: start;
+  `}
 `
 
 const LoginButton = styled(Button)`
   margin-top: 16px;
   align-self: start;
   cursor: pointer;
+
+  ${media.desktop`
+    display: inherit
+  `}
 `
 
 const InputTextButton = styled(InputText)`
@@ -120,11 +151,21 @@ const InputTextButton = styled(InputText)`
 
 const FormContainer = styled.form`
   width: 100%;
+
+  ${media.desktop`
+    align-self: start;
+  `}
 `
 
 const ToggleText = styled.p`
   margin-top: 42px;
   font-size: 13px;
+
+  ${media.desktop`
+    position: absolute;
+    top: 0px;
+    right: 32px;
+  `}
 `
 
 const ToggleLink = styled(Link)`

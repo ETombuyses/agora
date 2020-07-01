@@ -9,19 +9,21 @@ export function login(email, password) {
   ;(async () => {
     const result = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/login_check',
+      url: 'http://127.0.0.1:8000/api/login',
       data: {
         username: email,
         password: password,
       },
     })
 
-    let token = result.data.token
-    let refresh_token = result.data.refresh_token
+    let token = result.data.tokens.token
+    let refresh_token = result.data.tokens.refresh_token
+    let idUser = result.data.user.id
 
     //Put tokens in local storage
     localStorage.setItem('token', token)
     localStorage.setItem('refreshToken', refresh_token)
+    localStorage.setItem('idUser', idUser)
 
     if (result) {
       window.location.href = 'http://localhost:3000/'
@@ -109,3 +111,21 @@ export function register(
     }
   })()
 }
+
+/* export function getUserData() {
+  let getuserId = localStorage.getItem('idUser')
+  let getToken = localStorage.getItem('token')
+
+  ;(async () => {
+    const result = await axios({
+      method: 'get',
+      url: `http://127.0.0.1:8000/api/user/update/${getuserId}`,
+      headers: {
+        Authorization: `Bearer ${getToken}`,
+      },
+    })
+
+    console.log(result)
+  })()
+}
+ */

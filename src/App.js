@@ -8,12 +8,14 @@ import { Nav } from './components/organisms/Nav'
 
 export default function App() {
   useEffect(() => {
+    getNewTokens()
+
     let token = localStorage.getItem('token')
     let url = window.location.pathname
 
-    if (!token && url !== '/register' && url !== '/login') {
-      window.location.href = '/login'
-    }
+    // if (!token && url !== '/register' && url !== '/login') {
+    //   window.location.href = '/login'
+    // }
   })
 
   //Timer for refresh Token

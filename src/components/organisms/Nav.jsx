@@ -9,7 +9,7 @@ import { MenuIcon } from '../atoms/MenuIcon'
 
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
-const Historic = lazy(() => import('../../routes/Historic'))
+const History = lazy(() => import('../../routes/History'))
 const Stats = lazy(() => import('../../routes/Stats'))
 const Profile = lazy(() => import('../../routes/Profile'))
 
@@ -25,7 +25,7 @@ const NavWithTheme = (props) => {
       route: '/historique',
       name: 'Historique',
       icon: 'history',
-      component: Historic,
+      component: History,
     },
     {
       route: '/statistiques',
