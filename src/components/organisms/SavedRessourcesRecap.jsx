@@ -41,7 +41,7 @@ export const SavedRessourcesRecap = (props) => {
               key={task.name}
               icon={task.icon}
               unit={task.unit}
-              savedNumber={task.savedNumber}
+              savedNumber={task.savedNumber ? task.savedNumber : 0}
             />
           )
         })}

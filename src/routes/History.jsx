@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+// import axios from 'axios'
 
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
 import { MonthlyTasksRecap } from '../components/molecules/MonthlyTasksRecap'
@@ -8,26 +8,26 @@ import { Select } from '../components/atoms/Select'
 import { PageLocation } from '../components/atoms/PageLocation'
 
 export default function History() {
-  const [userData, setUserData] = useState(0)
+  // const [userData, setUserData] = useState(0)
 
-  useEffect(() => {
-    let getuserId = localStorage.getItem('idUser')
-    let getToken = localStorage.getItem('token')
+  // useEffect(() => {
+  //   let getuserId = localStorage.getItem('idUser')
+  //   let getToken = localStorage.getItem('token')
 
-    ;(async () => {
-      const result = await axios({
-        method: 'get',
-        url: `http://127.0.0.1:8000/api/user/tasks/${getuserId}/2020`,
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+  //   ;(async () => {
+  //     const result = await axios({
+  //       method: 'get',
+  //       url: `http://127.0.0.1:8000/api/user/tasks/${getuserId}/2020`,
+  //       headers: {
+  //         Authorization: `Bearer ${getToken}`,
+  //       },
+  //     })
 
-      setUserData(result)
-    })()
-  }, [])
+  //     setUserData(result)
+  //   })()
+  // }, [])
 
-  console.log(userData)
+  // console.log(userData)
 
   //Get object data from local storage
   let savingEnergieStorage = localStorage.getItem('savingEnergie')

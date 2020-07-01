@@ -6,11 +6,11 @@ import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
 
 const tasks = {
-  electricity: { icon: 'lightning', name: 'Limite : Kw/h' },
-  trash: { icon: 'trash', name: 'Limite : ' },
-  transports: { icon: 'bus', name: 'Limite : /h' },
-  water: { icon: 'water', name: 'Limite : L/h' },
-  gas: { icon: 'fire', name: 'Limite : Kw/h' },
+  Electricté: { icon: 'lightning', unit: 'kW/h' },
+  Déchêts: { icon: 'trash', unit: 'Kg' },
+  transports: { icon: 'bus', unit: '' },
+  Eau: { icon: 'water', unit: 'L' },
+  Gaz: { icon: 'fire', unit: 'KW/h' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -41,11 +41,12 @@ export const Task = (props) => {
         />
         <div>
           <HintLabel
-            label={tasks[props.task].name}
+            // label={tasks[props.task].name}
+            label={`Limite: ${props.limit} ${tasks[props.task].unit}`}
             hint={props.showHint}
           ></HintLabel>
           <TaskDescription>
-            Consommé: <Limit>%</Limit>
+            Consommé: <Limit>{props.consummed}%</Limit>
           </TaskDescription>
         </div>
       </ContentWrapper>
