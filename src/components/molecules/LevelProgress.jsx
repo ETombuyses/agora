@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
 import { Tag } from '../atoms/Tag'
 import { ProgressCircle } from '../atoms/ProgressCircle'
+import { media } from '../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -36,8 +37,15 @@ const LevelProgressWrapper = styled.div`
   border-radius: 10px;
   background: ${(props) => props.theme.green};
   color: ${(props) => props.theme.white};
+
+  ${media.desktop`
+    padding: 6% 5% 5% 5%;
+    width: 38%;
+    min-width: 215px;
+  `}
 `
 
+// help Icon
 const Icon = styled.div`
   svg {
     position: absolute;
@@ -46,6 +54,13 @@ const Icon = styled.div`
     width: 16px;
     height: 16px;
     fill: ${(props) => props.theme.white};
+
+    ${media.desktop`
+      top: 16px;
+      right: 16px;
+      width: 20px;
+      height: 20px;
+    `}
 
     path {
       fill: ${(props) => props.theme.green};
@@ -57,6 +72,46 @@ const Title = styled.h3`
   margin-bottom: 31px;
   font-weight: bold;
   font-size: 16px;
+
+  ${media.desktop`
+    font-size: 23px;
+    margin-bottom: 15%;
+  `}
+`
+const ContentWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 115px;
+  max-width: 300px;
+  margin: 0 auto;
+
+  ${media.desktop`
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: unset;
+    height: 84%;
+  `}
+`
+const TagsContent = styled.div`
+  height: 100%;
+
+  ${media.desktop`
+    height: 40%;
+    margin-top: 40px;
+  `}
+`
+const TagsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 5px 0;
+
+  ${media.desktop`
+    padding: 0;
+  `}
 `
 
 const LevelTag = styled(Tag)`
@@ -67,27 +122,10 @@ const LevelTag = styled(Tag)`
 const TaxesTag = styled(Tag)`
   bottom: 16px;
   right: 16px;
-`
 
-const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 115px;
-  max-width: 300px;
-  margin: 0 auto;
-`
-
-const TagsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  padding: 5px 0;
-`
-
-const TagsContent = styled.div`
-  height: 100%;
+  ${media.desktop`
+    margin-top: 40px;
+  `}
 `
 
 const TagLegend = styled.span`
@@ -98,4 +136,9 @@ const TagLegend = styled.span`
   text-align: right;
   font-size: 12px;
   color: ${(props) => props.theme.white};
+
+  ${media.desktop`
+    text-align: center;
+    margin: 10px auto 0 auto;
+  `}
 `

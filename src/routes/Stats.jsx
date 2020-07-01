@@ -1,12 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Title } from '../components/atoms/Title'
 import { PageLocation } from '../components/atoms/PageLocation'
 
 export default function Home() {
   return (
     <div className="pageWrapper">
-      <PageLocation location="Analytique" />
+      <CustomPageLocation location="Analytique" />
       <Title text="Missions reussis au total" />
     </div>
   )
 }
+
+const CustomPageLocation = styled(PageLocation)`
+  margin-bottom: 15px;
+`

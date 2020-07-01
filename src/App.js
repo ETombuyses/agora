@@ -6,6 +6,8 @@ import { HashRouter as Router } from 'react-router-dom'
 
 import { Nav } from './components/organisms/Nav'
 
+require('dotenv').config()
+
 export default function App() {
   useEffect(() => {
     getNewTokens()
