@@ -67,6 +67,11 @@ const Container = styled.div`
     font-size: 19px;
     font-weight: 500;
     margin-left: 15px;
-    vertical-align: top;
+    vertical-align: super;
+    display: none;
+
+    ${media.desktop`
+      display: inline;
+    `}
   }
 `
