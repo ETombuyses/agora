@@ -9,7 +9,7 @@ import { PageLocation } from '../components/atoms/PageLocation'
 export default function History() {
   return (
     <div className="pageWrapper">
-      <PageLocation location="Historique" />
+      <CustomPageLocation location="Historique" />
       <SavedRessourcesRecap />
       <MissionHistoryTitle>Historique des missions</MissionHistoryTitle>
       <CustomSelect />
@@ -27,4 +27,8 @@ const MissionHistoryTitle = styled.h2`
 
 const CustomSelect = styled(Select)`
   margin-bottom: 11px;
+`
+
+const CustomPageLocation = styled(PageLocation)`
+  margin-bottom: 15px;
 `

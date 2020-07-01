@@ -21,6 +21,8 @@ import axios from 'axios'
 export default function Dashboard() {
   const [userData, setUserData] = useState(0)
 
+  console.log('ezfzf', process.env)
+
   const tasks = [
     { name: 'water', progress: 0 },
     { name: 'gas', progress: 49 },
@@ -33,6 +35,7 @@ export default function Dashboard() {
     let getuserId = localStorage.getItem('idUser')
     let getToken = localStorage.getItem('token')
 
+    console.log('ubfuzbf', process.env)
     ;(async () => {
       const result = await axios({
         method: 'get',
@@ -48,37 +51,43 @@ export default function Dashboard() {
 
   return (
     <PageWrapper className="pageWrapper">
-      <TasksContainer>
-        <PageLocation location="Dashboard" />
-        <WelcomeBanner />
-        <Title text="Missions en cours :" />
-        {tasks.map((task, index) => {
-          if (task.progress > 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-                showHint={true}
-              />
-            )
-          else return null
-        })}
-        <Title text="Missions ratées :"></Title>
-        {tasks.map((task, index) => {
-          if (task.progress === 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-                showHint={true}
-              />
-            )
-          else return null
-        })}
-        <CustomLevelProgress progress={30} />
-      </TasksContainer>
+      <MainContentWrapper>
+        <div>
+          <CustomPageLocation location="Dashboard" />
+          <WelcomeBanner />
+        </div>
+        <MainPageContent>
+          <TasksContainer>
+            <Title text="Missions en cours :" />
+            {tasks.map((task, index) => {
+              if (task.progress > 0)
+                return (
+                  <CustomTask
+                    task={task.name}
+                    progression={task.progress}
+                    key={task.name}
+                    showHint={true}
+                  />
+                )
+              else return null
+            })}
+            <Title text="Missions ratées :"></Title>
+            {tasks.map((task, index) => {
+              if (task.progress === 0)
+                return (
+                  <CustomTask
+                    task={task.name}
+                    progression={task.progress}
+                    key={task.name}
+                    showHint={true}
+                  />
+                )
+              else return null
+            })}
+          </TasksContainer>
+          <CustomLevelProgress progress={30} />
+        </MainPageContent>
+      </MainContentWrapper>
       <UserStats>
         <CustomPic />
         <UserName>Tristan Lemire</UserName>
@@ -103,11 +112,38 @@ const PageWrapper = styled.div`
   align-items: stretch;
 `
 
-const TasksContainer = styled.div`
+const MainContentWrapper = styled.div`
   width: 100%;
 
   ${media.desktop`
+    height: 100%;
     width: 70%;
+    display: flex;
+    flex-direction: column;
+	`}
+`
+const CustomPageLocation = styled(PageLocation)`
+  margin-bottom: 15px;
+`
+
+const MainPageContent = styled.div`
+  ${media.desktop`
+    display: flex;
+    flex: 1 0 auto;
+	`}
+`
+
+const TasksContainer = styled.div`
+  ${media.desktop`
+     margin-right: 3%;
+	`}
+`
+
+const CustomTask = styled(Task)`
+  ${media.desktop`
+    :not(:last-child) {
+      margin-bottom: 5px;
+    }
 	`}
 `
 
@@ -143,7 +179,7 @@ const CustomLevelProgress = styled(LevelProgress)`
 `
 
 const CustomPic = styled(ProfilePic)`
-  background: ${(props) => props.theme.lightGreen};
+  background: ${(props) => props.theme.grassGreen};
   border-radius: 50%;
   margin-bottom: 5%;
   width: auto;
