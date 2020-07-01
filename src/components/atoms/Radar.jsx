@@ -74,7 +74,7 @@ const TaskIconWater = styled(TaskIcon)`
 `
 const TaskIconFire = styled(TaskIcon)`
   position: absolute;
-  top: 98px;
+  top: 35%;
 `
 const TaskIconLight = styled(TaskIcon)`
   position: absolute;
@@ -88,6 +88,6 @@ const TaskIconBus = styled(TaskIcon)`
 `
 const TaskIconTrash = styled(TaskIcon)`
   position: absolute;
-  top: 98px;
+  top: 35%;
   right: 0;
 `
