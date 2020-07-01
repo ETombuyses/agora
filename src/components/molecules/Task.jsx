@@ -6,11 +6,11 @@ import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
 
 const tasks = {
-  electricity: { icon: 'lightning', name: 'Electricité' },
-  trash: { icon: 'trash', name: 'Déchêts' },
-  transports: { icon: 'bus', name: 'Transports' },
-  water: { icon: 'water', name: 'Eau' },
-  gas: { icon: 'fire', name: 'Gaz' },
+  electricity: { icon: 'lightning', name: 'Limite : Kw/h' },
+  trash: { icon: 'trash', name: 'Limite : ' },
+  transports: { icon: 'bus', name: 'Limite : /h' },
+  water: { icon: 'water', name: 'Limite : L/h' },
+  gas: { icon: 'fire', name: 'Limite : Kw/h' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -45,17 +45,10 @@ export const Task = (props) => {
             hint={props.showHint}
           ></HintLabel>
           <TaskDescription>
-            Ne pas consommer plus de <Limit>xKw</Limit>
+            Consommé: <Limit>%</Limit>
           </TaskDescription>
         </div>
       </ContentWrapper>
-      <CustomTag
-        isTaskTag={true}
-        color={
-          taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
-        }
-        text="3L"
-      />
     </TaskWrapper>
   )
 }
@@ -92,6 +85,18 @@ const TaskWrapper = styled.div`
     left: 0;
     transition: width 2s ease;
   }
+
+  span  {
+    color: ${(props) => {
+      if (props.progression <= 0) {
+        return props.theme.red
+      } else if (props.progression < 50) {
+        return props.theme.orange
+      } else {
+        return props.theme.green
+      }
+    }};
+  }
 `
 
 const CustomTag = styled(Tag)`
@@ -111,6 +116,7 @@ const CustomTaskIcon = styled(TaskIcon)`
 
 const TaskDescription = styled.p`
   font-size: 12px;
+  font-weight: 500;
 `
 
 const Limit = styled.span`
