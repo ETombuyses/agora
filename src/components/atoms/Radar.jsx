@@ -17,7 +17,7 @@ export const RadarChart = (props) => {
   const nbValidatedTaskWater = dataChart.nbValidatedTaskWater
 
   return (
-    <RadarWrapper>
+    <RadarWrapper className={props.className}>
       <TaskIconWater icon={'water'} color={'whiteTransparent'} />
       <TaskIconTrash icon={'trash'} color={'whiteTransparent'} />
       <TaskIconLight icon={'lightning'} color={'whiteTransparent'} />
@@ -70,7 +70,7 @@ const TaskIconWater = styled(TaskIcon)`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 10px;
+  top: -10px;
 `
 const TaskIconFire = styled(TaskIcon)`
   position: absolute;

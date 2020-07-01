@@ -89,8 +89,8 @@ export default function Dashboard() {
             return <CustomTaskTag icon={task.name} key={task.name} />
           })}
         </TasksStatsWrapper>
-        <p style={{ fontSize: '19px' }}>Statistiques</p>
-        {userData.data && <RadarChart data={userData.data} />}
+        <StatTitle>Statistiques</StatTitle>
+        {userData.data && <CustomRadarChart data={userData.data} />}
       </UserStats>
     </PageWrapper>
   )
@@ -112,9 +112,10 @@ const TasksContainer = styled.div`
 `
 
 const UserStats = styled.div`
+  height: calc(100vh - 24px - 46px);
   min-height: calc(651px + 32px + 32px);
   width: 30%;
-  min-width: 260px;
+  min-width: 314px;
   background: white;
   margin-left: 40px;
   border-radius: 15px;
@@ -122,15 +123,14 @@ const UserStats = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px 12px;
-
-  svg:last-child {
-    height: 100% !important;
-    margin-top: 10px;
-  }
+  padding: 3% 1.5%;
 
   ${media.tablet`
     display: flex;
+  `}
+
+  ${media.desktop`
+    height: 100%;
 	`}
 `
 
@@ -145,24 +145,48 @@ const CustomLevelProgress = styled(LevelProgress)`
 const CustomPic = styled(ProfilePic)`
   background: ${(props) => props.theme.lightGreen};
   border-radius: 50%;
-  margin-bottom: 16px;
-  max-height: 100px;
+  margin-bottom: 5%;
   width: auto;
+  height: 14%;
+  min-height: 50px;
+  max-height: 150px;
 `
 
 const UserName = styled.span`
-  margin-bottom: 16px;
+  margin-bottom: 6%;
 `
 const SparedRessourcesTitle = styled.h5`
-  margin: 32px auto 15px auto;
+  margin: 10% auto 1.7% auto;
 `
 
 const TasksStatsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  align-items: center;
+  width: 225px;
+  height: 19%;
+  min-height: 160px;
 `
 const CustomTaskTag = styled(TaskStatTag)`
-  margin: 8px;
+  margin: 1.9% 2.54%;
+`
+
+const StatTitle = styled.p`
+  font-size: 19px;
+  margin-top: 10%;
+`
+
+const CustomRadarChart = styled(RadarChart)`
+  margin-top: 7%;
+  height: 30%;
+  max-width: 100%;
+  /* width: 89%; */
+  /* height: calc(260px + 10px); */
+  /* width: calc(260px + 10px); */
+
+  svg {
+    width: auto !important;
+    max-width: 100%;
+  }
 `
