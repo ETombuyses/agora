@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { Link, Switch, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Link, Switch, Route, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { withTheme } from 'styled-components'
 import { media } from '../../scss/config/mixins'
@@ -88,18 +88,20 @@ const NavWithTheme = (props) => {
       )}
 
       <Suspense fallback={<div>Chargement...</div>}>
-        <Switch>
-          {pages.map((page) => {
-            return (
-              <Route
-                exact
-                key={page.route}
-                path={page.route}
-                component={page.component}
-              />
-            )
-          })}
-        </Switch>
+        <HashRouter>
+          <Switch>
+            {pages.map((page) => {
+              return (
+                <Route
+                  exact
+                  key={page.route}
+                  path={page.route}
+                  component={page.component}
+                />
+              )
+            })}
+          </Switch>
+        </HashRouter>
       </Suspense>
     </div>
   )
