@@ -85,11 +85,11 @@ export default function Register() {
     const emailling = refs.email.current.value
     const password = refs.pswd.current.value
 
-    const agoraNumber = Number(refs.nbAgora)
-    const residentNumber = Number(refs.nbResident)
-    const livingArea = Number(refs.livingSpace)
-    const navigoNumber = Number(refs.nbNavigo)
-    const nifNumber = refs.nbNIF
+    const agoraNumber = refs.nbAgora.current.value
+    const residentNumber = Number(refs.nbResident.current.value)
+    const livingArea = Number(refs.livingSpace.current.value)
+    const navigoNumber = refs.nbNavigo.current.value
+    const nifNumber = refs.nbNIF.current.value
 
     let error = checkAgoraForm(
       refs.nbAgora.current.value,
@@ -105,6 +105,16 @@ export default function Register() {
     } else {
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
+
+      console.log(typeof lastName, lastName)
+      console.log(typeof primaryName, primaryName)
+      console.log(typeof emailling, emailling)
+      console.log(typeof password, password)
+      console.log(typeof agoraNumber, agoraNumber)
+      console.log(typeof residentNumber, residentNumber)
+      console.log(typeof livingArea, livingArea)
+      console.log(typeof navigoNumber, navigoNumber)
+      console.log(typeof nifNumber, nifNumber)
 
       register(
         lastName,

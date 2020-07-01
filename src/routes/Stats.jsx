@@ -15,15 +15,15 @@ export default function Home() {
     <div className="pageWrapper">
       <PageLocation location="Analytique" />
       <GlobalDataCardWrapper>
-        <GlobalDataCard icon={'user'} number={'53 739 096'} unit={'missions'} />
         <GlobalDataCard
-          icon={'task'}
-          number={'1 786 765'}
+          icon={'user'}
+          number={'53 739 096'}
           unit={'utilisateurs'}
         />
+        <GlobalDataCard icon={'task'} number={'1 786 765'} unit={'missions'} />
       </GlobalDataCardWrapper>
       <Title text="Missions reussis au total" />
-      <TaskIcon icon={'water'} color={'green'} />
+      <TaskIcon icon={'water'} color={'white'} text={'Eau'} />
     </div>
   )
 }

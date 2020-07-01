@@ -21,17 +21,20 @@ const images = {
 
 export const TaskIcon = (props) => {
   return (
-    <IconWrapper
-      className={props.className}
-      color={props.color}
-      big={props.big}
-    >
-      <img
-        icon={props.icon}
-        src={images[props.icon].icon}
-        alt={'emoji ' + images[props.icon].name}
-      ></img>
-    </IconWrapper>
+    <Container>
+      <IconWrapper
+        className={props.className}
+        color={props.color}
+        big={props.big}
+      >
+        <img
+          icon={props.icon}
+          src={images[props.icon].icon}
+          alt={'emoji ' + images[props.icon].name}
+        ></img>
+      </IconWrapper>
+      {props.text && <span>{props.text}</span>}
+    </Container>
   )
 }
 
@@ -56,5 +59,14 @@ const IconWrapper = styled.div`
       width: ${(props) => (props.big ? '35px' : '16px')};
       height: ${(props) => (props.big ? '35px' : '16px')};
     `}
+  }
+`
+
+const Container = styled.div`
+  span {
+    font-size: 19px;
+    font-weight: 500;
+    margin-left: 15px;
+    vertical-align: top;
   }
 `

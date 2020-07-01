@@ -36,13 +36,14 @@ const DataWrapper = styled.div`
   border-radius: 10px;
   justify-content: space-between;
 
-  .small {
-    margin: 0 8px;
+  span {
+    font-weight: 500;
   }
 `
 
 const DataNumber = styled.span`
   text-transform: uppercase;
+  margin: 0 8px;
 `
 
 const IconImg = styled.img`

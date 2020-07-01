@@ -47,12 +47,23 @@ export const PageLocation = (props) => {
 const LocationPage = styled.div`
   margin: 0 0 15px 0;
 
+  p {
+    font-size: 15px;
+    font-weight: 500;
+
+    ${media.desktop`
+    font-size: 13px;
+  `};
+  }
+
   p:first-child {
     margin-bottom: 5px;
     display: none;
 
     ${media.desktop`
       display: block;
+      font-size: 15px;
+      font-weight: 500;
 	  `};
   }
 `
