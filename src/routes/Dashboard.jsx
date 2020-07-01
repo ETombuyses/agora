@@ -118,7 +118,7 @@ const UserStats = styled.div`
   background: white;
   margin-left: 40px;
   border-radius: 15px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -128,6 +128,10 @@ const UserStats = styled.div`
     height: 100% !important;
     margin-top: 10px;
   }
+
+  ${media.tablet`
+    display: flex;
+	`}
 `
 
 /* const MissionTitle = styled.p`
