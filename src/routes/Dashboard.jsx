@@ -42,9 +42,29 @@ export default function Dashboard() {
         },
       })
 
-      setUserData(result)
+      if (result.data) {
+        let saveGas = result.data.additionalDatas.data.saving_gas
+        let saveWater = result.data.additionalDatas.data.saving_water
+        let saveWaste = result.data.additionalDatas.data.saving_waste
+        let saveElect = result.data.additionalDatas.data.saving_electricity
+        let saveTransport = result.data.additionalDatas.data.saving_transport
+
+        let saveEnergie = JSON.stringify({
+          gas: saveGas,
+          water: saveWater,
+          waste: saveWaste,
+          elect: saveElect,
+          transport: saveTransport,
+        })
+
+        localStorage.setItem('savingEnergie', saveEnergie)
+
+        setUserData(result)
+      }
     })()
   }, [])
+
+  console.log(userData)
 
   return (
     <PageWrapper className="pageWrapper">
