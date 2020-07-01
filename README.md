@@ -4,6 +4,8 @@
 
 # Projet fin d'année: Agora
 
+https://hetic-agora.netlify.app/
+
 ## Technologies envisagées
 
 - React (webpack inclut)  
@@ -56,7 +58,3 @@ to format all files run:
 `prettier --write .`
 
 change formatting options in prettier.config.js
-
-## live site
-
-https://hetic-agora.netlify.app/
