@@ -51,7 +51,7 @@ const NavWithTheme = (props) => {
 
   return (
     <div>
-      {currentRoute !== '#/register' && currentRoute !== '#/login' && (
+      {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
           <List>
             {pages.map((page) => {
