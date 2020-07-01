@@ -51,7 +51,7 @@ const NavWithTheme = (props) => {
 
   return (
     <div>
-      {currentRoute !== '/register' && currentRoute !== '/login' && (
+      {currentRoute !== '#/register' && currentRoute !== '#/login' && (
         <NavWrapper>
           <List>
             {pages.map((page) => {
@@ -86,22 +86,19 @@ const NavWithTheme = (props) => {
           </List>
         </NavWrapper>
       )}
-
       <Suspense fallback={<div>Chargement...</div>}>
-        <HashRouter>
-          <Switch>
-            {pages.map((page) => {
-              return (
-                <Route
-                  exact
-                  key={page.route}
-                  path={page.route}
-                  component={page.component}
-                />
-              )
-            })}
-          </Switch>
-        </HashRouter>
+        <Switch>
+          {pages.map((page) => {
+            return (
+              <Route
+                exact
+                key={page.route}
+                path={page.route}
+                component={page.component}
+              />
+            )
+          })}
+        </Switch>
       </Suspense>
     </div>
   )
