@@ -8,7 +8,7 @@ import { HintLabel } from '../atoms/HintLabel'
 const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
   Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
-  transports: { icon: 'bus', unit: '', name: 'Transports' },
+  transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
   Eau: { icon: 'water', unit: 'L', name: 'Eau' },
   Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
@@ -44,7 +44,9 @@ export const Task = (props) => {
             // label={tasks[props.task].name}
             label={
               props.isHistoryTask
-                ? `Limite: ${props.limit} ${tasks[props.task].unit}`
+                ? props.task === 'transportsIsValidate'
+                  ? 'Abonnement Navigo'
+                  : `Limite: ${props.limit} ${tasks[props.task].unit}`
                 : tasks[props.task].name
             }
             hint={props.showHint}
@@ -62,12 +64,18 @@ export const Task = (props) => {
           )}
           {props.isHistoryTask && (
             <TaskDescription>
-              Consommé:{' '}
+              {props.task === 'transportsIsValidate'
+                ? `Status: `
+                : `Consommé: `}
               <Limit
                 isHistoryTask={props.isHistoryTask}
                 progression={props.progression}
               >
-                {props.consummed}%
+                {props.task === 'transportsIsValidate'
+                  ? props.progression === 100
+                    ? 'abonné'
+                    : 'non abonné'
+                  : props.consummed + '%'}
               </Limit>
             </TaskDescription>
           )}

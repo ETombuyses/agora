@@ -8,6 +8,32 @@ import { Select } from '../components/atoms/Select'
 import { PageLocation } from '../components/atoms/PageLocation'
 
 export default function History() {
+  const [userRegisteredYear, setUserRegisteredYear] = useState('')
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+
+  useEffect(() => {
+    let today = new Date()
+    let currentYear = today.getFullYear()
+    let currentMonth = today.getMonth() + 1
+    let numberMonthsRegistered = JSON.parse(localStorage.getItem('userData'))
+      .monthsRegistered
+
+    let registeredBeforeThisYear = currentMonth - numberMonthsRegistered < 0
+
+    if (!registeredBeforeThisYear) {
+      setUserRegisteredYear(currentYear)
+    } else {
+      let yearsSubscribed = Math.ceil(
+        -(currentMonth - numberMonthsRegistered) / 12
+      )
+
+      setUserRegisteredYear(currentYear - yearsSubscribed)
+    }
+  })
+
+  const handleYearCHange = (year) => {
+    setSelectedYear(year)
+  }
 
   //Get object data from local storage
   let savingEnergieStorage = localStorage.getItem('savingEnergie')
@@ -24,8 +50,11 @@ export default function History() {
         transport={savingEnergie.transport}
       />
       <MissionHistoryTitle>Historique des missions</MissionHistoryTitle>
-      <CustomSelect />
-      <MonthlyTasksRecap />
+      <CustomSelect
+        startYear={userRegisteredYear}
+        handleYearCHange={handleYearCHange}
+      />
+      <MonthlyTasksRecap selectedYear={selectedYear} key={selectedYear} />
     </div>
   )
 }

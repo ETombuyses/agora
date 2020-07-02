@@ -24,7 +24,7 @@ const slider = React.createRef()
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const MonthlyTasksRecap = () => {
+export const MonthlyTasksRecap = (props) => {
   const [monthsTasksData, setMonthsTasksData] = useState([])
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const MonthlyTasksRecap = () => {
     ;(async () => {
       const result = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/user/tasks/${getuserId}/2020`,
+        url: `http://127.0.0.1:8000/api/user/tasks/${getuserId}/${props.selectedYear}`,
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -52,12 +52,18 @@ export const MonthlyTasksRecap = () => {
           tasksReworked.push({ name: task[0], data: task[1] })
         })
 
+        // // if we want to order taks by percent of ressource consomption
+        // tasksReworked.sort(function (a, b) {
+        //   return a.data.percent - b.data.percent
+        // })
+
         finalMonthsData.push({ month: monthNumber, tasks: tasksReworked })
       })
       // order months
       finalMonthsData.sort(function (a, b) {
         return a.month - b.month
       })
+      console.log(finalMonthsData)
       setMonthsTasksData(finalMonthsData)
     })()
   }, [])
@@ -135,7 +141,13 @@ export const MonthlyTasksRecap = () => {
               {month.tasks.map((task) => {
                 return (
                   <CustomTask
-                    progression={-(task.data.percent - 100)}
+                    progression={
+                      task.name === 'transportsIsValidate'
+                        ? task.data
+                          ? 100
+                          : 0
+                        : -(task.data.percent - 100)
+                    }
                     consummed={task.data.percent}
                     limit={task.data.Average}
                     task={task.name}
