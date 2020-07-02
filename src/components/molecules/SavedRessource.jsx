@@ -21,7 +21,7 @@ export const SavedRessource = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const SavedRessourceWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
   padding: 8px;
   border-radius: 10px;
   display: flex;

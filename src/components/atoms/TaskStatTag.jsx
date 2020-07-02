@@ -37,7 +37,7 @@ const TagWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   border-radius: 10px;
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
 
   img {
     width: 22px;

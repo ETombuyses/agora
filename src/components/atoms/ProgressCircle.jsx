@@ -1,7 +1,7 @@
 import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
-
+import { media } from '../../scss/config/mixins'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {
@@ -24,13 +24,7 @@ const Circle = (props) => {
 
   return (
     <CicleWrapper>
-      <svg
-        width="120"
-        height="120"
-        viewBox="0 0 120 120"
-        fill="white"
-        style={{ transform: 'rotate(-90deg)', strokeLinecap: 'round' }}
-      >
+      <CustomSvg width="120" height="120" viewBox="0 0 120 120" fill="white">
         <circle
           cx="60"
           cy="60"
@@ -49,7 +43,7 @@ const Circle = (props) => {
           strokeDasharray="339.292"
           strokeDashoffset={offset}
         />
-      </svg>
+      </CustomSvg>
       <Percent>{props.progress}%</Percent>
     </CicleWrapper>
   )
@@ -64,16 +58,35 @@ export { ProgressCircle }
 const CicleWrapper = styled.div`
   position: relative;
 
-  svg circle {
+  ${media.desktop`
+    width: 100%;
+  `}
+`
+
+const CustomSvg = styled.svg`
+  transform: rotate(-90deg);
+  stroke-linecap: round;
+
+  ${media.desktop`
+    width: 100%;
+    height: auto;
+  `}
+
+  circle {
     transition: stroke-dashoffset 2s ease;
   }
 `
 
 const Percent = styled.span`
   position: absolute;
+  font-weight: bold;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
   color: ${(props) => props.theme.white};
+
+  ${media.desktop`
+    font-size: 35px;
+  `}
 `

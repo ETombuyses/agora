@@ -21,6 +21,8 @@ import axios from 'axios'
 export default function Dashboard() {
   const [userData, setUserData] = useState(0)
 
+  console.log('ezfzf', process.env)
+
   const tasks = [
     { name: 'Eau', progress: 0 },
     { name: 'Gaz', progress: 49 },
@@ -33,6 +35,7 @@ export default function Dashboard() {
     let getuserId = localStorage.getItem('idUser')
     let getToken = localStorage.getItem('token')
 
+    console.log('ubfuzbf', process.env)
     ;(async () => {
       const result = await axios({
         method: 'get',
@@ -68,37 +71,43 @@ export default function Dashboard() {
 
   return (
     <PageWrapper className="pageWrapper">
-      <TasksContainer>
-        <PageLocation location="Dashboard" />
-        <WelcomeBanner />
-        <Title text="Missions en cours :" />
-        {tasks.map((task, index) => {
-          if (task.progress > 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-                showHint={true}
-              />
-            )
-          else return null
-        })}
-        <Title text="Missions ratées :"></Title>
-        {tasks.map((task, index) => {
-          if (task.progress === 0)
-            return (
-              <Task
-                task={task.name}
-                progression={task.progress}
-                key={task.name}
-                showHint={true}
-              />
-            )
-          else return null
-        })}
-        <CustomLevelProgress progress={30} />
-      </TasksContainer>
+      <MainContentWrapper>
+        <div>
+          <CustomPageLocation location="Dashboard" />
+          <WelcomeBanner />
+        </div>
+        <MainPageContent>
+          <TasksContainer>
+            <Title text="Missions en cours :" />
+            {tasks.map((task, index) => {
+              if (task.progress > 0)
+                return (
+                  <CustomTask
+                    task={task.name}
+                    progression={task.progress}
+                    key={task.name}
+                    showHint={true}
+                  />
+                )
+              else return null
+            })}
+            <Title text="Missions ratées :"></Title>
+            {tasks.map((task, index) => {
+              if (task.progress === 0)
+                return (
+                  <CustomTask
+                    task={task.name}
+                    progression={task.progress}
+                    key={task.name}
+                    showHint={true}
+                  />
+                )
+              else return null
+            })}
+          </TasksContainer>
+          <CustomLevelProgress progress={30} />
+        </MainPageContent>
+      </MainContentWrapper>
       <UserStats>
         <CustomPic />
         <UserName>Tristan Lemire</UserName>
@@ -109,8 +118,8 @@ export default function Dashboard() {
             return <CustomTaskTag icon={task.name} key={task.name} />
           })}
         </TasksStatsWrapper>
-        <p style={{ fontSize: '19px' }}>Statistiques</p>
-        {userData.data && <RadarChart data={userData.data} />}
+        <StatTitle>Statistiques</StatTitle>
+        {userData.data && <CustomRadarChart data={userData.data} />}
       </UserStats>
     </PageWrapper>
   )
@@ -123,18 +132,46 @@ const PageWrapper = styled.div`
   align-items: stretch;
 `
 
-const TasksContainer = styled.div`
+const MainContentWrapper = styled.div`
   width: 100%;
 
   ${media.desktop`
+    height: 100%;
     width: 70%;
+    display: flex;
+    flex-direction: column;
+	`}
+`
+const CustomPageLocation = styled(PageLocation)`
+  margin-bottom: 15px;
+`
+
+const MainPageContent = styled.div`
+  ${media.desktop`
+    display: flex;
+    flex: 1 0 auto;
+	`}
+`
+
+const TasksContainer = styled.div`
+  ${media.desktop`
+     margin-right: 3%;
+	`}
+`
+
+const CustomTask = styled(Task)`
+  ${media.desktop`
+    :not(:last-child) {
+      margin-bottom: 5px;
+    }
 	`}
 `
 
 const UserStats = styled.div`
+  height: calc(100vh - 24px - 46px);
   min-height: calc(651px + 32px + 32px);
   width: 30%;
-  min-width: 260px;
+  min-width: 314px;
   background: white;
   margin-left: 40px;
   border-radius: 15px;
@@ -142,15 +179,14 @@ const UserStats = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px 12px;
-
-  svg:last-child {
-    height: 100% !important;
-    margin-top: 10px;
-  }
+  padding: 3% 1.5%;
 
   ${media.tablet`
     display: flex;
+  `}
+
+  ${media.desktop`
+    height: 100%;
 	`}
 `
 
@@ -163,26 +199,50 @@ const CustomLevelProgress = styled(LevelProgress)`
 `
 
 const CustomPic = styled(ProfilePic)`
-  background: ${(props) => props.theme.lightGreen};
+  background: ${(props) => props.theme.grassGreen};
   border-radius: 50%;
-  margin-bottom: 16px;
-  max-height: 100px;
+  margin-bottom: 5%;
   width: auto;
+  height: 14%;
+  min-height: 50px;
+  max-height: 150px;
 `
 
 const UserName = styled.span`
-  margin-bottom: 16px;
+  margin-bottom: 6%;
 `
 const SparedRessourcesTitle = styled.h5`
-  margin: 32px auto 15px auto;
+  margin: 10% auto 1.7% auto;
 `
 
 const TasksStatsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  align-items: center;
+  width: 225px;
+  height: 19%;
+  min-height: 160px;
 `
 const CustomTaskTag = styled(TaskStatTag)`
-  margin: 8px;
+  margin: 1.9% 2.54%;
+`
+
+const StatTitle = styled.p`
+  font-size: 19px;
+  margin-top: 10%;
+`
+
+const CustomRadarChart = styled(RadarChart)`
+  margin-top: 7%;
+  height: 30%;
+  max-width: 100%;
+  /* width: 89%; */
+  /* height: calc(260px + 10px); */
+  /* width: calc(260px + 10px); */
+
+  svg {
+    width: auto !important;
+    max-width: 100%;
+  }
 `
