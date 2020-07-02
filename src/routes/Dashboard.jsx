@@ -22,11 +22,11 @@ export default function Dashboard() {
   const [userData, setUserData] = useState(0)
 
   const tasks = [
-    { name: 'water', progress: 0 },
-    { name: 'gas', progress: 49 },
-    { name: 'trash', progress: 100 },
+    { name: 'Eau', progress: 0 },
+    { name: 'Gaz', progress: 49 },
+    { name: 'Déchêts', progress: 100 },
     { name: 'transports', progress: 0 },
-    { name: 'electricity', progress: 60 },
+    { name: 'Electricté', progress: 60 },
   ]
 
   useEffect(() => {

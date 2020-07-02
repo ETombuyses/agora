@@ -141,6 +141,7 @@ export const MonthlyTasksRecap = () => {
                     task={task.name}
                     key={task.name}
                     showHint={false}
+                    isHistoryTask={true}
                   />
                 )
               })}

@@ -6,11 +6,11 @@ import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
 
 const tasks = {
-  Electricté: { icon: 'lightning', unit: 'kW/h' },
-  Déchêts: { icon: 'trash', unit: 'Kg' },
-  transports: { icon: 'bus', unit: '' },
-  Eau: { icon: 'water', unit: 'L' },
-  Gaz: { icon: 'fire', unit: 'KW/h' },
+  Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
+  Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
+  transports: { icon: 'bus', unit: '', name: 'Transports' },
+  Eau: { icon: 'water', unit: 'L', name: 'Eau' },
+  Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -42,14 +42,38 @@ export const Task = (props) => {
         <div>
           <HintLabel
             // label={tasks[props.task].name}
-            label={`Limite: ${props.limit} ${tasks[props.task].unit}`}
+            label={
+              props.isHistoryTask
+                ? `Limite: ${props.limit} ${tasks[props.task].unit}`
+                : tasks[props.task].name
+            }
             hint={props.showHint}
           ></HintLabel>
-          <TaskDescription>
-            Consommé: <Limit>{props.consummed}%</Limit>
-          </TaskDescription>
+          {!props.isHistoryTask && (
+            <TaskDescription>
+              Ne pas consommer plus de{' '}
+              <Limit isHistoryTask={props.isHistoryTask}>xKw</Limit>
+            </TaskDescription>
+          )}
+          {props.isHistoryTask && (
+            <TaskDescription>
+              Consommé:{' '}
+              <Limit isHistoryTask={props.isHistoryTask}>
+                {props.consummed}%
+              </Limit>
+            </TaskDescription>
+          )}
         </div>
       </ContentWrapper>
+      {!props.isHistoryTask && (
+        <CustomTag
+          isTaskTag={true}
+          color={
+            taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+          }
+          text="3L"
+        />
+      )}
     </TaskWrapper>
   )
 }
@@ -86,18 +110,6 @@ const TaskWrapper = styled.div`
     left: 0;
     transition: width 2s ease;
   }
-
-  span  {
-    color: ${(props) => {
-      if (props.progression <= 0) {
-        return props.theme.red
-      } else if (props.progression < 50) {
-        return props.theme.orange
-      } else {
-        return props.theme.green
-      }
-    }};
-  }
 `
 
 const CustomTag = styled(Tag)`
@@ -122,4 +134,15 @@ const TaskDescription = styled.p`
 
 const Limit = styled.span`
   font-weight: bold;
+  color: ${(props) => {
+    if (!props.isHistoryTask) {
+      return props.theme.black
+    } else if (props.progression <= 0) {
+      return props.theme.red
+    } else if (props.progression < 50) {
+      return props.theme.orange
+    } else {
+      return props.theme.green
+    }
+  }};
 `
