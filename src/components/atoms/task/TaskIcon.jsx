@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../scss/config/mixins'
+import { media } from '../../../scss/config/mixins'
 
 // emoticons
-import fire from '../../assets/images/fire.png'
-import water from '../../assets/images/water.png'
-import lightning from '../../assets/images/lightning.png'
-import trash from '../../assets/images/trash.png'
-import bus from '../../assets/images/bus.png'
+import fire from '../../../assets/images/fire.png'
+import water from '../../../assets/images/water.png'
+import lightning from '../../../assets/images/lightning.png'
+import trash from '../../../assets/images/trash.png'
+import bus from '../../../assets/images/bus.png'
 
 const images = {
   fire: { icon: fire, name: 'feu' },

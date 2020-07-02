@@ -7,12 +7,12 @@ import { LevelProgress } from '../components/molecules/LevelProgress'
 
 import { media } from '../scss/config/mixins'
 
-import { ReactComponent as ProfilePic } from '../assets/icons/profile-pic.svg'
-import { Tag } from '../components/atoms/Tag'
-import { TaskStatTag } from '../components/atoms/TaskStatTag'
-import { Title } from '../components/atoms/Title'
-import { PageLocation } from '../components/atoms/PageLocation'
-import { RadarChart } from '../components/atoms/Radar'
+import { ReactComponent as ProfilePic } from '../assets/icons/profile/profile-pic.svg'
+import { Tag } from '../components/atoms/task/Tag'
+import { TaskStatTag } from '../components/atoms/task/TaskStatTag'
+import { Title } from '../components/atoms/layout/Title'
+import { PageLocation } from '../components/atoms/layout/PageLocation'
+import { RadarChart } from '../components/atoms/chart/Radar'
 
 import axios from 'axios'
 

@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 // svg icons
-import { ReactComponent as AnalyticsIcon } from '../../assets/icons/analytics.svg'
-import { ReactComponent as HistoryIcon } from '../../assets/icons/clock.svg'
-import { ReactComponent as DashboardIcon } from '../../assets/icons/dashboard.svg'
-import { ReactComponent as ProfileIcon } from '../../assets/icons/profile.svg'
+import { ReactComponent as AnalyticsIcon } from '../../../assets/icons/menu/analytics.svg'
+import { ReactComponent as HistoryIcon } from '../../../assets/icons/menu/clock.svg'
+import { ReactComponent as DashboardIcon } from '../../../assets/icons/menu/dashboard.svg'
+import { ReactComponent as ProfileIcon } from '../../../assets/icons/menu/profile.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

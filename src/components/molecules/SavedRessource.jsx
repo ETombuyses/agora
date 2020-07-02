@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { media } from '../../scss/config/mixins'
 
-import { TaskIcon } from '../atoms/TaskIcon'
+import { TaskIcon } from '../atoms/task/TaskIcon'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Tag } from '../atoms/Tag'
-import { TaskIcon } from '../atoms/TaskIcon'
-import { HintLabel } from '../atoms/HintLabel'
+import { Tag } from '../atoms/task/Tag'
+import { TaskIcon } from '../atoms/task/TaskIcon'
+import { TaskTitle } from '../atoms/task/TaskTitle'
 
 const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
@@ -40,9 +40,9 @@ export const Task = (props) => {
           }
         />
         <div>
-          <HintLabel
+          <TaskTitle
             // label={tasks[props.task].name}
-            label={
+            title={
               props.isHistoryTask
                 ? props.task === 'transportsIsValidate'
                   ? 'Abonnement Navigo'
@@ -50,7 +50,7 @@ export const Task = (props) => {
                 : tasks[props.task].name
             }
             hint={props.showHint}
-          ></HintLabel>
+          ></TaskTitle>
           {!props.isHistoryTask && (
             <TaskDescription>
               Ne pas consommer plus de{' '}

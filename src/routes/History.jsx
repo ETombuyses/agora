@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
 import { MonthlyTasksRecap } from '../components/molecules/MonthlyTasksRecap'
-import { Select } from '../components/atoms/Select'
-import { PageLocation } from '../components/atoms/PageLocation'
+import { Select } from '../components/atoms/form/Select'
+import { PageLocation } from '../components/atoms/layout/PageLocation'
 
 export default function History() {
   const [userRegisteredYear, setUserRegisteredYear] = useState('')

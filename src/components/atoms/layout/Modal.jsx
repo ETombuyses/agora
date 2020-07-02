@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 //import Component
 
-import { ReactComponent as CrossClose } from '../../assets/icons/crossClose.svg'
+import { ReactComponent as CrossClose } from '../../../assets/icons/layout/crossClose.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const PopUp = forwardRef((props, ref) => {
+export const Modal = forwardRef((props, ref) => {
   return (
     <PopUpWrapper ref={ref} className={props.className} onClick={props.onClose}>
       <PopUpContainer size={props.size} registerPopUp={props.registerPopUp}>

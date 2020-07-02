@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title } from '../components/atoms/Title'
-import { PageLocation } from '../components/atoms/PageLocation'
+import { Title } from '../components/atoms/layout/Title'
+import { PageLocation } from '../components/atoms/layout/PageLocation'
 
 export default function Home() {
   return (

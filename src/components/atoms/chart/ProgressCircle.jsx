@@ -1,7 +1,7 @@
 import React from 'react'
 import { withTheme } from 'styled-components'
 import styled from 'styled-components'
-import { media } from '../../scss/config/mixins'
+import { media } from '../../../scss/config/mixins'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const Circle = (props) => {

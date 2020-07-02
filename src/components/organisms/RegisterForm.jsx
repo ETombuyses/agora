@@ -2,8 +2,8 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 // components
-import { InputText } from '../atoms/InputText'
-import { Button } from '../atoms/Button'
+import { InputText } from '../atoms/form/InputText'
+import { Button } from '../atoms/form/Button'
 //import { PopUp } from '../atoms/PopUp'
 import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
 import { media } from '../../scss/config/mixins'

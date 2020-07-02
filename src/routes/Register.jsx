@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // components
-import { Button } from '../components/atoms/Button'
-import { SectionSepartor } from '../components/atoms/Separator'
+import { Button } from '../components/atoms/form/Button'
+import { SectionSepartor } from '../components/atoms/layout/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
 import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
 import { RegisterForm } from '../components/organisms/RegisterForm'
-import { PopUp } from '../components/atoms/PopUp'
+import { Modal } from '../components/atoms/layout/Modal'
 import { register } from '../tools/isAuth'
 import { media } from '../scss/config/mixins'
 
@@ -159,7 +159,7 @@ export default function Register() {
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
-      <PopUp
+      <Modal
         onClose={(e) => onClose(e)}
         ref={refs.popup}
         size={'tiny'}

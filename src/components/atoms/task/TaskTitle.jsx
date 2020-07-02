@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
+import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const HintLabel = (props) => {
+export const TaskTitle = (props) => {
   return (
     <LabelWrapper>
       <Label>
-        {props.label}
-        {props.required && <Asterisk>*</Asterisk>}
+        {props.title}
+        {/* {props.required && <Asterisk>*</Asterisk>} */}
       </Label>
       {props.hint && <HelpIcon />}
     </LabelWrapper>

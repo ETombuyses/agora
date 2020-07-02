@@ -5,7 +5,7 @@ import { withTheme } from 'styled-components'
 import { media } from '../../scss/config/mixins'
 
 // icons
-import { MenuIcon } from '../atoms/MenuIcon'
+import { MenuIcon } from '../atoms/layout/MenuIcon'
 
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))

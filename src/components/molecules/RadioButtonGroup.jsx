@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 // components
 
-import { RadioButton } from '../atoms/RadioButton'
-import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
+import { RadioButton } from '../atoms/form/RadioButton'
+import { ReactComponent as HelpIcon } from '../../assets/icons/layout/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

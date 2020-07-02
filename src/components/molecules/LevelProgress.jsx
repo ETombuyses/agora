@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ReactComponent as HelpIcon } from '../../assets/icons/help-icon.svg'
-import { Tag } from '../atoms/Tag'
-import { ProgressCircle } from '../atoms/ProgressCircle'
+import { ReactComponent as HelpIcon } from '../../assets/icons/layout/help-icon.svg'
+import { Tag } from '../atoms/task/Tag'
+import { ProgressCircle } from '../atoms/chart/ProgressCircle'
 import { media } from '../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */

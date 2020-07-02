@@ -49,13 +49,20 @@ export const MonthlyTasksRecap = (props) => {
         let tasksReworked = []
 
         tasks.forEach((task) => {
+          if (task[0] === 'transportsIsValidate') {
+            let taskSuccess = task[1]
+            task[1] = {
+              percent: taskSuccess ? '0' : '100',
+              success: taskSuccess,
+            }
+          }
           tasksReworked.push({ name: task[0], data: task[1] })
         })
 
-        // // if we want to order taks by percent of ressource consomption
-        // tasksReworked.sort(function (a, b) {
-        //   return a.data.percent - b.data.percent
-        // })
+        // if we want to order taks by percent of ressource consomption
+        tasksReworked.sort(function (a, b) {
+          return Number(a.data.percent) - Number(b.data.percent)
+        })
 
         finalMonthsData.push({ month: monthNumber, tasks: tasksReworked })
       })
@@ -141,13 +148,7 @@ export const MonthlyTasksRecap = (props) => {
               {month.tasks.map((task) => {
                 return (
                   <CustomTask
-                    progression={
-                      task.name === 'transportsIsValidate'
-                        ? task.data
-                          ? 100
-                          : 0
-                        : -(task.data.percent - 100)
-                    }
+                    progression={-(task.data.percent - 100)}
                     consummed={task.data.percent}
                     limit={task.data.Average}
                     task={task.name}

@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 import { media } from '../scss/config/mixins'
 
 // components
-import { Button } from '../components/atoms/Button'
-import { SectionSepartor } from '../components/atoms/Separator'
+import { Button } from '../components/atoms/form/Button'
+import { SectionSepartor } from '../components/atoms/layout/Separator'
 import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
-import { InputText } from '../components/atoms/InputText'
+import { InputText } from '../components/atoms/form/InputText'
 
 // images
 import welcomeImage from '../assets/images/loginImg.svg'
