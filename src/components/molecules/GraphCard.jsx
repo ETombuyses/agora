@@ -58,8 +58,9 @@ export const GraphCard = (props) => {
       <ContentWrapper>
         {months.map((month) => {
           return (
-            <div>
+            <div key={month.month}>
               <p>{month.month}</p>
+              <div className="barChart"></div>
             </div>
           )
         })}
@@ -147,6 +148,13 @@ const ContentWrapper = styled.div`
     font-weight: 500;
     text-align: center;
     color: ${(props) => props.theme.greyOpacity};
+  }
+
+  .barChart  {
+    margin: auto;
+    width: 70%;
+    background-color: ${(props) => props.theme.green};
+    height: 80%;
   }
 
   ${media.desktop`
