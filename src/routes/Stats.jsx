@@ -29,7 +29,6 @@ export default function Home() {
       })
 
       setUserData(result)
-      console.log(result)
     })()
   }, [])
 

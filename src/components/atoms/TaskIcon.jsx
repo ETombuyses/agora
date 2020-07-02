@@ -45,7 +45,7 @@ const IconWrapper = styled.div`
     if (props.size === 'big') {
       return '8px'
     } else if (props.size === 'medium') {
-      return '6px'
+      return '10px'
     } else {
       return '4px'
     }
@@ -71,7 +71,7 @@ const IconWrapper = styled.div`
       if (props.size === 'big') {
         return '31px'
       } else if (props.size === 'medium') {
-        return '24px'
+        return '30px'
       } else {
         return '16px'
       }
@@ -80,7 +80,7 @@ const IconWrapper = styled.div`
       if (props.size === 'big') {
         return '31px'
       } else if (props.size === 'medium') {
-        return '24px'
+        return '30px'
       } else {
         return '16px'
       }
