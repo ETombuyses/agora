@@ -52,13 +52,13 @@ export default function Home() {
       )}
       <Title text="Missions reussis au total" />
       {userData.data && (
-        <>
+        <GraphContainer>
           <GraphCard data={userData.data.thisYear.Eau} />
           <GraphCard data={userData.data.thisYear.Electricté} />
           <GraphCard data={userData.data.thisYear.Gaz} />
           <GraphCard data={userData.data.thisYear.Déchêts} />
           <GraphCard data={userData.data.thisYear.Transports} />
-        </>
+        </GraphContainer>
       )}
     </div>
   )
@@ -74,11 +74,18 @@ const GlobalDataCardWrapper = styled.div`
     margin-bottom: 16px;
   }
 
-  ${media.desktop`
+  ${media.large`
     flex-direction: row;
 
     div:first-child {
       margin: 0 50px 0 0;
     }
+  `}
+`
+
+const GraphContainer = styled.div`
+  ${media.large`
+    display: flex;
+    flex-wrap: wrap;
   `}
 `

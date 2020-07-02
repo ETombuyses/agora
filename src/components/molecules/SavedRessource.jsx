@@ -10,7 +10,7 @@ import { TaskIcon } from '../atoms/TaskIcon'
 export const SavedRessource = (props) => {
   return (
     <SavedRessourceWrapper className={props.className}>
-      <TaskIcon color="white" icon={props.icon} big={true} />
+      <TaskIcon color="white" icon={props.icon} size={'big'} />
       <SavingsAmount>
         <Number>{props.savedNumber}</Number> <span>{props.unit}</span>
       </SavingsAmount>
