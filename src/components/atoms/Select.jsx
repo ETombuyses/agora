@@ -1,20 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
-const years = ['2020', '2021', '2022', '2023']
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Select = (props) => {
-  const [year, setYear] = React.useState('2020')
+  const [selectedYear, setSelectedYear] = React.useState(
+    new Date().getFullYear()
+  )
+
+  const currentYear = new Date().getFullYear()
+
+  let years = [currentYear]
+  let i = currentYear - props.startYear
+
+  for (i; i > 0; i--) {
+    years.push(currentYear - i)
+  }
 
   const changeYear = (event) => {
-    setYear(event.target.value)
+    setSelectedYear(Number(event.target.value))
+    props.handleYearCHange(Number(event.target.value))
   }
 
   return (
     <CustomSelect
-      value={year}
+      value={selectedYear}
       onChange={changeYear}
       className={props.className}
     >
