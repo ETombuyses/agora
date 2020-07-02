@@ -32,8 +32,8 @@ export const PageLocation = (props) => {
   ]
 
   return (
-    <LocationPage>
-      <p>{props.location}</p>
+    <LocationPage className={props.className}>
+      <PageTitle>{props.location}</PageTitle>
       <p>
         {days[date.getDay()]}, {date.getDate()} {months[date.getMonth()]}{' '}
         {date.getFullYear()}
@@ -44,8 +44,11 @@ export const PageLocation = (props) => {
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
-const LocationPage = styled.div`
-  margin: 0 0 15px 0;
+const LocationPage = styled.div``
+const PageTitle = styled.h1`
+  margin-bottom: 5px;
+  display: none;
+  font-size: 23px;
 
   p {
     font-size: 15px;
@@ -66,4 +69,8 @@ const LocationPage = styled.div`
       font-weight: 500;
 	  `};
   }
+  ${media.desktop`
+    margin-bottom: 8px;
+    display: block;
+  `}
 `

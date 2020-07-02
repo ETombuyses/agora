@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <div className="pageWrapper">
-      <PageLocation location="Analytique" />
+      <PageLocationContent location="Analytique" />
       {userData.data && (
         <GlobalDataCardWrapper>
           <GlobalDataCard
@@ -88,4 +88,7 @@ const GraphContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
   `}
+`
+const PageLocationContent = styled(PageLocation)`
+  margin-bottom: 15px;
 `

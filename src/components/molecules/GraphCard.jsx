@@ -4,23 +4,9 @@ import { media, toRem } from '../../scss/config/mixins'
 
 import { TaskIcon } from '../atoms/TaskIcon'
 
-//transform value in %
-/* function pourcent(value, decimal) {
-  return (value * 100) / decimal + '%'
-} */
-
 function pourcent(value, decimal) {
   return 150 * (value / decimal) + 'px'
 }
-
-/* function pourcent(value, decimal) {
-  // % de 19 dans 75
-  let x = (100 * value) / decimal
-  // prix a payer solde
-  let y = (decimal * (100 - x)) / 100
-  //return marge tache en px
-  return decimal - y + 'px'
-} */
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

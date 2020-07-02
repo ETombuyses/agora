@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { getNewTokens } from './tools/isAuth'
 
 // router
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 
 import { Nav } from './components/organisms/Nav'
+
+require('dotenv').config()
 
 export default function App() {
   useEffect(() => {
@@ -13,9 +15,9 @@ export default function App() {
     let token = localStorage.getItem('token')
     let url = window.location.pathname
 
-    // if (!token && url !== '/register' && url !== '/login') {
-    //   window.location.href = '/login'
-    // }
+    if (!token && url !== '#/register' && url !== '#/login') {
+      window.location.href = '#/login'
+    }
   })
 
   //Timer for refresh Token

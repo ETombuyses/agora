@@ -40,7 +40,7 @@ const LabelWrapper = styled.div`
 
 const Label = styled.p`
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 7px;
   display: inline-block;
   line-height: 130%;

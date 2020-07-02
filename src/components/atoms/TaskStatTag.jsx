@@ -9,11 +9,11 @@ import trash from '../../assets/images/trash.png'
 import bus from '../../assets/images/bus.png'
 
 const images = {
-  gas: { icon: fire, name: 'Gas' },
-  water: { icon: water, name: 'Eau' },
-  electricity: { icon: lightning, name: 'Electricité' },
-  trash: { icon: trash, name: 'Déchêts' },
-  transports: { icon: bus, name: 'Transports' },
+  Gaz: { icon: fire, name: 'Gas' },
+  Eau: { icon: water, name: 'Eau' },
+  Electricté: { icon: lightning, name: 'Electricité' },
+  Déchêts: { icon: trash, name: 'Déchêts' },
+  transportsIsValidate: { icon: bus, name: 'Transports' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -37,7 +37,7 @@ const TagWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   border-radius: 10px;
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
 
   img {
     width: 22px;

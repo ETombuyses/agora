@@ -86,7 +86,6 @@ const NavWithTheme = (props) => {
           </List>
         </NavWrapper>
       )}
-
       <Suspense fallback={<div>Chargement...</div>}>
         <Switch>
           {pages.map((page) => {

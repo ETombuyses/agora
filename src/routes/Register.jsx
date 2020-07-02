@@ -183,7 +183,7 @@ export default function Register() {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
   min-height: 100vh;
   display: flex;
   flex-direction: column;
