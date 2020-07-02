@@ -89,16 +89,17 @@ export const MonthlyTasksRecap = (props) => {
 
   // function for increase(forward, next) configuration
   const initiateINC = () => {
-    translateFactor === monthsTasksData.length - 1
-      ? (translateFactor = 0)
-      : (translateFactor += 1)
+    // // whithout sliding back to the first slide
+    // translateFactor += translateFactor === monthsTasksData.length - 1 ? 0 : 1
+
+    translateFactor =
+      translateFactor === monthsTasksData.length - 1 ? 0 : translateFactor + 1
   }
 
   // function for decrease(backward, previous) configuration
   const initiateDEC = () => {
-    translateFactor === 0
-      ? (translateFactor = monthsTasksData.length - 1)
-      : (translateFactor -= 1)
+    translateFactor =
+      translateFactor === 0 ? monthsTasksData.length - 1 : translateFactor - 1
   }
 
   // function to transform slide
