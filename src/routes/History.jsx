@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+// import axios from 'axios'
 
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
 import { MonthlyTasksRecap } from '../components/molecules/MonthlyTasksRecap'
@@ -7,10 +8,21 @@ import { Select } from '../components/atoms/Select'
 import { PageLocation } from '../components/atoms/PageLocation'
 
 export default function History() {
+
+  //Get object data from local storage
+  let savingEnergieStorage = localStorage.getItem('savingEnergie')
+  let savingEnergie = JSON.parse(savingEnergieStorage)
+
   return (
     <div className="pageWrapper">
       <CustomPageLocation location="Historique" />
-      <SavedRessourcesRecap />
+      <SavedRessourcesRecap
+        lightning={savingEnergie.elect}
+        waste={savingEnergie.waste}
+        water={savingEnergie.water}
+        gas={savingEnergie.gas}
+        transport={savingEnergie.transport}
+      />
       <MissionHistoryTitle>Historique des missions</MissionHistoryTitle>
       <CustomSelect />
       <MonthlyTasksRecap />

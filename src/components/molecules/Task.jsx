@@ -6,11 +6,11 @@ import { TaskIcon } from '../atoms/TaskIcon'
 import { HintLabel } from '../atoms/HintLabel'
 
 const tasks = {
-  electricity: { icon: 'lightning', name: 'Electricité' },
-  trash: { icon: 'trash', name: 'Déchêts' },
-  transports: { icon: 'bus', name: 'Transports' },
-  water: { icon: 'water', name: 'Eau' },
-  gas: { icon: 'fire', name: 'Gaz' },
+  Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
+  Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
+  transports: { icon: 'bus', unit: '', name: 'Transports' },
+  Eau: { icon: 'water', unit: 'L', name: 'Eau' },
+  Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
@@ -41,21 +41,39 @@ export const Task = (props) => {
         />
         <div>
           <HintLabel
-            label={tasks[props.task].name}
+            // label={tasks[props.task].name}
+            label={
+              props.isHistoryTask
+                ? `Limite: ${props.limit} ${tasks[props.task].unit}`
+                : tasks[props.task].name
+            }
             hint={props.showHint}
           ></HintLabel>
-          <TaskDescription>
-            Ne pas consommer plus de <Limit>xKw</Limit>
-          </TaskDescription>
+          {!props.isHistoryTask && (
+            <TaskDescription>
+              Ne pas consommer plus de{' '}
+              <Limit isHistoryTask={props.isHistoryTask}>xKw</Limit>
+            </TaskDescription>
+          )}
+          {props.isHistoryTask && (
+            <TaskDescription>
+              Consommé:{' '}
+              <Limit isHistoryTask={props.isHistoryTask}>
+                {props.consummed}%
+              </Limit>
+            </TaskDescription>
+          )}
         </div>
       </ContentWrapper>
-      <CustomTag
-        isTaskTag={true}
-        color={
-          taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
-        }
-        text="3L"
-      />
+      {!props.isHistoryTask && (
+        <CustomTag
+          isTaskTag={true}
+          color={
+            taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+          }
+          text="3L"
+        />
+      )}
     </TaskWrapper>
   )
 }
@@ -111,8 +129,20 @@ const CustomTaskIcon = styled(TaskIcon)`
 
 const TaskDescription = styled.p`
   font-size: 12px;
+  font-weight: 500;
 `
 
 const Limit = styled.span`
   font-weight: bold;
+  color: ${(props) => {
+    if (!props.isHistoryTask) {
+      return props.theme.black
+    } else if (props.progression <= 0) {
+      return props.theme.red
+    } else if (props.progression < 50) {
+      return props.theme.orange
+    } else {
+      return props.theme.green
+    }
+  }};
 `

@@ -9,10 +9,10 @@ import trash from '../../assets/images/trash.png'
 import bus from '../../assets/images/bus.png'
 
 const images = {
-  gas: { icon: fire, name: 'Gas' },
-  water: { icon: water, name: 'Eau' },
-  electricity: { icon: lightning, name: 'Electricité' },
-  trash: { icon: trash, name: 'Déchêts' },
+  Gaz: { icon: fire, name: 'Gas' },
+  Eau: { icon: water, name: 'Eau' },
+  Electricté: { icon: lightning, name: 'Electricité' },
+  Déchêts: { icon: trash, name: 'Déchêts' },
   transports: { icon: bus, name: 'Transports' },
 }
 

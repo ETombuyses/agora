@@ -24,11 +24,11 @@ export default function Dashboard() {
   console.log('ezfzf', process.env)
 
   const tasks = [
-    { name: 'water', progress: 0 },
-    { name: 'gas', progress: 49 },
-    { name: 'trash', progress: 100 },
+    { name: 'Eau', progress: 0 },
+    { name: 'Gaz', progress: 49 },
+    { name: 'Déchêts', progress: 100 },
     { name: 'transports', progress: 0 },
-    { name: 'electricity', progress: 60 },
+    { name: 'Electricté', progress: 60 },
   ]
 
   useEffect(() => {
@@ -45,9 +45,29 @@ export default function Dashboard() {
         },
       })
 
-      setUserData(result)
+      if (result.data) {
+        let saveGas = result.data.additionalDatas.data.saving_gas
+        let saveWater = result.data.additionalDatas.data.saving_water
+        let saveWaste = result.data.additionalDatas.data.saving_waste
+        let saveElect = result.data.additionalDatas.data.saving_electricity
+        let saveTransport = result.data.additionalDatas.data.saving_transport
+
+        let saveEnergie = JSON.stringify({
+          gas: saveGas,
+          water: saveWater,
+          waste: saveWaste,
+          elect: saveElect,
+          transport: saveTransport,
+        })
+
+        localStorage.setItem('savingEnergie', saveEnergie)
+
+        setUserData(result)
+      }
     })()
   }, [])
+
+  console.log(userData)
 
   return (
     <PageWrapper className="pageWrapper">
