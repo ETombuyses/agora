@@ -19,11 +19,36 @@ export function login(email, password) {
     let token = result.data.tokens.token
     let refresh_token = result.data.tokens.refresh_token
     let idUser = result.data.user.id
+    let userFirstName = result.data.user.firstName
+    let userLastName = result.data.user.lastName
+    let userImage = result.data.user.image
+    let registrationDate = result.data.user.registrationDate
+    let gazLimit = result.data.user.gasAverageConsumption
+    let waterLimit = result.data.user.waterAverageConsumption
+    let electricityLimit = result.data.user.electricityAverageConsumption
+    let wasteLimit = result.data.user.wasteAverageConsumption
 
-    //Put tokens in local storage
+    // Put tokens in local storage
     localStorage.setItem('token', token)
     localStorage.setItem('refreshToken', refresh_token)
     localStorage.setItem('idUser', idUser)
+
+    localStorage.setItem(
+      'userPersonalData',
+      JSON.stringify({
+        id: idUser,
+        fistName: userFirstName,
+        lastName: userLastName,
+        image: userImage,
+        registrationDate: registrationDate,
+        limits: {
+          gazLimit: gazLimit,
+          waterLimit: waterLimit,
+          electricityLimit: electricityLimit,
+          wasteLimit: wasteLimit,
+        },
+      })
+    )
 
     if (result) {
       window.location.href = 'http://localhost:3000/'

@@ -14,28 +14,41 @@ import { SavedRessourceTag } from '../components/atoms/task/SavedRessourceTag'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
 
 // image
-import { ReactComponent as ProfilePic } from '../assets/icons/profile/profile-pic.svg'
+import { ReactComponent as ProfilePic } from '../assets/images/profile/profile-pic.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
   const [userData, setUserData] = useState(0)
-
-  console.log('ezfzf', process.env)
+  const [userFirstName, setUserFirstName] = useState('')
+  const [userLastName, setUserLastName] = useState('')
+  const [userImage, setUserImage] = useState('')
+  const [savedRessources, setSavedRessources] = useState()
+  const [tasks2, setTasks2] = useState([])
 
   const tasks = [
-    { name: 'Eau', progress: 0 },
-    { name: 'Gaz', progress: 49 },
-    { name: 'Déchêts', progress: 100 },
-    { name: 'transportsIsValidate', progress: 0 },
-    { name: 'Electricté', progress: 60 },
+    { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },
+    { name: 'Gaz', savingName: 'gas', unit: 'KW/h', progress: 49 },
+    { name: 'Déchêts', savingName: 'waste', unit: 'Kg', progress: 100 },
+    {
+      name: 'transportsIsValidate',
+      savingName: 'transport',
+      unit: 'mois',
+      progress: 0,
+    },
+    { name: 'Electricté', savingName: 'elect', unit: 'kW/h', progress: 60 },
   ]
 
   useEffect(() => {
     let getuserId = localStorage.getItem('idUser')
     let getToken = localStorage.getItem('token')
+    let userProfileData = JSON.parse(localStorage.getItem('userPersonalData'))
 
-    console.log('ubfuzbf', process.env)
+    setUserFirstName(userProfileData.fistName)
+    setUserLastName(userProfileData.lastName)
+    setUserImage(
+      userProfileData.image ? userProfileData.image : 'profile-pic.svg'
+    )
     ;(async () => {
       const result = await axios({
         method: 'get',
@@ -52,15 +65,17 @@ export default function Dashboard() {
         let saveElect = result.data.additionalDatas.data.saving_electricity
         let saveTransport = result.data.additionalDatas.data.saving_transport
 
-        let saveEnergie = JSON.stringify({
+        let saveEnergie = {
           gas: saveGas,
           water: saveWater,
           waste: saveWaste,
           elect: saveElect,
           transport: saveTransport,
-        })
+        }
 
-        localStorage.setItem('savingEnergie', saveEnergie)
+        setSavedRessources(saveEnergie)
+
+        localStorage.setItem('savingEnergie', JSON.stringify(saveEnergie))
         localStorage.setItem(
           'userData',
           JSON.stringify({
@@ -69,42 +84,85 @@ export default function Dashboard() {
           })
         )
 
+        let taskssTest = result.data.additionalDatas.tasks
+
+        taskssTest.forEach((task) => {
+          switch (task.name) {
+            case 'Eau':
+              task.consummed = result.data.additionalDatas.data.mesureWater
+              task.limit = userProfileData.limits.waterLimit
+              break
+            case 'Electricté':
+              task.consummed =
+                result.data.additionalDatas.data.mesureElectricity
+              task.limit = userProfileData.limits.electricityLimit
+              break
+            case 'Gaz':
+              task.consummed = result.data.additionalDatas.data.mesureGas
+              task.limit = userProfileData.limits.gazLimit
+              break
+            case 'Transports':
+              task.consummed = task.validate
+              break
+            case 'Déchêts':
+              task.consummed = result.data.additionalDatas.data.mesureWaste
+              task.limit = userProfileData.limits.wasteLimit
+              break
+          }
+        })
+
         setUserData(result.data)
+        setTasks2(taskssTest)
       }
     })()
   }, [])
 
-  console.log(userData)
+  console.log('api dashboard result', userData)
 
   return (
     <PageWrapper className="pageWrapper">
       <MainContentWrapper>
         <div>
           <CustomPageLocation location="Dashboard" />
-          <WelcomeBanner />
+          <WelcomeBanner
+            name={userFirstName}
+            currentLevel={userData ? userData.level.levelNumber : 0}
+            completedTasks={
+              userData
+                ? userData.additionalDatas.data.nbValidateTaskInThisYear
+                : 0
+            }
+          />
         </div>
         <MainPageContent>
           <TasksContainer>
             <Title text="Missions en cours :" />
-            {tasks.map((task, index) => {
-              if (task.progress > 0)
-                return (
-                  <CustomTask
-                    task={task.name}
-                    progression={task.progress}
-                    key={task.name}
-                    showHint={true}
-                  />
-                )
-              else return null
-            })}
+            {tasks2 &&
+              tasks2.map((task) => {
+                if ((task.consummed / task.limit) * 100 < 100)
+                  return (
+                    <CustomTask
+                      task={task.name}
+                      progression={100 - (task.consummed / task.limit) * 100}
+                      consummed={task.consummed}
+                      unit={task.unit}
+                      limit={task.limit}
+                      key={task.name}
+                      showHint={true}
+                    />
+                  )
+                else return null
+              })}
             <Title text="Missions ratées :"></Title>
-            {tasks.map((task, index) => {
-              if (task.progress === 0)
+            {tasks2.map((task) => {
+              if ((task.consummed / task.limit) * 100 >= 100)
                 return (
                   <CustomTask
                     task={task.name}
-                    progression={task.progress}
+                    progression={100 - (task.consummed / task.limit) * 100}
+                    consummed={task.consummed}
+                    unit={task.unit}
+                    limit={task.limit}
                     key={task.name}
                     showHint={true}
                   />
@@ -112,21 +170,51 @@ export default function Dashboard() {
               else return null
             })}
           </TasksContainer>
-          <CustomLevelProgress progress={30} />
+          <CustomLevelProgress
+            level={userData ? userData.level.levelNumber : 0}
+            taxesReduction={userData ? userData.level.reductionRate : 0}
+            progress={
+              userData
+                ? Math.round(
+                    (userData.additionalDatas.data.nbValidateTaskInThisYear /
+                      5 -
+                      Math.floor(
+                        userData.additionalDatas.data.nbValidateTaskInThisYear /
+                          5
+                      )) *
+                      100
+                  )
+                : 0
+            }
+          />
         </MainPageContent>
       </MainContentWrapper>
       <UserStats>
         <CustomPic />
-        <UserName>Tristan Lemire</UserName>
-        <Tag text="Niv. 1" color="green" small={true}></Tag>
+        <UserName>
+          {userFirstName} {userLastName}
+        </UserName>
+        <Tag
+          text={`Niv. ${userData ? userData.level.levelNumber : 0}`}
+          color="green"
+          small={true}
+        ></Tag>
         <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
         <TasksStatsWrapper>
-          {tasks.map((task) => {
-            return <CustomTaskTag icon={task.name} key={task.name} />
-          })}
+          {savedRessources &&
+            tasks.map((task) => {
+              return (
+                <CustomTaskTag
+                  icon={task.name}
+                  key={task.name}
+                  savedAmount={savedRessources[task.savingName]}
+                  unit={task.unit}
+                />
+              )
+            })}
         </TasksStatsWrapper>
         <StatTitle>Statistiques</StatTitle>
-        {userData.data && <CustomRadarChart data={userData.data} />}
+        {userData && <CustomRadarChart data={userData} />}
       </UserStats>
     </PageWrapper>
   )
@@ -180,7 +268,7 @@ const UserStats = styled.div`
   width: 30%;
   min-width: 314px;
   background: white;
-  margin-left: 40px;
+  margin-left: 2.5%;
   border-radius: 15px;
   display: none;
   flex-direction: column;
@@ -228,8 +316,6 @@ const TasksStatsWrapper = styled.div`
   flex-wrap: wrap;
   align-items: center;
   width: 225px;
-  height: 19%;
-  min-height: 160px;
 `
 const CustomTaskTag = styled(SavedRessourceTag)`
   margin: 1.9% 2.54%;
@@ -237,7 +323,7 @@ const CustomTaskTag = styled(SavedRessourceTag)`
 
 const StatTitle = styled.p`
   font-size: 19px;
-  margin-top: 10%;
+  margin-top: 8%;
 `
 
 const CustomRadarChart = styled(RadarChart)`

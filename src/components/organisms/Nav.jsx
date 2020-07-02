@@ -122,7 +122,7 @@ const NavWrapper = styled.nav`
     justify-content: center;
     top: 0;
     left: 0;
-    width: 10%;
+    width: 15%;
 	`}
 `
 
@@ -134,6 +134,7 @@ const List = styled.ul`
   ${media.desktop`
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
 	`}
 `
 
@@ -145,27 +146,25 @@ const ListItem = styled.li`
     align-items: center;
 
     ${media.desktop`
-    ::before {
-      position: absolute;
-      content: '';
-      left: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2px;
-      height: 0px;
-      background: ${(props) => props.theme.green};
-      transition: height 0.3s ease;
-    }
+      flex-direction: row;
 
-    &.currentPage::before {
-      height: 44px;
-    }
-	`}
+      ::before {
+        position: absolute;
+        content: '';
+        left: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 0px;
+        background: ${(props) => props.theme.green};
+        transition: height 0.3s ease;
+      }
+
+      &.currentPage::before {
+        height: 44px;
+      }
+	  `}
   }
-
-  ${media.desktop`
-      width: 50px;
-	`}
 
   :not(:last-child) {
     ${media.desktop`
@@ -178,4 +177,9 @@ const Text = styled.span`
   font-size: 10px;
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
+
+  ${media.desktop`
+      margin-top: 0;
+      margin-left: 16px;
+	  `}
 `

@@ -71,7 +71,6 @@ export const MonthlyTasksRecap = (props) => {
       finalMonthsData.sort(function (a, b) {
         return a.month - b.month
       })
-      console.log(finalMonthsData)
       setMonthsTasksData(finalMonthsData)
     })()
   }, [])

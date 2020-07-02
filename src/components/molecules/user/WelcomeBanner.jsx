@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { media } from '../../../scss/config/mixins'
 
 // icons and images
-import { ReactComponent as Persona } from '../../../assets/icons/profile/persona.svg'
+import { ReactComponent as Persona } from '../../../assets/images/profile/persona.svg'
 import plant from '../../../assets/images/jungle-plant.png'
 import leaves from '../../../assets/images/jungle-leaves.png'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const WelcomeBanner = () => {
+export const WelcomeBanner = (props) => {
   return (
     <WelcomeWrapper>
       <LeftPlantWrapper>
@@ -17,9 +17,13 @@ export const WelcomeBanner = () => {
       </LeftPlantWrapper>
       <LeftLeaves src={leaves} alt="feuilles" />
       <TextContent>
-        <Title className="heading">Bonjour Jean-Phillipe</Title>
+        <Title className="heading">Bonjour {props.name}</Title>
         <Text>
-          Il ne vous reste plus que 3 missions pour passer au niveau 2.
+          {props.currentLevel === 12
+            ? 'Bravo, vous avez atteint le niveau maximum ! '
+            : `Il ne vous reste plus que ${
+                (props.currentLevel + 1) * 5 - props.completedTasks
+              } mission${`s`} pour passer au niveau ${props.currentLevel + 1}`}
         </Text>
       </TextContent>
       <Persona />
@@ -97,6 +101,7 @@ const LeftPlantWrapper = styled.div`
   display: none;
   overflow: hidden;
   position: absolute;
+  border-radius: 10px;
   width: 14%;
   max-width: 150px;
   bottom: 0;
@@ -128,11 +133,11 @@ const LeftLeaves = styled.img`
 `
 
 // right
-
 const RightPlantWrapper = styled.div`
   display: none;
   overflow: hidden;
   position: absolute;
+  border-radius: 10px;
   width: 20%;
   max-width: 150px;
   top: 0;

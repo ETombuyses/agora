@@ -22,8 +22,11 @@ export const LevelProgress = (props) => {
         <ProgressCircle progress={props.progress} />
         <TagsContent>
           <TagsWrapper>
-            <LevelTag text="Niv. 1" />
-            <TaxesTag text="1,2%*" color="whiteTransparent" />
+            <LevelTag text={`Niv. ${props.level}`} />
+            <TaxesTag
+              text={`${props.taxesReduction} %`}
+              color="whiteTransparent"
+            />
           </TagsWrapper>
         </TagsContent>
       </ContentWrapper>

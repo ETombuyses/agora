@@ -24,7 +24,9 @@ export const SavedRessourceTag = (props) => {
       <img icon={props.icon} src={images[props.icon].icon}></img>
       <TextWrapper>
         <Title icon={props.icon}>{images[props.icon].name}</Title>
-        <Stat>12m3</Stat>
+        <Stat>
+          {props.savedAmount} {props.unit}
+        </Stat>
       </TextWrapper>
     </TagWrapper>
   )

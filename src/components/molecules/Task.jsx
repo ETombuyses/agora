@@ -59,7 +59,7 @@ export const Task = (props) => {
                 isHistoryTask={props.isHistoryTask}
                 progression={props.progression}
               >
-                xKw
+                {props.limit} {props.unit}
               </Limit>
             </TaskDescription>
           )}
@@ -88,7 +88,7 @@ export const Task = (props) => {
           color={
             taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
           }
-          text="3L"
+          text={`${props.consummed} ${props.unit}`}
         />
       )}
     </TaskWrapper>
