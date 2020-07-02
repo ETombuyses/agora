@@ -52,13 +52,21 @@ export const Task = (props) => {
           {!props.isHistoryTask && (
             <TaskDescription>
               Ne pas consommer plus de{' '}
-              <Limit isHistoryTask={props.isHistoryTask}>xKw</Limit>
+              <Limit
+                isHistoryTask={props.isHistoryTask}
+                progression={props.progression}
+              >
+                xKw
+              </Limit>
             </TaskDescription>
           )}
           {props.isHistoryTask && (
             <TaskDescription>
               Consommé:{' '}
-              <Limit isHistoryTask={props.isHistoryTask}>
+              <Limit
+                isHistoryTask={props.isHistoryTask}
+                progression={props.progression}
+              >
                 {props.consummed}%
               </Limit>
             </TaskDescription>

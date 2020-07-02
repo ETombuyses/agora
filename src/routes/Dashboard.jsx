@@ -61,8 +61,15 @@ export default function Dashboard() {
         })
 
         localStorage.setItem('savingEnergie', saveEnergie)
+        localStorage.setItem(
+          'userData',
+          JSON.stringify({
+            monthsRegistered:
+              result.data.additionalDatas.data.nbMonthsRegistered,
+          })
+        )
 
-        setUserData(result)
+        setUserData(result.data)
       }
     })()
   }, [])
