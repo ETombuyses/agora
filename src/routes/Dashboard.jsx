@@ -27,7 +27,7 @@ export default function Dashboard() {
     { name: 'Eau', progress: 0 },
     { name: 'Gaz', progress: 49 },
     { name: 'Déchêts', progress: 100 },
-    { name: 'transports', progress: 0 },
+    { name: 'transportsIsValidate', progress: 0 },
     { name: 'Electricté', progress: 60 },
   ]
 

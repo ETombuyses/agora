@@ -13,7 +13,7 @@ const images = {
   Eau: { icon: water, name: 'Eau' },
   Electricté: { icon: lightning, name: 'Electricité' },
   Déchêts: { icon: trash, name: 'Déchêts' },
-  transports: { icon: bus, name: 'Transports' },
+  transportsIsValidate: { icon: bus, name: 'Transports' },
 }
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
