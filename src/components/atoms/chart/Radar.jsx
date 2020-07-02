@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Radar from 'react-d3-radar'
 
-import { TaskIcon } from '../task/TaskIcon'
+// components
+import { TaskIcon } from '../task/Icon'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

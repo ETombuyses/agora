@@ -2,22 +2,22 @@ import React, { useRef, createRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+// form's check functions
+import { checkGeneralFormInfo } from '../tools/RegisterFormChecks'
+import { checkAgoraForm } from '../tools/RegisterFormChecks'
+
 // components
 import { Button } from '../components/atoms/form/Button'
-import { SectionSepartor } from '../components/atoms/layout/Separator'
-import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
-import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
+import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
-import { Modal } from '../components/atoms/layout/Modal'
+import { Modal } from '../components/molecules/layout/Modal'
 import { register } from '../tools/isAuth'
 import { media } from '../scss/config/mixins'
 
-// images
-import welcomeImage from '../assets/images/loginImg.svg'
-
-// form's check functions
-import { checkGenralFormInfo } from '../tools/RegisterFormChecks'
-import { checkAgoraForm } from '../tools/RegisterFormChecks'
+// images and icons
+import welcomeImage from '../assets/images/person-holding-plant.svg'
+import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
+import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -56,7 +56,7 @@ export default function Register() {
   const handleClick = () => {
     refs.popup.current.style.visibility = 'hidden'
 
-    let error = checkGenralFormInfo(
+    let error = checkGeneralFormInfo(
       refs.name.current.value,
       refs.firstName.current.value,
       refs.email.current.value,

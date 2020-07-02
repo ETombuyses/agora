@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { withTheme } from 'styled-components'
 import { media } from '../../scss/config/mixins'
 
-// icons
+// component
 import { MenuIcon } from '../atoms/layout/MenuIcon'
 
 // Routes
@@ -12,7 +12,6 @@ const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const History = lazy(() => import('../../routes/History'))
 const Stats = lazy(() => import('../../routes/Stats'))
 const Profile = lazy(() => import('../../routes/Profile'))
-
 const Login = lazy(() => import('../../routes/Login'))
 const Register = lazy(() => import('../../routes/Register'))
 

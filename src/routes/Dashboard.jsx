@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-
-import { WelcomeBanner } from '../components/molecules/WelcomeBanner'
-import { Task } from '../components/molecules/Task'
-import { LevelProgress } from '../components/molecules/LevelProgress'
-
+import axios from 'axios'
 import { media } from '../scss/config/mixins'
 
-import { ReactComponent as ProfilePic } from '../assets/icons/profile/profile-pic.svg'
+// components
 import { Tag } from '../components/atoms/task/Tag'
-import { TaskStatTag } from '../components/atoms/task/TaskStatTag'
 import { Title } from '../components/atoms/layout/Title'
-import { PageLocation } from '../components/atoms/layout/PageLocation'
 import { RadarChart } from '../components/atoms/chart/Radar'
+import { WelcomeBanner } from '../components/molecules/user/WelcomeBanner'
+import { Task } from '../components/molecules/Task'
+import { LevelProgress } from '../components/molecules/user/LevelProgress'
+import { SavedRessourceTag } from '../components/atoms/task/SavedRessourceTag'
+import { PageLocation } from '../components/molecules/layout/PageLocation'
 
-import axios from 'axios'
+// image
+import { ReactComponent as ProfilePic } from '../assets/icons/profile/profile-pic.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -231,7 +231,7 @@ const TasksStatsWrapper = styled.div`
   height: 19%;
   min-height: 160px;
 `
-const CustomTaskTag = styled(TaskStatTag)`
+const CustomTaskTag = styled(SavedRessourceTag)`
   margin: 1.9% 2.54%;
 `
 

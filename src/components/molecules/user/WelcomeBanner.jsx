@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../scss/config/mixins'
+import { media } from '../../../scss/config/mixins'
 
-import { ReactComponent as Persona } from '../../assets/icons/profile/persona.svg'
-import plant from '../../assets/images/jungle-plant.png'
-import leaves from '../../assets/images/jungle-leaves.png'
+// icons and images
+import { ReactComponent as Persona } from '../../../assets/icons/profile/persona.svg'
+import plant from '../../../assets/images/jungle-plant.png'
+import leaves from '../../../assets/images/jungle-leaves.png'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 

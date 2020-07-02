@@ -1,9 +1,8 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
-//import Component
-
-import { ReactComponent as CrossClose } from '../../../assets/icons/layout/crossClose.svg'
+// icon
+import { ReactComponent as crossIcon } from '../../../assets/icons/layout/cross.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -51,7 +50,7 @@ const PopUpContent = styled.p`
   color: ${(props) => props.theme.black};
 `
 
-const Cross = styled(CrossClose)`
+const Cross = styled(crossIcon)`
   position: absolute;
   width: 11px;
   height: 11px;

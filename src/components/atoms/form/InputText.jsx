@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+// icon
 import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */

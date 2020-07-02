@@ -1,4 +1,4 @@
-export const checkGenralFormInfo = (
+export const checkGeneralFormInfo = (
   name,
   firstName,
   email,

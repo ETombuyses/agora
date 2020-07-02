@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title } from '../components/atoms/layout/Title'
-import { PageLocation } from '../components/atoms/layout/PageLocation'
 
-export default function Home() {
+// components
+import { Title } from '../components/atoms/layout/Title'
+import { PageLocation } from '../components/molecules/layout/PageLocation'
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+export default function Stats() {
   return (
     <div className="pageWrapper">
       <CustomPageLocation location="Analytique" />
@@ -11,6 +15,8 @@ export default function Home() {
     </div>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const CustomPageLocation = styled(PageLocation)`
   margin-bottom: 15px;

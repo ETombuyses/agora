@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-// import axios from 'axios'
 
+// components
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
-import { MonthlyTasksRecap } from '../components/molecules/MonthlyTasksRecap'
+import { MonthlyTasksRecap } from '../components/organisms/MonthlyTasksRecap'
 import { Select } from '../components/atoms/form/Select'
-import { PageLocation } from '../components/atoms/layout/PageLocation'
+import { PageLocation } from '../components/molecules/layout/PageLocation'
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function History() {
   const [userRegisteredYear, setUserRegisteredYear] = useState('')
@@ -58,6 +60,8 @@ export default function History() {
     </div>
   )
 }
+
+/* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const MissionHistoryTitle = styled.h2`
   font-size: 19px;

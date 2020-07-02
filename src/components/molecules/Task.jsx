@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
+// components
 import { Tag } from '../atoms/task/Tag'
-import { TaskIcon } from '../atoms/task/TaskIcon'
-import { TaskTitle } from '../atoms/task/TaskTitle'
+import { TaskIcon } from '../atoms/task/Icon'
+import { TaskTitle } from '../atoms/task/Title'
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
@@ -12,8 +15,6 @@ const tasks = {
   Eau: { icon: 'water', unit: 'L', name: 'Eau' },
   Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
   const [taskProgress, setTaskProgress] = React.useState(0)

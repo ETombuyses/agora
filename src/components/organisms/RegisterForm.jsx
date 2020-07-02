@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import { media } from '../../scss/config/mixins'
 
 // components
 import { InputText } from '../atoms/form/InputText'
 import { Button } from '../atoms/form/Button'
-//import { PopUp } from '../atoms/PopUp'
-import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
-import { media } from '../../scss/config/mixins'
+import { RadioButtonsGroup } from '../molecules/form/RadioButtonsGroup'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -83,7 +82,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Nombre de résidents"
             type={'text'}
           />
-          <RadioButtonGroup
+          <RadioButtonsGroup
             ref={{
               ref1: isuYesButton,
               ref2: isuNoButton,
@@ -98,7 +97,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             label={'Isolation changées ces  20 dernières années ?'}
             required={true}
           />
-          <RadioButtonGroup
+          <RadioButtonsGroup
             ref={{
               ref1: gasYesButton,
               ref2: gasNoButton,

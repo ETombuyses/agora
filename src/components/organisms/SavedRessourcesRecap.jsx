@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { media } from '../../scss/config/mixins'
 
-import { SavedRessource } from '../molecules/SavedRessource'
+// component
+import { SavedRessources } from '../molecules/SavedRessourcesTags'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -79,7 +79,7 @@ const SavedRessourcesList = styled.div`
   `}
 `
 
-const CustomSavedRessource = styled(SavedRessource)`
+const CustomSavedRessource = styled(SavedRessources)`
   :not(:last-child) {
     margin-bottom: 17px;
 

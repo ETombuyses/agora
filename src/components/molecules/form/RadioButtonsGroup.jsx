@@ -2,13 +2,14 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 
 // components
+import { RadioButton } from '../../atoms/form/RadioButton'
 
-import { RadioButton } from '../atoms/form/RadioButton'
-import { ReactComponent as HelpIcon } from '../../assets/icons/layout/help-icon.svg'
+// icon
+import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const RadioButtonGroup = forwardRef((props, ref) => {
+export const RadioButtonsGroup = forwardRef((props, ref) => {
   const { ref1, ref2 } = ref
 
   return (

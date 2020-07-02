@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { media } from '../../scss/config/mixins'
 
+// component
 import { Task } from '../molecules/Task'
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const monthTraduction = [
   'Janvier',
@@ -21,8 +24,6 @@ const monthTraduction = [
 ]
 
 const slider = React.createRef()
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const MonthlyTasksRecap = (props) => {
   const [monthsTasksData, setMonthsTasksData] = useState([])

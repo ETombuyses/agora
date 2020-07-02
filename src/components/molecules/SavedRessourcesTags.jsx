@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { media } from '../../scss/config/mixins'
 
-import { TaskIcon } from '../atoms/task/TaskIcon'
+// component
+import { TaskIcon } from '../atoms/task/Icon'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const SavedRessource = (props) => {
+export const SavedRessources = (props) => {
   return (
     <SavedRessourceWrapper className={props.className}>
       <TaskIcon color="white" icon={props.icon} big={true} />

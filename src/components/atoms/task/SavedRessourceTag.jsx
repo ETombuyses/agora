@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// emoticons
-import fire from '../../../assets/images/fire.png'
-import water from '../../../assets/images/water.png'
-import lightning from '../../../assets/images/lightning.png'
-import trash from '../../../assets/images/trash.png'
-import bus from '../../../assets/images/bus.png'
+// icon
+import gas from '../../../assets/icons/tasks/gas.png'
+import water from '../../../assets/icons/tasks/water.png'
+import lightning from '../../../assets/icons/tasks/lightning.png'
+import trash from '../../../assets/icons/tasks/trash.png'
+import bus from '../../../assets/icons/tasks/bus.png'
 
 const images = {
-  Gaz: { icon: fire, name: 'Gas' },
+  Gaz: { icon: gas, name: 'Gas' },
   Eau: { icon: water, name: 'Eau' },
   Electricté: { icon: lightning, name: 'Electricité' },
   Déchêts: { icon: trash, name: 'Déchêts' },
@@ -18,7 +18,7 @@ const images = {
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const TaskStatTag = (props) => {
+export const SavedRessourceTag = (props) => {
   return (
     <TagWrapper className={props.className}>
       <img icon={props.icon} src={images[props.icon].icon}></img>
