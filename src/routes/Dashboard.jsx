@@ -139,11 +139,21 @@ export default function Dashboard() {
             <Title text="Missions en cours :" />
             {tasks2 &&
               tasks2.map((task) => {
-                if ((task.consummed / task.limit) * 100 < 100)
+                if (
+                  task.name === 'Transports'
+                    ? task.validate == 1
+                    : (task.consummed / task.limit) * 100 <= 100
+                )
                   return (
                     <CustomTask
                       task={task.name}
-                      progression={100 - (task.consummed / task.limit) * 100}
+                      progression={
+                        task.name === 'Transports'
+                          ? task.validate == 1
+                            ? 100
+                            : 0
+                          : 100 - (task.consummed / task.limit) * 100
+                      }
                       consummed={task.consummed}
                       unit={task.unit}
                       limit={task.limit}
@@ -154,21 +164,32 @@ export default function Dashboard() {
                 else return null
               })}
             <Title text="Missions ratées :"></Title>
-            {tasks2.map((task) => {
-              if ((task.consummed / task.limit) * 100 >= 100)
-                return (
-                  <CustomTask
-                    task={task.name}
-                    progression={100 - (task.consummed / task.limit) * 100}
-                    consummed={task.consummed}
-                    unit={task.unit}
-                    limit={task.limit}
-                    key={task.name}
-                    showHint={true}
-                  />
+            {tasks2 &&
+              tasks2.map((task) => {
+                if (
+                  task.name === 'Transports'
+                    ? task.validate == 0
+                    : (task.consummed / task.limit) * 100 > 100
                 )
-              else return null
-            })}
+                  return (
+                    <CustomTask
+                      task={task.name}
+                      progression={
+                        task.name === 'Transports'
+                          ? task.validate == 1
+                            ? 100
+                            : 0
+                          : 100 - (task.consummed / task.limit) * 100
+                      }
+                      consummed={task.consummed}
+                      unit={task.unit}
+                      limit={task.limit}
+                      key={task.name}
+                      showHint={true}
+                    />
+                  )
+                else return null
+              })}
           </TasksContainer>
           <CustomLevelProgress
             level={userData ? userData.level.levelNumber : 0}

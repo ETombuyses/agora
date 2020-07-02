@@ -12,6 +12,7 @@ const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
   Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
   transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
+  Transports: { icon: 'bus', unit: '', name: 'Transports' },
   Eau: { icon: 'water', unit: 'L', name: 'Eau' },
   Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
@@ -54,13 +55,21 @@ export const Task = (props) => {
           ></TaskTitle>
           {!props.isHistoryTask && (
             <TaskDescription>
-              Ne pas consommer plus de{' '}
-              <Limit
-                isHistoryTask={props.isHistoryTask}
-                progression={props.progression}
-              >
-                {props.limit} {props.unit}
-              </Limit>
+              {props.progression > 0
+                ? props.task === 'Transports'
+                  ? 'Activer votre carte Navigo'
+                  : 'Ne pas consommer plus de '
+                : props.task === 'Transports'
+                ? `Vous n'avez pas activé votre carte`
+                : 'Vous avez consommé plus de '}
+              {props.task !== 'Transports' && (
+                <Limit
+                  isHistoryTask={props.isHistoryTask}
+                  progression={props.progression}
+                >
+                  {props.limit} {props.unit}
+                </Limit>
+              )}
             </TaskDescription>
           )}
           {props.isHistoryTask && (
@@ -88,7 +97,13 @@ export const Task = (props) => {
           color={
             taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
           }
-          text={`${props.consummed} ${props.unit}`}
+          text={
+            props.task === 'Transports'
+              ? props.progression == 100
+                ? 'Active'
+                : 'Inactive'
+              : `${props.consummed} ${props.unit}`
+          }
         />
       )}
     </TaskWrapper>
