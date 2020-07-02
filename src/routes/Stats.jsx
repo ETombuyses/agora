@@ -22,7 +22,7 @@ export default function Home() {
     ;(async () => {
       const result = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/user/analytiques/${getuserId}`,
+        url: `http://127.0.0.1:8000/api/user/analytics/${getuserId}`,
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -50,7 +50,7 @@ export default function Home() {
           />
         </GlobalDataCardWrapper>
       )}
-      <Title text="Missions reussis au total" />
+      <Title text="Missions réussis au total" />
       {userData.data && (
         <GraphContainer>
           <GraphCard data={userData.data.thisYear.Eau} />

@@ -4,6 +4,24 @@ import { media, toRem } from '../../scss/config/mixins'
 
 import { TaskIcon } from '../atoms/TaskIcon'
 
+//transform value in %
+/* function pourcent(value, decimal) {
+  return (value * 100) / decimal + '%'
+} */
+
+function pourcent(value, decimal) {
+  return 150 * (value / decimal) + 'px'
+}
+
+/* function pourcent(value, decimal) {
+  // % de 19 dans 75
+  let x = (100 * value) / decimal
+  // prix a payer solde
+  let y = (decimal * (100 - x)) / 100
+  //return marge tache en px
+  return decimal - y + 'px'
+} */
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const GraphCard = (props) => {
@@ -56,11 +74,21 @@ export const GraphCard = (props) => {
         </span>
       </HeadingWrapper>
       <ContentWrapper>
-        {months.map((month) => {
+        {months.map((month, index) => {
           return (
             <div key={month.month}>
-              <p>{month.month}</p>
-              <div className="barChart"></div>
+              <div>
+                <p>{month.month}</p>
+                {props.data.allTasks[index] && (
+                  <BarChart
+                    value={props.data.allTasks[index].nbValidateTaskByType}
+                    decimal={props.data.nbtaskValidate}
+                  />
+                )}
+              </div>
+              {props.data.allTasks[index] && (
+                <Unit>{props.data.allTasks[index].nbValidateTaskByType}</Unit>
+              )}
             </div>
           )
         })}
@@ -77,7 +105,7 @@ const CardWrapper = styled.div`
   align-items: center;
   border-radius: 10px;
   margin-bottom: 40px;
-  padding-bottom: 13px;
+  padding-bottom: 35px;
   overflow-x: scroll;
 
   ${media.large`
@@ -138,6 +166,7 @@ const ContentWrapper = styled.div`
     width: calc(100% / 12);
     border-right: 2px solid ${(props) => props.theme.greyOpacity};
     min-height: 170px;
+    position: relative;
 
     &:last-child {
       border-right: inherit;
@@ -147,18 +176,30 @@ const ContentWrapper = styled.div`
   p {
     font-weight: 500;
     text-align: center;
-    color: ${(props) => props.theme.greyOpacity};
-  }
-
-  .barChart  {
-    margin: auto;
-    width: 70%;
-    background-color: ${(props) => props.theme.green};
-    height: 80%;
+    color: ${(props) => props.theme.grey};
   }
 
   ${media.desktop`
 		min-width: inherit;
 		padding: inherit;
 	`}
+`
+
+const BarChart = styled.div`
+  margin: auto;
+  width: 70%;
+  background-color: ${(props) => props.theme.green};
+  height: ${(props) => pourcent(props.value, props.decimal)};
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+`
+const Unit = styled.span`
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
 `
