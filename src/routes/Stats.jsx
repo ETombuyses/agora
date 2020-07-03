@@ -56,43 +56,67 @@ export default function Home() {
       )}
       <Title text="Missions réussis au total" />
       {userData.data && (
-        <GraphContainer>
-          {(window.innerWidth >= 768 || selectValue === 'water') && (
+        <>
+          <GraphContainerMobile>
+            {selectValue === 'water' && (
+              <GraphCard
+                value={'water'}
+                data={userData.data.thisYear.Eau}
+                handleChangeEnergie={handleChangeEnergie}
+              />
+            )}
+            {selectValue === 'electricity' && (
+              <GraphCard
+                value={'electricity'}
+                data={userData.data.thisYear.Electricté}
+                handleChangeEnergie={handleChangeEnergie}
+              />
+            )}
+            {selectValue === 'gas' && (
+              <GraphCard
+                value={'gas'}
+                data={userData.data.thisYear.Gaz}
+                handleChangeEnergie={handleChangeEnergie}
+              />
+            )}
+            {selectValue === 'waste' && (
+              <GraphCard
+                value={'waste'}
+                data={userData.data.thisYear.Déchêts}
+                handleChangeEnergie={handleChangeEnergie}
+              />
+            )}
+            {selectValue === 'transport' && (
+              <GraphCard
+                value={'transport'}
+                data={userData.data.thisYear.Transports}
+                handleChangeEnergie={handleChangeEnergie}
+              />
+            )}
+          </GraphContainerMobile>
+          <GraphContainerDesktop>
             <GraphCard
-              value={'water'}
               data={userData.data.thisYear.Eau}
               handleChangeEnergie={handleChangeEnergie}
             />
-          )}
-          {(window.innerWidth >= 768 || selectValue === 'electricity') && (
             <GraphCard
-              value={'electricity'}
               data={userData.data.thisYear.Electricté}
               handleChangeEnergie={handleChangeEnergie}
             />
-          )}
-          {(window.innerWidth >= 768 || selectValue === 'gas') && (
             <GraphCard
-              value={'gas'}
               data={userData.data.thisYear.Gaz}
               handleChangeEnergie={handleChangeEnergie}
             />
-          )}
-          {(window.innerWidth >= 768 || selectValue === 'waste') && (
             <GraphCard
-              value={'waste'}
               data={userData.data.thisYear.Déchêts}
               handleChangeEnergie={handleChangeEnergie}
             />
-          )}
-          {(window.innerWidth >= 768 || selectValue === 'transport') && (
             <GraphCard
-              value={'transport'}
               data={userData.data.thisYear.Transports}
               handleChangeEnergie={handleChangeEnergie}
             />
-          )}
-        </GraphContainer>
+          </GraphContainerDesktop>
+        </>
       )}
     </div>
   )
@@ -117,7 +141,19 @@ const GlobalDataCardWrapper = styled.div`
   `}
 `
 
-const GraphContainer = styled.div`
+const GraphContainerMobile = styled.div`
+  ${media.tablet`
+    display: none;
+  `}
+`
+
+const GraphContainerDesktop = styled.div`
+  display: none;
+
+  ${media.tablet`
+    display: block;
+  `}
+
   ${media.large`
     display: flex;
     flex-wrap: wrap;
