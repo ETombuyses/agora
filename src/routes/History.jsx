@@ -31,7 +31,7 @@ export default function History() {
 
       setUserRegisteredYear(currentYear - yearsSubscribed)
     }
-  })
+  }, [])
 
   const handleYearCHange = (year) => {
     setSelectedYear(year)

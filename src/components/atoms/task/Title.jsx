@@ -47,6 +47,6 @@ const Label = styled.p`
   line-height: 130%;
 `
 
-const Asterisk = styled.span`
+/* const Asterisk = styled.span`
   color: ${(props) => props.theme.red};
-`
+` */

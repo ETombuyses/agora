@@ -21,7 +21,11 @@ const images = {
 export const SavedRessourceTag = (props) => {
   return (
     <TagWrapper className={props.className}>
-      <img icon={props.icon} src={images[props.icon].icon}></img>
+      <img
+        icon={props.icon}
+        src={images[props.icon].icon}
+        alt={`icon ${images[props.icon].name}`}
+      ></img>
       <TextWrapper>
         <Title icon={props.icon}>{images[props.icon].name}</Title>
         <Stat>

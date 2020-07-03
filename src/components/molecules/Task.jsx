@@ -99,7 +99,7 @@ export const Task = (props) => {
           }
           text={
             props.task === 'Transports'
-              ? props.progression == 100
+              ? props.progression === 100
                 ? 'Active'
                 : 'Inactive'
               : `${props.consummed} ${props.unit}`

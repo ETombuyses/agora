@@ -49,6 +49,25 @@ const PageTitle = styled.h1`
   display: none;
   font-size: 23px;
 
+  p {
+    font-size: 15px;
+    font-weight: 500;
+
+    ${media.desktop`
+    font-size: 13px;
+  `};
+  }
+
+  p:first-child {
+    margin-bottom: 5px;
+    display: none;
+
+    ${media.desktop`
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+	  `};
+  }
   ${media.desktop`
     margin-bottom: 8px;
     display: block;

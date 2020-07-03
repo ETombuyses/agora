@@ -1,35 +1,24 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { media, toRem } from '../../scss/config/mixins'
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const Select = (props) => {
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+export const SelectEnergie = (props) => {
+  const [value, setValue] = useState(props.value)
 
-  const currentYear = new Date().getFullYear()
-
-  let years = [currentYear]
-  let i = currentYear - props.startYear
-
-  for (i; i > 0; i--) {
-    years.push(currentYear - i)
-  }
-
-  const changeYear = (event) => {
-    setSelectedYear(Number(event.target.value))
-    props.handleYearCHange(Number(event.target.value))
+  const handleChange = (e) => {
+    setValue(e.target.value)
+    props.handleChangeEnergie(e.target.value)
   }
 
   return (
-    <CustomSelect
-      value={selectedYear}
-      onChange={changeYear}
-      className={props.className}
-    >
-      {years.map((year) => {
+    <CustomSelect value={value} onChange={(e) => handleChange(e)}>
+      {props.data.map((energie) => {
         return (
-          <option value={year} key={year}>
-            Année {year}
+          <option key={energie.name} value={energie.energie}>
+            {energie.name}
           </option>
         )
       })}
@@ -44,17 +33,21 @@ const CustomSelect = styled.select`
   color: ${(props) => props.theme.black};
   padding: 11px 25px 11px 8px;
   max-width: 100%;
-  margin: 0;
   border: none;
   border-radius: 7px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.blueGrey};
   background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2E2E2EB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
+  flex: 1 1 50%;
+  height: 50px;
+  margin-left: 16px;
+  font-size: ${toRem(19)};
+  text-align-last: center;
 
   ::-ms-expand {
     display: none;
@@ -83,4 +76,9 @@ const CustomSelect = styled.select`
   .select-css[aria-disabled='true'] {
     border-color: #aaa;
   }
+
+  ${media.tablet`
+    display: none;
+    flex: inherit;
+  `}
 `
