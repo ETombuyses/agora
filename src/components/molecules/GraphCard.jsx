@@ -29,26 +29,11 @@ export const GraphCard = (props) => {
   ]
 
   const selectValue = [
-    {
-      energie: 'water',
-      name: 'EAU',
-    },
-    {
-      energie: 'waste',
-      name: 'DECHETS',
-    },
-    {
-      energie: 'transport',
-      name: 'TRANSPORT',
-    },
-    {
-      energie: 'gas',
-      name: 'GAZ',
-    },
-    {
-      energie: 'electricity',
-      name: 'ELECTRICITE',
-    },
+    { energie: 'water', name: 'EAU' },
+    { energie: 'waste', name: 'DECHETS' },
+    { energie: 'transport', name: 'TRANSPORT' },
+    { energie: 'gas', name: 'GAZ' },
+    { energie: 'electricity', name: 'ELECTRICITE' },
   ]
 
   let iconEnergie
@@ -68,16 +53,20 @@ export const GraphCard = (props) => {
   return (
     <CardWrapper>
       <HeadingWrapper>
-        <TaskIcon
+        <TaskIconWrapper
           size={'medium'}
           icon={iconEnergie}
           color={'blueGrey'}
           text={props.data.allTasks[0].name}
         />
-        <SelectEnergie data={selectValue} />
-        <span>
+        <SelectEnergie
+          data={selectValue}
+          value={props.value}
+          handleChangeEnergie={props.handleChangeEnergie}
+        />
+        <NbTasks>
           <strong>{props.data.nbtaskValidate}</strong> missions
-        </span>
+        </NbTasks>
       </HeadingWrapper>
       <ContentWrapper>
         {months.map((month, index) => {
@@ -130,7 +119,11 @@ const CardWrapper = styled.div`
 			margin: inherit;
 			flex: inherit;
 		}
-	`}
+  `}
+
+  ${media.tablet`
+    display: block;
+  `}
 `
 
 const HeadingWrapper = styled.div`
@@ -138,24 +131,15 @@ const HeadingWrapper = styled.div`
 	padding: 15px 8px 0 8px;
 	width: 100%;
 	justify-content: space-between;
-	margin-bottom: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 	
 	span {
 		font-weight: 500;
-		font-size: ${toRem(15)};
 	}
-
-	${media.large`
-		span { 
-			font-size: ${toRem(16)};
-
-			strong {
-				font-size: ${toRem(23)};
-			}
-		}
-	`}
 	
-	${media.tablet`
+  ${media.tablet`
+    flex-wrap: inherit;
 		padding: 15px 30px 0 30px;
 	`}
 }
@@ -255,4 +239,27 @@ const MonthLong = styled.p`
   ${media.tablet`
 		display: none
 	`}
+`
+
+const NbTasks = styled.span`
+  flex: 1 1 50%;
+  font-size: ${toRem(14)};
+  margin-top: 16px;
+
+  strong {
+    font-size: ${toRem(19)};
+  }
+
+  ${media.tablet`
+    flex: inherit;
+    margin-top: inherit;
+    font-size: ${toRem(16)};
+
+    strong {
+      font-size: ${toRem(23)};
+    }
+  `}
+`
+const TaskIconWrapper = styled(TaskIcon)`
+  flex: 1 1 50%;
 `

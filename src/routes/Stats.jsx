@@ -14,6 +14,7 @@ import axios from 'axios'
 
 export default function Home() {
   const [userData, setUserData] = useState(0)
+  const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
     let getuserId = localStorage.getItem('idUser')
@@ -31,6 +32,10 @@ export default function Home() {
       setUserData(result)
     })()
   }, [])
+
+  const handleChangeEnergie = (e) => {
+    setSelectValue(e)
+  }
 
   return (
     <div className="pageWrapper">
@@ -52,11 +57,41 @@ export default function Home() {
       <Title text="Missions réussis au total" />
       {userData.data && (
         <GraphContainer>
-          <GraphCard data={userData.data.thisYear.Eau} />
-          <GraphCard data={userData.data.thisYear.Electricté} />
-          <GraphCard data={userData.data.thisYear.Gaz} />
-          <GraphCard data={userData.data.thisYear.Déchêts} />
-          <GraphCard data={userData.data.thisYear.Transports} />
+          {(window.innerWidth >= 768 || selectValue === 'water') && (
+            <GraphCard
+              value={'water'}
+              data={userData.data.thisYear.Eau}
+              handleChangeEnergie={handleChangeEnergie}
+            />
+          )}
+          {(window.innerWidth >= 768 || selectValue === 'electricity') && (
+            <GraphCard
+              value={'electricity'}
+              data={userData.data.thisYear.Electricté}
+              handleChangeEnergie={handleChangeEnergie}
+            />
+          )}
+          {(window.innerWidth >= 768 || selectValue === 'gas') && (
+            <GraphCard
+              value={'gas'}
+              data={userData.data.thisYear.Gaz}
+              handleChangeEnergie={handleChangeEnergie}
+            />
+          )}
+          {(window.innerWidth >= 768 || selectValue === 'waste') && (
+            <GraphCard
+              value={'waste'}
+              data={userData.data.thisYear.Déchêts}
+              handleChangeEnergie={handleChangeEnergie}
+            />
+          )}
+          {(window.innerWidth >= 768 || selectValue === 'transport') && (
+            <GraphCard
+              value={'transport'}
+              data={userData.data.thisYear.Transports}
+              handleChangeEnergie={handleChangeEnergie}
+            />
+          )}
         </GraphContainer>
       )}
     </div>

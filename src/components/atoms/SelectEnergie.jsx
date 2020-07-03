@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { media, toRem } from '../../scss/config/mixins'
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const SelectEnergie = (props) => {
-  const [value, setValue] = useState(props.data[0].energie)
+  const [value, setValue] = useState(props.value)
 
   const handleChange = (e) => {
     setValue(e.target.value)
+    props.handleChangeEnergie(e.target.value)
   }
 
   return (
@@ -30,7 +33,6 @@ const CustomSelect = styled.select`
   color: ${(props) => props.theme.black};
   padding: 11px 25px 11px 8px;
   max-width: 100%;
-  margin: 0;
   border: none;
   border-radius: 7px;
   -moz-appearance: none;
@@ -41,6 +43,11 @@ const CustomSelect = styled.select`
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
+  flex: 1 1 50%;
+  height: 50px;
+  margin-left: 16px;
+  font-size: ${toRem(19)};
+  text-align-last: center;
 
   ::-ms-expand {
     display: none;
@@ -69,4 +76,9 @@ const CustomSelect = styled.select`
   .select-css[aria-disabled='true'] {
     border-color: #aaa;
   }
+
+  ${media.tablet`
+    display: none;
+    flex: inherit;
+  `}
 `
