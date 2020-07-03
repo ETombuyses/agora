@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 // Components
-import { Title } from '../components/atoms/Title'
-import { PageLocation } from '../components/atoms/PageLocation'
+import { Title } from '../components/atoms/layout/Title'
+import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
 import { GraphCard } from '../components/molecules/GraphCard'
 
@@ -12,7 +12,7 @@ import axios from 'axios'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export default function Home() {
+export default function Stats() {
   const [userData, setUserData] = useState(0)
   const [selectValue, setSelectValue] = useState('water')
 

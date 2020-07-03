@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { media, toRem } from '../../scss/config/mixins'
 
 // Components
-import { TaskIcon } from '../atoms/TaskIcon'
+import { TaskIcon } from '../atoms/task/Icon'
 import { SelectEnergie } from '../atoms/SelectEnergie'
 
 function pourcentDesktop(value, decimal) {

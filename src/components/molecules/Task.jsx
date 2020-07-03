@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Tag } from '../atoms/Tag'
-import { TaskIcon } from '../atoms/TaskIcon'
-import { HintLabel } from '../atoms/HintLabel'
+// components
+import { Tag } from '../atoms/task/Tag'
+import { TaskIcon } from '../atoms/task/Icon'
+import { TaskTitle } from '../atoms/task/Title'
+
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
   Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
   transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
+  Transports: { icon: 'bus', unit: '', name: 'Transports' },
   Eau: { icon: 'water', unit: 'L', name: 'Eau' },
   Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
 }
-
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
   const [taskProgress, setTaskProgress] = React.useState(0)
@@ -40,9 +42,9 @@ export const Task = (props) => {
           }
         />
         <div>
-          <HintLabel
+          <TaskTitle
             // label={tasks[props.task].name}
-            label={
+            title={
               props.isHistoryTask
                 ? props.task === 'transportsIsValidate'
                   ? 'Abonnement Navigo'
@@ -50,16 +52,24 @@ export const Task = (props) => {
                 : tasks[props.task].name
             }
             hint={props.showHint}
-          ></HintLabel>
+          ></TaskTitle>
           {!props.isHistoryTask && (
             <TaskDescription>
-              Ne pas consommer plus de{' '}
-              <Limit
-                isHistoryTask={props.isHistoryTask}
-                progression={props.progression}
-              >
-                xKw
-              </Limit>
+              {props.progression > 0
+                ? props.task === 'Transports'
+                  ? 'Activer votre carte Navigo'
+                  : 'Ne pas consommer plus de '
+                : props.task === 'Transports'
+                ? `Vous n'avez pas activé votre carte`
+                : 'Vous avez consommé plus de '}
+              {props.task !== 'Transports' && (
+                <Limit
+                  isHistoryTask={props.isHistoryTask}
+                  progression={props.progression}
+                >
+                  {props.limit} {props.unit}
+                </Limit>
+              )}
             </TaskDescription>
           )}
           {props.isHistoryTask && (
@@ -87,7 +97,13 @@ export const Task = (props) => {
           color={
             taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
           }
-          text="3L"
+          text={
+            props.task === 'Transports'
+              ? props.progression == 100
+                ? 'Active'
+                : 'Inactive'
+              : `${props.consummed} ${props.unit}`
+          }
         />
       )}
     </TaskWrapper>
