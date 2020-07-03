@@ -37,30 +37,35 @@ export const RegisterForm = forwardRef((props, ref) => {
             required={true}
             label="Nom"
             type={'text'}
+            identifyer={'lastName'}
           />
           <InputTextButton
             ref={firstName}
             required={true}
             label="Prénom"
             type={'text'}
+            identifyer={'firstName'}
           />
           <InputTextButton
             ref={email}
             type={'email'}
             required={true}
             label="Email"
+            identifyer={'email'}
           />
           <InputTextButton
             ref={pswd}
             required={true}
             label="Mot de passe"
             type={'password'}
+            identifyer={'password'}
           />
           <InputTextButton
             ref={confirmePswd}
             required={true}
             label="Confirmer votre mot de passe"
             type={'password'}
+            identifyer={'passwordConfirmation'}
           />
           <ContinueButton
             isFullWidth={false}
@@ -75,12 +80,14 @@ export const RegisterForm = forwardRef((props, ref) => {
             hint={true}
             label="Numéro d’Agora"
             type={'text'}
+            identifyer={'AgoraNumber'}
           />
           <InputTextButton
             ref={nbResident}
             required={true}
             label="Nombre de résidents"
             type={'text'}
+            identifyer={'ResidentNumber'}
           />
           <RadioButtonsGroup
             ref={{
@@ -117,18 +124,21 @@ export const RegisterForm = forwardRef((props, ref) => {
             required={true}
             label="Surface de l’habitat (en M²)"
             type={'text'}
+            identifyer={'livingSpace'}
           />
           <InputTextButton
             ref={nbNavigo}
             required={false}
             label="Numéro carte Navigo"
             type={'text'}
+            identifyer={'navigoNumber'}
           />
           <InputTextButton
             ref={nbNIF}
             required={true}
             label="Numéro NIF"
             type={'text'}
+            identifyer={'NIFNumber'}
           />
           <ContinueButton
             onClickButton={props.sendForm}

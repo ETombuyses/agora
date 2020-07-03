@@ -54,12 +54,14 @@ export default function Login() {
             required={true}
             label="Email"
             type={'text'}
+            identifyer={'email'}
           />
           <InputTextButton
             onChangeValue={(e) => passwordStorage(e)}
             required={true}
             label="Mot de passe"
             type={'password'}
+            identifyer={'password'}
           />
           <LoginButton
             isFullWidth={false}
