@@ -150,19 +150,13 @@ export default function Dashboard() {
               tasks2.map((task) => {
                 if (
                   task.name === 'Transports'
-                    ? task.validate === 1
+                    ? Number(task.validate) === 1
                     : (task.consummed / task.limit) * 100 <= 100
                 )
                   return (
                     <CustomTask
                       task={task.name}
-                      progression={
-                        task.name === 'Transports'
-                          ? task.validate === 1
-                            ? 100
-                            : 0
-                          : 100 - (task.consummed / task.limit) * 100
-                      }
+                      progression={task.percent}
                       consummed={task.consummed}
                       unit={task.unit}
                       limit={task.limit}
@@ -177,19 +171,13 @@ export default function Dashboard() {
               tasks2.map((task) => {
                 if (
                   task.name === 'Transports'
-                    ? task.validate === 0
+                    ? Number(task.validate) === 0
                     : (task.consummed / task.limit) * 100 > 100
                 )
                   return (
                     <CustomTask
                       task={task.name}
-                      progression={
-                        task.name === 'Transports'
-                          ? task.validate === 1
-                            ? 100
-                            : 0
-                          : 100 - (task.consummed / task.limit) * 100
-                      }
+                      progression={task.percent}
                       consummed={task.consummed}
                       unit={task.unit}
                       limit={task.limit}
