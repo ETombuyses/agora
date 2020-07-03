@@ -21,7 +21,7 @@ const images = {
 
 export const TaskIcon = (props) => {
   return (
-    <Container>
+    <Container text={props.text}>
       <IconWrapper
         className={props.className}
         color={props.color}
@@ -111,7 +111,7 @@ const IconWrapper = styled.div`
 `
 
 const Container = styled.div`
-  position: relative;
+  position: ${(props) => (props.text ? 'relative' : 'initial')};
 
   .energie {
     font-weight: 500;
