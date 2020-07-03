@@ -91,27 +91,36 @@ export default function Dashboard() {
             case 'Eau':
               task.consummed = result.data.additionalDatas.data.mesureWater
               task.limit = userProfileData.limits.waterLimit
+              task.percent = 100 - (task.consummed / task.limit) * 100
               break
             case 'Electricté':
               task.consummed =
                 result.data.additionalDatas.data.mesureElectricity
               task.limit = userProfileData.limits.electricityLimit
+              task.percent = 100 - (task.consummed / task.limit) * 100
               break
             case 'Gaz':
               task.consummed = result.data.additionalDatas.data.mesureGas
               task.limit = userProfileData.limits.gazLimit
+              task.percent = 100 - (task.consummed / task.limit) * 100
               break
             case 'Transports':
               task.consummed = task.validate
+              task.percent = task.validate == 1 ? 100 : 0
               break
             case 'Déchêts':
               task.consummed = result.data.additionalDatas.data.mesureWaste
               task.limit = userProfileData.limits.wasteLimit
+              task.percent = 100 - (task.consummed / task.limit) * 100
               break
           }
         })
 
+        console.log('test', taskssTest)
         setUserData(result.data)
+        taskssTest.sort((a, b) => {
+          return b.percent - a.percent
+        })
         setTasks2(taskssTest)
       }
     })()

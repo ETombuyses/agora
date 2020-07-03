@@ -7,6 +7,9 @@ import { media } from '../../scss/config/mixins'
 // component
 import { MenuIcon } from '../atoms/layout/MenuIcon'
 
+// logo
+import logo from '../../assets/agora-logo.png'
+
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const History = lazy(() => import('../../routes/History'))
@@ -52,37 +55,40 @@ const NavWithTheme = (props) => {
     <div>
       {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
-          <List>
-            {pages.map((page) => {
-              if (page.icon)
-                return (
-                  <ListItem key={page.route}>
-                    <Link
-                      to={page.route}
-                      className={
-                        currentRoute === page.route ? 'currentPage' : ''
-                      }
-                    >
-                      <MenuIcon
-                        icon={page.icon}
-                        active={currentRoute === page.route}
-                      />
-                      <Text
-                        style={{
-                          color:
-                            currentRoute === page.route
-                              ? props.theme.green
-                              : props.theme.grey,
-                        }}
+          <MenuWrapper>
+            <Logo src={logo} />
+            <List>
+              {pages.map((page) => {
+                if (page.icon)
+                  return (
+                    <ListItem key={page.route}>
+                      <Link
+                        to={page.route}
+                        className={
+                          currentRoute === page.route ? 'currentPage' : ''
+                        }
                       >
-                        {page.name}
-                      </Text>
-                    </Link>
-                  </ListItem>
-                )
-              else return null
-            })}
-          </List>
+                        <MenuIcon
+                          icon={page.icon}
+                          active={currentRoute === page.route}
+                        />
+                        <Text
+                          style={{
+                            color:
+                              currentRoute === page.route
+                                ? props.theme.green
+                                : props.theme.grey,
+                          }}
+                        >
+                          {page.name}
+                        </Text>
+                      </Link>
+                    </ListItem>
+                  )
+                else return null
+              })}
+            </List>
+          </MenuWrapper>
         </NavWrapper>
       )}
       <Suspense fallback={<div>Chargement...</div>}>
@@ -118,12 +124,32 @@ const NavWrapper = styled.nav`
   z-index: 100;
 
   ${media.desktop`
-    display: flex;
-    justify-content: center;
     top: 0;
     left: 0;
     width: 15%;
 	`}
+`
+const MenuWrapper = styled.div`
+  position: relative;
+  height: 100%;
+
+  ${media.desktop`
+    display: flex;
+    justify-content: center;
+  `}
+`
+
+const Logo = styled.img`
+  position: absolute;
+  display: none;
+  width: 60%;
+  left: 0;
+  margin-top: 10%;
+  margin-left: 10%;
+
+  ${media.desktop`
+    display: block;
+  `}
 `
 
 const List = styled.ul`
