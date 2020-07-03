@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Select = (props) => {
-  const [selectedYear, setSelectedYear] = React.useState(
-    new Date().getFullYear()
-  )
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
 
   const currentYear = new Date().getFullYear()
 
