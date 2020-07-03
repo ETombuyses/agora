@@ -51,7 +51,7 @@ export function login(email, password) {
     )
 
     if (result) {
-      window.location.href = 'http://localhost:3000/'
+      window.location.hash = '/'
     }
   })()
 }
@@ -132,12 +132,12 @@ export function register(
     })
 
     if (result) {
-      window.location.pathname = '/login'
+      window.location.hash = '/login'
     }
   })()
 }
 
 export function logout() {
   localStorage.clear()
-  window.location.pathname = '/login'
+  window.location.hash = '/login'
 }

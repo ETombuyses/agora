@@ -106,16 +106,6 @@ export default function Register() {
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
 
-      console.log(typeof lastName, lastName)
-      console.log(typeof primaryName, primaryName)
-      console.log(typeof emailling, emailling)
-      console.log(typeof password, password)
-      console.log(typeof agoraNumber, agoraNumber)
-      console.log(typeof residentNumber, residentNumber)
-      console.log(typeof livingArea, livingArea)
-      console.log(typeof navigoNumber, navigoNumber)
-      console.log(typeof nifNumber, nifNumber)
-
       register(
         lastName,
         primaryName,
