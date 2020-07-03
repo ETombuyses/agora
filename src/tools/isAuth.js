@@ -137,20 +137,7 @@ export function register(
   })()
 }
 
-/* export function getUserData() {
-  let getuserId = localStorage.getItem('idUser')
-  let getToken = localStorage.getItem('token')
-
-  ;(async () => {
-    const result = await axios({
-      method: 'get',
-      url: `http://127.0.0.1:8000/api/user/update/${getuserId}`,
-      headers: {
-        Authorization: `Bearer ${getToken}`,
-      },
-    })
-
-    console.log(result)
-  })()
+export function logout() {
+  localStorage.clear()
+  window.location.pathname = '/login'
 }
- */

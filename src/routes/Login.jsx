@@ -59,7 +59,7 @@ export default function Login() {
             onChangeValue={(e) => passwordStorage(e)}
             required={true}
             label="Mot de passe"
-            type={'text'}
+            type={'password'}
           />
           <LoginButton
             isFullWidth={false}

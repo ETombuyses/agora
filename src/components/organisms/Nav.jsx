@@ -3,6 +3,7 @@ import { Link, Switch, Route, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { withTheme } from 'styled-components'
 import { media } from '../../scss/config/mixins'
+import { logout } from '../../tools/isAuth'
 
 // component
 import { MenuIcon } from '../atoms/layout/MenuIcon'
@@ -14,7 +15,7 @@ import logo from '../../assets/agora-logo.png'
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const History = lazy(() => import('../../routes/History'))
 const Stats = lazy(() => import('../../routes/Stats'))
-const Profile = lazy(() => import('../../routes/Profile'))
+//const Profile = lazy(() => import('../../routes/Profile'))
 const Login = lazy(() => import('../../routes/Login'))
 const Register = lazy(() => import('../../routes/Register'))
 
@@ -35,7 +36,7 @@ const NavWithTheme = (props) => {
       icon: 'analytics',
       component: Stats,
     },
-    { route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
+    //{ route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
     { route: '/login', component: Login },
     { route: '/register', component: Register },
   ]
@@ -50,6 +51,10 @@ const NavWithTheme = (props) => {
   }
 
   GetNewRoute()
+
+  const handleClick = () => {
+    logout()
+  }
 
   return (
     <div>
@@ -87,6 +92,12 @@ const NavWithTheme = (props) => {
                   )
                 else return null
               })}
+              <ListItem>
+                <LogoutWrapper onClick={handleClick}>
+                  <MenuIcon icon={'logout'} />
+                  <Text>Deconexion</Text>
+                </LogoutWrapper>
+              </ListItem>
             </List>
           </MenuWrapper>
         </NavWrapper>
@@ -153,6 +164,7 @@ const Logo = styled.img`
 `
 
 const List = styled.ul`
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -197,6 +209,13 @@ const ListItem = styled.li`
       margin-bottom: 55px;
 	  `}
   }
+
+  :last-child {
+    ${media.desktop`
+      position: absolute;
+      bottom: 10px;
+	  `}
+  }
 `
 
 const Text = styled.span`
@@ -208,4 +227,17 @@ const Text = styled.span`
       margin-top: 0;
       margin-left: 16px;
 	  `}
+`
+
+const LogoutWrapper = styled.span`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  ${media.desktop`
+    flex-direction: row;
+    bottom: inherit;
+  `};
 `
