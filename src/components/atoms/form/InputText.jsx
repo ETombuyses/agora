@@ -1,13 +1,29 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
+import { media } from '../../../scss/config/mixins'
+
 // icon
-import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
+import { ReactComponent as Icon } from '../../../assets/icons/layout/help-icon.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const InputText = forwardRef((props, ref) => {
+  const [isShown, setIsShown] = useState(false)
+
+  const help = useRef(null)
+
+  useEffect(() => {
+    if (help.current != null) {
+      if (isShown === true) {
+        help.current.style.display = 'block'
+      } else {
+        help.current.style.display = 'none'
+      }
+    }
+  }, [isShown])
+
   return (
     <InputWrapper className={props.className}>
       <LabelWrapper>
@@ -15,7 +31,17 @@ export const InputText = forwardRef((props, ref) => {
           {props.label}
           {props.required && <Asterisk>*</Asterisk>}
         </Label>
-        {props.hint && <HelpIcon />}
+        {props.hint && (
+          <HintWrapper>
+            <HelpPopUp ref={help}>
+              <span>{props.hintText}</span>
+            </HelpPopUp>
+            <HelpIcon
+              onMouseEnter={() => setIsShown(true)}
+              onMouseLeave={() => setIsShown(false)}
+            />
+          </HintWrapper>
+        )}
       </LabelWrapper>
       <Input
         ref={ref}
@@ -60,7 +86,7 @@ const InputWrapper = styled.div`
 `
 const LabelWrapper = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
 `
 
 const Label = styled.label`
@@ -82,4 +108,49 @@ const Input = styled.input`
   border-radius: 5px;
   line-height: 40px;
   /* width: 100%; */
+`
+const HintWrapper = styled.div`
+  ${media.desktop`
+    position: relative;
+  `}
+`
+
+const HelpIcon = styled(Icon)`
+  cursor: pointer;
+`
+const HelpPopUp = styled.div`
+  display: none;
+  background-color: ${(props) => props.theme.white};
+  position: absolute;
+  bottom: 40px;
+  padding: 15px;
+  border-radius: 3px;
+  width: 280px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: ${(props) => props.theme.primaryShadow};
+
+  &:after {
+    display: none;
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: ${(props) => '10px solid ' + props.theme.white};
+    box-shadow: ${(props) => props.theme.primaryShadow};
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    bottom: -10px;
+    left: 134px;
+  }
+
+  ${media.desktop`
+    left: 9px;
+    width: 320px;
+
+    &:after {
+      display: block;
+      left: 160px;
+    }
+  `}
 `

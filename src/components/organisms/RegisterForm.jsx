@@ -78,6 +78,9 @@ export const RegisterForm = forwardRef((props, ref) => {
             ref={nbAgora}
             required={true}
             hint={true}
+            hintText={
+              'Veuillez inscrire le numéro Agora situé sous votre appareil Agora'
+            }
             label="Numéro d’Agora"
             type={'text'}
             identifyer={'AgoraNumber'}
@@ -137,6 +140,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             ref={nbNIF}
             required={true}
             label="Numéro NIF"
+            hint={true}
+            hintText={`Vous pouvez trouver votre numéro d'identité fiscale (NIF) sur vos avis d’impôt (impôt sur le revenu, taxe d’habitation, taxe foncière)`}
             type={'text'}
             identifyer={'NIFNumber'}
           />
