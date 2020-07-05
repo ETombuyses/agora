@@ -56,8 +56,9 @@ export const RegisterForm = forwardRef((props, ref) => {
       setErrorText({ state: currentState })
 
       nameRef.current.style.outline = '#f25050 auto 1px'
+      console.log(typeof errorText.state.lastName, errorText.state.lastName)
     } else {
-      nameRef.current.style.outline = 'initial'
+      nameRef.current.style.outline = ''
     }
   }
 

@@ -98,7 +98,7 @@ export const checkValidateInput = (ref, nameInput) => {
   ) {
     return 'Le champs "Nom" doit contenir entre 2 et 50 caractères'
   } else if (ref.current.value && nameInput === 'lastName') {
-    return ' '
+    return ''
 
     //Check if first name is valid
   } else if (!ref.current.value && nameInput === 'firstName') {
@@ -109,7 +109,7 @@ export const checkValidateInput = (ref, nameInput) => {
   ) {
     return 'Le champs "Prènom" doit contenir entre 2 et 50 caractères'
   } else if (ref.current.value && nameInput === 'firstName') {
-    return ' '
+    return ''
 
     //Check if email is valid
   } else if (!ref.current.value && nameInput === 'email') {
@@ -125,7 +125,7 @@ export const checkValidateInput = (ref, nameInput) => {
   ) {
     return 'Le champs "Email" doit contenir entre 4 et 255 caractères'
   } else if (ref.current.value && nameInput === 'email') {
-    return ' '
+    return ''
 
     // Check if password is valid
   } else if (!ref.current.value && nameInput === 'pswd') {
@@ -136,12 +136,12 @@ export const checkValidateInput = (ref, nameInput) => {
   ) {
     return 'Le champs "Mot de passe" doit contenir entre 8 et 255 caractères'
   } else if (ref.current.value && nameInput === 'pswd') {
-    return ' '
+    return ''
 
     // Check if confirme password is valid
   } else if (!ref.current.value && nameInput === 'confirmePswd') {
     return "Le mot de passe de confirmation n'est pas rempli"
   } else if (ref.current.value && nameInput === 'confirmePswd') {
-    return ' '
+    return ''
   }
 }
