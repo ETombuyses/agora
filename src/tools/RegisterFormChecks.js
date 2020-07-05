@@ -24,7 +24,7 @@ export const checkGeneralFormInfo = (
     return 'Le champs "Email" n\'est pas rempli'
   } else if (!expressionEmail.test(String(email).toLowerCase())) {
     return 'Le champs "Email" ne correspond pas à un email'
-  } else if (email.length < 4 || pswd.length > 255) {
+  } else if (email.length < 4 || email.length > 255) {
     return 'Le champs "Email" doit contenir entre 4 et 255 caractères'
 
     //Check if password is valid
@@ -83,5 +83,65 @@ export const checkAgoraForm = (
     return 'Le champ "Numéro NIF" doit contenir uniquement des chiffres et doit être composé de 13 numéros'
   } else {
     return false
+  }
+}
+
+export const checkValidateInput = (ref, nameInput) => {
+  const expressionEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+
+  //Check if last name is valid
+  if (!ref.current.value && nameInput === 'lastName') {
+    return 'Le champs "Nom" n\'est pas rempli'
+  } else if (
+    (ref.current.value.length < 2 || ref.current.value.length > 50) &&
+    nameInput === 'lastName'
+  ) {
+    return 'Le champs "Nom" doit contenir entre 2 et 50 caractères'
+  } else if (ref.current.value && nameInput === 'lastName') {
+    return ' '
+
+    //Check if first name is valid
+  } else if (!ref.current.value && nameInput === 'firstName') {
+    return 'Le champs "Prènom" n\'est pas rempli'
+  } else if (
+    (ref.current.value.length < 2 || ref.current.value.length > 50) &&
+    nameInput === 'firstName'
+  ) {
+    return 'Le champs "Prènom" doit contenir entre 2 et 50 caractères'
+  } else if (ref.current.value && nameInput === 'firstName') {
+    return ' '
+
+    //Check if email is valid
+  } else if (!ref.current.value && nameInput === 'email') {
+    return 'Le champs "Email" n\'est pas rempli'
+  } else if (
+    nameInput === 'email' &&
+    !expressionEmail.test(String(ref.current.value).toLowerCase())
+  ) {
+    return 'Le champs "Email" ne correspond pas à un email'
+  } else if (
+    (ref.current.value.length < 4 || ref.current.value.length > 255) &&
+    nameInput === 'email'
+  ) {
+    return 'Le champs "Email" doit contenir entre 4 et 255 caractères'
+  } else if (ref.current.value && nameInput === 'email') {
+    return ' '
+
+    // Check if password is valid
+  } else if (!ref.current.value && nameInput === 'pswd') {
+    return 'Le champs "Mot de passe" n\'est pas rempli'
+  } else if (
+    nameInput === 'pswd' &&
+    (ref.current.value.length < 8 || ref.current.value.length > 255)
+  ) {
+    return 'Le champs "Mot de passe" doit contenir entre 8 et 255 caractères'
+  } else if (ref.current.value && nameInput === 'pswd') {
+    return ' '
+
+    // Check if confirme password is valid
+  } else if (!ref.current.value && nameInput === 'confirmePswd') {
+    return "Le mot de passe de confirmation n'est pas rempli"
+  } else if (ref.current.value && nameInput === 'confirmePswd') {
+    return ' '
   }
 }

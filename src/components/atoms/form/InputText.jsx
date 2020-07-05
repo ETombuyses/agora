@@ -2,7 +2,7 @@ import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { media } from '../../../scss/config/mixins'
+import { media, toRem } from '../../../scss/config/mixins'
 
 // icon
 import { ReactComponent as Icon } from '../../../assets/icons/layout/help-icon.svg'
@@ -54,6 +54,7 @@ export const InputText = forwardRef((props, ref) => {
         name={props.name}
         defaultChecked={props.checked ?? ''}
       ></Input>
+      {props.errorText && <ErrorText>{props.errorText}</ErrorText>}
     </InputWrapper>
   )
 })
@@ -153,4 +154,10 @@ const HelpPopUp = styled.div`
       left: 160px;
     }
   `}
+`
+
+const ErrorText = styled.p`
+  color: ${(props) => props.theme.red};
+  font-size: ${toRem(14)};
+  margin-top: 5px;
 `
