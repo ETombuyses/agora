@@ -2,22 +2,22 @@ import React, { useRef, createRef, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
+// form's check functions
+import { checkGeneralFormInfo } from '../tools/RegisterFormChecks'
+import { checkAgoraForm } from '../tools/RegisterFormChecks'
+
 // components
-import { Button } from '../components/atoms/Button'
-import { SectionSepartor } from '../components/atoms/Separator'
-import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
-import { ReactComponent as MailIcon } from '../assets/icons/mail.svg'
+import { Button } from '../components/atoms/form/Button'
+import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
-import { PopUp } from '../components/atoms/PopUp'
+import { Modal } from '../components/molecules/layout/Modal'
 import { register } from '../tools/isAuth'
 import { media } from '../scss/config/mixins'
 
-// images
-import welcomeImage from '../assets/images/loginImg.svg'
-
-// form's check functions
-import { checkGenralFormInfo } from '../tools/RegisterFormChecks'
-import { checkAgoraForm } from '../tools/RegisterFormChecks'
+// images and icons
+import welcomeImage from '../assets/images/person-holding-plant.svg'
+import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
+import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -56,7 +56,7 @@ export default function Register() {
   const handleClick = () => {
     refs.popup.current.style.visibility = 'hidden'
 
-    let error = checkGenralFormInfo(
+    let error = checkGeneralFormInfo(
       refs.name.current.value,
       refs.firstName.current.value,
       refs.email.current.value,
@@ -85,11 +85,11 @@ export default function Register() {
     const emailling = refs.email.current.value
     const password = refs.pswd.current.value
 
-    const agoraNumber = Number(refs.nbAgora)
-    const residentNumber = Number(refs.nbResident)
-    const livingArea = Number(refs.livingSpace)
-    const navigoNumber = Number(refs.nbNavigo)
-    const nifNumber = refs.nbNIF
+    const agoraNumber = refs.nbAgora.current.value
+    const residentNumber = Number(refs.nbResident.current.value)
+    const livingArea = Number(refs.livingSpace.current.value)
+    const navigoNumber = refs.nbNavigo.current.value
+    const nifNumber = refs.nbNIF.current.value
 
     let error = checkAgoraForm(
       refs.nbAgora.current.value,
@@ -159,7 +159,7 @@ export default function Register() {
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
-      <PopUp
+      <Modal
         onClose={(e) => onClose(e)}
         ref={refs.popup}
         size={'tiny'}
@@ -173,7 +173,7 @@ export default function Register() {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
   min-height: 100vh;
   display: flex;
   flex-direction: column;

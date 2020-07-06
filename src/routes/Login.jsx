@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { login } from '../tools/isAuth'
 import { Link } from 'react-router-dom'
-
 import { media } from '../scss/config/mixins'
 
-// components
-import { Button } from '../components/atoms/Button'
-import { SectionSepartor } from '../components/atoms/Separator'
-import { ReactComponent as GovIcon } from '../assets/icons/gouv.svg'
-import { InputText } from '../components/atoms/InputText'
+// tool
+import { login } from '../tools/isAuth'
 
-// images
-import welcomeImage from '../assets/images/loginImg.svg'
+// components
+import { Button } from '../components/atoms/form/Button'
+import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
+import { InputText } from '../components/atoms/form/InputText'
+
+// images and icons
+import welcomeImage from '../assets/images/person-holding-plant.svg'
+import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export default function Register() {
+export default function Login() {
   const [password, setPassword] = useState(null)
   const [email, setEmail] = useState(null)
 
@@ -53,12 +54,14 @@ export default function Register() {
             required={true}
             label="Email"
             type={'text'}
+            identifyer={'email'}
           />
           <InputTextButton
             onChangeValue={(e) => passwordStorage(e)}
             required={true}
             label="Mot de passe"
-            type={'text'}
+            type={'password'}
+            identifyer={'password'}
           />
           <LoginButton
             isFullWidth={false}
@@ -78,7 +81,7 @@ export default function Register() {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const PageWrapper = styled.div`
-  background: ${(props) => props.theme.blueGrey};
+  background: ${(props) => props.theme.greyBlue};
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import { media } from '../../scss/config/mixins'
 
 // components
-import { InputText } from '../atoms/InputText'
-import { Button } from '../atoms/Button'
-//import { PopUp } from '../atoms/PopUp'
-import { RadioButtonGroup } from '../molecules/RadioButtonGroup'
-import { media } from '../../scss/config/mixins'
+import { InputText } from '../atoms/form/InputText'
+import { Button } from '../atoms/form/Button'
+import { RadioButtonsGroup } from '../molecules/form/RadioButtonsGroup'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -38,30 +37,35 @@ export const RegisterForm = forwardRef((props, ref) => {
             required={true}
             label="Nom"
             type={'text'}
+            identifyer={'lastName'}
           />
           <InputTextButton
             ref={firstName}
             required={true}
             label="Prénom"
             type={'text'}
+            identifyer={'firstName'}
           />
           <InputTextButton
             ref={email}
             type={'email'}
             required={true}
             label="Email"
+            identifyer={'email'}
           />
           <InputTextButton
             ref={pswd}
             required={true}
             label="Mot de passe"
             type={'password'}
+            identifyer={'password'}
           />
           <InputTextButton
             ref={confirmePswd}
             required={true}
             label="Confirmer votre mot de passe"
             type={'password'}
+            identifyer={'passwordConfirmation'}
           />
           <ContinueButton
             isFullWidth={false}
@@ -76,14 +80,16 @@ export const RegisterForm = forwardRef((props, ref) => {
             hint={true}
             label="Numéro d’Agora"
             type={'text'}
+            identifyer={'AgoraNumber'}
           />
           <InputTextButton
             ref={nbResident}
             required={true}
             label="Nombre de résidents"
             type={'text'}
+            identifyer={'ResidentNumber'}
           />
-          <RadioButtonGroup
+          <RadioButtonsGroup
             ref={{
               ref1: isuYesButton,
               ref2: isuNoButton,
@@ -98,7 +104,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             label={'Isolation changées ces  20 dernières années ?'}
             required={true}
           />
-          <RadioButtonGroup
+          <RadioButtonsGroup
             ref={{
               ref1: gasYesButton,
               ref2: gasNoButton,
@@ -118,18 +124,21 @@ export const RegisterForm = forwardRef((props, ref) => {
             required={true}
             label="Surface de l’habitat (en M²)"
             type={'text'}
+            identifyer={'livingSpace'}
           />
           <InputTextButton
             ref={nbNavigo}
             required={false}
             label="Numéro carte Navigo"
             type={'text'}
+            identifyer={'navigoNumber'}
           />
           <InputTextButton
             ref={nbNIF}
             required={true}
             label="Numéro NIF"
             type={'text'}
+            identifyer={'NIFNumber'}
           />
           <ContinueButton
             onClickButton={props.sendForm}

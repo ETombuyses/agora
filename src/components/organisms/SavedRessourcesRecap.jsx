@@ -1,24 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import { media } from '../../scss/config/mixins'
 
-import { SavedRessource } from '../molecules/SavedRessource'
+// component
+import { SavedRessources } from '../molecules/SavedRessourcesTags'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export const SavedRessourcesRecap = () => {
+export const SavedRessourcesRecap = (props) => {
   const tasks = [
-    { icon: 'water', name: 'Eau', unit: 'L', savedNumber: '999' },
+    { icon: 'water', name: 'Eau', unit: 'L', savedNumber: props.water },
     {
       icon: 'lightning',
       name: 'Electricité',
       unit: 'Kw/h',
-      savedNumber: '999',
+      savedNumber: props.lightning,
     },
-    { icon: 'fire', name: 'Gaz', unit: 'Kw/h', savedNumber: '99' },
-    { icon: 'trash', name: 'Déchêts', unit: 'kg', savedNumber: '8799' },
-    { icon: 'bus', name: 'Transports', unit: 'gCO2', savedNumber: '999' },
+    { icon: 'fire', name: 'Gaz', unit: 'Kw/h', savedNumber: props.gas },
+    { icon: 'trash', name: 'Déchets', unit: 'kg', savedNumber: props.waste },
+    {
+      icon: 'bus',
+      name: 'Transports',
+      unit: 'mois',
+      savedNumber: props.transport,
+    },
   ]
 
   return (
@@ -36,7 +41,7 @@ export const SavedRessourcesRecap = () => {
               key={task.name}
               icon={task.icon}
               unit={task.unit}
-              savedNumber={task.savedNumber}
+              savedNumber={task.savedNumber ? task.savedNumber : 0}
             />
           )
         })}
@@ -74,7 +79,7 @@ const SavedRessourcesList = styled.div`
   `}
 `
 
-const CustomSavedRessource = styled(SavedRessource)`
+const CustomSavedRessource = styled(SavedRessources)`
   :not(:last-child) {
     margin-bottom: 17px;
 

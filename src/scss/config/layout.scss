@@ -1,3 +1,7 @@
+body.noScroll {
+  overflow: hidden;
+}
+
 .App {
   color: $black;
   height: auto;
@@ -9,13 +13,13 @@
   min-height: calc(100vh - 24px - 22px - 6px - 10px);
   margin-bottom: calc(24px + 22px + 6px + 10px);
   overflow-y: scroll;
-  background: $blueGrey;
+  background: $greyBlue;
   padding: 24px 16px;
 
   @include desktop {
-    margin-bottom: 0;
     height: 100vh;
-    margin-left: 10%;
+    margin-bottom: 0;
+    margin-left: 15%;
     padding: 32px;
   }
 }
