@@ -24,6 +24,26 @@ import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
 export default function Register() {
   const [popUpText, setPopUpText] = useState('')
 
+  const [errorTextFirstPart, setErrorTextFirstPart] = useState({
+    state: {
+      lastName: '',
+      firstName: '',
+      email: '',
+      pswd: '',
+      confirmePswd: '',
+    },
+  })
+
+  const [errorTextSecondPart, setErrorTextSecondPart] = useState({
+    state: {
+      nbAgora: '',
+      nbResident: '',
+      livingSpace: '',
+      nbNavigo: '',
+      nbNIF: '',
+    },
+  })
+
   const hideButton = useRef(0)
 
   const refs = {
@@ -54,8 +74,6 @@ export default function Register() {
   }
 
   const handleClick = () => {
-    refs.popup.current.style.visibility = 'hidden'
-
     let error = checkGeneralFormInfo(
       refs.name.current.value,
       refs.firstName.current.value,
@@ -65,8 +83,7 @@ export default function Register() {
     )
 
     if (error) {
-      setPopUpText(error)
-      refs.popup.current.style.visibility = 'visible'
+      setErrorTextFirstPart(error)
     } else {
       if (window.innerWidth >= 992) {
         refs.transitionForm.current.style.transform = 'translateY(calc(-100vh))'
@@ -100,8 +117,7 @@ export default function Register() {
     )
 
     if (error) {
-      setPopUpText(error)
-      refs.popup.current.style.visibility = 'visible'
+      setErrorTextSecondPart(error)
     } else {
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
@@ -154,6 +170,8 @@ export default function Register() {
           ref={refs}
           onClickButton={handleClick}
           sendForm={sendForm}
+          errorTextFirstPart={errorTextFirstPart}
+          errorTextSecondPart={errorTextSecondPart}
         />
       </ContentWrapper>
       <ToggleText className="desktop">
