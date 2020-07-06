@@ -10,6 +10,8 @@ require('dotenv').config()
 
 export default function App() {
   useEffect(() => {
+    console.log('node env environment', process.env.NODE_ENV)
+
     getNewTokens()
 
     let token = localStorage.getItem('token')

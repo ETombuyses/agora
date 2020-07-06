@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { media } from '../scss/config/mixins'
+import { apiUrl } from '../tools/apiConfig'
 
 // components
 import { Tag } from '../components/atoms/task/Tag'
@@ -55,7 +56,7 @@ export default function Dashboard() {
     ;(async () => {
       const result = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/user/update/${getuserId}`,
+        url: `${apiUrl}/api/user/update/${getuserId}`,
         headers: {
           Authorization: `Bearer ${getToken}`,
         },

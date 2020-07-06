@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { media } from '../scss/config/mixins'
+import axios from 'axios'
+import { apiUrl } from '../tools/apiConfig'
 
 // Components
 import { Title } from '../components/atoms/layout/Title'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
 import { GraphCard } from '../components/molecules/GraphCard'
-
-import { media } from '../scss/config/mixins'
-import axios from 'axios'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -23,7 +23,7 @@ export default function Stats() {
     ;(async () => {
       const result = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/user/analytics/${getuserId}`,
+        url: `${apiUrl}/api/user/analytics/${getuserId}`,
         headers: {
           Authorization: `Bearer ${getToken}`,
         },

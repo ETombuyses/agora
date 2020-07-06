@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { media } from '../../scss/config/mixins'
+import { apiUrl } from '../../tools/apiConfig'
 
 // component
 import { Task } from '../molecules/Task'
@@ -35,7 +36,7 @@ export const MonthlyTasksRecap = (props) => {
     ;(async () => {
       const result = await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/user/tasks/${getuserId}/${props.selectedYear}`,
+        url: `${apiUrl}/api/user/tasks/${getuserId}/${props.selectedYear}`,
         headers: {
           Authorization: `Bearer ${getToken}`,
         },

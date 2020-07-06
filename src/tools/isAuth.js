@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { apiUrl } from '../tools/apiConfig'
 
 /*
  * Get tokens if user is recognized
@@ -9,7 +10,7 @@ export function login(email, password) {
   ;(async () => {
     const result = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/login',
+      url: `${apiUrl}/api/login`,
       data: {
         username: email,
         password: password,
@@ -69,7 +70,7 @@ export function getNewTokens() {
     ;(async () => {
       const result = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/api/token/refresh',
+        url: `${apiUrl}/api/token/refresh`,
         data: {
           refresh_token: getRefreshToken,
         },
@@ -115,7 +116,7 @@ export function register(
   ;(async () => {
     const result = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:8000/api/signup',
+      url: `${apiUrl}/api/signup`,
       data: {
         lastName: lastName,
         firstName: firstName,
