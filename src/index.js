@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker'
 import './scss/styles.scss'
 import { ThemeProvider } from 'styled-components'
 
-// use scss variables
+/* following line to not remove. Used to import css variables*/
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./scss/styles.scss')
 

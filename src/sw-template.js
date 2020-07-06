@@ -1,10 +1,8 @@
-// ERROR: cannot use import statement outside a module
-// import { apiUrl } from './tools/apiConfig'
-
 if (typeof importScripts === 'function') {
   importScripts(
     'https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js'
   )
+
   /* global workbox */
   if (workbox) {
     console.log('Workbox is loaded')
@@ -13,26 +11,15 @@ if (typeof importScripts === 'function') {
     /* injection point for manifest files.  */
     workbox.precaching.precacheAndRoute(self.__WB_MANIFEST)
 
-    /* custom cache rules */
-    workbox.routing.registerRoute(
-      new workbox.routing.NavigationRoute(
-        new workbox.strategies.NetworkFirst({
-          cacheName: 'PRODUCTION',
-        })
-      )
-    )
-    // -----------------------------------------------
-    // // ERROR: cannot use import statement outside a module@
+    // ----------------------------------------------- test to use a api url base on environment variable
     // var apiUrlRegex = new RegExp('#apiUrl#', 'g')
     // var toSaveRequest = '#apiUrl#/(.*)'
     // var output = toSaveRequest.replace(apiUrlRegex, apiUrl)
-
     // -----------------------------------------------
 
-    // cach réponses API
+    /* cache API calls */
     workbox.routing.registerRoute(
-      // TODO: replace static url by variable
-      new RegExp('http://192.168.1.15:8000/(.*)'),
+      new RegExp('https://agora-api-hetic.herokuapp.com/(.*)'),
       new workbox.strategies.NetworkFirst({
         cacheName: 'apiRequests',
         method: 'GET',
