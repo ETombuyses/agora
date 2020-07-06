@@ -1,3 +1,11 @@
+/*
+ * Check if first part input of register form are valid
+ * @Params {name} string
+ * @Params {firstName} string
+ * @Params {email} string
+ * @Params {pswd} string
+ * @Params {confirmePswd} string
+ */
 export const checkGeneralFormInfo = (
   name,
   firstName,
@@ -86,6 +94,14 @@ export const checkGeneralFormInfo = (
   }
 }
 
+/*
+ * Check if Second part input of register form are valid
+ * @Params {nbAgora} string
+ * @Params {nbResident} string
+ * @Params {livingSpace} string
+ * @Params {nbNavigo} string
+ * @Params {nbNIF} string
+ */
 export const checkAgoraForm = (
   nbAgora,
   nbResident,

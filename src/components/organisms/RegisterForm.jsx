@@ -28,6 +28,7 @@ export const RegisterForm = forwardRef((props, ref) => {
     livingSpace,
     nbNavigo,
     nbNIF,
+    secondViewForm,
   } = ref
 
   return (
@@ -85,7 +86,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             onClickButton={props.onClickButton}
           />
         </View>
-        <View>
+        <SecondView ref={secondViewForm}>
           <InputTextButton
             ref={nbAgora}
             required={true}
@@ -173,7 +174,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             text="Créer le compte"
             isFormButton={true}
           />
-        </View>
+        </SecondView>
       </FormWrapper>
     </>
   )
@@ -218,5 +219,23 @@ const View = styled.div`
     flex-direction: column;
     justify-content: center;
     padding-right: 0;
+  `}
+`
+
+const SecondView = styled.div`
+  padding-right: 24px;
+  max-height: 0;
+  overflow: hidden;
+  width: 50%;
+
+  ${media.desktop`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0;
+    max-height: inherit;
+    overflow: inherit;
   `}
 `
