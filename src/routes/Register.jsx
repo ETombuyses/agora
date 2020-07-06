@@ -177,13 +177,13 @@ export default function Register() {
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
-      <Modal
+      {/* <Modal
         onClose={(e) => onClose(e)}
         ref={refs.popup}
         size={'tiny'}
         text={popUpText}
         registerPopUp={true}
-      />
+      /> */}
     </PageWrapper>
   )
 }
@@ -219,11 +219,11 @@ const Image = styled.img`
 
 const ContentWrapper = styled.div`
   padding: 24px;
-  height: 0;
+  height: 65vh;
   flex: 1 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   width: 300vw;
   transition: transform 0.7s ease;
 
