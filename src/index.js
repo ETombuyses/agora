@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker'
 import './scss/styles.scss'
 import { ThemeProvider } from 'styled-components'
 
-// use scss variables
+/* following line to not remove. Used to import css variables*/
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!./scss/styles.scss')
 
@@ -20,7 +20,5 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+// enable service worker to run in the app
+serviceWorker.register()
