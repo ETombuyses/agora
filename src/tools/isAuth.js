@@ -51,7 +51,7 @@ export function login(email, password) {
     )
 
     if (result) {
-      window.location.href = 'http://localhost:3000/'
+      window.location.hash = '/'
     }
   })()
 }
@@ -132,25 +132,12 @@ export function register(
     })
 
     if (result) {
-      window.location.pathname = '/login'
+      window.location.hash = '/login'
     }
   })()
 }
 
-/* export function getUserData() {
-  let getuserId = localStorage.getItem('idUser')
-  let getToken = localStorage.getItem('token')
-
-  ;(async () => {
-    const result = await axios({
-      method: 'get',
-      url: `http://127.0.0.1:8000/api/user/update/${getuserId}`,
-      headers: {
-        Authorization: `Bearer ${getToken}`,
-      },
-    })
-
-    console.log(result)
-  })()
+export function logout() {
+  localStorage.clear()
+  window.location.hash = '/login'
 }
- */

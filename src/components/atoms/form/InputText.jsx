@@ -11,7 +11,7 @@ export const InputText = forwardRef((props, ref) => {
   return (
     <InputWrapper className={props.className}>
       <LabelWrapper>
-        <Label>
+        <Label htmlFor={props.identifyer}>
           {props.label}
           {props.required && <Asterisk>*</Asterisk>}
         </Label>
@@ -21,6 +21,7 @@ export const InputText = forwardRef((props, ref) => {
         ref={ref}
         onClick={props.onClickRadio}
         onChange={props.onChangeValue}
+        id={props.identifyer}
         type={props.type}
         placeholder={props.placeholder}
         required={props.required ?? false}
@@ -62,7 +63,7 @@ const LabelWrapper = styled.div`
   display: inline-block;
 `
 
-const Label = styled.p`
+const Label = styled.label`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 7px;

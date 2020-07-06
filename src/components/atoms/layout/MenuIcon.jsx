@@ -6,6 +6,7 @@ import { ReactComponent as AnalyticsIcon } from '../../../assets/icons/menu/anal
 import { ReactComponent as HistoryIcon } from '../../../assets/icons/menu/clock.svg'
 import { ReactComponent as DashboardIcon } from '../../../assets/icons/menu/dashboard.svg'
 import { ReactComponent as ProfileIcon } from '../../../assets/icons/menu/profile.svg'
+import { ReactComponent as LogoutIcon } from '../../../assets/icons/menu/logout.svg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -20,6 +21,8 @@ export const MenuIcon = (props) => {
         return <HistoryIcon />
       case 'profile':
         return <ProfileIcon />
+      case 'logout':
+        return <LogoutIcon />
       default:
         return null
     }
