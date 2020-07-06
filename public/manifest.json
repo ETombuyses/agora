@@ -3,24 +3,24 @@
   "name": "Agora",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "favicon32x32.png",
       "sizes": "32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/#/",
   "display": "standalone",
-  "theme_color": "#54E173",
+  "theme_color": "#25a66e",
   "background_color": "#ffffff",
   "orientation": "portrait",
   "description": "Application gouvernementale vous aidant à adopter une démarche écologique.",
