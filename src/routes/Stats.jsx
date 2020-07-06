@@ -82,7 +82,7 @@ export default function Stats() {
             {selectValue === 'waste' && (
               <GraphCard
                 value={'waste'}
-                data={userData.data.thisYear.Déchêts}
+                data={userData.data.thisYear.Déchets}
                 handleChangeEnergie={handleChangeEnergie}
               />
             )}
@@ -108,7 +108,7 @@ export default function Stats() {
               handleChangeEnergie={handleChangeEnergie}
             />
             <GraphCard
-              data={userData.data.thisYear.Déchêts}
+              data={userData.data.thisYear.Déchets}
               handleChangeEnergie={handleChangeEnergie}
             />
             <GraphCard

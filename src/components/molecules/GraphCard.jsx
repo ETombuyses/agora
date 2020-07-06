@@ -44,7 +44,7 @@ export const GraphCard = (props) => {
     iconEnergie = 'fire'
   } else if (props.data.allTasks[0].name === 'Transports') {
     iconEnergie = 'bus'
-  } else if (props.data.allTasks[0].name === 'Déchêts') {
+  } else if (props.data.allTasks[0].name === 'Déchets') {
     iconEnergie = 'trash'
   } else {
     iconEnergie = 'lightning'

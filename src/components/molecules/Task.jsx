@@ -10,7 +10,7 @@ import { TaskTitle } from '../atoms/task/Title'
 
 const tasks = {
   Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
-  Déchêts: { icon: 'trash', unit: 'Kg', name: 'Déchêts' },
+  Déchets: { icon: 'trash', unit: 'Kg', name: 'Déchets' },
   transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
   Transports: { icon: 'bus', unit: '', name: 'Transports' },
   Eau: { icon: 'water', unit: 'L', name: 'Eau' },
@@ -43,7 +43,7 @@ export const Task = (props) => {
         />
         <div>
           <TaskTitle
-            // label={tasks[props.task].name}
+            handleClick={props.handleClick}
             title={
               props.isHistoryTask
                 ? props.task === 'transportsIsValidate'

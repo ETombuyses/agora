@@ -12,7 +12,7 @@ const images = {
   Gaz: { icon: gas, name: 'Gas' },
   Eau: { icon: water, name: 'Eau' },
   Electricté: { icon: lightning, name: 'Electricité' },
-  Déchêts: { icon: trash, name: 'Déchêts' },
+  Déchets: { icon: trash, name: 'Déchets' },
   transportsIsValidate: { icon: bus, name: 'Transports' },
 }
 

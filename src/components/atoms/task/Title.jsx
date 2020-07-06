@@ -9,11 +9,10 @@ import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-ic
 export const TaskTitle = (props) => {
   return (
     <LabelWrapper>
-      <Label>
-        {props.title}
-        {/* {props.required && <Asterisk>*</Asterisk>} */}
-      </Label>
-      {props.hint && <HelpIcon />}
+      <Label>{props.title}</Label>
+      {props.hint && (
+        <HelpIcon onClick={() => props.handleClick(props.title)} />
+      )}
     </LabelWrapper>
   )
 }

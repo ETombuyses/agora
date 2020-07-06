@@ -12,6 +12,7 @@ import { Task } from '../components/molecules/Task'
 import { LevelProgress } from '../components/molecules/user/LevelProgress'
 import { SavedRessourceTag } from '../components/atoms/task/SavedRessourceTag'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
+import { AdviceModal } from '../components/molecules/layout/AdviceModal'
 
 // image
 import { ReactComponent as ProfilePic } from '../assets/images/profile/profile-pic.svg'
@@ -25,11 +26,13 @@ export default function Dashboard() {
   const [userImage, setUserImage] = useState('')
   const [savedRessources, setSavedRessources] = useState()
   const [tasks2, setTasks2] = useState([])
+  const [adviceTopic, setAdviceTopic] = useState('Eau')
+  const [isAdviceModalShown, setShowModal] = useState(false)
 
   const tasks = [
     { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },
     { name: 'Gaz', savingName: 'gas', unit: 'KW/h', progress: 49 },
-    { name: 'Déchêts', savingName: 'waste', unit: 'Kg', progress: 100 },
+    { name: 'Déchets', savingName: 'waste', unit: 'Kg', progress: 100 },
     {
       name: 'transportsIsValidate',
       savingName: 'transport',
@@ -108,7 +111,7 @@ export default function Dashboard() {
               task.consummed = task.validate
               task.percent = task.validate == 1 ? 100 : 0
               break
-            case 'Déchêts':
+            case 'Déchets':
               task.consummed = result.data.additionalDatas.data.mesureWaste
               task.limit = userProfileData.limits.wasteLimit
               task.percent = 100 - (task.consummed / task.limit) * 100
@@ -128,8 +131,22 @@ export default function Dashboard() {
 
   console.log('api dashboard result', userData)
 
+  const hideModal = () => {
+    setShowModal(false)
+    setAdviceTopic('')
+  }
+  const showModal = (taskName) => {
+    setShowModal(true)
+    setAdviceTopic(taskName)
+  }
+
   return (
     <PageWrapper className="pageWrapper">
+      <AdviceModal
+        isShown={isAdviceModalShown}
+        article={adviceTopic}
+        hideModal={hideModal}
+      />
       <MainContentWrapper>
         <div>
           <CustomPageLocation location="Dashboard" />
@@ -155,6 +172,7 @@ export default function Dashboard() {
                 )
                   return (
                     <CustomTask
+                      handleClick={showModal}
                       task={task.name}
                       progression={task.percent}
                       consummed={task.consummed}
@@ -176,6 +194,7 @@ export default function Dashboard() {
                 )
                   return (
                     <CustomTask
+                      handleClick={showModal}
                       task={task.name}
                       progression={task.percent}
                       consummed={task.consummed}

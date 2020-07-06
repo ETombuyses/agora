@@ -17,7 +17,7 @@ export const SavedRessourcesRecap = (props) => {
       savedNumber: props.lightning,
     },
     { icon: 'fire', name: 'Gaz', unit: 'Kw/h', savedNumber: props.gas },
-    { icon: 'trash', name: 'Déchêts', unit: 'kg', savedNumber: props.waste },
+    { icon: 'trash', name: 'Déchets', unit: 'kg', savedNumber: props.waste },
     {
       icon: 'bus',
       name: 'Transports',
