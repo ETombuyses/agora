@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 
+// required to acess .env config
 module.exports = () => {
   // call dotenv and it will return an Object with a parsed key
   const env = dotenv.config().parsed

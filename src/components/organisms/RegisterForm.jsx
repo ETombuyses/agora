@@ -18,7 +18,7 @@ export const RegisterForm = forwardRef((props, ref) => {
     firstName,
     email,
     pswd,
-    confirmePswd,
+    confirmPswd,
     nbAgora,
     nbResident,
     isuYesButton,
@@ -72,13 +72,13 @@ export const RegisterForm = forwardRef((props, ref) => {
             //onChangeValue={() => onHandleChange(pswd, 'pswd')}
           />
           <InputTextButton
-            ref={confirmePswd}
+            ref={confirmPswd}
             required={true}
             label="Confirmer votre mot de passe"
             type={'password'}
             identifyer={'passwordConfirmation'}
-            errorText={props.errorTextFirstPart.state.confirmePswd}
-            //onChangeValue={() => onHandleChange(confirmePswd, 'confirmePswd')}
+            errorText={props.errorTextFirstPart.state.confirmPswd}
+            //onChangeValue={() => onHandleChange(confirmPswd, 'confirmPswd')}
           />
           <ContinueButton
             isFullWidth={false}

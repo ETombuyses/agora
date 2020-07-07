@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { media } from '../scss/config/mixins'
 import axios from 'axios'
-import { apiUrl } from '../tools/apiConfig'
+import { apiUrl } from '../apiConfig'
 
 // Components
 import { Title } from '../components/atoms/layout/Title'
@@ -12,12 +12,12 @@ import { GraphCard } from '../components/molecules/GraphCard'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export default function Stats() {
+export default function Analytics() {
   const [userData, setUserData] = useState(0)
   const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
-    let getuserId = localStorage.getItem('idUser')
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let getToken = localStorage.getItem('token')
 
     ;(async () => {

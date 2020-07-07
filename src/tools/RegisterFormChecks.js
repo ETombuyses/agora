@@ -4,14 +4,14 @@
  * @Params {firstName} string
  * @Params {email} string
  * @Params {pswd} string
- * @Params {confirmePswd} string
+ * @Params {confirmPswd} string
  */
 export const checkGeneralFormInfo = (
   name,
   firstName,
   email,
   pswd,
-  confirmePswd
+  confirmPswd
 ) => {
   const expressionEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
 
@@ -21,7 +21,7 @@ export const checkGeneralFormInfo = (
       firstName: '',
       email: '',
       pswd: '',
-      confirmePswd: '',
+      confirmPswd: '',
     },
   }
 
@@ -31,7 +31,7 @@ export const checkGeneralFormInfo = (
       firstName: false,
       email: false,
       pswd: false,
-      confirmePswd: false,
+      confirmPswd: false,
     },
   }
 
@@ -78,13 +78,12 @@ export const checkGeneralFormInfo = (
   }
 
   // Check if confirme password is valid
-  if (!confirmePswd) {
-    state.state.confirmePswd =
-      "Le mot de passe de confirmation n'est pas rempli"
-  } else if (confirmePswd !== pswd) {
-    state.state.confirmePswd = 'Les mots de passe saisis ne sont pas identiques'
+  if (!confirmPswd) {
+    state.state.confirmPswd = "Le mot de passe de confirmation n'est pas rempli"
+  } else if (confirmPswd !== pswd) {
+    state.state.confirmPswd = 'Les mots de passe saisis ne sont pas identiques'
   } else {
-    state.state.confirmePswd = false
+    state.state.confirmPswd = false
   }
 
   if (JSON.stringify(state) !== JSON.stringify(memo)) {

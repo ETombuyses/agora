@@ -14,7 +14,7 @@ import logo from '../../assets/agora-logo.png'
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const History = lazy(() => import('../../routes/History'))
-const Stats = lazy(() => import('../../routes/Stats'))
+const Analytics = lazy(() => import('../../routes/Analytics'))
 //const Profile = lazy(() => import('../../routes/Profile'))
 const Login = lazy(() => import('../../routes/Login'))
 const Register = lazy(() => import('../../routes/Register'))
@@ -34,7 +34,7 @@ const NavWithTheme = (props) => {
       route: '/statistiques',
       name: 'Analytiques',
       icon: 'analytics',
-      component: Stats,
+      component: Analytics,
     },
     //{ route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
     { route: '/login', component: Login },

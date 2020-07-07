@@ -27,7 +27,7 @@ export default function Register() {
       firstName: '',
       email: '',
       pswd: '',
-      confirmePswd: '',
+      confirmPswd: '',
     },
   })
 
@@ -52,7 +52,7 @@ export default function Register() {
     name: createRef(0),
     pswd: createRef(0),
     email: createRef(0),
-    confirmePswd: createRef(0),
+    confirmPswd: createRef(0),
     nbAgora: createRef(0),
     nbResident: createRef(0),
     isuYesButton: createRef(0),
@@ -81,7 +81,7 @@ export default function Register() {
       refs.firstName.current.value,
       refs.email.current.value,
       refs.pswd.current.value,
-      refs.confirmePswd.current.value
+      refs.confirmPswd.current.value
     )
 
     if (error) {
