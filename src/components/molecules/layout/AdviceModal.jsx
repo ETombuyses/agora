@@ -143,25 +143,25 @@ const ContentWrapper = styled.div`
 
 const PopUpContent = styled.article`
   font-weight: normal;
-  font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')};
+  /* font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')}; */
   color: ${(props) => props.theme.black};
   text-align: left;
 
   .title {
-    font-size: 21px;
+    /* font-size: 21px; */
     margin-bottom: 24px;
     line-height: 130.5%;
   }
 
   .sectionTitle {
-    font-size: 18px;
+    /* font-size: 18px; */
     line-height: 130.5%;
     margin-bottom: 16px;
     margin-top: 25px;
   }
 
   p {
-    font-size: 16px;
+    /* font-size: 16px; */
     margin-bottom: 17px;
     line-height: 150%;
   }

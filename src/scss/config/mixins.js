@@ -19,7 +19,7 @@ const breakpoints = {
   mobile: '480px',
   tablet: '768px',
   desktop: '992px',
-  large: '1200px',
+  large: '1800px',
   height: '450px',
 }
 

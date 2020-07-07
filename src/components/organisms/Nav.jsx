@@ -219,7 +219,7 @@ const ListItem = styled.li`
 `
 
 const Text = styled.span`
-  font-size: 10px;
+  /* font-size: 10px; */
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
 

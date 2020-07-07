@@ -154,7 +154,7 @@ export default function Register() {
       <Image ref={img} src={welcomeImage} />
       <ContentWrapper ref={hideButton}>
         <RegisterButtons>
-          <Title className="headline">S'inscrire sur Agora</Title>
+          <Title>S'inscrire sur Agora</Title>
           <GovButton
             isFullWidth={true}
             icon={GovIcon}
@@ -239,10 +239,10 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   text-align: left;
   margin: 0 0 30px 0;
-  font-size: ${toRem(19)};
+  /* font-size: ${toRem(19)}; */
 
   ${media.desktop`
-    font-size: ${toRem(33)};
+    /* font-size: ${toRem(33)}; */
 `}
 `
 
@@ -256,7 +256,7 @@ const RegisterButton = styled(Button)`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  font-size: ${toRem(13)};
+  /* font-size: ${toRem(13)}; */
   font-weight: 500;
 
   &.desktop {
@@ -280,6 +280,7 @@ const ToggleText = styled.p`
 
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
+  font-weight: bold;
 `
 
 const SectionSepartorWrapper = styled(SectionSepartor)`

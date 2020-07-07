@@ -54,7 +54,7 @@ export const Task = (props) => {
             hint={props.showHint}
           ></TaskTitle>
           {!props.isHistoryTask && (
-            <TaskDescription>
+            <p>
               {props.progression > 0
                 ? props.task === 'Transports'
                   ? 'Activer votre carte Navigo'
@@ -70,10 +70,10 @@ export const Task = (props) => {
                   {props.limit} {props.unit}
                 </Limit>
               )}
-            </TaskDescription>
+            </p>
           )}
           {props.isHistoryTask && (
-            <TaskDescription>
+            <p>
               {props.task === 'transportsIsValidate'
                 ? `Status: `
                 : `Consommé: `}
@@ -87,7 +87,7 @@ export const Task = (props) => {
                     : 'non abonné'
                   : props.consummed + '%'}
               </Limit>
-            </TaskDescription>
+            </p>
           )}
         </div>
       </ContentWrapper>
@@ -157,11 +157,6 @@ const ContentWrapper = styled.div`
 
 const CustomTaskIcon = styled(TaskIcon)`
   margin-right: 12px;
-`
-
-const TaskDescription = styled.p`
-  font-size: 12px;
-  font-weight: 500;
 `
 
 const Limit = styled.span`

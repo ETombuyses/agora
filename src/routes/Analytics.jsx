@@ -5,7 +5,7 @@ import axios from 'axios'
 import { apiUrl } from '../apiConfig'
 
 // Components
-import { Title } from '../components/atoms/layout/Title'
+import { SectionTitle } from '../components/atoms/layout/SectionTitle'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
 import { GraphCard } from '../components/molecules/GraphCard'
@@ -54,7 +54,7 @@ export default function Analytics() {
           />
         </GlobalDataCardWrapper>
       )}
-      <Title text="Missions réussis au total" />
+      <SectionTitle text="Missions réussies au total" />
       {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>
@@ -138,7 +138,7 @@ const GlobalDataCardWrapper = styled.div`
     margin-bottom: 16px;
   }
 
-  ${media.large`
+  ${media.desktop`
     flex-direction: row;
 
     div:first-child {
@@ -160,7 +160,7 @@ const GraphContainerDesktop = styled.div`
     display: block;
   `}
 
-  ${media.large`
+  ${media.desktop`
     display: flex;
     flex-wrap: wrap;
   `}

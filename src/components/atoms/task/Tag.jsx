@@ -27,7 +27,7 @@ const TagWrapper = styled.div`
   background: ${(props) =>
     props.color ? props.theme[props.color] : props.theme.white};
   padding: ${(props) =>
-    props.isTaskTag ? '1px 5px' : props.small ? '2px 11px' : '5px 20px'};
+    props.isTaskTag ? '2px 5px' : props.small ? '4px 11px' : '5px 20px'};
   box-shadow: ${(props) =>
     props.isTaskTag
       ? `0 0 10px ${props.theme[`${props.color}Transparent`]}`
@@ -35,7 +35,6 @@ const TagWrapper = styled.div`
 `
 
 const Text = styled.span`
-  font-size: 13px;
   color: ${(props) =>
     props.color === 'green' ||
     props.color === 'whiteTransparent' ||

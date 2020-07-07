@@ -124,7 +124,7 @@ const Container = styled.div`
       top: 50%;
       transform: translateY(-50%);
       display: inline;
-      font-size: ${toRem(19)};
+      /* font-size: ${toRem(19)}; */
     `}
   }
 `

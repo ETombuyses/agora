@@ -53,7 +53,7 @@ export const SavedRessourcesRecap = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const Title = styled.h2`
-  font-size: 23px;
+  /* font-size: 23px; */
   font-weight: normal;
   margin-bottom: 10px;
 `
