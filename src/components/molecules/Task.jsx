@@ -9,7 +9,7 @@ import { TaskTitle } from '../atoms/task/Title'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 const tasks = {
-  Electricté: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
+  Electricité: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
   Déchets: { icon: 'trash', unit: 'Kg', name: 'Déchets' },
   transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
   Transports: { icon: 'bus', unit: '', name: 'Transports' },

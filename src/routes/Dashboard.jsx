@@ -80,7 +80,7 @@ export default function Dashboard() {
               task.limit = userProfileData.limits.waterLimit
               task.percent = 100 - (task.consummed / task.limit) * 100
               break
-            case 'Electricté':
+            case 'Electricité':
               task.consummed =
                 result.data.additionalDatas.data.mesureElectricity
               task.limit = userProfileData.limits.electricityLimit
