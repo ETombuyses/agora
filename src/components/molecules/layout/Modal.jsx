@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 // icon
 import { ReactComponent as crossIcon } from '../../../assets/icons/layout/cross.svg'
+import { toRem } from '../../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -11,7 +12,9 @@ export const Modal = forwardRef((props, ref) => {
     <PopUpWrapper ref={ref} className={props.className} onClick={props.onClose}>
       <PopUpContainer size={props.size} registerPopUp={props.registerPopUp}>
         <Cross />
-        <PopUpContent>{props.text}</PopUpContent>
+        <PopUpContent
+          dangerouslySetInnerHTML={{ __html: props.text }}
+        ></PopUpContent>
       </PopUpContainer>
     </PopUpWrapper>
   )
@@ -27,6 +30,12 @@ const PopUpWrapper = styled.div`
   bottom: 0;
   left: 0;
   visibility: hidden;
+
+  .disclaimerTitle {
+    font-size: ${toRem(18)};
+    font-weight: 500;
+    color: ${(props) => props.theme.red};
+  }
 `
 
 const PopUpContainer = styled.div`
@@ -46,7 +55,7 @@ const PopUpContainer = styled.div`
 
 const PopUpContent = styled.p`
   font-weight: normal;
-  font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')};
+  font-size: ${(props) => (props.size === 'tiny' ? toRem(12) : toRem(16))};
   color: ${(props) => props.theme.black};
 `
 
