@@ -22,7 +22,7 @@ const tasks = [
     unit: 'mois',
     progress: 0,
   },
-  { name: 'Electricté', savingName: 'elect', unit: 'kW/h', progress: 60 },
+  { name: 'Electricité', savingName: 'elect', unit: 'kW/h', progress: 60 },
 ]
 
 export const UserPanel = (props) => {
@@ -59,7 +59,6 @@ const UserStats = styled.div`
   height: calc(100vh - 24px - 46px);
   min-height: calc(651px + 32px + 32px);
   width: 30%;
-  min-width: 314px;
   background: white;
   margin-left: 2.5%;
   border-radius: 15px;
@@ -126,7 +125,7 @@ const TasksStatsWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 225px;
+  width: 90%;
 `
 const CustomTaskTag = styled(SavedRessourceTag)`
   margin: 1.9% 2.54%;

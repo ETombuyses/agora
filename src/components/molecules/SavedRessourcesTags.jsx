@@ -44,7 +44,7 @@ const CustomTaskIcon = styled(TaskIcon)`
   ${media.desktop`
 
   &.iconContainer {
-      width: 38%;
+      width: 30%;
       height: auto;
     }
     

@@ -71,7 +71,7 @@ export default function Analytics() {
             {selectValue === 'electricity' && (
               <GraphCard
                 value={'electricity'}
-                data={userData.data.thisYear.Electricté}
+                data={userData.data.thisYear.Electricité}
                 handleChangeEnergie={handleChangeEnergie}
               />
             )}
@@ -103,7 +103,7 @@ export default function Analytics() {
               handleChangeEnergie={handleChangeEnergie}
             />
             <GraphCard
-              data={userData.data.thisYear.Electricté}
+              data={userData.data.thisYear.Electricité}
               handleChangeEnergie={handleChangeEnergie}
             />
             <GraphCard

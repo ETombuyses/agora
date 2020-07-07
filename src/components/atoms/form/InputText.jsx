@@ -2,7 +2,7 @@ import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { media, toRem } from '../../../scss/config/mixins'
+import { media } from '../../../scss/config/mixins'
 
 // icon
 import { ReactComponent as Icon } from '../../../assets/icons/layout/help-icon.svg'
