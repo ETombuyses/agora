@@ -206,7 +206,7 @@ const Unit = styled.span`
   position: absolute;
   bottom: 24px;
   left: 8px;
-  font-size: ${toRem(15)};
+  /* font-size: ${toRem(15)}; */
   font-weight: 500;
   color: ${(props) => props.theme.white};
 
@@ -224,14 +224,14 @@ const MonthShort = styled.p`
 		display: block;
 		text-align: center;
 		color: ${(props) => props.theme.grey};
-		font-size: ${toRem(13)};
+		/* font-size: ${toRem(13)}; */
 	`}
 `
 
 const MonthLong = styled.p`
   text-align: left;
   margin-left: 8px;
-  font-size: ${toRem(19)};
+  /* font-size: ${toRem(19)}; */
   color: ${(props) => props.theme.black};
   position: relative;
   top: 14px;
@@ -243,20 +243,20 @@ const MonthLong = styled.p`
 
 const NbTasks = styled.span`
   flex: 1 1 50%;
-  font-size: ${toRem(14)};
+  /* font-size: ${toRem(14)}; */
   margin-top: 16px;
 
   strong {
-    font-size: ${toRem(19)};
+    /* font-size: ${toRem(19)}; */
   }
 
   ${media.tablet`
     flex: inherit;
     margin-top: inherit;
-    font-size: ${toRem(16)};
+    /* font-size: ${toRem(16)}; */
 
     strong {
-      font-size: ${toRem(23)};
+      /* font-size: ${toRem(23)}; */
     }
   `}
 `

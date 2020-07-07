@@ -40,7 +40,7 @@ export default function Login() {
     <PageWrapper>
       <Image src={welcomeImage} />
       <ContentWrapper>
-        <Title className="headline smallest">Se connecter avec Agora</Title>
+        <Title className="heading biggest">Se connecter sur Agora</Title>
         <GovButton
           isFullWidth={true}
           icon={GovIcon}
@@ -119,14 +119,9 @@ const ContentWrapper = styled.div`
   `}
 `
 
-const Title = styled.h2`
+const Title = styled.h1`
   align-self: start;
   margin: 0 0 30px 0;
-  font-size: 19px;
-
-  ${media.desktop`
-    font-size: 33px;
-  `}
 `
 
 const GovButton = styled(Button)`
@@ -163,7 +158,7 @@ const FormContainer = styled.form`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  font-size: 13px;
+  /* font-size: 13px; */
 
   ${media.desktop`
     position: absolute;
@@ -175,4 +170,5 @@ const ToggleText = styled.p`
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
   cursor: pointer;
+  font-weight: bold;
 `

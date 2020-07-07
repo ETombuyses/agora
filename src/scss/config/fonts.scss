@@ -5,61 +5,76 @@ html {
 body,
 input,
 span,
-p {
+p,
+label {
   color: $black;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 130.5%;
-  font-weight: 300;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-}
-
-.heading {
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
-  color: $black;
+  font-size: toRem(14);
   line-height: 130.5%;
 
-  &.biggest {
-    font-size: 93px;
+  @include desktop {
+    font-size: toRem(15);
   }
 
-  &.bigger {
-    font-size: 58px;
-  }
-
-  &.big {
-    font-size: 46px;
-  }
-
-  &.medium {
-    font-size: 33px;
-  }
-
-  &.small {
-    font-size: 23px;
-  }
-
-  &.smallest {
-    font-size: 19px;
+  @include large {
+    font-size: toRem(16);
   }
 }
 
 button {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: bold;
+  font-size: toRem(14);
+
+  @include tablet {
+    font-size: toRem(15);
+  }
+
+  @include large {
+    font-size: toRem(16);
+  }
+
+  p {
+    font-weight: bold;
+    font-size: toRem(14);
+
+    @include tablet {
+      font-size: toRem(14);
+    }
+
+    @include large {
+      font-size: toRem(16);
+    }
+  }
 }
 
 a {
   text-decoration: none;
 }
 
-// to remove later
-.headline {
+/* ---------------------------------------- headings ---------------------------------------- */
+
+.heading {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
   color: $black;
-  font-size: size(20);
-  font-weight: bold;
-  line-height: 130%;
+  line-height: 130.5%;
+  color: $black;
+
+  &.biggest {
+    font-size: toRem(22);
+    font-weight: 500;
+
+    @include tablet {
+      font-size: toRem(25);
+    }
+
+    @include desktop {
+      font-size: toRem(28);
+    }
+
+    @include large {
+      font-size: toRem(33);
+    }
+  }
 }

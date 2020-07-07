@@ -57,11 +57,8 @@ const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-const Title = styled.span`
-  font-size: 13px;
-`
+const Title = styled.span``
 
 const Stat = styled.span`
   font-weight: 300;
-  font-size: 12px;
 `

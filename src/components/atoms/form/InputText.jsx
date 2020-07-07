@@ -91,8 +91,7 @@ const LabelWrapper = styled.div`
 `
 
 const Label = styled.label`
-  font-size: 16px;
-  font-weight: bold;
+  /* font-size: 16px; */
   margin-bottom: 7px;
   display: inline-block;
   line-height: 130%;
@@ -158,6 +157,6 @@ const HelpPopUp = styled.div`
 
 const ErrorText = styled.p`
   color: ${(props) => props.theme.red};
-  font-size: ${toRem(14)};
+  /* font-size: ${toRem(14)}; */
   margin-top: 5px;
 `

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../../scss/config/mixins'
+import { media, toRem } from '../../../scss/config/mixins'
 
-// icon
-import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
+// // icon
+// import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
 
 // components
 import { Tag } from '../../atoms/task/Tag'
@@ -15,16 +15,16 @@ export const LevelProgress = (props) => {
   return (
     <LevelProgressWrapper className={props.className}>
       <Title>Progression</Title>
-      <Icon>
+      {/* <Icon>
         <HelpIcon />
-      </Icon>
+      </Icon> */}
       <ContentWrapper>
         <ProgressCircle progress={props.progress} />
         <TagsContent>
           <TagsWrapper>
             <LevelTag text={`Niv. ${props.level}`} />
             <TaxesTag
-              text={`${props.taxesReduction} %`}
+              text={`${props.taxesReduction} % *`}
               color="whiteTransparent"
             />
           </TagsWrapper>
@@ -47,7 +47,7 @@ const LevelProgressWrapper = styled.div`
 
   ${media.desktop`
     padding: 6% 5% 5% 5%;
-    width: 38%;
+    width: 40%;
     min-width: 215px;
   `}
 `
@@ -77,14 +77,24 @@ const Icon = styled.div`
 
 const Title = styled.h3`
   margin-bottom: 31px;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: ${toRem(19)};
 
   ${media.desktop`
-    font-size: 23px;
     margin-bottom: 15%;
-  `}
+    font-size: ${toRem(21)};
+  `};
+
+  ${media.desktop`
+    margin-bottom: 15%;
+    font-size: ${toRem(23)};
+  `};
+
+  ${media.large`
+    margin-bottom: 15%;
+    font-size: ${toRem(25)};
+  `};
 `
+
 const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -139,9 +149,7 @@ const TagLegend = styled.span`
   display: block;
   max-width: 300px;
   margin: 22px auto 0 auto;
-  font-weight: bold;
   text-align: right;
-  font-size: 12px;
   color: ${(props) => props.theme.white};
 
   ${media.desktop`

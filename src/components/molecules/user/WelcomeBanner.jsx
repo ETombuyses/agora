@@ -17,7 +17,7 @@ export const WelcomeBanner = (props) => {
       </LeftPlantWrapper>
       <LeftLeaves src={leaves} alt="feuilles" />
       <TextContent>
-        <Title className="heading">Bonjour {props.name}</Title>
+        <Title className="heading biggest">Bonjour {props.name}</Title>
         <Text>
           {props.currentLevel === 12
             ? 'Bravo, vous avez atteint le niveau maximum ! '
@@ -42,7 +42,6 @@ const WelcomeWrapper = styled.div`
   background: ${(props) => props.theme.grassGreen};
   padding: 9px;
   border-radius: 10px;
-  font-size: 23px;
 
   ${media.desktop`
     padding: 35px;
@@ -72,23 +71,21 @@ const WelcomeWrapper = styled.div`
 const TextContent = styled.div`
   ${media.desktop`
     margin-left: 30%; 
-    margin-right: 15%;
+    margin-right: 13%;
   `}
 `
 
 const Title = styled.h2`
-  font-size: 20px;
-  font-weight: bold;
   max-width: 68%;
-  margin-bottom: 27px;
+  margin-bottom: 10px;
 
   ${media.desktop`
     max-width: unset;
+    margin-bottom: 24px;
   `}
 `
 
-const Text = styled.h2`
-  font-size: 12px;
+const Text = styled.p`
   max-width: calc(100% - 43%);
 
   ${media.desktop`

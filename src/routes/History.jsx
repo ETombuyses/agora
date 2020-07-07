@@ -6,6 +6,7 @@ import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRec
 import { MonthlyTasksRecap } from '../components/organisms/MonthlyTasksRecap'
 import { Select } from '../components/atoms/form/Select'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
+import { SectionTitle } from '../components/atoms/layout/SectionTitle'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -51,7 +52,8 @@ export default function History() {
         gas={savingEnergie.gas}
         transport={savingEnergie.transport}
       />
-      <MissionHistoryTitle>Historique des missions</MissionHistoryTitle>
+      <SectionTitle text="Historique des missions" />
+
       <CustomSelect
         startYear={userRegisteredYear}
         handleYearCHange={handleYearCHange}
@@ -62,13 +64,6 @@ export default function History() {
 }
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
-
-const MissionHistoryTitle = styled.h2`
-  font-size: 19px;
-  margin-top: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-`
 
 const CustomSelect = styled(Select)`
   margin-bottom: 11px;

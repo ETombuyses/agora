@@ -5,18 +5,13 @@ import { media } from '../scss/config/mixins'
 import { apiUrl } from '../apiConfig'
 
 // components
-import { Tag } from '../components/atoms/task/Tag'
-import { Title } from '../components/atoms/layout/Title'
-import { RadarChart } from '../components/atoms/chart/Radar'
+import { SectionTitle } from '../components/atoms/layout/SectionTitle'
 import { WelcomeBanner } from '../components/molecules/user/WelcomeBanner'
 import { Task } from '../components/molecules/Task'
 import { LevelProgress } from '../components/molecules/user/LevelProgress'
-import { SavedRessourceTag } from '../components/atoms/task/SavedRessourceTag'
-import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { AdviceModal } from '../components/molecules/layout/AdviceModal'
-
-// image
-import { ReactComponent as ProfilePic } from '../assets/images/profile/profile-pic.svg'
+import { UserPanel } from '../components/organisms/UserPanel'
+import { PageLocation } from '../components/molecules/layout/PageLocation'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -29,19 +24,6 @@ export default function Dashboard() {
   const [tasks2, setTasks2] = useState([])
   const [adviceTopic, setAdviceTopic] = useState('Eau')
   const [isAdviceModalShown, setShowModal] = useState(false)
-
-  const tasks = [
-    { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },
-    { name: 'Gaz', savingName: 'gas', unit: 'KW/h', progress: 49 },
-    { name: 'Déchets', savingName: 'waste', unit: 'Kg', progress: 100 },
-    {
-      name: 'transportsIsValidate',
-      savingName: 'transport',
-      unit: 'mois',
-      progress: 0,
-    },
-    { name: 'Electricté', savingName: 'elect', unit: 'kW/h', progress: 60 },
-  ]
 
   useEffect(() => {
     let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
@@ -162,7 +144,7 @@ export default function Dashboard() {
         </div>
         <MainPageContent>
           <TasksContainer>
-            <Title text="Missions en cours :" />
+            <SectionTitle text="Missions en cours" />
             {tasks2 &&
               tasks2.map((task) => {
                 if (
@@ -184,7 +166,7 @@ export default function Dashboard() {
                   )
                 else return null
               })}
-            <Title text="Missions ratées :"></Title>
+            <SectionTitle text="Missions ratées" />
             {tasks2 &&
               tasks2.map((task) => {
                 if (
@@ -226,33 +208,13 @@ export default function Dashboard() {
           />
         </MainPageContent>
       </MainContentWrapper>
-      <UserStats>
-        <CustomPic />
-        <UserName>
-          {userFirstName} {userLastName}
-        </UserName>
-        <Tag
-          text={`Niv. ${userData ? userData.level.levelNumber : 0}`}
-          color="green"
-          small={true}
-        ></Tag>
-        <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
-        <TasksStatsWrapper>
-          {savedRessources &&
-            tasks.map((task) => {
-              return (
-                <CustomTaskTag
-                  icon={task.name}
-                  key={task.name}
-                  savedAmount={savedRessources[task.savingName]}
-                  unit={task.unit}
-                />
-              )
-            })}
-        </TasksStatsWrapper>
-        <StatTitle>Statistiques</StatTitle>
-        {userData && <CustomRadarChart data={userData} />}
-      </UserStats>
+      <UserPanel
+        userFirstName={userFirstName}
+        userLastName={userLastName}
+        level={userData ? userData.level.levelNumber : 0}
+        savedRessources={savedRessources}
+        userData={userData}
+      />
     </PageWrapper>
   )
 }
@@ -288,6 +250,7 @@ const MainPageContent = styled.div`
 const TasksContainer = styled.div`
   ${media.desktop`
      margin-right: 3%;
+     width: 60%;
 	`}
 `
 
@@ -299,80 +262,6 @@ const CustomTask = styled(Task)`
 	`}
 `
 
-const UserStats = styled.div`
-  height: calc(100vh - 24px - 46px);
-  min-height: calc(651px + 32px + 32px);
-  width: 30%;
-  min-width: 314px;
-  background: white;
-  margin-left: 2.5%;
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3% 1.5%;
-
-  ${media.tablet`
-    display: flex;
-  `}
-
-  ${media.desktop`
-    height: 100%;
-	`}
-`
-
-/* const MissionTitle = styled.p`
-  margin: 16px 0 15px 0;
-` */
-
 const CustomLevelProgress = styled(LevelProgress)`
   margin-top: 16px;
-`
-
-const CustomPic = styled(ProfilePic)`
-  background: ${(props) => props.theme.grassGreen};
-  border-radius: 50%;
-  margin-bottom: 5%;
-  width: auto;
-  height: 14%;
-  min-height: 50px;
-  max-height: 150px;
-`
-
-const UserName = styled.span`
-  margin-bottom: 6%;
-`
-const SparedRessourcesTitle = styled.h5`
-  margin: 10% auto 1.7% auto;
-`
-
-const TasksStatsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 225px;
-`
-const CustomTaskTag = styled(SavedRessourceTag)`
-  margin: 1.9% 2.54%;
-`
-
-const StatTitle = styled.p`
-  font-size: 19px;
-  margin-top: 8%;
-`
-
-const CustomRadarChart = styled(RadarChart)`
-  margin-top: 7%;
-  height: 30%;
-  max-width: 100%;
-  /* width: 89%; */
-  /* height: calc(260px + 10px); */
-  /* width: calc(260px + 10px); */
-
-  svg {
-    width: auto !important;
-    max-width: 100%;
-  }
 `

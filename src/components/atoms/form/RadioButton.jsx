@@ -39,7 +39,7 @@ const LabelText = styled.label`
   position: relative;
   color: black;
   background-color: white;
-  font-size: 14px;
+  /* font-size: 14px; */
   text-align: center;
   height: 43px;
   width: 100px;
