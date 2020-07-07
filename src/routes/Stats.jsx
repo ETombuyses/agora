@@ -120,7 +120,8 @@ export default function Stats() {
       )}
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
         <NoDataContent>
-          Les premières missions seront validées le premier février, nous comptons sur vous pour valider le plus de missions possible 💪
+          Les premières missions seront validées le premier février, nous
+          comptons sur vous pour valider le plus de missions possible 💪
         </NoDataContent>
       )}
     </div>
@@ -169,8 +170,8 @@ const PageLocationContent = styled(PageLocation)`
 `
 
 const NoDataContent = styled.div`
-  background-color: rgb(255,255,255);
-  box-shadow: 0px 0px 10px rgba(223,223,223,0.25);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(223, 223, 223, 0.25);
   padding: 13px 30%;
   text-align: center;
   display: flex;
@@ -178,6 +179,6 @@ const NoDataContent = styled.div`
   border-radius: 10px;
   justify-content: center;
   height: 60vh;
-  color: #AfAfAf;
+  color: #afafaf;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `
