@@ -19,13 +19,6 @@ export default function App() {
 
   useEffect(() => {
     getNewTokens()
-
-    const token = localStorage.getItem('token')
-    const url = window.location.pathname
-
-    if (!token && url !== '#/register' && url !== '#/login') {
-      window.location.href = '#/login'
-    }
   })
 
   const onClickModal = () => {
@@ -39,7 +32,7 @@ export default function App() {
   }
 
   // Refresh Token every 10 mins
-  setInterval(refreshTokenTimer, 600000)
+  setInterval(refreshTokenTimer, 6000)
 
   return (
     <Router>

@@ -17,20 +17,23 @@ export default function Analytics() {
   const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
-    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
-    let getToken = localStorage.getItem('token')
+    let userInfo = localStorage.getItem('userInfo')
+    if (userInfo) {
+      let getuserId = JSON.parse(userInfo).id
+      let getToken = localStorage.getItem('token')
 
-    ;(async () => {
-      const result = await axios({
-        method: 'get',
-        url: `${apiUrl}/api/user/analytics/${getuserId}`,
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      ;(async () => {
+        const result = await axios({
+          method: 'get',
+          url: `${apiUrl}/api/user/analytics/${getuserId}`,
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        })
 
-      setUserData(result)
-    })()
+        setUserData(result)
+      })()
+    }
   }, [])
 
   const handleChangeEnergie = (e) => {
