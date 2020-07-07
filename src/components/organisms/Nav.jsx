@@ -95,7 +95,7 @@ const NavWithTheme = (props) => {
               <ListItem>
                 <LogoutWrapper onClick={handleClick}>
                   <MenuIcon icon={'logout'} />
-                  <Text>Deconexion</Text>
+                  <Text>Déconnexion</Text>
                 </LogoutWrapper>
               </ListItem>
             </List>
