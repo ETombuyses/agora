@@ -12,6 +12,7 @@ import { LevelProgress } from '../components/molecules/user/LevelProgress'
 import { AdviceModal } from '../components/molecules/layout/AdviceModal'
 import { UserPanel } from '../components/organisms/UserPanel'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
+import { RadarChart } from '../components/atoms/chart/Radar'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -207,6 +208,7 @@ export default function Dashboard() {
             }
           />
         </MainPageContent>
+        {userData && <CustomRadarChart type={'mobile'} data={userData} />}
       </MainContentWrapper>
       <UserPanel
         userFirstName={userFirstName}
@@ -264,4 +266,19 @@ const CustomTask = styled(Task)`
 
 const CustomLevelProgress = styled(LevelProgress)`
   margin-top: 16px;
+`
+const CustomRadarChart = styled(RadarChart)`
+  margin-top: 16px;
+  height: 40vh;
+  max-width: 100%;
+  background: white;
+  border-radius: 10px;
+
+  svg {
+    max-width: 100%;
+  }
+
+  ${media.tablet`
+    display: none;
+  `}
 `

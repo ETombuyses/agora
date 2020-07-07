@@ -20,7 +20,6 @@ const breakpoints = {
   tablet: '768px',
   desktop: '992px',
   large: '1800px',
-  height: '450px',
 }
 
 export const media = Object.keys(breakpoints).reduce((accumulator, label) => {
@@ -31,17 +30,3 @@ export const media = Object.keys(breakpoints).reduce((accumulator, label) => {
   `
   return accumulator
 }, {})
-
-export const mediaSpe = Object.keys(breakpoints).reduce(
-  (accumulator, label1, label2) => {
-    accumulator[label1] = (...args) => css`
-      @media (min-width: ${breakpoints[label1]}) and (min-width: ${breakpoints[
-          label2
-        ]}) and {
-        ${css(...args)};
-      }
-    `
-    return accumulator
-  },
-  {}
-)
