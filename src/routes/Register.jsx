@@ -89,10 +89,8 @@ export default function Register() {
     } else {
       if (window.innerWidth >= 992) {
         refs.transitionForm.current.style.transform = 'translateY(calc(-100vh))'
-        refs.secondViewForm.current.style.overflowY = 'scroll'
         refs.secondViewForm.current.style.height = 'auto'
-        refs.secondViewForm.current.style.padding = '30px 0'
-        refs.transitionForm.current.style.overflow = 'hidden'
+        refs.secondViewForm.current.style.padding = '70px 0'
         registerPage.current.style.overflow = 'auto'
         img.current.style.position = 'sticky'
         img.current.style.top = '0'

@@ -121,7 +121,7 @@ export default function Analytics() {
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
         <NoDataContent>
           Les premières missions seront validées le premier février, nous
-          comptons sur vous pour valider le plus de missions possible 💪
+          comptons sur vous pour valider le plus de missions possible.
         </NoDataContent>
       )}
     </div>
