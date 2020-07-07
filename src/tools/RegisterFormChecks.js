@@ -187,7 +187,7 @@ export const checkAgoraForm = (
     nbNIF.length !== 13
   ) {
     state.state.nbNIF =
-      'Le champ "Numéro NIF" doit contenir uniquement des chiffres et doit être composé de 13 numéros'
+      'Le champ "Numéro NIF" doit contenir uniquement des chiffres, commencé par 0, 1, 2 ou 3 et doit être composé de 13 numéros'
   } else {
     return false
   }

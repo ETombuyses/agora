@@ -10,9 +10,8 @@ import { checkAgoraForm } from '../tools/RegisterFormChecks'
 import { Button } from '../components/atoms/form/Button'
 import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
-import { Modal } from '../components/molecules/layout/Modal'
 import { register } from '../tools/isAuth'
-import { media } from '../scss/config/mixins'
+import { media, toRem } from '../scss/config/mixins'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'
@@ -22,8 +21,6 @@ import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
-  const [popUpText, setPopUpText] = useState('')
-
   const [errorTextFirstPart, setErrorTextFirstPart] = useState({
     state: {
       lastName: '',
@@ -152,11 +149,6 @@ export default function Register() {
     }
   }
 
-  // Close PopUp
-  const onClose = () => {
-    refs.popup.current.style.visibility = 'hidden'
-  }
-
   return (
     <PageWrapper ref={registerPage}>
       <Image ref={img} src={welcomeImage} />
@@ -191,13 +183,6 @@ export default function Register() {
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
-      {/* <Modal
-        onClose={(e) => onClose(e)}
-        ref={refs.popup}
-        size={'tiny'}
-        text={popUpText}
-        registerPopUp={true}
-      /> */}
     </PageWrapper>
   )
 }
@@ -254,10 +239,10 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   text-align: left;
   margin: 0 0 30px 0;
-  font-size: 19px;
+  font-size: ${toRem(19)};
 
   ${media.desktop`
-    font-size: 33px;
+    font-size: ${toRem(33)};
 `}
 `
 
@@ -271,7 +256,8 @@ const RegisterButton = styled(Button)`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  font-size: 13px;
+  font-size: ${toRem(13)};
+  font-weight: 500;
 
   &.desktop {
     display: none;
