@@ -123,8 +123,8 @@ export default function Analytics() {
       )}
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
         <NoDataContent>
-          Les premières missions seront validées le premier février, nous
-          comptons sur vous pour valider le plus de missions possible.
+          <p>Les premières missions seront validées le premier février, nous
+          comptons sur vous pour valider le plus de missions possible. 💪</p>
         </NoDataContent>
       )}
     </div>
@@ -163,10 +163,10 @@ const GraphContainerDesktop = styled.div`
     display: block;
   `}
 
-  ${media.desktop`
+  @media screen and (min-width: 1200px) {
     display: flex;
     flex-wrap: wrap;
-  `}
+  }
 `
 const PageLocationContent = styled(PageLocation)`
   margin-bottom: 15px;
@@ -175,13 +175,26 @@ const PageLocationContent = styled(PageLocation)`
 const NoDataContent = styled.div`
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(223, 223, 223, 0.25);
-  padding: 13px 30%;
   text-align: center;
   display: flex;
+  padding: 13px 10%;
   align-items: center;
   border-radius: 10px;
   justify-content: center;
   height: 60vh;
-  color: #afafaf;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+
+  p {
+    background-color: #F5F6FB;
+    border-radius: 10px;
+    padding: 16px 24px;
+  }
+
+  ${media.tablet`
+    padding: 13px 20%;
+  `}
+
+  ${media.desktop`
+    padding: 13px 30%;
+  `}
 `
