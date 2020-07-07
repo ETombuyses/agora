@@ -5,7 +5,7 @@ import axios from 'axios'
 import { apiUrl } from '../apiConfig'
 
 // Components
-import { Title } from '../components/atoms/layout/Title'
+import { SectionTitle } from '../components/atoms/layout/SectionTitle'
 import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
 import { GraphCard } from '../components/molecules/GraphCard'
@@ -17,20 +17,23 @@ export default function Analytics() {
   const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
-    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
-    let getToken = localStorage.getItem('token')
+    let userInfo = localStorage.getItem('userInfo')
+    if (userInfo) {
+      let getuserId = JSON.parse(userInfo).id
+      let getToken = localStorage.getItem('token')
 
-    ;(async () => {
-      const result = await axios({
-        method: 'get',
-        url: `${apiUrl}/api/user/analytics/${getuserId}`,
-        headers: {
-          Authorization: `Bearer ${getToken}`,
-        },
-      })
+      ;(async () => {
+        const result = await axios({
+          method: 'get',
+          url: `${apiUrl}/api/user/analytics/${getuserId}`,
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        })
 
-      setUserData(result)
-    })()
+        setUserData(result)
+      })()
+    }
   }, [])
 
   const handleChangeEnergie = (e) => {
@@ -54,7 +57,7 @@ export default function Analytics() {
           />
         </GlobalDataCardWrapper>
       )}
-      <Title text="Missions réussis au total" />
+      <SectionTitle text="Missions réussies au total" />
       {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>
@@ -121,7 +124,7 @@ export default function Analytics() {
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
         <NoDataContent>
           Les premières missions seront validées le premier février, nous
-          comptons sur vous pour valider le plus de missions possible 💪
+          comptons sur vous pour valider le plus de missions possible.
         </NoDataContent>
       )}
     </div>
@@ -138,7 +141,7 @@ const GlobalDataCardWrapper = styled.div`
     margin-bottom: 16px;
   }
 
-  ${media.large`
+  ${media.desktop`
     flex-direction: row;
 
     div:first-child {
@@ -160,10 +163,10 @@ const GraphContainerDesktop = styled.div`
     display: block;
   `}
 
-  ${media.large`
+  @media screen and (min-width: 1200px) {
     display: flex;
     flex-wrap: wrap;
-  `}
+  }
 `
 const PageLocationContent = styled(PageLocation)`
   margin-bottom: 15px;

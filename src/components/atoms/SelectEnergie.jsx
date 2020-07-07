@@ -46,7 +46,6 @@ const CustomSelect = styled.select`
   flex: 1 1 50%;
   height: 50px;
   margin-left: 16px;
-  font-size: ${toRem(19)};
   text-align-last: center;
 
   ::-ms-expand {

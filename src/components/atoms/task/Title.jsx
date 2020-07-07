@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media, toRem } from '../../../scss/config/mixins'
 
 // icon
 import { ReactComponent as HelpIcon } from '../../../assets/icons/layout/help-icon.svg'
@@ -39,13 +40,23 @@ const LabelWrapper = styled.div`
 `
 
 const Label = styled.p`
-  font-size: 16px;
+  font-size: ${toRem(15)};
   font-weight: 500;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   display: inline-block;
-  line-height: 130%;
-`
 
-/* const Asterisk = styled.span`
-  color: ${(props) => props.theme.red};
-` */
+  ${media.tablet`
+    font-size: ${toRem(16)};
+    margin-bottom: 6px;
+  `}
+
+  ${media.desktop`
+    font-size: ${toRem(17)};
+    margin-bottom: 8px;
+  `}
+
+  ${media.large`
+    font-size: ${toRem(18)};
+    margin-bottom: 10px;
+  `}
+`

@@ -21,12 +21,8 @@ const images = {
 
 export const TaskIcon = (props) => {
   return (
-    <Container text={props.text}>
-      <IconWrapper
-        className={props.className}
-        color={props.color}
-        size={props.size}
-      >
+    <Container text={props.text} className={props.className}>
+      <IconWrapper color={props.color} size={props.size}>
         <img
           icon={props.icon}
           src={images[props.icon].icon}

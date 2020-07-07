@@ -19,11 +19,27 @@ export const RadarChart = (props) => {
 
   return (
     <RadarWrapper className={props.className}>
-      <TaskIconWater icon={'water'} color={'whiteTransparent'} />
-      <TaskIconTrash icon={'trash'} color={'whiteTransparent'} />
-      <TaskIconLight icon={'lightning'} color={'whiteTransparent'} />
-      <TaskIconBus icon={'bus'} color={'whiteTransparent'} />
-      <TaskIconFire icon={'fire'} color={'whiteTransparent'} />
+      <TaskIconWater
+        type={props.type}
+        icon={'water'}
+        color={'whiteTransparent'}
+      />
+      <TaskIconTrash
+        type={props.type}
+        icon={'trash'}
+        color={'whiteTransparent'}
+      />
+      <TaskIconLight
+        type={props.type}
+        icon={'lightning'}
+        color={'whiteTransparent'}
+      />
+      <TaskIconBus type={props.type} icon={'bus'} color={'whiteTransparent'} />
+      <TaskIconFire
+        type={props.type}
+        icon={'fire'}
+        color={'whiteTransparent'}
+      />
       <Radar
         width={500}
         height={500}
@@ -71,24 +87,30 @@ const TaskIconWater = styled(TaskIcon)`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: -10px;
+  top: ${(props) => (props.type ? '7px' : '-10px')};
 `
 const TaskIconFire = styled(TaskIcon)`
   position: absolute;
-  top: 35%;
+  top: ${(props) => (props.type ? '33%' : '35%')};
+  right: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
+  left: ${(props) => (props.type ? 'inherit' : '0')};
 `
 const TaskIconLight = styled(TaskIcon)`
   position: absolute;
-  bottom: 10px;
+  bottom: ${(props) => (props.type ? '20px' : '10px')};
   left: 20%;
+  right: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
+  left: ${(props) => (props.type ? 'inherit' : '20%')};
 `
 const TaskIconBus = styled(TaskIcon)`
   position: absolute;
-  bottom: 10px;
-  right: 20%;
+  bottom: ${(props) => (props.type ? '20px' : '10px')};
+  right: ${(props) => (props.type ? ' inherit' : '20%')};
+  left: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
 `
 const TaskIconTrash = styled(TaskIcon)`
   position: absolute;
-  top: 35%;
-  right: 0;
+  top: ${(props) => (props.type ? '33%' : '35%')};
+  right: ${(props) => (props.type ? 'inherit' : '0')};
+  left: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
 `

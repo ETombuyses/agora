@@ -73,15 +73,29 @@ export function getNewTokens() {
         data: {
           refresh_token: refreshToken,
         },
+      }).catch((error) => {
+        let url = window.location.pathname
+        localStorage.clear()
+        if (url !== '#/register' || url !== '#/login') {
+          window.location.href = '#/login'
+        }
       })
 
-      let token = result.data.token
-      let refresh_token = result.data.refresh_token
+      if (result) {
+        let token = result.data.token
+        let refresh_token = result.data.refresh_token
 
-      // Put tokens in local storage
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refresh_token)
+        // Put tokens in local storage
+        localStorage.setItem('token', token)
+        localStorage.setItem('refreshToken', refresh_token)
+      }
     })()
+  } else {
+    let url = window.location.pathname
+
+    if (!refreshToken && (url !== '#/register' || url !== '#/login')) {
+      window.location.href = '#/login'
+    }
   }
 }
 

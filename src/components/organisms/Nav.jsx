@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react'
 import { Link, Switch, Route, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { withTheme } from 'styled-components'
-import { media } from '../../scss/config/mixins'
+import { media, toRem } from '../../scss/config/mixins'
 import { logout } from '../../tools/isAuth'
 
 // component
@@ -95,7 +95,7 @@ const NavWithTheme = (props) => {
               <ListItem>
                 <LogoutWrapper onClick={handleClick}>
                   <MenuIcon icon={'logout'} />
-                  <Text>Deconexion</Text>
+                  <Text>Déconnexion</Text>
                 </LogoutWrapper>
               </ListItem>
             </List>
@@ -128,7 +128,7 @@ export { Nav }
 
 const NavWrapper = styled.nav`
   background: ${(props) => props.theme.white};
-  padding: 12px;
+  padding: 12px 0px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -167,7 +167,7 @@ const List = styled.ul`
   position: relative;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-end;
 
   ${media.desktop`
     flex-direction: column;
@@ -219,13 +219,14 @@ const ListItem = styled.li`
 `
 
 const Text = styled.span`
-  font-size: 10px;
+  font-size: ${toRem(13)};
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
 
   ${media.desktop`
-      margin-top: 0;
-      margin-left: 16px;
+    font-size: ${toRem(15)};
+    margin-top: 0;
+    margin-left: 16px;
 	  `}
 `
 
@@ -234,6 +235,7 @@ const LogoutWrapper = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   cursor: pointer;
 
   ${media.desktop`

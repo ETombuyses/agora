@@ -55,8 +55,6 @@ const ButtonContainer = styled.button`
   outline: none;
   color: ${(props) =>
     props.size === 'tiny' ? props.theme.black : props.theme.white};
-  font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')};
-  font-weight: normal;
   display: inline-block;
   width: ${(props) => (props.isFullWidth ? '100%' : 'auto')};
   cursor: pointer;

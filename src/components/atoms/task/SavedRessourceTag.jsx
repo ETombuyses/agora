@@ -9,7 +9,7 @@ import trash from '../../../assets/icons/tasks/trash.png'
 import bus from '../../../assets/icons/tasks/bus.png'
 
 const images = {
-  Gaz: { icon: gas, name: 'Gas' },
+  Gaz: { icon: gas, name: 'Gaz' },
   Eau: { icon: water, name: 'Eau' },
   Electricté: { icon: lightning, name: 'Electricité' },
   Déchets: { icon: trash, name: 'Déchets' },
@@ -58,10 +58,9 @@ const TextWrapper = styled.div`
   flex-direction: column;
 `
 const Title = styled.span`
-  font-size: 13px;
+  font-weight: 500;
 `
 
 const Stat = styled.span`
   font-weight: 300;
-  font-size: 12px;
 `

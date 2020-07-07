@@ -10,7 +10,12 @@ import { TaskIcon } from '../atoms/task/Icon'
 export const SavedRessources = (props) => {
   return (
     <SavedRessourceWrapper className={props.className}>
-      <TaskIcon color="white" icon={props.icon} size={'big'} />
+      <CustomTaskIcon
+        color="white"
+        icon={props.icon}
+        size={'big'}
+        className="iconContainer"
+      />
       <SavingsAmount>
         <Number>{props.savedNumber}</Number> <span>{props.unit}</span>
       </SavingsAmount>
@@ -31,7 +36,23 @@ const SavedRessourceWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 200px;
+    padding: 2% 0 2% 0;
+  `}
+`
+
+const CustomTaskIcon = styled(TaskIcon)`
+  ${media.desktop`
+
+  &.iconContainer {
+      width: 38%;
+      height: auto;
+    }
+    
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
   `}
 `
 

@@ -89,10 +89,8 @@ export default function Register() {
     } else {
       if (window.innerWidth >= 992) {
         refs.transitionForm.current.style.transform = 'translateY(calc(-100vh))'
-        refs.secondViewForm.current.style.overflowY = 'scroll'
         refs.secondViewForm.current.style.height = 'auto'
-        refs.secondViewForm.current.style.padding = '30px 0'
-        refs.transitionForm.current.style.overflow = 'hidden'
+        refs.secondViewForm.current.style.padding = '70px 0'
         registerPage.current.style.overflow = 'auto'
         img.current.style.position = 'sticky'
         img.current.style.top = '0'
@@ -154,7 +152,7 @@ export default function Register() {
       <Image ref={img} src={welcomeImage} />
       <ContentWrapper ref={hideButton}>
         <RegisterButtons>
-          <Title className="headline">S'inscrire sur Agora</Title>
+          <Title className="heading biggest">S'inscrire sur Agora</Title>
           <GovButton
             isFullWidth={true}
             icon={GovIcon}
@@ -236,14 +234,9 @@ const ContentWrapper = styled.div`
   `}
 `
 
-const Title = styled.h2`
+const Title = styled.h1`
   text-align: left;
   margin: 0 0 30px 0;
-  font-size: ${toRem(19)};
-
-  ${media.desktop`
-    font-size: ${toRem(33)};
-`}
 `
 
 const GovButton = styled(Button)`
@@ -256,7 +249,6 @@ const RegisterButton = styled(Button)`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  font-size: ${toRem(13)};
   font-weight: 500;
 
   &.desktop {

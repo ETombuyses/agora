@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { withTheme } from 'styled-components'
-import { media } from '../../../scss/config/mixins'
+import { media, toRem } from '../../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -81,13 +81,21 @@ const CustomSvg = styled.svg`
 const Percent = styled.span`
   position: absolute;
   font-weight: bold;
+  font-size: ${toRem(25)};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
   color: ${(props) => props.theme.white};
 
+  ${media.tablet`
+    font-size: ${toRem(30)};
+  `}
+
   ${media.desktop`
-    font-size: 35px;
+    font-size: ${toRem(40)};
+  `}
+
+  ${media.large`
+    font-size: ${toRem(45)};
   `}
 `

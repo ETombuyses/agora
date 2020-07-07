@@ -103,23 +103,23 @@ const CardWrapper = styled.div`
   margin-bottom: 40px;
   padding-bottom: 35px;
 
-  ${media.large`
-		flex: 1 1 calc(50% - 20px);
+  @media screen and (min-width: 1200px) {
+    flex: 1 1 calc(50% - 20px);
 
-		&:nth-child(odd) {
-			margin-right: 20px;
-		}
+    &:nth-child(odd) {
+      margin-right: 20px;
+    }
 
-		&:nth-child(even) {
-			margin-left: 20px;
-		}
+    &:nth-child(even) {
+      margin-left: 20px;
+    }
 
-		&:last-child {
-			width: calc(50% - 20px);
-			margin: inherit;
-			flex: inherit;
-		}
-  `}
+    &:last-child {
+      width: calc(50% - 20px);
+      margin: inherit;
+      flex: inherit;
+    }
+  }
 
   ${media.tablet`
     display: block;
@@ -127,22 +127,21 @@ const CardWrapper = styled.div`
 `
 
 const HeadingWrapper = styled.div`
-	display: flex;
-	padding: 15px 8px 0 8px;
-	width: 100%;
-	justify-content: space-between;
+  display: flex;
+  padding: 15px 8px 0 8px;
+  width: 100%;
+  justify-content: space-between;
   margin-bottom: 30px;
   flex-wrap: wrap;
-	
-	span {
-		font-weight: 500;
-	}
-	
+
+  span {
+    font-weight: 500;
+  }
+
   ${media.tablet`
     flex-wrap: inherit;
 		padding: 15px 30px 0 30px;
 	`}
-}
 `
 
 const ContentWrapper = styled.div`
@@ -206,7 +205,6 @@ const Unit = styled.span`
   position: absolute;
   bottom: 24px;
   left: 8px;
-  font-size: ${toRem(15)};
   font-weight: 500;
   color: ${(props) => props.theme.white};
 
@@ -219,11 +217,11 @@ const Unit = styled.span`
 `
 const MonthShort = styled.p`
   display: none;
+  color: ${(props) => props.theme.grey};
 
   ${media.tablet`
 		display: block;
 		text-align: center;
-		color: ${(props) => props.theme.grey};
 		font-size: ${toRem(13)};
 	`}
 `
@@ -231,8 +229,8 @@ const MonthShort = styled.p`
 const MonthLong = styled.p`
   text-align: left;
   margin-left: 8px;
-  font-size: ${toRem(19)};
-  color: ${(props) => props.theme.black};
+  font-size: ${toRem(16)};
+  color: ${(props) => props.theme.grey};
   position: relative;
   top: 14px;
 
@@ -261,5 +259,5 @@ const NbTasks = styled.span`
   `}
 `
 const TaskIconWrapper = styled(TaskIcon)`
-  flex: 1 1 50%;
+  /* flex: 1 1 50%; */
 `
