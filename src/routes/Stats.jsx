@@ -119,9 +119,9 @@ export default function Stats() {
         </>
       )}
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
-        <NoDataContant>
+        <NoDataContent>
           Les premières missions seront validées le premier février, nous comptons sur vous pour valider le plus de missions possible 💪
-        </NoDataContant>
+        </NoDataContent>
       )}
     </div>
   )
@@ -168,7 +168,7 @@ const PageLocationContent = styled(PageLocation)`
   margin-bottom: 15px;
 `
 
-const NoDataContant = styled.div`
+const NoDataContent = styled.div`
   background-color: rgb(255,255,255);
   box-shadow: 0px 0px 10px rgba(223,223,223,0.25);
   padding: 13px 30%;
