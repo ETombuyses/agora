@@ -10,9 +10,8 @@ import { checkAgoraForm } from '../tools/RegisterFormChecks'
 import { Button } from '../components/atoms/form/Button'
 import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
-import { Modal } from '../components/molecules/layout/Modal'
 import { register } from '../tools/isAuth'
-import { media } from '../scss/config/mixins'
+import { media, toRem } from '../scss/config/mixins'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'
@@ -22,9 +21,29 @@ import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Register() {
-  const [popUpText, setPopUpText] = useState('')
+  const [errorTextFirstPart, setErrorTextFirstPart] = useState({
+    state: {
+      lastName: '',
+      firstName: '',
+      email: '',
+      pswd: '',
+      confirmPswd: '',
+    },
+  })
+
+  const [errorTextSecondPart, setErrorTextSecondPart] = useState({
+    state: {
+      nbAgora: '',
+      nbResident: '',
+      livingSpace: '',
+      nbNavigo: '',
+      nbNIF: '',
+    },
+  })
 
   const hideButton = useRef(0)
+  const registerPage = useRef(0)
+  const img = useRef(0)
 
   const refs = {
     transitionForm: createRef(0),
@@ -33,7 +52,7 @@ export default function Register() {
     name: createRef(0),
     pswd: createRef(0),
     email: createRef(0),
-    confirmePswd: createRef(0),
+    confirmPswd: createRef(0),
     nbAgora: createRef(0),
     nbResident: createRef(0),
     isuYesButton: createRef(0),
@@ -43,36 +62,45 @@ export default function Register() {
     livingSpace: createRef(0),
     nbNavigo: createRef(0),
     nbNIF: createRef(0),
+    secondViewForm: createRef(0),
   }
 
   const handleForm = () => {
     if (window.innerWidth >= 992) {
       hideButton.current.style.transform = 'translateY(calc(-100vh))'
     } else {
+      refs.transitionForm.current.style.maxHeight = 'inherit'
+      refs.transitionForm.current.style.overflow = 'inherit'
       hideButton.current.style.transform = 'translateX(calc(-100vw + 24px))'
     }
   }
 
   const handleClick = () => {
-    refs.popup.current.style.visibility = 'hidden'
-
     let error = checkGeneralFormInfo(
       refs.name.current.value,
       refs.firstName.current.value,
       refs.email.current.value,
       refs.pswd.current.value,
-      refs.confirmePswd.current.value
+      refs.confirmPswd.current.value
     )
 
     if (error) {
-      setPopUpText(error)
-      refs.popup.current.style.visibility = 'visible'
+      setErrorTextFirstPart(error)
     } else {
       if (window.innerWidth >= 992) {
         refs.transitionForm.current.style.transform = 'translateY(calc(-100vh))'
+        refs.secondViewForm.current.style.overflowY = 'scroll'
+        refs.secondViewForm.current.style.height = 'auto'
+        refs.secondViewForm.current.style.padding = '30px 0'
+        refs.transitionForm.current.style.overflow = 'hidden'
+        registerPage.current.style.overflow = 'auto'
+        img.current.style.position = 'sticky'
+        img.current.style.top = '0'
       } else {
         refs.transitionForm.current.style.transform =
           'translateX(calc(-50% + 24px))'
+        refs.secondViewForm.current.style.maxHeight = 'inherit'
+        refs.secondViewForm.current.style.overflow = 'inherit'
       }
     }
   }
@@ -100,8 +128,7 @@ export default function Register() {
     )
 
     if (error) {
-      setPopUpText(error)
-      refs.popup.current.style.visibility = 'visible'
+      setErrorTextSecondPart(error)
     } else {
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
@@ -122,14 +149,9 @@ export default function Register() {
     }
   }
 
-  // Close PopUp
-  const onClose = () => {
-    refs.popup.current.style.visibility = 'hidden'
-  }
-
   return (
-    <PageWrapper>
-      <Image src={welcomeImage} />
+    <PageWrapper ref={registerPage}>
+      <Image ref={img} src={welcomeImage} />
       <ContentWrapper ref={hideButton}>
         <RegisterButtons>
           <Title className="headline">S'inscrire sur Agora</Title>
@@ -150,22 +172,17 @@ export default function Register() {
             Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
           </ToggleText>
         </RegisterButtons>
-        <RegisterForm
+        <RegisterFormWrapper
           ref={refs}
           onClickButton={handleClick}
           sendForm={sendForm}
+          errorTextFirstPart={errorTextFirstPart}
+          errorTextSecondPart={errorTextSecondPart}
         />
       </ContentWrapper>
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
-      <Modal
-        onClose={(e) => onClose(e)}
-        ref={refs.popup}
-        size={'tiny'}
-        text={popUpText}
-        registerPopUp={true}
-      />
     </PageWrapper>
   )
 }
@@ -201,11 +218,11 @@ const Image = styled.img`
 
 const ContentWrapper = styled.div`
   padding: 24px;
-  height: 0;
+  height: 65vh;
   flex: 1 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   width: 300vw;
   transition: transform 0.7s ease;
 
@@ -222,10 +239,10 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   text-align: left;
   margin: 0 0 30px 0;
-  font-size: 19px;
+  font-size: ${toRem(19)};
 
   ${media.desktop`
-    font-size: 33px;
+    font-size: ${toRem(33)};
 `}
 `
 
@@ -239,7 +256,8 @@ const RegisterButton = styled(Button)`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  font-size: 13px;
+  font-size: ${toRem(13)};
+  font-weight: 500;
 
   &.desktop {
     display: none;
@@ -267,6 +285,16 @@ const ToggleLink = styled(Link)`
 const SectionSepartorWrapper = styled(SectionSepartor)`
   align-self: center;
   display: inline-block;
+`
+
+const RegisterFormWrapper = styled(RegisterForm)`
+  max-height: 60vh;
+  overflow: hidden;
+
+  ${media.desktop`
+    max-height: inherit;
+    overflow: inherit;
+  `}
 `
 
 const RegisterButtons = styled.div`
