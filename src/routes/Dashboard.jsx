@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { media } from '../scss/config/mixins'
+import { media, toRem } from '../scss/config/mixins'
 import { apiUrl } from '../apiConfig'
 
 // components
@@ -208,7 +208,12 @@ export default function Dashboard() {
             }
           />
         </MainPageContent>
-        {userData && <CustomRadarChart type={'mobile'} data={userData} />}
+        {userData && (
+          <CustomeRadarWrapper>
+            <SparedRessourcesTitle>Statistiques</SparedRessourcesTitle>
+            <CustomRadarChart type={'mobile'} data={userData} />
+          </CustomeRadarWrapper>
+        )}
       </MainContentWrapper>
       <UserPanel
         userFirstName={userFirstName}
@@ -268,15 +273,25 @@ const CustomLevelProgress = styled(LevelProgress)`
   margin-top: 16px;
 `
 const CustomRadarChart = styled(RadarChart)`
-  margin-top: 16px;
   height: 40vh;
   max-width: 100%;
-  background: white;
-  border-radius: 10px;
 
   svg {
     max-width: 100%;
   }
+`
+const SparedRessourcesTitle = styled.h5`
+  text-align: center;
+  font-size: ${toRem(19)};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin-bottom: 13px;
+`
+
+const CustomeRadarWrapper = styled.div`
+  padding-top: 15px;
+  margin-top: 16px;
+  background: white;
+  border-radius: 10px;
 
   ${media.tablet`
     display: none;

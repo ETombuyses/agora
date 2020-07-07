@@ -55,4 +55,5 @@ export default function App() {
 const ModalDisclaimer = styled(Modal)`
   visibility: visible;
   z-index: 101;
+  position: fixed;
 `
