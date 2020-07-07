@@ -29,7 +29,6 @@ export default function App() {
   }
 
   // Refresh Token every 10 mins
-  // TODO: to fix !!!!
   setInterval(refreshTokenTimer, 600000)
 
   return (

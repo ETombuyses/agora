@@ -56,7 +56,7 @@ export const GraphCard = (props) => {
         <TaskIconWrapper
           size={'medium'}
           icon={iconEnergie}
-          color={'blueGrey'}
+          color={'greyBlue'}
           text={props.data.allTasks[0].name}
         />
         <SelectEnergie
@@ -153,14 +153,14 @@ const ContentWrapper = styled.div`
   & > div {
     height: 100px;
     position: relative;
-    border-bottom: 3px solid ${(props) => props.theme.greyOpacity};
+    border-bottom: 3px solid ${(props) => props.theme.lightGrey};
 
     &:last-child {
       border-bottom: inherit;
     }
 
     ${media.tablet`
-			border-right: 2px solid ${(props) => props.theme.greyOpacity};
+			border-right: 2px solid ${(props) => props.theme.lightGrey};
 			width: calc(100% / 12);
 			min-height: 170px;
 			border-bottom: inherit;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { media } from '../../scss/config/mixins'
-import { apiUrl } from '../../tools/apiConfig'
+import { apiUrl } from '../../apiConfig'
 
 // component
 import { Task } from '../molecules/Task'
@@ -30,7 +30,7 @@ export const MonthlyTasksRecap = (props) => {
   const [monthsTasksData, setMonthsTasksData] = useState([])
 
   useEffect(() => {
-    let getuserId = localStorage.getItem('idUser')
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let getToken = localStorage.getItem('token')
 
     ;(async () => {
@@ -74,7 +74,7 @@ export const MonthlyTasksRecap = (props) => {
       })
       setMonthsTasksData(finalMonthsData)
     })()
-  }, [])
+  }, [props.selectedYear])
 
   // ---------------------------------------SLIDER---------------------------------------
 

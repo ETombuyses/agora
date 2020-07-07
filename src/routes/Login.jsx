@@ -114,6 +114,7 @@ const ContentWrapper = styled.div`
 
   ${media.desktop`
     height: auto;
+    max-width: 60%;
     padding: 24px 15%;
   `}
 `

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { media } from '../scss/config/mixins'
 import axios from 'axios'
-import { apiUrl } from '../tools/apiConfig'
+import { apiUrl } from '../apiConfig'
 
 // Components
 import { Title } from '../components/atoms/layout/Title'
@@ -12,12 +12,12 @@ import { GraphCard } from '../components/molecules/GraphCard'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-export default function Stats() {
+export default function Analytics() {
   const [userData, setUserData] = useState(0)
   const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
-    let getuserId = localStorage.getItem('idUser')
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let getToken = localStorage.getItem('token')
 
     ;(async () => {
@@ -119,7 +119,10 @@ export default function Stats() {
         </>
       )}
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
-        <p>Il n'y a pas de données à afficher</p>
+        <NoDataContent>
+          Les premières missions seront validées le premier février, nous
+          comptons sur vous pour valider le plus de missions possible 💪
+        </NoDataContent>
       )}
     </div>
   )
@@ -164,4 +167,18 @@ const GraphContainerDesktop = styled.div`
 `
 const PageLocationContent = styled(PageLocation)`
   margin-bottom: 15px;
+`
+
+const NoDataContent = styled.div`
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(223, 223, 223, 0.25);
+  padding: 13px 30%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  height: 60vh;
+  color: #afafaf;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `

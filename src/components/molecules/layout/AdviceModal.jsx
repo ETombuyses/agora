@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { media } from '../../../scss/config/mixins'
 

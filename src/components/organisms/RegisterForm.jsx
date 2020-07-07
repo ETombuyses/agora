@@ -7,6 +7,8 @@ import { InputText } from '../atoms/form/InputText'
 import { Button } from '../atoms/form/Button'
 import { RadioButtonsGroup } from '../molecules/form/RadioButtonsGroup'
 
+//import { checkValidateInput } from '../../tools/RegisterFormChecks'
+
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const RegisterForm = forwardRef((props, ref) => {
@@ -16,7 +18,7 @@ export const RegisterForm = forwardRef((props, ref) => {
     firstName,
     email,
     pswd,
-    confirmePswd,
+    confirmPswd,
     nbAgora,
     nbResident,
     isuYesButton,
@@ -26,6 +28,7 @@ export const RegisterForm = forwardRef((props, ref) => {
     livingSpace,
     nbNavigo,
     nbNIF,
+    secondViewForm,
   } = ref
 
   return (
@@ -38,6 +41,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Nom"
             type={'text'}
             identifyer={'lastName'}
+            errorText={props.errorTextFirstPart.state.lastName}
+            //onChangeValue={() => onHandleChange(name, 'lastName')}
           />
           <InputTextButton
             ref={firstName}
@@ -45,6 +50,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Prénom"
             type={'text'}
             identifyer={'firstName'}
+            errorText={props.errorTextFirstPart.state.firstName}
+            //onChangeValue={() => onHandleChange(firstName, 'firstName')}
           />
           <InputTextButton
             ref={email}
@@ -52,6 +59,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             required={true}
             label="Email"
             identifyer={'email'}
+            errorText={props.errorTextFirstPart.state.email}
+            //onChangeValue={() => onHandleChange(email, 'email')}
           />
           <InputTextButton
             ref={pswd}
@@ -59,13 +68,17 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Mot de passe"
             type={'password'}
             identifyer={'password'}
+            errorText={props.errorTextFirstPart.state.pswd}
+            //onChangeValue={() => onHandleChange(pswd, 'pswd')}
           />
           <InputTextButton
-            ref={confirmePswd}
+            ref={confirmPswd}
             required={true}
             label="Confirmer votre mot de passe"
             type={'password'}
             identifyer={'passwordConfirmation'}
+            errorText={props.errorTextFirstPart.state.confirmPswd}
+            //onChangeValue={() => onHandleChange(confirmPswd, 'confirmPswd')}
           />
           <ContinueButton
             isFullWidth={false}
@@ -73,14 +86,19 @@ export const RegisterForm = forwardRef((props, ref) => {
             onClickButton={props.onClickButton}
           />
         </View>
-        <View>
+        <SecondView ref={secondViewForm}>
           <InputTextButton
             ref={nbAgora}
             required={true}
             hint={true}
+            hintText={
+              'Veuillez inscrire le numéro Agora situé sous votre appareil Agora'
+            }
             label="Numéro d’Agora"
             type={'text'}
             identifyer={'AgoraNumber'}
+            errorText={props.errorTextSecondPart.state.nbAgora}
+            //onChangeValue={() => onHandleChange(nbAgora, 'nbAgora')}
           />
           <InputTextButton
             ref={nbResident}
@@ -88,6 +106,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Nombre de résidents"
             type={'text'}
             identifyer={'ResidentNumber'}
+            errorText={props.errorTextSecondPart.state.nbResident}
+            //onChangeValue={() => onHandleChange(nbResident, 'nbResident')}
           />
           <RadioButtonsGroup
             ref={{
@@ -125,6 +145,8 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Surface de l’habitat (en M²)"
             type={'text'}
             identifyer={'livingSpace'}
+            errorText={props.errorTextSecondPart.state.livingSpace}
+            //onChangeValue={() => onHandleChange(livingSpace, 'livingSpace')}
           />
           <InputTextButton
             ref={nbNavigo}
@@ -132,13 +154,19 @@ export const RegisterForm = forwardRef((props, ref) => {
             label="Numéro carte Navigo"
             type={'text'}
             identifyer={'navigoNumber'}
+            errorText={props.errorTextSecondPart.state.nbNavigo}
+            //onChangeValue={() => onHandleChange(nbNavigo, 'nbNavigo')}
           />
           <InputTextButton
             ref={nbNIF}
             required={true}
             label="Numéro NIF"
+            hint={true}
+            hintText={`Vous pouvez trouver votre numéro d'identité fiscale (NIF) sur vos avis d’impôt (impôt sur le revenu, taxe d’habitation, taxe foncière)`}
             type={'text'}
             identifyer={'NIFNumber'}
+            errorText={props.errorTextSecondPart.state.nbNIF}
+            //onChangeValue={() => onHandleChange(nbNIF, 'nbNIF')}
           />
           <ContinueButton
             onClickButton={props.sendForm}
@@ -146,7 +174,7 @@ export const RegisterForm = forwardRef((props, ref) => {
             text="Créer le compte"
             isFormButton={true}
           />
-        </View>
+        </SecondView>
       </FormWrapper>
     </>
   )
@@ -191,5 +219,23 @@ const View = styled.div`
     flex-direction: column;
     justify-content: center;
     padding-right: 0;
+  `}
+`
+
+const SecondView = styled.div`
+  padding-right: 24px;
+  max-height: 0;
+  overflow: hidden;
+  width: 50%;
+
+  ${media.desktop`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0;
+    max-height: inherit;
+    overflow: inherit;
   `}
 `
