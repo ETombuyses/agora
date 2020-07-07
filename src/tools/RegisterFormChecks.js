@@ -3,23 +3,23 @@ export const checkGeneralFormInfo = (
   firstName,
   email,
   pswd,
-  confirmePswd
+  confirmPswd
 ) => {
   const expressionEmail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
 
-  //Check if name is valid
+  // Check if name is valid
   if (!name) {
     return 'Le champs "Nom" n\'est pas rempli'
   } else if (name.length < 2 || name.length > 50) {
     return 'Le champs "Nom" doit contenir entre 2 et 50 caractères'
 
-    //Check if firstname is valid
+    // Check if firstname is valid
   } else if (!firstName) {
     return 'Le champs "Prènom" n\'est pas rempli'
   } else if (firstName.length < 2 || firstName.length > 50) {
     return 'Le champs "Prénom" doit contenir entre 2 et 50 caractères'
 
-    //Check if email is valid
+    // Check if email is valid
   } else if (!email) {
     return 'Le champs "Email" n\'est pas rempli'
   } else if (!expressionEmail.test(String(email).toLowerCase())) {
@@ -27,12 +27,12 @@ export const checkGeneralFormInfo = (
   } else if (email.length < 4 || pswd.length > 255) {
     return 'Le champs "Email" doit contenir entre 4 et 255 caractères'
 
-    //Check if password is valid
+    // Check if password is valid
   } else if (!pswd) {
     return 'Le champs "Mot de passe" n\'est pas rempli'
   } else if (pswd.length < 8 || pswd.length > 255) {
     return 'Le champs "Mot de passe" doit contenir entre 8 et 255 caractères'
-  } else if (pswd !== confirmePswd) {
+  } else if (pswd !== confirmPswd) {
     return 'Les mots de passe saisis ne sont pas identiques'
   } else {
     return false
@@ -58,8 +58,7 @@ export const checkAgoraForm = (
     nbAgora.length !== 8
   ) {
     return "Le numéro d'Agora n'est pas valide. Il doit contenir 8 numéros."
-
-    //Check if nb resident is valid
+    // Check if nb resident is valid
   } else if (!nbResident) {
     return 'Le champ "Nombre de résidents" n\'est pas rempli'
   } else if (!numberOnly.test(String(nbResident).toLowerCase())) {

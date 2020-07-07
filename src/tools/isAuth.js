@@ -1,11 +1,12 @@
 import axios from 'axios'
-import { apiUrl } from '../tools/apiConfig'
+import { apiUrl } from '../apiConfig'
 
 /*
  * Get tokens if user is recognized
  * @Params {email} string
  * @Params {password} string
  */
+
 export function login(email, password) {
   ;(async () => {
     const result = await axios({
@@ -32,10 +33,9 @@ export function login(email, password) {
     // Put tokens in local storage
     localStorage.setItem('token', token)
     localStorage.setItem('refreshToken', refresh_token)
-    localStorage.setItem('idUser', idUser)
 
     localStorage.setItem(
-      'userPersonalData',
+      'userInfo',
       JSON.stringify({
         id: idUser,
         fistName: userFirstName,
@@ -61,25 +61,24 @@ export function login(email, password) {
  * Get new tokens if user is recognized
  */
 export function getNewTokens() {
-  //get refresh_token in local storage
-  let getRefreshToken = localStorage.getItem('refreshToken')
+  let refreshToken = localStorage.getItem('refreshToken')
 
-  //check if refresh token exist in local storage
-  if (getRefreshToken) {
-    //Get new refresh token and token
+  // check if refresh token exist in local storage
+  if (refreshToken) {
+    // Get new refresh token and token
     ;(async () => {
       const result = await axios({
         method: 'post',
         url: `${apiUrl}/api/token/refresh`,
         data: {
-          refresh_token: getRefreshToken,
+          refresh_token: refreshToken,
         },
       })
 
       let token = result.data.token
       let refresh_token = result.data.refresh_token
 
-      //Put tokens in local storage
+      // Put tokens in local storage
       localStorage.setItem('token', token)
       localStorage.setItem('refreshToken', refresh_token)
     })()
@@ -131,7 +130,7 @@ export function register(
         navigoNumber: navigoNumber,
       },
     })
-
+    // redirect to loginpage if successful register
     if (result) {
       window.location.hash = '/login'
     }

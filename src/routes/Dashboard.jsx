@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { media } from '../scss/config/mixins'
-import { apiUrl } from '../tools/apiConfig'
+import { apiUrl } from '../apiConfig'
 
 // components
 import { Tag } from '../components/atoms/task/Tag'
@@ -44,9 +44,9 @@ export default function Dashboard() {
   ]
 
   useEffect(() => {
-    let getuserId = localStorage.getItem('idUser')
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let getToken = localStorage.getItem('token')
-    let userProfileData = JSON.parse(localStorage.getItem('userPersonalData'))
+    let userProfileData = JSON.parse(localStorage.getItem('userInfo'))
 
     setUserFirstName(userProfileData.fistName)
     setUserLastName(userProfileData.lastName)
@@ -110,17 +110,18 @@ export default function Dashboard() {
               break
             case 'Transports':
               task.consummed = task.validate
-              task.percent = task.validate == 1 ? 100 : 0
+              task.percent = Number(task.validate) === 1 ? 100 : 0
               break
             case 'Déchets':
               task.consummed = result.data.additionalDatas.data.mesureWaste
               task.limit = userProfileData.limits.wasteLimit
               task.percent = 100 - (task.consummed / task.limit) * 100
               break
+            default:
+              return
           }
         })
 
-        console.log('test', taskssTest)
         setUserData(result.data)
         taskssTest.sort((a, b) => {
           return b.percent - a.percent
@@ -129,8 +130,6 @@ export default function Dashboard() {
       }
     })()
   }, [])
-
-  console.log('api dashboard result', userData)
 
   const hideModal = () => {
     setShowModal(false)
