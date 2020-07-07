@@ -34,7 +34,7 @@ const DataWrapper = styled.div`
   display: flex;
   align-items: center;
   border-radius: 10px;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   span {
     font-weight: 500;
