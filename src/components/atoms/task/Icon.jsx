@@ -21,12 +21,8 @@ const images = {
 
 export const TaskIcon = (props) => {
   return (
-    <Container text={props.text}>
-      <IconWrapper
-        className={props.className}
-        color={props.color}
-        size={props.size}
-      >
+    <Container text={props.text} className={props.className}>
+      <IconWrapper color={props.color} size={props.size}>
         <img
           icon={props.icon}
           src={images[props.icon].icon}
@@ -124,7 +120,7 @@ const Container = styled.div`
       top: 50%;
       transform: translateY(-50%);
       display: inline;
-      /* font-size: ${toRem(19)}; */
+      font-size: ${toRem(19)};
     `}
   }
 `

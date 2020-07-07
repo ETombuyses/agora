@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { media } from '../../../scss/config/mixins'
+import { media, toRem } from '../../../scss/config/mixins'
 
 // component
 import { Button } from '../../atoms/form/Button'
@@ -143,25 +143,48 @@ const ContentWrapper = styled.div`
 
 const PopUpContent = styled.article`
   font-weight: normal;
-  /* font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')}; */
   color: ${(props) => props.theme.black};
   text-align: left;
 
   .title {
-    /* font-size: 21px; */
+    font-size: ${toRem(19)};
     margin-bottom: 24px;
-    line-height: 130.5%;
+    font-weight: 500;
+
+    ${media.tablet`
+      font-size: ${toRem(21)};
+    `}
+
+    ${media.desktop`
+      font-size: ${toRem(23)};
+    `}
+
+    ${media.large`
+      font-size: ${toRem(25)};
+    `}
   }
 
   .sectionTitle {
-    /* font-size: 18px; */
-    line-height: 130.5%;
+    font-size: ${toRem(16)};
     margin-bottom: 16px;
     margin-top: 25px;
+    font-weight: 500;
+
+
+    ${media.tablet`
+      font-size: ${toRem(17)};
+    `}
+
+    ${media.desktop`
+      font-size: ${toRem(18)};
+    `}
+
+    ${media.large`
+      font-size: ${toRem(19)};
+    `}
   }
 
   p {
-    /* font-size: 16px; */
     margin-bottom: 17px;
     line-height: 150%;
   }

@@ -6,6 +6,7 @@ body,
 input,
 span,
 p,
+li,
 label {
   color: $black;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -55,7 +56,12 @@ a {
 
 /* ---------------------------------------- headings ---------------------------------------- */
 
-.heading {
+.heading,
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   color: $black;
   line-height: 130.5%;

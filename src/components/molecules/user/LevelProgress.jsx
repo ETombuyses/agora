@@ -78,6 +78,7 @@ const Icon = styled.div`
 const Title = styled.h3`
   margin-bottom: 31px;
   font-size: ${toRem(19)};
+  color: ${(props) => props.theme.white};
 
   ${media.desktop`
     margin-bottom: 15%;

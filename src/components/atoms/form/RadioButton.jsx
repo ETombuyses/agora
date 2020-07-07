@@ -26,7 +26,7 @@ const ButtonWrapper = styled.div`
   margin-right: 24px;
 
   input:checked + label {
-    background-color: #54e173;
+    background-color: ${(props) => props.theme.green};
     color: #fff;
   }
 `
@@ -39,7 +39,6 @@ const LabelText = styled.label`
   position: relative;
   color: black;
   background-color: white;
-  /* font-size: 14px; */
   text-align: center;
   height: 43px;
   width: 100px;

@@ -46,7 +46,6 @@ const PopUpContainer = styled.div`
 
 const PopUpContent = styled.p`
   font-weight: normal;
-  /* font-size: ${(props) => (props.size === 'tiny' ? '10px' : '14px')}; */
   color: ${(props) => props.theme.black};
 `
 

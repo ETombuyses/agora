@@ -6,7 +6,9 @@ import { media, toRem } from '../../../scss/config/mixins'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const SectionTitle = (props) => {
-  return <TitleText className="heading">{props.text}</TitleText>
+  return (
+    <TitleText className={'heading' + props.className}>{props.text}</TitleText>
+  )
 }
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */

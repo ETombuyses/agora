@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../scss/config/mixins'
+import { media, toRem } from '../../scss/config/mixins'
 
 // component
 import { SavedRessources } from '../molecules/SavedRessourcesTags'
@@ -53,9 +53,18 @@ export const SavedRessourcesRecap = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const Title = styled.h2`
-  /* font-size: 23px; */
-  font-weight: normal;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: ${toRem(23)};
+  font-weight: 500;
   margin-bottom: 10px;
+
+  ${media.desktop`
+    font-size: ${toRem(30)};
+  `}
+
+  ${media.large`
+    font-size: ${toRem(33)};
+  `}
 `
 
 const Description = styled.p`
@@ -66,12 +75,13 @@ const RecapWrapper = styled.div`
   padding: 24px 16px;
   background: ${(props) => props.theme.white};
   border-radius: 10px;
-  max-width: calc(5 * 200px + 4 * 28px);
+  width: 100%;
 `
 
 const SavedRessourcesList = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   ${media.desktop`
      flex-direction: row;
@@ -85,7 +95,7 @@ const CustomSavedRessource = styled(SavedRessources)`
 
     ${media.desktop`
       margin-bottom: 0;
-      margin-right: 28px;
+      margin-right: 2%;
   `}
   }
 `

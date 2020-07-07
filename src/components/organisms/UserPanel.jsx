@@ -114,6 +114,7 @@ const UserName = styled.span`
 const SparedRessourcesTitle = styled.h5`
   margin: 10% auto 1.7% auto;
   font-size: ${toRem(16)};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.large`
     font-size: ${toRem(18)};
@@ -134,6 +135,7 @@ const CustomTaskTag = styled(SavedRessourceTag)`
 const StatTitle = styled.p`
   font-size: ${toRem(16)};
   margin-top: 8%;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.large`
     font-size: ${toRem(18)};

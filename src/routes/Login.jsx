@@ -128,7 +128,7 @@ const GovButton = styled(Button)`
   margin-bottom: 16px;
 
   ${media.desktop`
-    width: 82%;
+    width: 100%;
     align-self: start;
   `}
 `
@@ -158,7 +158,6 @@ const FormContainer = styled.form`
 
 const ToggleText = styled.p`
   margin-top: 42px;
-  /* font-size: 13px; */
 
   ${media.desktop`
     position: absolute;
