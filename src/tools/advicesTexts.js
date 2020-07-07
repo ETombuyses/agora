@@ -4,7 +4,7 @@ export const advices = {
     <h2 class="title">Comment réduire sa consommation d’eau ?</h2>
    
       <h3 class="sectionTitle">Limiter les fuites d’eau pour réduire le gaspillage</h3>
-        <p>Un robinet qui goutte représente 35m3 d’eau gaspillée par an, et une chasse d’eau qui fuit 175m3. Il convient donc de surveiller les éventuelles fuites. Par exemple, vous pouvez couper tous les appareils consommant de l’eau et vérifier que le compteur ne tourne plus.Il est donc aisé de détecter les fuites et les réparer est en général à la portée de tous.</p>
+        <p>Un robinet qui goutte représente 35m3 d’eau gaspillée par an, et une chasse d’eau qui fuit 175m3. Il convient donc de surveiller les éventuelles fuites. Par exemple, vous pouvez couper tous les appareils consommant de l’eau et vérifier que le compteur ne tourne plus. Il est donc aisé de détecter les fuites et les réparer est en général à la portée de tous.</p>
       
       <h3 class="sectionTitle">Mettre en place une chasse d’eau économique</h3>
         <p>Il existe aujourd’hui des chasses d’eau économiques qui sont de plus en plus répandues dans les équipements neufs. Mais il vous est également possible de changer de mécanisme vous-même pour une vingtaine d’euros, permettant ainsi de réduire sa consommation d’eau des sanitaires jusqu’à 30%.</p>
