@@ -11,7 +11,7 @@ import { Button } from '../components/atoms/form/Button'
 import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
 import { register } from '../tools/isAuth'
-import { media, toRem } from '../scss/config/mixins'
+import { media } from '../scss/config/mixins'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'

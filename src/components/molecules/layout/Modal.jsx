@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 // icon
 import { ReactComponent as crossIcon } from '../../../assets/icons/layout/cross.svg'
-import { toRem } from '../../../scss/config/mixins'
+import { media, toRem } from '../../../scss/config/mixins'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -51,6 +51,10 @@ const PopUpContainer = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   box-shadow: 0 0 10px rgba(223, 223, 223, 0.25);
+
+  ${media.desktop`
+    width: 50%;
+  `}
 `
 
 const PopUpContent = styled.p`
