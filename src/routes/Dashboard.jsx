@@ -231,16 +231,26 @@ export default function Dashboard() {
 const PageWrapper = styled.div`
   display: flex;
   align-items: stretch;
+
+  ${media.tablet`
+    height: auto;
+    min-height: 100vh;
+  `}
 `
 
 const MainContentWrapper = styled.div`
   width: 100%;
 
+  ${media.tablet`
+    width: 65%;
+  `}
+
   ${media.desktop`
-    height: 100%;
     width: 70%;
     display: flex;
     flex-direction: column;
+    height: unset;
+    flex: 1 0 auto;
 	`}
 `
 const CustomPageLocation = styled(PageLocation)`
@@ -249,8 +259,9 @@ const CustomPageLocation = styled(PageLocation)`
 
 const MainPageContent = styled.div`
   ${media.desktop`
+    height: auto;
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
 	`}
 `
 
@@ -271,6 +282,12 @@ const CustomTask = styled(Task)`
 
 const CustomLevelProgress = styled(LevelProgress)`
   margin-top: 16px;
+
+  ${media.tablet`
+    height: calc(100% - 16px);
+    flex: 1 0 auto;
+    display: block;
+  `}
 `
 const CustomRadarChart = styled(RadarChart)`
   height: 40vh;
