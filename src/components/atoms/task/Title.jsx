@@ -32,6 +32,7 @@ const LabelWrapper = styled.div`
     fill: ${(props) => props.theme.grey};
     width: 16px;
     height: 16px;
+    cursor: pointer;
 
     path {
       fill: ${(props) => props.theme.white};
