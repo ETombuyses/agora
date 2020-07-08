@@ -41,6 +41,8 @@ export default function Register() {
     },
   })
 
+  const [errorRegister, setErrorRegister] = useState()
+
   const hideButton = useRef(0)
   const registerPage = useRef(0)
   const img = useRef(0)
@@ -103,8 +105,9 @@ export default function Register() {
     }
   }
 
-  const sendForm = (e) => {
+  const sendForm = async (e) => {
     e.preventDefault()
+    setErrorRegister('')
 
     const lastName = refs.name.current.value
     const primaryName = refs.firstName.current.value
@@ -131,7 +134,7 @@ export default function Register() {
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
 
-      register(
+      let registerSuccess = await register(
         lastName,
         primaryName,
         password,
@@ -144,6 +147,14 @@ export default function Register() {
         nifNumber,
         navigoNumber
       )
+
+      if (registerSuccess.success) {
+        console.log('registred')
+        window.location.hash = '/login'
+      } else {
+        console.log('failed registration')
+        setErrorRegister(registerSuccess.message)
+      }
     }
   }
 
@@ -176,6 +187,7 @@ export default function Register() {
           sendForm={sendForm}
           errorTextFirstPart={errorTextFirstPart}
           errorTextSecondPart={errorTextSecondPart}
+          errorRegister={errorRegister}
         />
       </ContentWrapper>
       <ToggleText className="desktop">

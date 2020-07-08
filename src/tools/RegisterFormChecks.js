@@ -134,6 +134,8 @@ export const checkAgoraForm = (
 
   // Check if nb Agora is valid
   if (!nbAgora) {
+    console.log(' no oagora')
+
     state.state.nbAgora = "Le numéro d'Agora n'est pas rempli"
   } else if (
     !expressionAgora.test(String(nbAgora).toLowerCase()) ||
@@ -188,7 +190,7 @@ export const checkAgoraForm = (
     state.state.nbNIF =
       'Le champ "Numéro NIF" doit contenir uniquement des chiffres, commencé par 0, 1, 2 ou 3 et doit être composé de 13 numéros'
   } else {
-    return false
+    state.state.nbNIF = false
   }
 
   if (JSON.stringify(state) !== JSON.stringify(memo)) {

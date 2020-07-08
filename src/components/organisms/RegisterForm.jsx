@@ -168,6 +168,9 @@ export const RegisterForm = forwardRef((props, ref) => {
             errorText={props.errorTextSecondPart.state.nbNIF}
             //onChangeValue={() => onHandleChange(nbNIF, 'nbNIF')}
           />
+          {props.errorRegister && (
+            <RegisterError>{props.errorRegister}</RegisterError>
+          )}
           <ContinueButton
             onClickButton={props.sendForm}
             isFullWidth={false}
@@ -238,4 +241,9 @@ const SecondView = styled.div`
     max-height: inherit;
     overflow: inherit;
   `}
+`
+
+const RegisterError = styled.p`
+  color: ${(props) => props.theme.red};
+  margin-top: 10px;
 `
