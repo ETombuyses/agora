@@ -8,7 +8,7 @@ https://hetic-agora.netlify.app/
 
 ## Choix technologiques
 
-L'argumentaire des choix technologiques se trouve dans le dossier "rendu" du projet (en pdf).
+[L'argumentaire des choix technologiques front](./rendu/choix-technologiques.pdf) se trouve dans le dossier "rendu" du projet.
 
 ## Comment installer le projet ?
 
