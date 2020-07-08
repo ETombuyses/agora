@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media, toRem } from '../../scss/config/mixins'
+import pickProfileSvg from '../../tools/pickProfileSvg'
 
 // components
 import { Tag } from '../atoms/task/Tag'
 import { RadarChart } from '../atoms/chart/Radar'
 import { SavedRessourceTag } from '../atoms/task/SavedRessourceTag'
 
-// image
-import { ReactComponent as ProfilePic } from '../../assets/images/profile/profile-pic.svg'
-
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
+
+const { image } = JSON.parse(localStorage.getItem('userInfo'));
+
+const ProfilePic = pickProfileSvg(image);
 
 const tasks = [
   { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },
@@ -32,7 +34,7 @@ export const UserPanel = (props) => {
       <UserName>
         {props.userFirstName} {props.userLastName}
       </UserName>
-      <Tag text={`Niv. ${props.level}`} color="green" small={true}></Tag>
+      <Tag text={`Niv. ${props.level}`} color="green" small={true} />
       <SparedRessourcesTitle>Ressources économisées</SparedRessourcesTitle>
       <TasksStatsWrapper>
         {props.savedRessources &&
@@ -82,7 +84,6 @@ const CustomPic = styled(ProfilePic)`
   margin-bottom: 16px;
   width: 70px;
   height: 70px;
-  min-height: 70px;
   min-height: 70px;
 
   ${media.desktop`
