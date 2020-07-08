@@ -60,7 +60,47 @@ export function login(email, password) {
 /*
  * Get new tokens if user is recognized
  */
-export function getNewTokens() {
+export async function getNewTokens() {
+  let refreshToken = localStorage.getItem('refreshToken')
+
+  if (refreshToken) {
+    console.log("j'ai un refresh")
+    try {
+      const result = await axios({
+        method: 'post',
+        url: `${apiUrl}/api/token/refresh`,
+        data: {
+          refresh_token: refreshToken,
+        },
+      })
+
+      if (result) {
+        console.log('le resultat est bon')
+        let token = result.data.token
+        let refresh_token = result.data.refresh_token
+
+        // Put tokens in local storage
+        localStorage.setItem('token', token)
+        localStorage.setItem('refreshToken', refresh_token)
+      }
+    } catch (e) {
+      console.log('erreur')
+      let url = window.location.hash
+      localStorage.clear()
+      if (url !== '/register' || url !== '/login') {
+        window.location.hash = '/login'
+      }
+    }
+  } else {
+    console.log("je n'ai pas de refresh")
+    let url = window.location.hash
+
+    if (!refreshToken && (url !== '/register' || url !== '/login')) {
+      window.location.hash = '/login'
+    }
+  }
+}
+/* export function getNewTokens() {
   let refreshToken = localStorage.getItem('refreshToken')
 
   // check if refresh token exist in local storage
@@ -98,6 +138,7 @@ export function getNewTokens() {
     }
   }
 }
+*/
 
 /*
  * Register new user in BDD
