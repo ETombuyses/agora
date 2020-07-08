@@ -113,7 +113,7 @@ export function getNewTokens() {
  * @Params {navigoNumber} int
  * @Params {nifNumber} string
  */
-export function register(
+export async function register(
   lastName,
   firstName,
   password,
@@ -126,7 +126,7 @@ export function register(
   nifNumber,
   navigoNumber
 ) {
-  ;(async () => {
+  try {
     const result = await axios({
       method: 'post',
       url: `${apiUrl}/api/signup`,
@@ -144,11 +144,14 @@ export function register(
         navigoNumber: navigoNumber,
       },
     })
-    // redirect to loginpage if successful register
     if (result) {
-      window.location.hash = '/login'
+      return { success: true }
     }
-  })()
+  } catch (error) {
+    let testErrorResponse = error.response
+    console.log('eevev', testErrorResponse)
+    return { success: false, message: testErrorResponse.data.detail }
+  }
 }
 
 export function logout() {
