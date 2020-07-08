@@ -52,7 +52,7 @@ export const Task = (props) => {
                 : tasks[props.task].name
             }
             hint={props.showHint}
-          ></TaskTitle>
+          />
           {!props.isHistoryTask && (
             <p>
               {props.progression > 0

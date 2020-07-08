@@ -27,7 +27,7 @@ export const TaskIcon = (props) => {
           icon={props.icon}
           src={images[props.icon].icon}
           alt={'emoji ' + images[props.icon].name}
-        ></img>
+        />
       </IconWrapper>
       {props.text && <span className="energie">{props.text}</span>}
     </Container>
