@@ -56,31 +56,30 @@ export const UserPanel = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const UserStats = styled.div`
-  height: calc(100vh - 24px - 46px);
-  min-height: calc(651px + 32px + 32px);
-  width: 30%;
-  background: white;
-  margin-left: 2.5%;
-  border-radius: 15px;
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3% 1.5%;
+  height: auto;
+  margin-left: 2.5%;
+  background: white;
+  border-radius: 15px;
 
   ${media.tablet`
+    width: 45%;
+    padding: 32px 16px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   `}
 
   ${media.desktop`
-    height: inherit;
+    width: 30%;
 	`}
 `
 
 const CustomPic = styled(ProfilePic)`
   background: ${(props) => props.theme.grassGreen};
   border-radius: 50%;
-  margin-bottom: 5%;
+  margin-bottom: 16px;
   width: 70px;
   height: 70px;
   min-height: 70px;
@@ -91,6 +90,7 @@ const CustomPic = styled(ProfilePic)`
     height: 100px;
     min-height: 100px;
     min-height: 100px;
+    margin-bottom: 16px;
   `}
 
   ${media.large`
@@ -102,7 +102,7 @@ const CustomPic = styled(ProfilePic)`
 `
 
 const UserName = styled.span`
-  margin-bottom: 6%;
+  margin-bottom: 16px;
   font-size: ${toRem(20)};
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
@@ -110,10 +110,11 @@ const UserName = styled.span`
     font-size: ${toRem(23)};
   `}
 `
-const SparedRessourcesTitle = styled.h5`
-  margin: 10% auto 1.7% auto;
+const SparedRessourcesTitle = styled.h3`
+  margin: 40px auto 14px auto;
   font-size: ${toRem(16)};
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  text-align: center;
 
   ${media.large`
     font-size: ${toRem(18)};
@@ -125,15 +126,15 @@ const TasksStatsWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 90%;
+  width: 95%;
 `
 const CustomTaskTag = styled(SavedRessourceTag)`
-  margin: 1.9% 2.54%;
+  margin: 8px;
 `
 
-const StatTitle = styled.p`
+const StatTitle = styled.h3`
   font-size: ${toRem(16)};
-  margin-top: 8%;
+  margin-top: 40px;
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.large`
@@ -143,11 +144,9 @@ const StatTitle = styled.p`
 
 const CustomRadarChart = styled(RadarChart)`
   margin-top: 7%;
-  height: 30%;
+  margin-top: calc(16px + 16px);
+  height: 250px;
   max-width: 100%;
-  /* width: 89%; */
-  /* height: calc(260px + 10px); */
-  /* width: calc(260px + 10px); */
 
   svg {
     width: auto !important;

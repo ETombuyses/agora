@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { media } from '../scss/config/mixins'
@@ -10,6 +10,7 @@ import { login } from '../tools/isAuth'
 import { Button } from '../components/atoms/form/Button'
 import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { InputText } from '../components/atoms/form/InputText'
+import { Modal } from '../components/molecules/layout/Modal'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'
@@ -20,6 +21,14 @@ import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 export default function Login() {
   const [password, setPassword] = useState(null)
   const [email, setEmail] = useState(null)
+
+  const modal = useRef(null)
+  let modaleShown = localStorage.getItem('modalShown')
+
+  const onClickModal = () => {
+    modal.current.style.display = 'none'
+    localStorage.setItem('modalShown', true)
+  }
 
   const emailStorage = (e) => {
     setEmail(e.target.value)
@@ -74,6 +83,15 @@ export default function Login() {
           <ToggleLink to="/register"> S’inscrire</ToggleLink>
         </ToggleText>
       </ContentWrapper>
+      {!modaleShown && (
+        <ModalDisclaimer
+          onClose={onClickModal}
+          ref={modal}
+          text={
+            "<p class='disclaimerTitle'>Disclaimer</p><br>Ce site a été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor de l’école HETIC. Les contenus présentés n'ont pas fait l'objet d'une demande de droit d'utilisation. Ce site ne sera en aucun cas exploité à des fins commerciales et ne sera pas publié"
+          }
+        />
+      )}
     </PageWrapper>
   )
 }
@@ -170,4 +188,8 @@ const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
   cursor: pointer;
   font-weight: bold;
+`
+const ModalDisclaimer = styled(Modal)`
+  visibility: visible;
+  position: fixed;
 `

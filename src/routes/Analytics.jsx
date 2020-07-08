@@ -12,6 +12,14 @@ import { GraphCard } from '../components/molecules/GraphCard'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
+const resources = {
+  Eau: { name: 'water' },
+  Electricité: { name: 'electricity' },
+  Gaz: { name: 'gas' },
+  Déchets: { name: 'waste' },
+  Transports: { name: 'transport' },
+}
+
 export default function Analytics() {
   const [userData, setUserData] = useState(0)
   const [selectValue, setSelectValue] = useState('water')
@@ -61,63 +69,27 @@ export default function Analytics() {
       {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>
-            {selectValue === 'water' && (
-              <GraphCard
-                value={'water'}
-                data={userData.data.thisYear.Eau}
-                handleChangeEnergie={handleChangeEnergie}
-              />
-            )}
-            {selectValue === 'electricity' && (
-              <GraphCard
-                value={'electricity'}
-                data={userData.data.thisYear.Electricité}
-                handleChangeEnergie={handleChangeEnergie}
-              />
-            )}
-            {selectValue === 'gas' && (
-              <GraphCard
-                value={'gas'}
-                data={userData.data.thisYear.Gaz}
-                handleChangeEnergie={handleChangeEnergie}
-              />
-            )}
-            {selectValue === 'waste' && (
-              <GraphCard
-                value={'waste'}
-                data={userData.data.thisYear.Déchets}
-                handleChangeEnergie={handleChangeEnergie}
-              />
-            )}
-            {selectValue === 'transport' && (
-              <GraphCard
-                value={'transport'}
-                data={userData.data.thisYear.Transports}
-                handleChangeEnergie={handleChangeEnergie}
-              />
-            )}
+            {Object.keys(resources).map((key) => {
+              return (
+                selectValue === resources[key].name && (
+                  <GraphCard
+                    value={resources[key].name}
+                    data={userData.data.thisYear[key]}
+                    handleChangeEnergie={handleChangeEnergie}
+                  />
+                )
+              )
+            })}
           </GraphContainerMobile>
           <GraphContainerDesktop>
-            <GraphCard
-              data={userData.data.thisYear.Eau}
-              handleChangeEnergie={handleChangeEnergie}
-            />
-            <GraphCard
-              data={userData.data.thisYear.Electricité}
-              handleChangeEnergie={handleChangeEnergie}
-            />
-            <GraphCard
-              data={userData.data.thisYear.Gaz}
-              handleChangeEnergie={handleChangeEnergie}
-            />
-            <GraphCard
-              data={userData.data.thisYear.Déchets}
-              handleChangeEnergie={handleChangeEnergie}
-            />
-            <GraphCard
-              data={userData.data.thisYear.Transports}
-              handleChangeEnergie={handleChangeEnergie}
-            />
+            {Object.keys(resources).map((key) => {
+              return (
+                <GraphCard
+                  data={userData.data.thisYear[key]}
+                  handleChangeEnergie={handleChangeEnergie}
+                />
+              )
+            })}
           </GraphContainerDesktop>
         </>
       )}
