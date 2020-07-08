@@ -20,22 +20,28 @@ export default function Dashboard() {
   const [userData, setUserData] = useState(0)
   const [userFirstName, setUserFirstName] = useState('')
   const [userLastName, setUserLastName] = useState('')
-  const [userImage, setUserImage] = useState('')
+  // const [userImage, setUserImage] = useState('')
   const [savedRessources, setSavedRessources] = useState()
   const [tasks2, setTasks2] = useState([])
   const [adviceTopic, setAdviceTopic] = useState('Eau')
   const [isAdviceModalShown, setShowModal] = useState(false)
 
   useEffect(() => {
-    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let getToken = localStorage.getItem('token')
+
+    if (!getToken) {
+      window.location.hash = '/login'
+      return
+    }
+
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     let userProfileData = JSON.parse(localStorage.getItem('userInfo'))
 
     setUserFirstName(userProfileData.fistName)
     setUserLastName(userProfileData.lastName)
-    setUserImage(
-      userProfileData.image ? userProfileData.image : 'profile-pic.svg'
-    )
+    // setUserImage(
+    //   userProfileData.image ? userProfileData.image : 'profile-pic.svg'
+    // )
     ;(async () => {
       const result = await axios({
         method: 'get',

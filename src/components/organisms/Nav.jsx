@@ -56,12 +56,17 @@ const NavWithTheme = (props) => {
     logout()
   }
 
+  function NoMatch() {
+    window.location.hash = '/login'
+    return 'page not found'
+  }
+
   return (
     <div>
       {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
           <MenuWrapper>
-            <Logo src={logo} />
+            <Logo src={logo} alt="logo agora" />
             <List>
               {pages.map((page) => {
                 if (page.icon)
@@ -114,6 +119,9 @@ const NavWithTheme = (props) => {
               />
             )
           })}
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </Switch>
       </Suspense>
     </div>

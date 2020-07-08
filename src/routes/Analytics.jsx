@@ -76,6 +76,7 @@ export default function Analytics() {
                     value={resources[key].name}
                     data={userData.data.thisYear[key]}
                     handleChangeEnergie={handleChangeEnergie}
+                    key={resources[key].name}
                   />
                 )
               )
@@ -87,6 +88,7 @@ export default function Analytics() {
                 <GraphCard
                   data={userData.data.thisYear[key]}
                   handleChangeEnergie={handleChangeEnergie}
+                  key={resources[key].name}
                 />
               )
             })}
