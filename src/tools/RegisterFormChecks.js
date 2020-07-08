@@ -124,11 +124,11 @@ export const checkAgoraForm = (
 
   const memo = {
     state: {
-      nbAgora: '',
-      nbResident: '',
-      livingSpace: '',
-      nbNavigo: '',
-      nbNIF: '',
+      nbAgora: false,
+      nbResident: false,
+      livingSpace: false,
+      nbNavigo: false,
+      nbNIF: false,
     },
   }
 
