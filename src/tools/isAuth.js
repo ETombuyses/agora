@@ -62,22 +62,33 @@ export function login(email, password) {
  */
 export async function getNewTokens() {
   let refreshToken = localStorage.getItem('refreshToken')
+  let getuserId = JSON.parse(localStorage.getItem('userInfo'))
+  let getToken = localStorage.getItem('token')
 
-  if (refreshToken) {
-    console.log("j'ai un refresh")
+  if (getToken && getuserId && refreshToken) {
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
+    console.log("j'ai un token")
     try {
       const result = await axios({
-        method: 'post',
-        url: `${apiUrl}/api/token/refresh`,
-        data: {
-          refresh_token: refreshToken,
+        method: 'get',
+        url: `${apiUrl}/api/user/update/${getuserId}`,
+        headers: {
+          Authorization: `Bearer ${getToken}`,
         },
       })
 
       if (result) {
-        console.log('le resultat est bon')
-        let token = result.data.token
-        let refresh_token = result.data.refresh_token
+        const refreshTokens = await axios({
+          method: 'post',
+          url: `${apiUrl}/api/token/refresh`,
+          data: {
+            refresh_token: refreshToken,
+          },
+        })
+
+        console.log('jai un token')
+        let token = refreshTokens.data.token
+        let refresh_token = refreshTokens.data.refresh_token
 
         // Put tokens in local storage
         localStorage.setItem('token', token)
@@ -100,45 +111,6 @@ export async function getNewTokens() {
     }
   }
 }
-/* export function getNewTokens() {
-  let refreshToken = localStorage.getItem('refreshToken')
-
-  // check if refresh token exist in local storage
-  if (refreshToken) {
-    // Get new refresh token and token
-    ;(async () => {
-      const result = await axios({
-        method: 'post',
-        url: `${apiUrl}/api/token/refresh`,
-        data: {
-          refresh_token: refreshToken,
-        },
-      }).catch((error) => {
-        let url = window.location.pathname
-        localStorage.clear()
-        if (url !== '#/register' || url !== '#/login') {
-          window.location.href = '#/login'
-        }
-      })
-
-      if (result) {
-        let token = result.data.token
-        let refresh_token = result.data.refresh_token
-
-        // Put tokens in local storage
-        localStorage.setItem('token', token)
-        localStorage.setItem('refreshToken', refresh_token)
-      }
-    })()
-  } else {
-    let url = window.location.pathname
-
-    if (!refreshToken && (url !== '#/register' || url !== '#/login')) {
-      window.location.href = '#/login'
-    }
-  }
-}
-*/
 
 /*
  * Register new user in BDD
