@@ -11,7 +11,7 @@ export const SectionSepartor = (props) => {
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const Separator = styled.span`
-  color: ${(props) => props.theme.grey};
+  color: black;
   position: relative;
 
   ::before {
@@ -22,7 +22,7 @@ const Separator = styled.span`
     top: 50%;
     width: calc(50vw - 24px - 16px - 16px);
     height: 1px;
-    background: ${(props) => props.theme.grey};
+    background: #717171;
   }
 
   ::after {

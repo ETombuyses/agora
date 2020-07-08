@@ -20,7 +20,7 @@ const resources = {
   Transports: { name: 'transport' },
 }
 
-export default function Analytics() {
+export default function Community() {
   const [userData, setUserData] = useState(0)
   const [selectValue, setSelectValue] = useState('water')
 
@@ -50,7 +50,7 @@ export default function Analytics() {
 
   return (
     <div className="pageWrapper">
-      <PageLocationContent location="Analytique" />
+      <PageLocationContent location="Comunauté" />
       {userData.data && (
         <GlobalDataCardWrapper>
           <GlobalDataCard
@@ -76,6 +76,7 @@ export default function Analytics() {
                     value={resources[key].name}
                     data={userData.data.thisYear[key]}
                     handleChangeEnergie={handleChangeEnergie}
+                    key={resources[key].name}
                   />
                 )
               )
@@ -87,6 +88,7 @@ export default function Analytics() {
                 <GraphCard
                   data={userData.data.thisYear[key]}
                   handleChangeEnergie={handleChangeEnergie}
+                  key={resources[key].name}
                 />
               )
             })}

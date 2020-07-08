@@ -53,27 +53,27 @@ const LevelProgressWrapper = styled.div`
 `
 
 // help Icon
-const Icon = styled.div`
-  svg {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    width: 16px;
-    height: 16px;
-    fill: ${(props) => props.theme.white};
+// const Icon = styled.div`
+//   svg {
+//     position: absolute;
+//     top: 8px;
+//     right: 8px;
+//     width: 16px;
+//     height: 16px;
+//     fill: ${(props) => props.theme.white};
 
-    ${media.desktop`
-      top: 16px;
-      right: 16px;
-      width: 20px;
-      height: 20px;
-    `}
+//     ${media.desktop`
+//       top: 16px;
+//       right: 16px;
+//       width: 20px;
+//       height: 20px;
+//     `}
 
-    path {
-      fill: ${(props) => props.theme.green};
-    }
-  }
-`
+//     path {
+//       fill: ${(props) => props.theme.green};
+//     }
+//   }
+// `
 
 const Title = styled.h3`
   margin-bottom: 31px;

@@ -36,7 +36,7 @@ export const Task = (props) => {
           color={
             taskProgress <= 0
               ? 'lightRed'
-              : taskProgress < 50
+              : taskProgress < 20
               ? 'lightOrange'
               : 'lightGreen'
           }
@@ -95,7 +95,7 @@ export const Task = (props) => {
         <CustomTag
           isTaskTag={true}
           color={
-            taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+            taskProgress <= 0 ? 'red' : taskProgress < 20 ? 'orange' : 'green'
           }
           text={
             props.task === 'Transports'
@@ -132,7 +132,7 @@ const TaskWrapper = styled.div`
     background: ${(props) => {
       if (props.progression <= 0) {
         return props.theme.red
-      } else if (props.progression < 50) {
+      } else if (props.progression < 20) {
         return props.theme.orange
       } else {
         return props.theme.green
@@ -166,7 +166,7 @@ const Limit = styled.span`
       return props.theme.black
     } else if (props.progression <= 0) {
       return props.theme.red
-    } else if (props.progression < 50) {
+    } else if (props.progression < 20) {
       return props.theme.orange
     } else {
       return props.theme.green

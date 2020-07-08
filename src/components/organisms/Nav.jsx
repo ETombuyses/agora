@@ -14,7 +14,7 @@ import logo from '../../assets/agora-logo.png'
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
 const History = lazy(() => import('../../routes/History'))
-const Analytics = lazy(() => import('../../routes/Analytics'))
+const Community = lazy(() => import('../../routes/Community'))
 //const Profile = lazy(() => import('../../routes/Profile'))
 const Login = lazy(() => import('../../routes/Login'))
 const Register = lazy(() => import('../../routes/Register'))
@@ -31,10 +31,10 @@ const NavWithTheme = (props) => {
       component: History,
     },
     {
-      route: '/statistiques',
-      name: 'Analytiques',
+      route: '/communaute',
+      name: 'Comunauté',
       icon: 'analytics',
-      component: Analytics,
+      component: Community,
     },
     //{ route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
     { route: '/login', component: Login },
@@ -56,12 +56,17 @@ const NavWithTheme = (props) => {
     logout()
   }
 
+  function NoMatch() {
+    window.location.hash = '/login'
+    return 'page not found'
+  }
+
   return (
     <div>
       {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
           <MenuWrapper>
-            <Logo src={logo} />
+            <Logo src={logo} alt="logo agora" />
             <List>
               {pages.map((page) => {
                 if (page.icon)
@@ -114,6 +119,9 @@ const NavWithTheme = (props) => {
               />
             )
           })}
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </Switch>
       </Suspense>
     </div>

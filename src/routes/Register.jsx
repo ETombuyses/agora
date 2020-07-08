@@ -173,7 +173,11 @@ export default function Register() {
 
   return (
     <PageWrapper ref={registerPage}>
-      <Image ref={img} src={welcomeImage} />
+      <Image
+        ref={img}
+        src={welcomeImage}
+        alt="dessin d'une personne qui porte une plante en pot"
+      />
       <ContentWrapper ref={hideButton}>
         <RegisterButtons>
           <Title className="heading biggest">S'inscrire sur Agora</Title>
@@ -298,6 +302,12 @@ const ToggleText = styled.p`
 
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
+  background: ${(props) => props.theme.white};
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 10px;
 `
 
 const SectionSepartorWrapper = styled(SectionSepartor)`
