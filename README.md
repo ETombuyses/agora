@@ -25,6 +25,20 @@ https://hetic-agora.netlify.app/
 installer le projet:  
 `npm install`
 
+créer un ficher .env avec les variables suivantes : 
+
+```
+REACT_APP_LOCAL_API=http://127.0.0.1:8000
+REACT_APP_API=https://agora-api-hetic.herokuapp.com 
+```
+
+[installer l'api](https://github.com/kentoje/agora-api) pour faire tourner le projet en local OU changer le .env avec les variables suivantes:
+
+```
+REACT_APP_LOCAL_API=https://agora-api-hetic.herokuapp.com 
+REACT_APP_API=https://agora-api-hetic.herokuapp.com 
+```
+
 démarrer le projet:  
 `npm run start`
 
