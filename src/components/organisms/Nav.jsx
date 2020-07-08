@@ -32,7 +32,7 @@ const NavWithTheme = (props) => {
     },
     {
       route: '/communaute',
-      name: 'Comunauté',
+      name: 'Communauté',
       icon: 'analytics',
       component: Community,
     },

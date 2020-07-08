@@ -6,16 +6,9 @@ import { Tag } from '../atoms/task/Tag'
 import { TaskIcon } from '../atoms/task/Icon'
 import { TaskTitle } from '../atoms/task/Title'
 
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+import { tasks } from '../../tools/ressources'
 
-const tasks = {
-  Electricité: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
-  Déchets: { icon: 'trash', unit: 'Kg', name: 'Déchets' },
-  transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
-  Transports: { icon: 'bus', unit: '', name: 'Transports' },
-  Eau: { icon: 'water', unit: 'L', name: 'Eau' },
-  Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
-}
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
   const [taskProgress, setTaskProgress] = React.useState(0)
@@ -49,7 +42,7 @@ export const Task = (props) => {
                 ? props.task === 'transportsIsValidate'
                   ? 'Abonnement Navigo'
                   : `Limite: ${props.limit} ${tasks[props.task].unit}`
-                : tasks[props.task].name
+                : tasks[props.task].trad
             }
             hint={props.showHint}
           />

@@ -10,9 +10,9 @@ import { SavedRessourceTag } from '../atoms/task/SavedRessourceTag'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-const { image } = JSON.parse(localStorage.getItem('userInfo'));
+const { image } = JSON.parse(localStorage.getItem('userInfo'))
 
-const ProfilePic = pickProfileSvg(image);
+const ProfilePic = pickProfileSvg(image)
 
 const tasks = [
   { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },

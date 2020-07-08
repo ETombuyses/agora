@@ -24,7 +24,7 @@ export const SavedRessourceTag = (props) => {
       <img
         icon={props.icon}
         src={images[props.icon].icon}
-        alt={`icon ${images[props.icon].name}`}
+        alt={'emoji ' + images[props.icon].name}
       ></img>
       <TextWrapper>
         <Title icon={props.icon}>{images[props.icon].name}</Title>

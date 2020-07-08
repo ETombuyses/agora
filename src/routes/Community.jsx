@@ -10,15 +10,10 @@ import { PageLocation } from '../components/molecules/layout/PageLocation'
 import { GlobalDataCard } from '../components/atoms/GlobalDataCard'
 import { GraphCard } from '../components/molecules/GraphCard'
 
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+// tasks object
+import { tasks } from '../tools/ressources'
 
-const resources = {
-  Eau: { name: 'water' },
-  Electricité: { name: 'electricity' },
-  Gaz: { name: 'gas' },
-  Déchets: { name: 'waste' },
-  Transports: { name: 'transport' },
-}
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Community() {
   const [userData, setUserData] = useState(0)
@@ -50,7 +45,7 @@ export default function Community() {
 
   return (
     <div className="pageWrapper">
-      <PageLocationContent location="Comunauté" />
+      <PageLocationContent location="Communauté" />
       {userData.data && (
         <GlobalDataCardWrapper>
           <GlobalDataCard
@@ -69,26 +64,26 @@ export default function Community() {
       {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>
-            {Object.keys(resources).map((key) => {
+            {Object.keys(userData.data.thisYear).map((key) => {
               return (
-                selectValue === resources[key].name && (
+                selectValue === tasks[key].name && (
                   <GraphCard
-                    value={resources[key].name}
+                    value={tasks[key].name}
                     data={userData.data.thisYear[key]}
                     handleChangeEnergie={handleChangeEnergie}
-                    key={resources[key].name}
+                    key={tasks[key].name}
                   />
                 )
               )
             })}
           </GraphContainerMobile>
           <GraphContainerDesktop>
-            {Object.keys(resources).map((key) => {
+            {Object.keys(userData.data.thisYear).map((key) => {
               return (
                 <GraphCard
                   data={userData.data.thisYear[key]}
                   handleChangeEnergie={handleChangeEnergie}
-                  key={resources[key].name}
+                  key={tasks[key].name}
                 />
               )
             })}
@@ -97,8 +92,10 @@ export default function Community() {
       )}
       {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
         <NoDataContent>
-          Les premières missions seront validées le premier février, nous
-          comptons sur vous pour valider le plus de missions possible.
+          <p>
+            Les premières missions seront validées le premier février, nous
+            comptons sur vous pour valider le plus de missions possible !
+          </p>
         </NoDataContent>
       )}
     </div>
@@ -149,7 +146,7 @@ const PageLocationContent = styled(PageLocation)`
 const NoDataContent = styled.div`
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 10px rgba(223, 223, 223, 0.25);
-  padding: 13px 30%;
+  padding: 13px 10%;
   text-align: center;
   display: flex;
   align-items: center;
@@ -158,4 +155,18 @@ const NoDataContent = styled.div`
   height: 60vh;
   color: #afafaf;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+
+  p {
+    background-color: #f5f6fb;
+    border-radius: 10px;
+    padding: 16px 24px;
+  }
+
+  ${media.tablet`
+    padding: 13px 20%;
+  `}
+
+  ${media.desktop`
+    padding: 13px 30%;
+  `}
 `

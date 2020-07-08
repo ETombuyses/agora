@@ -57,6 +57,11 @@ const LoaderWrapper = styled.div`
   justify-content: space-evenly;
   margin-top: 20px;
 
+  @supports (-ms-flow-from: thingy) {
+    /* Edge only */
+    justify-content: space-around;
+  }
+
   .load__bar {
     background-color: ${(props) => props.theme.green};
     height: 100%;
