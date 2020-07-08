@@ -6,26 +6,9 @@
 
 https://hetic-agora.netlify.app/
 
-## Technologies envisagées
+## Choix technologiques
 
-- React (webpack inclut)  
-  **Pourquoi** : facilite le développement de nos fonctionnalités et assure la maintenabilité du code (important car site gouvernemental)
-
-- Client side rendering  
-  **Pourquoi** : privilégier l'optimisation des ressources pour l'aspect écologique car prend moins de ressources que l'universal rendering et permet une utilisation fluide du site.
-
-- Mobile first  
-  **Pourquoi** : car usage du site récurrent / accessibilité utilisateur
-
-- PWA  
-  **Pourquoi** : car usage du site récurrent / accessibilité utilisateur
-
-- librairie de graphiques: ChartJS
-
-- Librairies React: React-router + Context API + styled components + PropTypes
-
-- service worker  
-  **Pourquoi** : permettre l'accès offline du site
+L'argumentaire des choix technologiques se trouve dans le dossier "rendu" du projet (en pdf).
 
 ## Comment installer le projet ?
 
@@ -35,21 +18,20 @@ installer le projet:
 démarrer le projet:  
 `npm run start`
 
-## Making a Progressive Web App
+## Comment se connecter à un compte de test ?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+pour avoir une vision d'un utilisateur ayant déjà des données, voici deux comptes de test :
 
-## Advanced Configuration
+```
+mail: aymeric.mayeux@hetic.net
+mdp: azerty
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+```
+mail: bastien.calou@hetic.net
+mdp: azerty
 
-## Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-## `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
 
 ## prettier
 
