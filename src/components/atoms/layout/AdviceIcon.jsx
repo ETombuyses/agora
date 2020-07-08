@@ -10,7 +10,7 @@ import lightBulb from '../../../assets/icons/layout/light-bulb.png'
 export const AdviceIcon = (props) => {
   return (
     <AdviceIconWrapper className={props.className}>
-      <Icon src={lightBulb} />
+      <Icon src={lightBulb} alt="ampoule" />
     </AdviceIconWrapper>
   )
 }

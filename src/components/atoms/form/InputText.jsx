@@ -1,7 +1,6 @@
 import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
 import { media } from '../../../scss/config/mixins'
 
 // icon

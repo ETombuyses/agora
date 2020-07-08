@@ -4,6 +4,7 @@ import Radar from 'react-d3-radar'
 
 // components
 import { TaskIcon } from '../task/Icon'
+import { tasks } from '../../../tools/ressources'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -19,27 +20,16 @@ export const RadarChart = (props) => {
 
   return (
     <RadarWrapper className={props.className}>
-      <TaskIconWater
-        type={props.type}
-        icon={'water'}
-        color={'whiteTransparent'}
-      />
-      <TaskIconTrash
-        type={props.type}
-        icon={'trash'}
-        color={'whiteTransparent'}
-      />
-      <TaskIconLight
-        type={props.type}
-        icon={'lightning'}
-        color={'whiteTransparent'}
-      />
-      <TaskIconBus type={props.type} icon={'bus'} color={'whiteTransparent'} />
-      <TaskIconFire
-        type={props.type}
-        icon={'fire'}
-        color={'whiteTransparent'}
-      />
+      {Object.keys(tasks).map((task) => {
+        return (
+          <CustomTaskIcon
+            className={tasks[task].name}
+            type={props.type}
+            icon={tasks[task].icon}
+            color={'whiteTransparent'}
+          />
+        )
+      })}
       <Radar
         width={500}
         height={500}
@@ -83,34 +73,37 @@ const RadarWrapper = styled.div`
     stroke: ${(props) => props.theme.green};
   }
 `
-const TaskIconWater = styled(TaskIcon)`
+const CustomTaskIcon = styled(TaskIcon)`
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: ${(props) => (props.type ? '7px' : '-10px')};
-`
-const TaskIconFire = styled(TaskIcon)`
-  position: absolute;
-  top: ${(props) => (props.type ? '33%' : '35%')};
-  right: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
-  left: ${(props) => (props.type ? 'inherit' : '0')};
-`
-const TaskIconLight = styled(TaskIcon)`
-  position: absolute;
-  bottom: ${(props) => (props.type ? '20px' : '10px')};
-  left: 20%;
-  right: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
-  left: ${(props) => (props.type ? 'inherit' : '20%')};
-`
-const TaskIconBus = styled(TaskIcon)`
-  position: absolute;
-  bottom: ${(props) => (props.type ? '20px' : '10px')};
-  right: ${(props) => (props.type ? ' inherit' : '20%')};
-  left: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
-`
-const TaskIconTrash = styled(TaskIcon)`
-  position: absolute;
-  top: ${(props) => (props.type ? '33%' : '35%')};
-  right: ${(props) => (props.type ? 'inherit' : '0')};
-  left: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
+
+  &.water {
+    left: 50%;
+    transform: translateX(-50%);
+    top: ${(props) => (props.type ? '7px' : '-10px')};
+  }
+
+  &.gas {
+    top: ${(props) => (props.type ? '33%' : '35%')};
+    right: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
+    left: ${(props) => (props.type ? 'inherit' : '0')};
+  }
+
+  &.electricity {
+    left: 20%;
+    bottom: ${(props) => (props.type ? '20px' : '10px')};
+    right: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
+    left: ${(props) => (props.type ? 'inherit' : '20%')};
+  }
+
+  &.transport {
+    bottom: ${(props) => (props.type ? '20px' : '10px')};
+    right: ${(props) => (props.type ? ' inherit' : '20%')};
+    left: ${(props) => (props.type ? 'calc(48% + 80px)' : 'inherit')};
+  }
+
+  &.waste {
+    top: ${(props) => (props.type ? '33%' : '35%')};
+    right: ${(props) => (props.type ? 'inherit' : '0')};
+    left: ${(props) => (props.type ? 'calc(56% + 78px);' : 'inherit')};
+  }
 `

@@ -6,16 +6,9 @@ import { Tag } from '../atoms/task/Tag'
 import { TaskIcon } from '../atoms/task/Icon'
 import { TaskTitle } from '../atoms/task/Title'
 
-/* -----------------------------------------------------COMPONENT------------------------------------------------ */
+import { tasks } from '../../tools/ressources'
 
-const tasks = {
-  Electricité: { icon: 'lightning', unit: 'kW/h', name: 'Electricité' },
-  Déchets: { icon: 'trash', unit: 'Kg', name: 'Déchets' },
-  transportsIsValidate: { icon: 'bus', unit: '', name: 'Transports' },
-  Transports: { icon: 'bus', unit: '', name: 'Transports' },
-  Eau: { icon: 'water', unit: 'L', name: 'Eau' },
-  Gaz: { icon: 'fire', unit: 'KW/h', name: 'Gaz' },
-}
+/* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
   const [taskProgress, setTaskProgress] = React.useState(0)
@@ -36,7 +29,7 @@ export const Task = (props) => {
           color={
             taskProgress <= 0
               ? 'lightRed'
-              : taskProgress < 50
+              : taskProgress < 20
               ? 'lightOrange'
               : 'lightGreen'
           }
@@ -49,10 +42,10 @@ export const Task = (props) => {
                 ? props.task === 'transportsIsValidate'
                   ? 'Abonnement Navigo'
                   : `Limite: ${props.limit} ${tasks[props.task].unit}`
-                : tasks[props.task].name
+                : tasks[props.task].trad
             }
             hint={props.showHint}
-          ></TaskTitle>
+          />
           {!props.isHistoryTask && (
             <p>
               {props.progression > 0
@@ -95,7 +88,7 @@ export const Task = (props) => {
         <CustomTag
           isTaskTag={true}
           color={
-            taskProgress <= 0 ? 'red' : taskProgress < 50 ? 'orange' : 'green'
+            taskProgress <= 0 ? 'red' : taskProgress < 20 ? 'orange' : 'green'
           }
           text={
             props.task === 'Transports'
@@ -132,7 +125,7 @@ const TaskWrapper = styled.div`
     background: ${(props) => {
       if (props.progression <= 0) {
         return props.theme.red
-      } else if (props.progression < 50) {
+      } else if (props.progression < 20) {
         return props.theme.orange
       } else {
         return props.theme.green
@@ -166,7 +159,7 @@ const Limit = styled.span`
       return props.theme.black
     } else if (props.progression <= 0) {
       return props.theme.red
-    } else if (props.progression < 50) {
+    } else if (props.progression < 20) {
       return props.theme.orange
     } else {
       return props.theme.green

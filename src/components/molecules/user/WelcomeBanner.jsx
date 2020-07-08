@@ -3,13 +3,16 @@ import styled from 'styled-components'
 import { media } from '../../../scss/config/mixins'
 
 // icons and images
-import { ReactComponent as Persona } from '../../../assets/images/profile/persona.svg'
 import plant from '../../../assets/images/jungle-plant.png'
 import leaves from '../../../assets/images/jungle-leaves.png'
+import pickPersonaSvg from '../../../tools/pickPersonaSvg'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const WelcomeBanner = (props) => {
+  const { image } = JSON.parse(localStorage.getItem('userInfo'));
+  const Persona = pickPersonaSvg(image);
+
   return (
     <WelcomeWrapper>
       <LeftPlantWrapper>

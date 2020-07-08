@@ -60,41 +60,54 @@ export function login(email, password) {
 /*
  * Get new tokens if user is recognized
  */
-export function getNewTokens() {
+export async function getNewTokens() {
   let refreshToken = localStorage.getItem('refreshToken')
+  let getuserId = JSON.parse(localStorage.getItem('userInfo'))
+  let getToken = localStorage.getItem('token')
 
-  // check if refresh token exist in local storage
-  if (refreshToken) {
-    // Get new refresh token and token
-    ;(async () => {
+  if (getToken && getuserId && refreshToken) {
+    let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
+    console.log("j'ai un token")
+    try {
       const result = await axios({
-        method: 'post',
-        url: `${apiUrl}/api/token/refresh`,
-        data: {
-          refresh_token: refreshToken,
+        method: 'get',
+        url: `${apiUrl}/api/user/update/${getuserId}`,
+        headers: {
+          Authorization: `Bearer ${getToken}`,
         },
-      }).catch((error) => {
-        let url = window.location.pathname
-        localStorage.clear()
-        if (url !== '#/register' || url !== '#/login') {
-          window.location.href = '#/login'
-        }
       })
 
       if (result) {
-        let token = result.data.token
-        let refresh_token = result.data.refresh_token
+        const refreshTokens = await axios({
+          method: 'post',
+          url: `${apiUrl}/api/token/refresh`,
+          data: {
+            refresh_token: refreshToken,
+          },
+        })
+
+        console.log('jai un token')
+        let token = refreshTokens.data.token
+        let refresh_token = refreshTokens.data.refresh_token
 
         // Put tokens in local storage
         localStorage.setItem('token', token)
         localStorage.setItem('refreshToken', refresh_token)
       }
-    })()
+    } catch (e) {
+      console.log('erreur')
+      let url = window.location.hash
+      localStorage.clear()
+      if (url !== '/register' || url !== '/login') {
+        window.location.hash = '/login'
+      }
+    }
   } else {
-    let url = window.location.pathname
+    console.log("je n'ai pas de refresh")
+    let url = window.location.hash
 
-    if (!refreshToken && (url !== '#/register' || url !== '#/login')) {
-      window.location.href = '#/login'
+    if (!refreshToken && (url !== '/register' || url !== '/login')) {
+      window.location.hash = '/login'
     }
   }
 }

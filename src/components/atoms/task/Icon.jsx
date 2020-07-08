@@ -2,20 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, toRem } from '../../../scss/config/mixins'
 
-// icons
-import gas from '../../../assets/icons/tasks/gas.png'
-import water from '../../../assets/icons/tasks/water.png'
-import lightning from '../../../assets/icons/tasks/lightning.png'
-import trash from '../../../assets/icons/tasks/trash.png'
-import bus from '../../../assets/icons/tasks/bus.png'
-
-const images = {
-  fire: { icon: gas, name: 'feu' },
-  water: { icon: water, name: 'eau' },
-  lightning: { icon: lightning, name: 'éclair' },
-  trash: { icon: trash, name: 'poubelle' },
-  bus: { icon: bus, name: 'bus' },
-}
+// images
+import { images } from '../../../tools/ressources'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -24,10 +12,9 @@ export const TaskIcon = (props) => {
     <Container text={props.text} className={props.className}>
       <IconWrapper color={props.color} size={props.size}>
         <img
-          icon={props.icon}
           src={images[props.icon].icon}
           alt={'emoji ' + images[props.icon].name}
-        ></img>
+        />
       </IconWrapper>
       {props.text && <span className="energie">{props.text}</span>}
     </Container>

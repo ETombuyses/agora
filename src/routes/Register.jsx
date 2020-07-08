@@ -12,6 +12,7 @@ import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { RegisterForm } from '../components/organisms/RegisterForm'
 import { register } from '../tools/isAuth'
 import { media } from '../scss/config/mixins'
+import { Loader } from '../components/atoms/form/Loader'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'
@@ -42,9 +43,14 @@ export default function Register() {
   })
 
   const [errorRegister, setErrorRegister] = useState()
+  const [loaderText, setLoaderText] = useState(
+    'Veuillez patienter pendant la création du compte'
+  )
+  const [loaderDisplay, setLoaderDisplay] = useState(true)
 
   const hideButton = useRef(0)
   const registerPage = useRef(0)
+  const loader = useRef(0)
   const img = useRef(0)
 
   const refs = {
@@ -120,8 +126,6 @@ export default function Register() {
     const navigoNumber = refs.nbNavigo.current.value
     const nifNumber = refs.nbNIF.current.value
 
-    console.log('help ther eis erro')
-
     let error = checkAgoraForm(
       refs.nbAgora.current.value,
       refs.nbResident.current.value,
@@ -130,13 +134,9 @@ export default function Register() {
       refs.nbNIF.current.value
     )
 
-    console.log('erro', error)
-
     if (error) {
-      console.log('help ther eis erro')
       setErrorTextSecondPart(error)
     } else {
-      console.log('help')
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
 
@@ -154,11 +154,18 @@ export default function Register() {
         navigoNumber
       )
 
+      loader.current.style.display = 'block'
+
       if (registerSuccess.success) {
-        console.log('registred')
-        window.location.hash = '/login'
+        setLoaderText(
+          'Inscription réussie. Vous allez être redirigés vers la page de connexion pour vous connecter.'
+        )
+        setLoaderDisplay(false)
+        setTimeout(function () {
+          window.location.hash = '/login'
+        }, 3000)
       } else {
-        console.log('failed registration')
+        loader.current.style.display = 'none'
         setErrorRegister(registerSuccess.message)
       }
     }
@@ -166,7 +173,11 @@ export default function Register() {
 
   return (
     <PageWrapper ref={registerPage}>
-      <Image ref={img} src={welcomeImage} />
+      <Image
+        ref={img}
+        src={welcomeImage}
+        alt="dessin d'une personne qui porte une plante en pot"
+      />
       <ContentWrapper ref={hideButton}>
         <RegisterButtons>
           <Title className="heading biggest">S'inscrire sur Agora</Title>
@@ -199,6 +210,7 @@ export default function Register() {
       <ToggleText className="desktop">
         Déjà membre ? <ToggleLink to="/login"> Se connecter</ToggleLink>
       </ToggleText>
+      <Loader ref={loader} text={loaderText} displayed={loaderDisplay} />
     </PageWrapper>
   )
 }
@@ -290,6 +302,12 @@ const ToggleText = styled.p`
 
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
+  background: ${(props) => props.theme.white};
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 10px;
 `
 
 const SectionSepartorWrapper = styled(SectionSepartor)`
