@@ -151,7 +151,7 @@ export default function Dashboard() {
         </div>
         <MainPageContent>
           <TasksContainer>
-            <SectionTitle text="Missions en cours" />
+            <SectionTitle text="Missions en cours ce mois-ci" />
             {tasks2 &&
               tasks2.map((task) => {
                 if (
@@ -173,7 +173,7 @@ export default function Dashboard() {
                   )
                 else return null
               })}
-            <SectionTitle text="Missions ratées" />
+            <SectionTitle text="Missions échouées" />
             {tasks2 &&
               tasks2.map((task) => {
                 if (
