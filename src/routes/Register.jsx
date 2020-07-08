@@ -158,7 +158,7 @@ export default function Register() {
 
       if (registerSuccess.success) {
         setLoaderText(
-          'Inscription réussi. Vous allez être redirigé vers la page de connection pour vous connecter.'
+          'Inscription réussie. Vous allez être redirigés vers la page de connexion pour vous connecter.'
         )
         setLoaderDisplay(false)
         setTimeout(function () {
