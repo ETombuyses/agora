@@ -120,6 +120,8 @@ export default function Register() {
     const navigoNumber = refs.nbNavigo.current.value
     const nifNumber = refs.nbNIF.current.value
 
+    console.log('help ther eis erro')
+
     let error = checkAgoraForm(
       refs.nbAgora.current.value,
       refs.nbResident.current.value,
@@ -128,9 +130,13 @@ export default function Register() {
       refs.nbNIF.current.value
     )
 
+    console.log('erro', error)
+
     if (error) {
+      console.log('help ther eis erro')
       setErrorTextSecondPart(error)
     } else {
+      console.log('help')
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
 
