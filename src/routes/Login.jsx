@@ -222,12 +222,9 @@ const ImageLogo = styled.img`
 
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
-  background: ${(props) => props.theme.white};
   cursor: pointer;
   font-weight: bold;
-  padding: 8px;
   margin-left: 5px;
-  border-radius: 10px;
 `
 const ModalDisclaimer = styled(Modal)`
   visibility: visible;

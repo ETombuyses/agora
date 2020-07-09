@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -22,19 +21,6 @@ export const Button = (props) => {
       </ButtonInner>
     </ButtonContainer>
   )
-}
-
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-Button.propTypes = {
-  isFormButton: PropTypes.bool,
-  size: PropTypes.string,
-  icon: PropTypes.elementType,
-}
-
-Button.defaultProps = {
-  isFormButton: false,
-  size: '',
 }
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */

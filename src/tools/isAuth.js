@@ -111,7 +111,7 @@ export async function getNewTokens() {
       console.log('le token est invalide alors redirection')
       let url = window.location.hash
       localStorage.clear()
-      if (url !== '/register' || url !== '/login') {
+      if (url !== '#/register' || url !== '#/login') {
         window.location.hash = '/login'
       }
     }
@@ -119,7 +119,7 @@ export async function getNewTokens() {
     console.log("Il n'y a pas de token alors redirection")
     let url = window.location.hash
 
-    if (!refreshToken && (url !== '/register' || url !== '/login')) {
+    if (url !== '#/register' || url !== '#/login') {
       window.location.hash = '/login'
     }
   }
