@@ -69,12 +69,17 @@ export async function login(email, password) {
  * Get new tokens if user is recognized
  */
 export async function getNewTokens() {
-  console.log('oui')
+  console.log('getNewTokens est appelé')
   let refreshToken = localStorage.getItem('refreshToken')
   let getuserId = JSON.parse(localStorage.getItem('userInfo'))
   let getToken = localStorage.getItem('token')
 
+  console.log(refreshToken)
+  console.log(getuserId)
+  console.log(getToken)
+
   if (getToken && getuserId && refreshToken) {
+    console.log('il y a des tokens')
     let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
     try {
       const result = await axios({
@@ -86,6 +91,7 @@ export async function getNewTokens() {
       })
 
       if (result) {
+        console.log('le token est encore bon, je récupère un noveau token')
         const refreshTokens = await axios({
           method: 'post',
           url: `${apiUrl}/api/token/refresh`,
@@ -102,6 +108,7 @@ export async function getNewTokens() {
         localStorage.setItem('refreshToken', refresh_token)
       }
     } catch (e) {
+      console.log('le token est invalide alors redirection')
       let url = window.location.hash
       localStorage.clear()
       if (url !== '#/register' || url !== '#/login') {
@@ -109,6 +116,7 @@ export async function getNewTokens() {
       }
     }
   } else {
+    console.log("Il n'y a pas de token alors redirection")
     let url = window.location.hash
 
     if (url !== '#/register' || url !== '#/login') {

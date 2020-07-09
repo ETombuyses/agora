@@ -84,8 +84,8 @@ const LabelWrapper = styled.div`
 const Label = styled.label`
   margin-bottom: 7px;
   display: inline-block;
-  font-weight: 500;
   max-width: calc(100% - 16px - 8px);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 `
 
 const Asterisk = styled.span`

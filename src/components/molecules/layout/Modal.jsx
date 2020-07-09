@@ -60,6 +60,7 @@ const PopUpContainer = styled.div`
 const PopUpContent = styled.p`
   font-weight: normal;
   color: ${(props) => props.theme.black};
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `
 
 const Cross = styled(crossIcon)`
