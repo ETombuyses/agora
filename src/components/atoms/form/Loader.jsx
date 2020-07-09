@@ -5,11 +5,11 @@ import styled, { keyframes, css } from 'styled-components'
 
 export const Loader = forwardRef((props, ref) => {
   return (
-    <LoaderContainer ref={ref}>
-      <LoaderContent>
+    <LoaderContainer ref={ref} location={props.location}>
+      <LoaderContent location={props.location}>
         <LoaderTex>{props.text}</LoaderTex>
         {props.displayed && (
-          <LoaderWrapper className="load">
+          <LoaderWrapper className="load" location={props.location}>
             <LoaderBar className="load__bar load__bar--1" />
             <LoaderBar className="load__bar load__bar--2" />
             <LoaderBar className="load__bar load__bar--3" />
@@ -55,7 +55,7 @@ const LoaderWrapper = styled.div`
   height: 60px;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
+  margin-top: ${(props) => (props.location ? '0px' : '20px')};
 
   @supports (-ms-flow-from: thingy) {
     /* Edge only */
@@ -77,7 +77,7 @@ const LoaderBar = styled.div`
 `
 
 const LoaderContainer = styled.div`
-  display: none;
+  display: ${(props) => (props.location ? 'block' : 'none')};
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -88,7 +88,7 @@ const LoaderContent = styled.div`
   border-radius: 7px;
   padding: 30px 20px;
   background-color: ${(props) => props.theme.white};
-  width: 70%;
+  width: ${(props) => (props.location ? '50%' : '70%')};
   position: relative;
   top: 50%;
   left: 50%;
