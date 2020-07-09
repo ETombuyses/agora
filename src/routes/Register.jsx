@@ -137,6 +137,8 @@ export default function Register() {
     if (error) {
       setErrorTextSecondPart(error)
     } else {
+      loader.current.style.display = 'block'
+
       let gas = refs.gasYesButton.current.checked
       let isulation = refs.isuYesButton.current.checked
 
@@ -153,8 +155,6 @@ export default function Register() {
         nifNumber,
         navigoNumber
       )
-
-      loader.current.style.display = 'block'
 
       if (registerSuccess.success) {
         setLoaderText(

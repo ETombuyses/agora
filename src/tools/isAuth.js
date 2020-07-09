@@ -7,8 +7,8 @@ import { apiUrl } from '../apiConfig'
  * @Params {password} string
  */
 
-export function login(email, password) {
-  ;(async () => {
+export async function login(email, password) {
+  try {
     const result = await axios({
       method: 'post',
       url: `${apiUrl}/api/login`,
@@ -52,9 +52,18 @@ export function login(email, password) {
     )
 
     if (result) {
-      window.location.hash = '/'
+      return { success: true }
+    } else {
+      return {
+        success: false,
+        message: 'Erreur lors de la connexion, veuillez réessayer',
+      }
     }
-  })()
+  } catch (error) {
+    let testErrorResponse = error.response
+    console.log('eevev', testErrorResponse)
+    return { success: false, message: testErrorResponse.data.message }
+  }
 }
 
 /*

@@ -4,10 +4,15 @@ import { ReactComponent as BastienProfile } from '../assets/images/profile/basti
 import { ReactComponent as GabrielProfile } from '../assets/images/profile/gabriel-profile.svg'
 import { ReactComponent as HeleneProfile } from '../assets/images/profile/helene-profile.svg'
 
-export default (name) => {
+export default (data) => {
   let SvgComponent
+  let image = ''
 
-  switch (name) {
+  if (data) {
+    image = data.image
+  }
+
+  switch (image) {
     case 'aymeric':
       SvgComponent = AymericProfile
       break

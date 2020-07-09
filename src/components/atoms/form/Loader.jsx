@@ -78,7 +78,7 @@ const LoaderBar = styled.div`
 
 const LoaderContainer = styled.div`
   display: none;
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.backgroundPopUp};
