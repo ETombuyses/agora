@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { media } from '../scss/config/mixins'
 import axios from 'axios'
 import { apiUrl } from '../apiConfig'
-import { getNewTokens } from '../tools/isAuth'
 
 // Components
 import { SectionTitle } from '../components/atoms/layout/SectionTitle'
@@ -21,8 +20,6 @@ export default function Community() {
   const [selectValue, setSelectValue] = useState('water')
 
   useEffect(() => {
-    getNewTokens()
-
     let userInfo = localStorage.getItem('userInfo')
     if (userInfo) {
       let getuserId = JSON.parse(userInfo).id

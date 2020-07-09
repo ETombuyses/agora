@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { getNewTokens } from '../tools/isAuth'
 
 // components
 import { SavedRessourcesRecap } from '../components/organisms/SavedRessourcesRecap'
@@ -16,8 +15,6 @@ export default function History() {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
 
   useEffect(() => {
-    getNewTokens()
-
     let today = new Date()
     let currentYear = today.getFullYear()
     let currentMonth = today.getMonth() + 1

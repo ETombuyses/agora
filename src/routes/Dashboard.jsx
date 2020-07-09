@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { media, toRem } from '../scss/config/mixins'
 import { apiUrl } from '../apiConfig'
-import { getNewTokens } from '../tools/isAuth'
 
 // components
 import { SectionTitle } from '../components/atoms/layout/SectionTitle'
@@ -18,8 +17,6 @@ import { RadarChart } from '../components/atoms/chart/Radar'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
-  getNewTokens()
-
   const [userData, setUserData] = useState(0)
   const [userFirstName, setUserFirstName] = useState('')
   const [userLastName, setUserLastName] = useState('')
