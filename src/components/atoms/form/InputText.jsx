@@ -1,6 +1,5 @@
 import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { media } from '../../../scss/config/mixins'
 
 // icon
@@ -57,13 +56,6 @@ export const InputText = forwardRef((props, ref) => {
     </InputWrapper>
   )
 })
-
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-InputText.propTypes = {
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-}
 
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 

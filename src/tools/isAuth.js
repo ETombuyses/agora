@@ -107,7 +107,7 @@ export async function getNewTokens() {
       console.log('erreur')
       let url = window.location.hash
       localStorage.clear()
-      if (url !== '/register' || url !== '/login') {
+      if (url !== '#/register' || url !== '#/login') {
         window.location.hash = '/login'
       }
     }
@@ -115,7 +115,7 @@ export async function getNewTokens() {
     console.log("je n'ai pas de refresh")
     let url = window.location.hash
 
-    if (!refreshToken && (url !== '/register' || url !== '/login')) {
+    if (url !== '#/register' || url !== '#/login') {
       window.location.hash = '/login'
     }
   }

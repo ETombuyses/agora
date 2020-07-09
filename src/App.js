@@ -24,8 +24,7 @@ export default function App() {
   }
 
   // Refresh Token every 10 mins
-  setInterval(refreshTokenTimer, 1000000000)
-  //600000
+  setInterval(refreshTokenTimer, 600000)
 
   return (
     <Router>
