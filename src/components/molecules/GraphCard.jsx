@@ -207,6 +207,7 @@ const Unit = styled.span`
   left: 8px;
   font-weight: 500;
   color: ${(props) => props.theme.white};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.tablet`
 		color: ${(props) => props.theme.black};
@@ -218,6 +219,7 @@ const Unit = styled.span`
 const MonthShort = styled.p`
   display: none;
   color: ${(props) => props.theme.grey};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.tablet`
 		display: block;
@@ -233,6 +235,7 @@ const MonthLong = styled.p`
   color: ${(props) => props.theme.grey};
   position: relative;
   top: 14px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.tablet`
 		display: none
@@ -245,6 +248,7 @@ const NbTasks = styled.span`
   margin-top: 16px;
 
   strong {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
     font-size: ${toRem(19)};
   }
 

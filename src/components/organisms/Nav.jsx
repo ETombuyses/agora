@@ -233,16 +233,21 @@ const ListItem = styled.li`
 `
 
 const Text = styled.span`
-  font-size: ${toRem(13)};
+  display: none;
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+
+  ${media.mobile`
+    display: block;
+    font-size: ${toRem(13)};
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  `}
 
   ${media.desktop`
     font-size: ${toRem(15)};
     margin-top: 0;
     margin-left: 16px;
-	  `}
+	`}
 `
 
 const LogoutWrapper = styled.span`

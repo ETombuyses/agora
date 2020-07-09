@@ -64,6 +64,7 @@ const PageTitle = styled.h1`
 
 const Today = styled.span`
   font-size: ${toRem(13)};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.tablet`
     font-size: ${toRem(14)};
