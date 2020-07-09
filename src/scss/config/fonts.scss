@@ -6,8 +6,7 @@ body,
 input,
 span,
 p,
-li,
-label {
+li {
   color: $black;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -47,6 +46,23 @@ button {
     @include large {
       font-size: toRem(16);
     }
+  }
+}
+
+label {
+  color: $black;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  color: $black;
+  font-weight: normal;
+  font-size: toRem(14);
+  line-height: 130.5%;
+
+  @include desktop {
+    font-size: toRem(15);
+  }
+
+  @include large {
+    font-size: toRem(16);
   }
 }
 

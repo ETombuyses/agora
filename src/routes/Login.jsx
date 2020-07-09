@@ -14,6 +14,7 @@ import { Modal } from '../components/molecules/layout/Modal'
 import { Loader } from '../components/atoms/form/Loader'
 
 // images and icons
+import logoAgora from '../assets/icons/layout/logo_login.png'
 import welcomeImage from '../assets/images/person-holding-plant.svg'
 import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 
@@ -62,6 +63,7 @@ export default function Login() {
 
   return (
     <PageWrapper>
+      <ImageLogo src={logoAgora} alt="logo agora" />
       <Image src={welcomeImage} alt="dessin d'un jeune garçon" />
       <ContentWrapper>
         <Title className="heading biggest">Se connecter sur Agora</Title>
@@ -131,11 +133,13 @@ const Image = styled.img`
   border-bottom-right-radius: 24px;
   object-position: bottom;
   object-fit: contain;
-  max-height: 35vh;
+  max-height: 45vh;
+  padding-top: 70px;
 
   ${media.desktop`
     max-height: inherit;
     width: 40%;
+    padding-top: 0px;
   `}
 `
 
@@ -198,6 +202,21 @@ const ToggleText = styled.p`
     position: absolute;
     top: 0px;
     right: 32px;
+  `}
+`
+
+const ImageLogo = styled.img`
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+
+  ${media.desktop`
+    top: 70px;
+    left: 20%;
+    transform: translateX(-50%);
+    width: 75px;
   `}
 `
 
