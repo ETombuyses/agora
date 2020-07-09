@@ -10,10 +10,6 @@ import { SavedRessourceTag } from '../atoms/task/SavedRessourceTag'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
-const { image } = JSON.parse(localStorage.getItem('userInfo'))
-
-const ProfilePic = pickProfileSvg(image)
-
 const tasks = [
   { name: 'Eau', savingName: 'water', unit: 'L', progress: 0 },
   { name: 'Gaz', savingName: 'gas', unit: 'KW/h', progress: 49 },
@@ -28,6 +24,36 @@ const tasks = [
 ]
 
 export const UserPanel = (props) => {
+  let userInfo
+
+  if (localStorage.getItem('userInfo')) {
+    userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  }
+
+  const ProfilePic = pickProfileSvg(userInfo)
+
+  const CustomPic = styled(ProfilePic)`
+  background: ${(props) => props.theme.grassGreen};
+  border-radius: 50%;
+  margin-bottom: 16px;
+  width: 70px;
+  height: 70px;
+  min-height: 70px;
+
+  ${media.desktop`
+    width: 100px;
+    height: 100px;
+    min-height: 100px;
+    margin-bottom: 16px;
+  `}
+
+  ${media.large`
+    width: 120px;
+    height: 120px;
+    min-height: 120px;
+  `}
+`
+
   return (
     <UserStats>
       <CustomPic />
@@ -76,30 +102,6 @@ const UserStats = styled.div`
   ${media.desktop`
     width: 30%;
 	`}
-`
-
-const CustomPic = styled(ProfilePic)`
-  background: ${(props) => props.theme.grassGreen};
-  border-radius: 50%;
-  margin-bottom: 16px;
-  width: 70px;
-  height: 70px;
-  min-height: 70px;
-
-  ${media.desktop`
-    width: 100px;
-    height: 100px;
-    min-height: 100px;
-    min-height: 100px;
-    margin-bottom: 16px;
-  `}
-
-  ${media.large`
-    width: 120px;
-    height: 120px;
-    min-height: 120px;
-    min-height: 120px;
-  `}
 `
 
 const UserName = styled.span`
