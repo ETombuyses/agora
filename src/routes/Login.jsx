@@ -14,7 +14,9 @@ import { Modal } from '../components/molecules/layout/Modal'
 import { Loader } from '../components/atoms/form/Loader'
 
 // images and icons
-import logoAgora from '../assets/icons/layout/logo_login.png'
+import logoAgorax1 from '../assets/icons/login/logo_login/logo_loginx1.png'
+import logoAgorax1_5 from '../assets/icons/login/logo_login/logo_loginx1_5.png'
+import logoAgorax2 from '../assets/icons/login/logo_login/logo_loginx2.png'
 import welcomeImage from '../assets/images/person-holding-plant.svg'
 import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 
@@ -63,7 +65,12 @@ export default function Login() {
 
   return (
     <PageWrapper>
-      <ImageLogo src={logoAgora} alt="logo agora" />
+      <ImageLogo
+        src={logoAgorax1}
+        srcSet={`${logoAgorax1_5} 1666w, ${logoAgorax2} 2221w`}
+        sizes="(max-width: 992px) 30px, 75px"
+        alt="logo agora"
+      />
       <Image src={welcomeImage} alt="dessin d'un jeune garçon" />
       <ContentWrapper>
         <Title className="heading biggest">Se connecter sur Agora</Title>
@@ -210,13 +217,11 @@ const ImageLogo = styled.img`
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 30px;
 
   ${media.desktop`
     top: 70px;
     left: 20%;
     transform: translateX(-50%);
-    width: 75px;
   `}
 `
 

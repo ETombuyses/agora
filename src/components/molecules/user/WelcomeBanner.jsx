@@ -4,7 +4,11 @@ import { media } from '../../../scss/config/mixins'
 
 // icons and images
 import plant from '../../../assets/images/jungle-plant.png'
+import plantx1 from '../../../assets/images/jungle-plantx1.png'
+import plantx2 from '../../../assets/images/jungle-plantx2.png'
 import leaves from '../../../assets/images/jungle-leaves.png'
+import leavesx1 from '../../../assets/images/jungle-leavesx1.png'
+import leavesx2 from '../../../assets/images/jungle-leavesx2.png'
 
 // components
 import SvgPersona from '../../atoms/layout/SvgPersona'
@@ -22,9 +26,19 @@ export const WelcomeBanner = (props) => {
   return (
     <WelcomeWrapper>
       <LeftPlantWrapper>
-        <img src={plant} alt="plante verte" />
+        <img
+          src={plant}
+          srcSet={`${plantx1} 171w,${plantx2} 342w`}
+          sizes="100%"
+          alt="plante verte"
+        />
       </LeftPlantWrapper>
-      <LeftLeaves src={leaves} alt="feuilles" />
+      <LeftLeaves
+        src={leaves}
+        srcSet={`${leavesx1} 160w, ${leavesx2} 320w`}
+        sizes="150px"
+        alt="feuilles"
+      />
       <TextContent>
         <Title className="heading biggest">Bonjour {props.name}</Title>
         <Text>
@@ -37,9 +51,19 @@ export const WelcomeBanner = (props) => {
       </TextContent>
       <SvgPersona image={imageName} />
       <RightPlantWrapper>
-        <img src={plant} alt="plante verte" />
+        <img
+          src={plant}
+          srcSet={`${plantx1} 171w,${plantx2} 342w`}
+          sizes="100%"
+          alt="plante verte"
+        />
       </RightPlantWrapper>
-      <RightLeaves src={leaves} alt="feuilles" />
+      <RightLeaves
+        src={leaves}
+        srcSet={`${leavesx1} 160w, ${leavesx2} 320w`}
+        sizes="150px"
+        alt="feuilles"
+      />
     </WelcomeWrapper>
   )
 }

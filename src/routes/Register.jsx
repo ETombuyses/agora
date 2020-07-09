@@ -15,7 +15,9 @@ import { media } from '../scss/config/mixins'
 import { Loader } from '../components/atoms/form/Loader'
 
 // images and icons
-import logoAgora from '../assets/icons/layout/logo_login.png'
+import logoAgorax1 from '../assets/icons/login/logo_login/logo_loginx1.png'
+import logoAgorax1_5 from '../assets/icons/login/logo_login/logo_loginx1_5.png'
+import logoAgorax2 from '../assets/icons/login/logo_login/logo_loginx2.png'
 import welcomeImage from '../assets/images/person-holding-plant.svg'
 import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 import { ReactComponent as MailIcon } from '../assets/icons/login/mail.svg'
@@ -175,7 +177,12 @@ export default function Register() {
 
   return (
     <PageWrapper ref={registerPage}>
-      <ImageLogo src={logoAgora} alt="logo agora" />
+      <ImageLogo
+        src={logoAgorax1}
+        srcSet={`${logoAgorax1_5} 1666w, ${logoAgorax2} 2221w`}
+        sizes="(max-width: 992px) 30px, 75px"
+        alt="logo agora"
+      />
       <Image
         ref={img}
         src={welcomeImage}
@@ -346,14 +353,12 @@ const ImageLogo = styled.img`
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 30px;
 
   ${media.desktop`
     position: fixed;
     top: 70px;
     left: 20%;
     transform: translateX(-50%);
-    width: 75px;
     z-index: 1;
   `}
 `
