@@ -11,6 +11,7 @@ import { Button } from '../components/atoms/form/Button'
 import { SectionSepartor } from '../components/atoms/layout/SectionSeparator'
 import { InputText } from '../components/atoms/form/InputText'
 import { Modal } from '../components/molecules/layout/Modal'
+import { Loader } from '../components/atoms/form/Loader'
 
 // images and icons
 import welcomeImage from '../assets/images/person-holding-plant.svg'
@@ -21,6 +22,11 @@ import { ReactComponent as GovIcon } from '../assets/icons/login/gouv.svg'
 export default function Login() {
   const [password, setPassword] = useState(null)
   const [email, setEmail] = useState(null)
+  const [errorLogin, setErrorLogin] = useState()
+
+  const [loaderText, setLoaderText] = useState('Connexion en cours...')
+  const [loaderDisplay, setLoaderDisplay] = useState(true)
+  const loader = useRef(0)
 
   const modal = useRef(null)
   let modaleShown = localStorage.getItem('modalShown')
@@ -38,11 +44,22 @@ export default function Login() {
     setPassword(e.target.value)
   }
 
-  const sendData = (e) => {
+  const sendData = async (e) => {
     e.preventDefault()
+    setErrorLogin('')
+    loader.current.style.display = 'block'
 
-    //Login function from isAuth.js (Get tokens if user is recognized)
-    login(email, password)
+    // Login function from isAuth.js (Get tokens if user is recognized)
+    let successLogin = await login(email, password)
+    loader.current.style.display = 'none'
+
+    console.log('successlogin', successLogin)
+    if (successLogin.success) {
+      window.location.hash = '/'
+    } else {
+      console.log('kjzefkjzfvkzjef', successLogin)
+      setErrorLogin(successLogin.message)
+    }
   }
 
   return (
@@ -72,6 +89,7 @@ export default function Login() {
             type={'password'}
             identifyer={'password'}
           />
+          {errorLogin && <LoginError>{errorLogin}</LoginError>}
           <LoginButton
             isFullWidth={false}
             text="Se connecter"
@@ -92,6 +110,7 @@ export default function Login() {
           }
         />
       )}
+      <Loader ref={loader} text={loaderText} displayed={loaderDisplay} />
     </PageWrapper>
   )
 }
@@ -196,4 +215,8 @@ const ToggleLink = styled(Link)`
 const ModalDisclaimer = styled(Modal)`
   visibility: visible;
   position: fixed;
+`
+const LoginError = styled.p`
+  color: ${(props) => props.theme.red};
+  margin-top: 16px;
 `

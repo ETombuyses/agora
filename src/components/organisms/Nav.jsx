@@ -177,6 +177,11 @@ const List = styled.ul`
   justify-content: space-evenly;
   align-items: flex-end;
 
+  @supports (-ms-flow-from: thingy) {
+    /* Edge only */
+    justify-content: space-around;
+  }
+
   ${media.desktop`
     flex-direction: column;
     justify-content: center;
