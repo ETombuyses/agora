@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { withTheme } from 'styled-components'
 import { media, toRem } from '../../scss/config/mixins'
 import { logout } from '../../tools/isAuth'
+import { CSSTransition } from 'react-transition-group'
 
 // component
 import { MenuIcon } from '../atoms/layout/MenuIcon'
@@ -23,22 +24,22 @@ const Register = lazy(() => import('../../routes/Register'))
 
 const NavWithTheme = (props) => {
   const pages = [
-    { route: '/', name: 'Dashboard', icon: 'dashboard', component: Dashboard },
+    { route: '/', name: 'Dashboard', icon: 'dashboard', Component: Dashboard },
     {
       route: '/historique',
       name: 'Historique',
       icon: 'history',
-      component: History,
+      Component: History,
     },
     {
       route: '/communaute',
       name: 'Communauté',
       icon: 'analytics',
-      component: Community,
+      Component: Community,
     },
     //{ route: '/profil', name: 'Profil', icon: 'profile', component: Profile },
-    { route: '/login', component: Login },
-    { route: '/register', component: Register },
+    { route: '/login', Component: Login },
+    { route: '/register', Component: Register },
   ]
 
   const [currentRoute, setCurrentRoute] = React.useState('/')
@@ -109,16 +110,26 @@ const NavWithTheme = (props) => {
       )}
       <Suspense fallback={<div>Chargement...</div>}>
         <Switch>
-          {pages.map((page) => {
-            return (
-              <Route
-                exact
-                key={page.route}
-                path={page.route}
-                component={page.component}
-              />
-            )
-          })}
+          <Container className="container">
+            {pages.map(({ route, Component }) => {
+              return (
+                <Route exact key={route} path={route}>
+                  {({ match }) => (
+                    <CSSTransition
+                      in={match != null}
+                      timeout={300}
+                      classNames="page"
+                      unmountOnExit
+                    >
+                      <div className="page">
+                        <Component />
+                      </div>
+                    </CSSTransition>
+                  )}
+                </Route>
+              )
+            })}
+          </Container>
           <Route path="*">
             <NoMatch />
           </Route>
@@ -250,4 +261,36 @@ const LogoutWrapper = styled.span`
     flex-direction: row;
     bottom: inherit;
   `};
+`
+
+const Container = styled.div`
+  position; relative
+
+  .page {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+  }
+  
+  .page-enter {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 300ms, transform 300ms;
+  }
+  
+  .page-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .page-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
 `
