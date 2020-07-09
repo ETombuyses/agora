@@ -53,11 +53,9 @@ export default function Login() {
     let successLogin = await login(email, password)
     loader.current.style.display = 'none'
 
-    console.log('successlogin', successLogin)
     if (successLogin.success) {
       window.location.hash = '/'
     } else {
-      console.log('kjzefkjzfvkzjef', successLogin)
       setErrorLogin(successLogin.message)
     }
   }

@@ -134,8 +134,6 @@ export const checkAgoraForm = (
 
   // Check if nb Agora is valid
   if (!nbAgora) {
-    console.log(' no oagora')
-
     state.state.nbAgora = "Le numéro d'Agora n'est pas rempli"
   } else if (
     !expressionAgora.test(String(nbAgora).toLowerCase()) ||
