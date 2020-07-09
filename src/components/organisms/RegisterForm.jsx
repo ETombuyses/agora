@@ -234,7 +234,7 @@ const SecondView = styled.div`
   ${media.desktop`
     width: 100%;
     height: 100vh;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     padding-right: 0;
