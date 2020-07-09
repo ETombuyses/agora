@@ -10,8 +10,13 @@ import pickPersonaSvg from '../../../tools/pickPersonaSvg'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const WelcomeBanner = (props) => {
-  const { image } = JSON.parse(localStorage.getItem('userInfo'));
-  const Persona = pickPersonaSvg(image);
+  let userInfo
+
+  if (localStorage.getItem('userInfo')) {
+    userInfo = JSON.parse(localStorage.getItem('userInfo'))
+  }
+
+  const Persona = pickPersonaSvg(userInfo);
 
   return (
     <WelcomeWrapper>
