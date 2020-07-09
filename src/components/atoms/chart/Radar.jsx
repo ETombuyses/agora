@@ -20,13 +20,14 @@ export const RadarChart = (props) => {
 
   return (
     <RadarWrapper className={props.className}>
-      {Object.keys(tasks).map((task) => {
+      {Object.keys(tasks).map((task, index) => {
         return (
           <CustomTaskIcon
             className={tasks[task].name}
             type={props.type}
             icon={tasks[task].icon}
             color={'whiteTransparent'}
+            key={index}
           />
         )
       })}
