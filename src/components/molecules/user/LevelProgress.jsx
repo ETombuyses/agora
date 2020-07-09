@@ -46,7 +46,7 @@ const LevelProgressWrapper = styled.div`
   color: ${(props) => props.theme.white};
 
   ${media.desktop`
-    padding: 6% 5% 5% 5%;
+    padding: 33px 50px 46px 50px;
     width: 40%;
     min-width: 215px;
   `}
