@@ -20,7 +20,7 @@ if (typeof importScripts === 'function') {
     /* cache API calls */
     workbox.routing.registerRoute(
       new RegExp('https://agora-api-hetic.herokuapp.com/(.*)'),
-      new workbox.strategies.StaleWhileRevalidate({
+      new workbox.strategies.NetworkFirst({
         cacheName: 'apiRequests',
         method: 'GET',
         cacheableResponse: { statuses: [0, 200] },
