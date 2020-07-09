@@ -69,6 +69,7 @@ export async function login(email, password) {
  * Get new tokens if user is recognized
  */
 export async function getNewTokens() {
+  console.log('oui')
   let refreshToken = localStorage.getItem('refreshToken')
   let getuserId = JSON.parse(localStorage.getItem('userInfo'))
   let getToken = localStorage.getItem('token')
