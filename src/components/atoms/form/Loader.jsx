@@ -82,6 +82,7 @@ const LoaderContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.backgroundPopUp};
+  z-index: 110;
 `
 
 const LoaderContent = styled.div`

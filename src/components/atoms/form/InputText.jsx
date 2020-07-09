@@ -93,7 +93,6 @@ const Label = styled.label`
   margin-bottom: 7px;
   display: inline-block;
   max-width: calc(100% - 16px - 8px);
-  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 `
 
 const Asterisk = styled.span`
