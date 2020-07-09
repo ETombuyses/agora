@@ -61,7 +61,6 @@ export async function login(email, password) {
     }
   } catch (error) {
     let testErrorResponse = error.response
-    console.log('eevev', testErrorResponse)
     return { success: false, message: testErrorResponse.data.message }
   }
 }
@@ -70,13 +69,13 @@ export async function login(email, password) {
  * Get new tokens if user is recognized
  */
 export async function getNewTokens() {
+  console.log('oui')
   let refreshToken = localStorage.getItem('refreshToken')
   let getuserId = JSON.parse(localStorage.getItem('userInfo'))
   let getToken = localStorage.getItem('token')
 
   if (getToken && getuserId && refreshToken) {
     let getuserId = JSON.parse(localStorage.getItem('userInfo')).id
-    console.log("j'ai un token")
     try {
       const result = await axios({
         method: 'get',
@@ -95,7 +94,6 @@ export async function getNewTokens() {
           },
         })
 
-        console.log('jai un token')
         let token = refreshTokens.data.token
         let refresh_token = refreshTokens.data.refresh_token
 
@@ -104,7 +102,6 @@ export async function getNewTokens() {
         localStorage.setItem('refreshToken', refresh_token)
       }
     } catch (e) {
-      console.log('erreur')
       let url = window.location.hash
       localStorage.clear()
       if (url !== '#/register' || url !== '#/login') {
@@ -112,7 +109,6 @@ export async function getNewTokens() {
       }
     }
   } else {
-    console.log("je n'ai pas de refresh")
     let url = window.location.hash
 
     if (url !== '#/register' || url !== '#/login') {
@@ -171,7 +167,6 @@ export async function register(
     }
   } catch (error) {
     let testErrorResponse = error.response
-    console.log('eevev', testErrorResponse)
     return { success: false, message: testErrorResponse.data.detail }
   }
 }

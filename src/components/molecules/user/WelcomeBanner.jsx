@@ -5,18 +5,19 @@ import { media } from '../../../scss/config/mixins'
 // icons and images
 import plant from '../../../assets/images/jungle-plant.png'
 import leaves from '../../../assets/images/jungle-leaves.png'
-import pickPersonaSvg from '../../../tools/pickPersonaSvg'
+
+// components
+import SvgPersona from '../../atoms/layout/SvgPersona'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const WelcomeBanner = (props) => {
-  let userInfo
+  let imageName = ''
 
   if (localStorage.getItem('userInfo')) {
-    userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const { image } = JSON.parse(localStorage.getItem('userInfo'))
+    imageName = image
   }
-
-  const Persona = pickPersonaSvg(userInfo);
 
   return (
     <WelcomeWrapper>
@@ -34,7 +35,7 @@ export const WelcomeBanner = (props) => {
               } mission${`s`} pour passer au niveau ${props.currentLevel + 1}`}
         </Text>
       </TextContent>
-      <Persona />
+      <SvgPersona image={imageName} />
       <RightPlantWrapper>
         <img src={plant} alt="plante verte" />
       </RightPlantWrapper>
@@ -54,27 +55,6 @@ const WelcomeWrapper = styled.div`
   ${media.desktop`
     padding: 35px;
   `}
-
-  svg {
-    position: absolute;
-    width: 38%;
-    height: auto;
-    max-height: calc(100% + 20px);
-    bottom: 0;
-    right: 0;
-    border-radius: 9px;
-    transform: scaleX(-1);
-
-    ${media.desktop`
-      transform: none;
-      right: unset;
-      left: 10%;
-      width: unset;
-      max-width: 20%;
-      height: calc(100% + 10px);
-      min-height: calc(100% + 40px);
-    `}
-  }
 `
 const TextContent = styled.div`
   ${media.desktop`
