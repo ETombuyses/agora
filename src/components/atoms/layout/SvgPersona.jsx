@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../../../scss/config/mixins'
+import { fromMap } from '../../../tools/getRightComponent'
 import { ReactComponent as DefaultPersona } from '../../../assets/images/persona/default-persona.svg'
 import { ReactComponent as AymericPersona } from '../../../assets/images/persona/aymeric-persona.svg'
 import { ReactComponent as BastienPersona } from '../../../assets/images/persona/bastien-persona.svg'
@@ -8,14 +9,18 @@ import { ReactComponent as GabrielPersona } from '../../../assets/images/persona
 import { ReactComponent as HelenePersona } from '../../../assets/images/persona/helene-persona.svg'
 
 export default ({ image }) => {
+  const map = new Map([
+    ['aymeric', <AymericPersona key={1} />],
+    ['gabriel', <GabrielPersona key={1} />],
+    ['helene', <HelenePersona key={1} />],
+    ['bastien', <BastienPersona key={1} />],
+    ['' || null, <DefaultPersona key={1} />],
+  ])
+
   return (
     <SvgWrapper>
       {
-        image === 'aymeric' ? <AymericPersona />
-        : image === 'gabriel' ? <GabrielPersona />
-        : image === 'helene' ? <HelenePersona />
-        : image === 'bastien' ? <BastienPersona />
-        : <DefaultPersona />
+        fromMap(map, image)
       }
     </SvgWrapper>
   )
