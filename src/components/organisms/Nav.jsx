@@ -236,6 +236,7 @@ const Text = styled.span`
   font-size: ${toRem(13)};
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
   ${media.desktop`
     font-size: ${toRem(15)};
