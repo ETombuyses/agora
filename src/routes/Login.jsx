@@ -53,11 +53,9 @@ export default function Login() {
     let successLogin = await login(email, password)
     loader.current.style.display = 'none'
 
-    console.log('successlogin', successLogin)
     if (successLogin.success) {
       window.location.hash = '/'
     } else {
-      console.log('kjzefkjzfvkzjef', successLogin)
       setErrorLogin(successLogin.message)
     }
   }
@@ -205,12 +203,9 @@ const ToggleText = styled.p`
 
 const ToggleLink = styled(Link)`
   color: ${(props) => props.theme.green};
-  background: ${(props) => props.theme.white};
   cursor: pointer;
   font-weight: bold;
-  padding: 8px;
   margin-left: 5px;
-  border-radius: 10px;
 `
 const ModalDisclaimer = styled(Modal)`
   visibility: visible;

@@ -7,6 +7,7 @@ import { logout } from '../../tools/isAuth'
 
 // component
 import { MenuIcon } from '../atoms/layout/MenuIcon'
+import { Loader } from '../atoms/form/Loader'
 
 // logo
 import logo from '../../assets/agora-logo.png'
@@ -107,7 +108,7 @@ const NavWithTheme = (props) => {
           </MenuWrapper>
         </NavWrapper>
       )}
-      <Suspense fallback={<div>Chargement...</div>}>
+      <Suspense fallback={<Loader displayed={true} location={true} />}>
         <Switch>
           {pages.map((page) => {
             return (

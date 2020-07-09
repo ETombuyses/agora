@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media, toRem } from '../../scss/config/mixins'
-import pickProfileSvg from '../../tools/pickProfileSvg'
 
 // components
 import { Tag } from '../atoms/task/Tag'
 import { RadarChart } from '../atoms/chart/Radar'
 import { SavedRessourceTag } from '../atoms/task/SavedRessourceTag'
+import SvgProfile from '../atoms/layout/SvgProfile'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
@@ -24,39 +24,16 @@ const tasks = [
 ]
 
 export const UserPanel = (props) => {
-  let userInfo
+  let imageName = ''
 
   if (localStorage.getItem('userInfo')) {
-    userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const { image } = JSON.parse(localStorage.getItem('userInfo'))
+    imageName = image
   }
-
-  const ProfilePic = pickProfileSvg(userInfo)
-
-  const CustomPic = styled(ProfilePic)`
-  background: ${(props) => props.theme.grassGreen};
-  border-radius: 50%;
-  margin-bottom: 16px;
-  width: 70px;
-  height: 70px;
-  min-height: 70px;
-
-  ${media.desktop`
-    width: 100px;
-    height: 100px;
-    min-height: 100px;
-    margin-bottom: 16px;
-  `}
-
-  ${media.large`
-    width: 120px;
-    height: 120px;
-    min-height: 120px;
-  `}
-`
 
   return (
     <UserStats>
-      <CustomPic />
+      <SvgProfile image={imageName} />
       <UserName>
         {props.userFirstName} {props.userLastName}
       </UserName>

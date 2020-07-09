@@ -21,14 +21,17 @@ export const RadarChart = (props) => {
   return (
     <RadarWrapper className={props.className}>
       {Object.keys(tasks).map((task) => {
-        return (
-          <CustomTaskIcon
-            className={tasks[task].name}
-            type={props.type}
-            icon={tasks[task].icon}
-            color={'whiteTransparent'}
-          />
-        )
+        if (task !== 'transportsIsValidate') {
+          return (
+            <CustomTaskIcon
+              className={tasks[task].name}
+              type={props.type}
+              icon={tasks[task].icon}
+              color={'whiteTransparent'}
+              key={tasks[task].name}
+            />
+          )
+        }
       })}
       <Radar
         width={500}

@@ -1,6 +1,5 @@
 import React, { forwardRef, useRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { media } from '../../../scss/config/mixins'
 
 // icon
@@ -58,13 +57,6 @@ export const InputText = forwardRef((props, ref) => {
   )
 })
 
-/* -----------------------------------------------------PROPTYPES------------------------------------------------ */
-
-InputText.propTypes = {
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-}
-
 /* -----------------------------------------------------STYLE------------------------------------------------ */
 
 const InputWrapper = styled.div`
@@ -92,8 +84,8 @@ const LabelWrapper = styled.div`
 const Label = styled.label`
   margin-bottom: 7px;
   display: inline-block;
-  font-weight: 500;
   max-width: calc(100% - 16px - 8px);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 `
 
 const Asterisk = styled.span`

@@ -46,4 +46,5 @@ const LabelText = styled.label`
   cursor: pointer;
   border-radius: 5px;
   line-height: 45px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
 `
