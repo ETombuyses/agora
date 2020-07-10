@@ -16,8 +16,9 @@ import { tasks } from '../tools/ressources'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Community() {
-  const [userData, setUserData] = useState(0)
+  const [userData, setUserData] = useState('')
   const [selectValue, setSelectValue] = useState('water')
+  const [year, setYear] = useState('cette année')
 
   useEffect(() => {
     let userInfo = localStorage.getItem('userInfo')
@@ -37,6 +38,8 @@ export default function Community() {
         setUserData(result)
       })()
     }
+    let year = new Date().getFullYear()
+    setYear(`en ${year}`)
   }, [])
 
   const handleChangeEnergie = (e) => {
@@ -60,7 +63,7 @@ export default function Community() {
           />
         </GlobalDataCardWrapper>
       )}
-      <SectionTitle text="Missions réussies au total" />
+      <SectionTitle text={`Missions réussies au total ${year}`} />
       {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>

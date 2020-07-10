@@ -11,7 +11,7 @@ import { tasks } from '../../tools/ressources'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const Task = (props) => {
-  const [taskProgress, setTaskProgress] = React.useState(0)
+  const [taskProgress, setTaskProgress] = React.useState('')
 
   React.useEffect(() => {
     setTaskProgress(props.progression)
