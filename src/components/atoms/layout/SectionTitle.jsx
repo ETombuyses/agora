@@ -16,6 +16,7 @@ export const SectionTitle = (props) => {
 const TitleText = styled.h2`
   font-size: ${toRem(15)};
   margin: 20px 0 12px 0;
+  font-weight: 500;
 
   ${media.tablet`
     font-size: ${toRem(17)};

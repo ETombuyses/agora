@@ -4,13 +4,19 @@ import { media } from '../../../scss/config/mixins'
 
 // icon
 import lightBulb from '../../../assets/icons/layout/light-bulb.png'
+import lightBulbx2 from '../../../assets/icons/layout/light-bulbx2.png'
 
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export const AdviceIcon = (props) => {
   return (
     <AdviceIconWrapper className={props.className}>
-      <Icon src={lightBulb} alt="ampoule" />
+      <Icon
+        src={lightBulb}
+        srcSet={`${lightBulbx2} 74w`}
+        sizes="100%"
+        alt="ampoule"
+      />
     </AdviceIconWrapper>
   )
 }

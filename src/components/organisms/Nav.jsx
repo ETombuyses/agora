@@ -11,6 +11,8 @@ import { Loader } from '../atoms/form/Loader'
 
 // logo
 import logo from '../../assets/agora-logo.png'
+import logox2 from '../../assets/agora-logox2.png'
+import logox1 from '../../assets/agora-logox1.png'
 
 // Routes
 const Dashboard = lazy(() => import('../../routes/Dashboard'))
@@ -67,7 +69,12 @@ const NavWithTheme = (props) => {
       {currentRoute !== '/register' && currentRoute !== '/login' && (
         <NavWrapper>
           <MenuWrapper>
-            <Logo src={logo} alt="logo agora" />
+            <Logo
+              src={logo}
+              srcSet={`${logox1} 121w, ${logox2} 241w`}
+              sizes="60%"
+              alt="logo agora"
+            />
             <List>
               {pages.map((page) => {
                 if (page.icon)
@@ -233,15 +240,21 @@ const ListItem = styled.li`
 `
 
 const Text = styled.span`
-  font-size: ${toRem(13)};
+  display: none;
   margin-top: 6px;
   color: ${(props) => props.theme.grey};
+
+  ${media.mobile`
+    display: block;
+    font-size: ${toRem(13)};
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  `}
 
   ${media.desktop`
     font-size: ${toRem(15)};
     margin-top: 0;
     margin-left: 16px;
-	  `}
+	`}
 `
 
 const LogoutWrapper = styled.span`
