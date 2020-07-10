@@ -17,10 +17,9 @@ import { RadarChart } from '../components/atoms/chart/Radar'
 /* -----------------------------------------------------COMPONENT------------------------------------------------ */
 
 export default function Dashboard() {
-  const [userData, setUserData] = useState(0)
+  const [userData, setUserData] = useState('')
   const [userFirstName, setUserFirstName] = useState('')
   const [userLastName, setUserLastName] = useState('')
-  // const [userImage, setUserImage] = useState('')
   const [savedRessources, setSavedRessources] = useState()
   const [tasks2, setTasks2] = useState([])
   const [adviceTopic, setAdviceTopic] = useState('Eau')
@@ -39,9 +38,6 @@ export default function Dashboard() {
 
     setUserFirstName(userProfileData.fistName)
     setUserLastName(userProfileData.lastName)
-    // setUserImage(
-    //   userProfileData.image ? userProfileData.image : 'profile-pic.svg'
-    // )
     ;(async () => {
       const result = await axios({
         method: 'get',

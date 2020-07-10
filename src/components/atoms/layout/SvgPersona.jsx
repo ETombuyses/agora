@@ -17,13 +17,7 @@ export default ({ image }) => {
     ['' || null, <DefaultPersona key={1} />],
   ])
 
-  return (
-    <SvgWrapper>
-      {
-        fromMap(map, image)
-      }
-    </SvgWrapper>
-  )
+  return <SvgWrapper>{fromMap(map, image)}</SvgWrapper>
 }
 
 const SvgWrapper = styled.div`
@@ -43,7 +37,7 @@ const SvgWrapper = styled.div`
       width: unset;
       max-width: 20%;
       height: calc(100% + 10px);
-      min-height: calc(100% + 40px);
+      min-height: calc(100% + 23px);
       transform: none;
     `}
   }
