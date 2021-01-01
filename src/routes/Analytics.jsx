@@ -163,10 +163,10 @@ const GraphContainerDesktop = styled.div`
     display: block;
   `}
 
-  @media screen and (min-width: 1200px) {
+  ${media.desktop`
     display: flex;
     flex-wrap: wrap;
-  }
+  `}
 `
 const PageLocationContent = styled(PageLocation)`
   margin-bottom: 15px;
