@@ -55,7 +55,7 @@ export default function Stats() {
         </GlobalDataCardWrapper>
       )}
       <Title text="Missions réussis au total" />
-      {userData.data && (
+      {userData.data && userData.data.thisYear.Eau.allTasks.length !== 0 && (
         <>
           <GraphContainerMobile>
             {selectValue === 'water' && (
@@ -117,6 +117,9 @@ export default function Stats() {
             />
           </GraphContainerDesktop>
         </>
+      )}
+      {userData.data && userData.data.thisYear.Eau.allTasks.length === 0 && (
+        <p>Il n'y a pas de données à afficher</p>
       )}
     </div>
   )
