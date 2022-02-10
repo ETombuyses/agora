@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prettier": "2.0.5",
     "sass-extract": "^2.1.0",
     "sass-extract-js": "^0.4.0",
